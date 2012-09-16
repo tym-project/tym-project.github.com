@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: pwgen; mots de passe | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/pwgen-mots-de-passe/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/pwgen-mots-de-passe/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mettre en place un coffre à mots de passe sous Linux]]></title>
-    <link href="http://tym-project.github.com/2009/05/10/mettre-en-place-un-coffre-a-mots-de-passe-sous-linux/"/>
+    <link href="http://blog.tym-project.fr/2009/05/10/mettre-en-place-un-coffre-a-mots-de-passe-sous-linux/"/>
     <updated>2009-05-10T12:21:18+00:00</updated>
-    <id>http://tym-project.github.com/2009/05/10/mettre-en-place-un-coffre-a-mots-de-passe-sous-linux</id>
+    <id>http://blog.tym-project.fr/2009/05/10/mettre-en-place-un-coffre-a-mots-de-passe-sous-linux</id>
     <content type="html"><![CDATA[<p>Le coffre à mot de passe part d'un principe simple : un mot de passe pour les
 protéger tous (et dans les ténèbres les lier* :-) ). Vous allez donc avoir une
 "boite" qui va contenir tous vos mots de passe (ou du moins les plus complexes

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: ping | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/ping/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/ping/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Augmenter son débit avec free : le test complet]]></title>
-    <link href="http://tym-project.github.com/2010/06/16/augmenter-son-debit-avec-free-le-test-complet/"/>
+    <link href="http://blog.tym-project.fr/2010/06/16/augmenter-son-debit-avec-free-le-test-complet/"/>
     <updated>2010-06-16T14:46:56+00:00</updated>
-    <id>http://tym-project.github.com/2010/06/16/augmenter-son-debit-avec-free-le-test-complet</id>
+    <id>http://blog.tym-project.fr/2010/06/16/augmenter-son-debit-avec-free-le-test-complet</id>
     <content type="html"><![CDATA[<p>Cela fait maintenant quelques mois que je vous
 avais expliqué <a href="http://www.tym-project.fr/blog/2009/07/augmenter-son-debit-avec-free/">comment "augmenter votre débit"</a> si vous possédez une
 freebox. J'ai pris mon courage à deux mains, et surtout un peu de temps pour
@@ -182,9 +182,9 @@ un peu trop "optimiste" :</p>
   
   <entry>
     <title type="html"><![CDATA[Pathping : le ping mutant en traceroute !]]></title>
-    <link href="http://tym-project.github.com/2009/09/21/pathping-le-ping-mutant-en-traceroute/"/>
+    <link href="http://blog.tym-project.fr/2009/09/21/pathping-le-ping-mutant-en-traceroute/"/>
     <updated>2009-09-21T08:07:44+00:00</updated>
-    <id>http://tym-project.github.com/2009/09/21/pathping-le-ping-mutant-en-traceroute</id>
+    <id>http://blog.tym-project.fr/2009/09/21/pathping-le-ping-mutant-en-traceroute</id>
     <content type="html"><![CDATA[<p>Pour rappel l'outil <code>[man]traceroute[/man]</code>
 permet de voir le chemin suivit par un message sur le réseau. C'est donc une
 commande très pratique pour diagnostiquer et résoudre des problèmes de
@@ -212,9 +212,9 @@ détecter d'éventuels points de congestion dans le réseau !</p>
   
   <entry>
     <title type="html"><![CDATA[Curiosité : Microsoft ne fait rien comme tout le monde !]]></title>
-    <link href="http://tym-project.github.com/2009/03/31/curiosite-microsoft-ne-fait-rien-comme-tout-le-monde-2/"/>
+    <link href="http://blog.tym-project.fr/2009/03/31/curiosite-microsoft-ne-fait-rien-comme-tout-le-monde-2/"/>
     <updated>2009-03-31T15:14:33+00:00</updated>
-    <id>http://tym-project.github.com/2009/03/31/curiosite-microsoft-ne-fait-rien-comme-tout-le-monde-2</id>
+    <id>http://blog.tym-project.fr/2009/03/31/curiosite-microsoft-ne-fait-rien-comme-tout-le-monde-2</id>
     <content type="html"><![CDATA[<p>Lors de l'émission d'un paquet ICMP, on remplit le champ "données" avec une
 valeur aléatoire car il faut simplement que ce champ ne soit pas vide. On peut
 utiliser n'importe quelles valeurs. Sous Linux c'est une suite de caractères,

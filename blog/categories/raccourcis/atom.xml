@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: raccourcis | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/raccourcis/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/raccourcis/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Créer un raccourci clavier pour un programme (Windows)]]></title>
-    <link href="http://tym-project.github.com/2009/08/11/creer-un-raccourci-clavier-pour-un-programme-windows/"/>
+    <link href="http://blog.tym-project.fr/2009/08/11/creer-un-raccourci-clavier-pour-un-programme-windows/"/>
     <updated>2009-08-11T14:06:39+00:00</updated>
-    <id>http://tym-project.github.com/2009/08/11/creer-un-raccourci-clavier-pour-un-programme-windows</id>
+    <id>http://blog.tym-project.fr/2009/08/11/creer-un-raccourci-clavier-pour-un-programme-windows</id>
     <content type="html"><![CDATA[<p>Les programmes c'est super...en fait c'est même la base d'un OS (si si, je
 vous assure !). Mais alors comment assigner des raccourcis clavier à nos chère
 applications ? Réponse <a href="http://www.protuts.net/assigner-raccourci-outil-capture/">ici</a> ;-)</p>

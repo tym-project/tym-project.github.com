@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: css | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/css/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/css/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Wordpress : ne plus avoir de texte qui déborde avec la balise "pre"]]></title>
-    <link href="http://tym-project.github.com/2009/11/17/wordpress-ne-plus-avoir-de-texte-qui-deborde-avec-la-balise-pre/"/>
+    <link href="http://blog.tym-project.fr/2009/11/17/wordpress-ne-plus-avoir-de-texte-qui-deborde-avec-la-balise-pre/"/>
     <updated>2009-11-17T12:35:53+00:00</updated>
-    <id>http://tym-project.github.com/2009/11/17/wordpress-ne-plus-avoir-de-texte-qui-deborde-avec-la-balise-pre</id>
+    <id>http://blog.tym-project.fr/2009/11/17/wordpress-ne-plus-avoir-de-texte-qui-deborde-avec-la-balise-pre</id>
     <content type="html"><![CDATA[<p>J'utilise énormément la balise <code>pre</code>, qui
 permet d'afficher du code (scripts...) de manière lisible et surtout détachée
 du texte. Mais cette méthode à un inconvénient majeur : si la ligne est trop

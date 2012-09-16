@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: MIcrosoft | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/microsoft/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/microsoft/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Faire de jolis schémas sans Visio !]]></title>
-    <link href="http://tym-project.github.com/2009/04/06/faire-de-jolis-schemas-sans-visio/"/>
+    <link href="http://blog.tym-project.fr/2009/04/06/faire-de-jolis-schemas-sans-visio/"/>
     <updated>2009-04-06T16:25:50+00:00</updated>
-    <id>http://tym-project.github.com/2009/04/06/faire-de-jolis-schemas-sans-visio</id>
+    <id>http://blog.tym-project.fr/2009/04/06/faire-de-jolis-schemas-sans-visio</id>
     <content type="html"><![CDATA[<p>Vous connaissez peut-être Visio, le logiciel de Microsoft qui vous permet de
 faire des schémas (de réseaux dans mon cas) très propres et très clairs !</p>
 

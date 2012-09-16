@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: json | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/json/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/json/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Xbmc : un script pour déclencher la mise à jour de la librairie]]></title>
-    <link href="http://tym-project.github.com/2011/01/12/xbmc-un-script-pour-declencher-la-mise-a-jour-de-la-librairie/"/>
+    <link href="http://blog.tym-project.fr/2011/01/12/xbmc-un-script-pour-declencher-la-mise-a-jour-de-la-librairie/"/>
     <updated>2011-01-12T12:00:16+00:00</updated>
-    <id>http://tym-project.github.com/2011/01/12/xbmc-un-script-pour-declencher-la-mise-a-jour-de-la-librairie</id>
+    <id>http://blog.tym-project.fr/2011/01/12/xbmc-un-script-pour-declencher-la-mise-a-jour-de-la-librairie</id>
     <content type="html"><![CDATA[<p>Xbmc possède des scrapers très puissants, ce qui
 permet d'avoir une librairie enrichie d'images et autre bonus venant du web.
 Par défaut il existe deux moyens de mettre à jour la librairie : au démarrage

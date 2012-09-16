@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: lammle | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/lammle/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/lammle/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[La bible du réseau / ABC du réseau pour les débutants]]></title>
-    <link href="http://tym-project.github.com/2009/04/17/la-bible-du-reseau-abc-du-reseau-pour-les-debutants-2/"/>
+    <link href="http://blog.tym-project.fr/2009/04/17/la-bible-du-reseau-abc-du-reseau-pour-les-debutants-2/"/>
     <updated>2009-04-17T20:52:00+00:00</updated>
-    <id>http://tym-project.github.com/2009/04/17/la-bible-du-reseau-abc-du-reseau-pour-les-debutants-2</id>
+    <id>http://blog.tym-project.fr/2009/04/17/la-bible-du-reseau-abc-du-reseau-pour-les-debutants-2</id>
     <content type="html"><![CDATA[<p>Je suis étudiant à SUPINFO, et dans le cadre de mon cursus je peux passer des
 certifications Cisco pour pas cher…gratuit en fait. (Aparté : ce sont en fait
 des certifications “Academic” donc pas vraiment dures et pas vraiment

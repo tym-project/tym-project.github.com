@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Word | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/word/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/word/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Microsoft Office Word : Changer la structure d'un sommaire automatique]]></title>
-    <link href="http://tym-project.github.com/2011/01/19/microsoft-office-word-sommaire-personnalise/"/>
+    <link href="http://blog.tym-project.fr/2011/01/19/microsoft-office-word-sommaire-personnalise/"/>
     <updated>2011-01-19T12:00:19+00:00</updated>
-    <id>http://tym-project.github.com/2011/01/19/microsoft-office-word-sommaire-personnalise</id>
+    <id>http://blog.tym-project.fr/2011/01/19/microsoft-office-word-sommaire-personnalise</id>
     <content type="html"><![CDATA[<p>Un article un peu en dehors des sujets habituels,
 mais après tout c'est mon blog, non ? :) Si vous avez un minimum d'expérience
 avec Word vous utilisez certainement les styles et le sommaire automatique. Si

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: mobile | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/mobile/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/mobile/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard]]></title>
-    <link href="http://tym-project.github.com/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/"/>
+    <link href="http://blog.tym-project.fr/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/"/>
     <updated>2012-08-16T23:02:00+00:00</updated>
-    <id>http://tym-project.github.com/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard</id>
+    <id>http://blog.tym-project.fr/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard</id>
     <content type="html"><![CDATA[<p>Je suis l'heureux propriétaire d'un HTC One S, et même si la ROM Sense d'origine est très stable et plutôt agréable à utiliser, je n'ai pas pu résister à l'appel de CM9 !</p>
 
 <!-- more -->
@@ -77,9 +77,9 @@ Après quelques recherches, flash, recherches, une solution : démarrer en recov
   
   <entry>
     <title type="html"><![CDATA[Non mais de qui les oranges se moquent-elles ?]]></title>
-    <link href="http://tym-project.github.com/2009/08/16/non-mais-de-qui-les-oranges-se-moquent-elles/"/>
+    <link href="http://blog.tym-project.fr/2009/08/16/non-mais-de-qui-les-oranges-se-moquent-elles/"/>
     <updated>2009-08-16T14:29:19+00:00</updated>
-    <id>http://tym-project.github.com/2009/08/16/non-mais-de-qui-les-oranges-se-moquent-elles</id>
+    <id>http://blog.tym-project.fr/2009/08/16/non-mais-de-qui-les-oranges-se-moquent-elles</id>
     <content type="html"><![CDATA[<p>Après avoir halluciné sur les prix des forfaits ailleurs que
 dans la douce France, voici que <a href="http://www.pcinpact.com/actu/news/52485-orange-augmente-5-euros-abonnements.htm">PC Inpact en rajoute une couche</a> !</p>
 

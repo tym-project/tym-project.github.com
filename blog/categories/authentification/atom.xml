@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: authentification | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/authentification/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/authentification/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[OpenID : l'authentification unifiée]]></title>
-    <link href="http://tym-project.github.com/2009/05/19/openid-lauthentification-unifiee/"/>
+    <link href="http://blog.tym-project.fr/2009/05/19/openid-lauthentification-unifiee/"/>
     <updated>2009-05-19T12:45:36+00:00</updated>
-    <id>http://tym-project.github.com/2009/05/19/openid-lauthentification-unifiee</id>
+    <id>http://blog.tym-project.fr/2009/05/19/openid-lauthentification-unifiee</id>
     <content type="html"><![CDATA[<p>OpenID c'est la petite technologie qui monte en ce moment. Pour faire simple
 cela vous permet de vous authentifier, sur les sites supportant cette
 technologie, avec le même mot de passe.Plus besoin donc de gérer plusieurs

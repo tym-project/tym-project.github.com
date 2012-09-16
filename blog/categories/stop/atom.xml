@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: STOP | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/stop/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/stop/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Lutter contre le SPAM par "sms"]]></title>
-    <link href="http://tym-project.github.com/2009/12/30/lutter-contre-le-spam-par-sms/"/>
+    <link href="http://blog.tym-project.fr/2009/12/30/lutter-contre-le-spam-par-sms/"/>
     <updated>2009-12-30T19:34:03+00:00</updated>
-    <id>http://tym-project.github.com/2009/12/30/lutter-contre-le-spam-par-sms</id>
+    <id>http://blog.tym-project.fr/2009/12/30/lutter-contre-le-spam-par-sms</id>
     <content type="html"><![CDATA[<p>"rappelle moi au 0899XXXXXX je
 suis impatiente !". C'est ce genre de message que tout un chacun a déjà reçu,
 ou recevra certainement sur son mobile. Inutile de préciser que c'est un SPAM

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: ssh | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/ssh/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/ssh/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mettre en place un tunnel-proxy SSH autonome]]></title>
-    <link href="http://tym-project.github.com/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan/"/>
+    <link href="http://blog.tym-project.fr/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan/"/>
     <updated>2010-03-19T13:00:43+00:00</updated>
-    <id>http://tym-project.github.com/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan</id>
+    <id>http://blog.tym-project.fr/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan</id>
     <content type="html"><![CDATA[<p>Dans <a href="http://www.tym-project.fr/blog/2009/04/installer-un-serveur-ssh-destine-au-tunneling/">cet article</a> je
 vous expliquais comment mettre en place un serveur servant à faire du
 tunneling ssh. Mais quid de la partie client me direz vous ? Et bien c'est ce
@@ -240,9 +240,9 @@ Bon bash ;-)</p>
   
   <entry>
     <title type="html"><![CDATA[Socksifier une application sous Linux]]></title>
-    <link href="http://tym-project.github.com/2009/04/27/socksifier-une-application-sous-linux-2/"/>
+    <link href="http://blog.tym-project.fr/2009/04/27/socksifier-une-application-sous-linux-2/"/>
     <updated>2009-04-27T21:17:05+00:00</updated>
-    <id>http://tym-project.github.com/2009/04/27/socksifier-une-application-sous-linux-2</id>
+    <id>http://blog.tym-project.fr/2009/04/27/socksifier-une-application-sous-linux-2</id>
     <content type="html"><![CDATA[<p>Si vous avez suivi <a href="http://www.tym-project.fr/blog/2009/04/installer-un-serveur-ssh-destine-au-tunneling/">cet article</a>, vous savez faire des tunnels ssh sous
 Linux. Mais que faire quand vos applications n'intègrent pas la fonctionnalité
 de proxy Socks ?<br/>
@@ -278,9 +278,9 @@ socksifier une application (Pidgin dans l'exemple) :</p>
   
   <entry>
     <title type="html"><![CDATA[Utiliser Putty avec l’authentification par clé rsa…“Server refused our key”]]></title>
-    <link href="http://tym-project.github.com/2009/04/15/utiliser-putty-avec-le28099authentification-par-cle-rsae280a6e2809cserver-refused-our-keye2809d-2/"/>
+    <link href="http://blog.tym-project.fr/2009/04/15/utiliser-putty-avec-le28099authentification-par-cle-rsae280a6e2809cserver-refused-our-keye2809d-2/"/>
     <updated>2009-04-15T20:33:59+00:00</updated>
-    <id>http://tym-project.github.com/2009/04/15/utiliser-putty-avec-le28099authentification-par-cle-rsae280a6e2809cserver-refused-our-keye2809d-2</id>
+    <id>http://blog.tym-project.fr/2009/04/15/utiliser-putty-avec-le28099authentification-par-cle-rsae280a6e2809cserver-refused-our-keye2809d-2</id>
     <content type="html"><![CDATA[<p>Il est un mystère avec <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">Putty</a> : à chaque fois que j’essaye de créer un
 couple clé publique/privée pour faire <a href="http://www.tym-project.fr/blog/2009/04/on-se-pingue-et-on-se-fait-un-tunnel-ssh-2/">ce genre de choses</a>, j’ai une
 magnifique erreur “Server refused our key”. J’ai tenté un tas de choses pour
@@ -348,9 +348,9 @@ serveur Linux !</p>
   
   <entry>
     <title type="html"><![CDATA[Putty Tray, THE utilitaire de SSH sous Windows !]]></title>
-    <link href="http://tym-project.github.com/2009/04/09/putty-tray-the-utilitaire-de-ssh-sous-windows-2/"/>
+    <link href="http://blog.tym-project.fr/2009/04/09/putty-tray-the-utilitaire-de-ssh-sous-windows-2/"/>
     <updated>2009-04-09T21:39:12+00:00</updated>
-    <id>http://tym-project.github.com/2009/04/09/putty-tray-the-utilitaire-de-ssh-sous-windows-2</id>
+    <id>http://blog.tym-project.fr/2009/04/09/putty-tray-the-utilitaire-de-ssh-sous-windows-2</id>
     <content type="html"><![CDATA[<p>J'utilise très souvent PuTTY pour faire des tunnels ssh (je vous en
 reparlerais bientôt) afin de sécuriser un minimum ma connexion.Inconvénient
 majeur : Putty ne se réduit pas en zone de notification, et j'ai donc toujours

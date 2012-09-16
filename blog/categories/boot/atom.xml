@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: boot | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/boot/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/boot/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mon script de configuration iptables]]></title>
-    <link href="http://tym-project.github.com/2011/04/06/iptables-et-lancement-automatique/"/>
+    <link href="http://blog.tym-project.fr/2011/04/06/iptables-et-lancement-automatique/"/>
     <updated>2011-04-06T12:00:02+00:00</updated>
-    <id>http://tym-project.github.com/2011/04/06/iptables-et-lancement-automatique</id>
+    <id>http://blog.tym-project.fr/2011/04/06/iptables-et-lancement-automatique</id>
     <content type="html"><![CDATA[<p>Pour ceux qui ne connaitraient pas, iptables est une
 interface de gestion du module netfilter du noyau Linux. En termes clairs :
 c'est un pare-feu. Iptables est donc un ensemble de commandes permettant de

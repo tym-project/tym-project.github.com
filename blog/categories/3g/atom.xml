@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: 3G | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/3g/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/3g/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Free mobile est déja en place !]]></title>
-    <link href="http://tym-project.github.com/2010/06/22/free-mobile-est-deja-en-place/"/>
+    <link href="http://blog.tym-project.fr/2010/06/22/free-mobile-est-deja-en-place/"/>
     <updated>2010-06-22T12:00:45+00:00</updated>
-    <id>http://tym-project.github.com/2010/06/22/free-mobile-est-deja-en-place</id>
+    <id>http://blog.tym-project.fr/2010/06/22/free-mobile-est-deja-en-place</id>
     <content type="html"><![CDATA[<p>C'est en tout cas ce que m'annoncent mes
 statistiques Google Analytics : J'ai reçu une visite le 6 juin sur ce blog
 depuis un iPad (oui oui !) utilisant l'opérateur "free sas". Preuve à l'appui

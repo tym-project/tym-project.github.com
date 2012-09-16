@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: google gears | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/google-gears/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/google-gears/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Installer Google Gears sous Linux 64 bits]]></title>
-    <link href="http://tym-project.github.com/2009/06/10/installer-google-gears-sous-linux-64-bits/"/>
+    <link href="http://blog.tym-project.fr/2009/06/10/installer-google-gears-sous-linux-64-bits/"/>
     <updated>2009-06-10T14:03:14+00:00</updated>
-    <id>http://tym-project.github.com/2009/06/10/installer-google-gears-sous-linux-64-bits</id>
+    <id>http://blog.tym-project.fr/2009/06/10/installer-google-gears-sous-linux-64-bits</id>
     <content type="html"><![CDATA[<p>Le 32 bits c'est bien, le 64 bits c'est mieux ! Oui mais parfois (souvent ?)
 les applications ne sont pas gérées sur une architecture 64 bits. C'est par
 exemple le cas de Google Gears qui permet de stocker sur votre machine des

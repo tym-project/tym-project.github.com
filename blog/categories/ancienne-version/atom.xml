@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: ancienne version | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/ancienne-version/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/ancienne-version/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[C'était mieux avant !]]></title>
-    <link href="http://tym-project.github.com/2009/03/27/cetait-mieux-avant/"/>
+    <link href="http://blog.tym-project.fr/2009/03/27/cetait-mieux-avant/"/>
     <updated>2009-03-27T09:55:14+00:00</updated>
-    <id>http://tym-project.github.com/2009/03/27/cetait-mieux-avant</id>
+    <id>http://blog.tym-project.fr/2009/03/27/cetait-mieux-avant</id>
     <content type="html"><![CDATA[<p>Vous cherchez l'ancienne version de votre
 logiciel préféré parce que la nouvelle n'est pas à votre goût ? Pas toujours
 évident de trouver votre bonheur !</p>

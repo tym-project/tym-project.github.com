@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: images | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/images/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/images/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Convertir une image .bin/.cue en .iso (Linux)]]></title>
-    <link href="http://tym-project.github.com/2009/05/22/convertir-une-image-bin-cue-en-iso-linux/"/>
+    <link href="http://blog.tym-project.fr/2009/05/22/convertir-une-image-bin-cue-en-iso-linux/"/>
     <updated>2009-05-22T12:48:29+00:00</updated>
-    <id>http://tym-project.github.com/2009/05/22/convertir-une-image-bin-cue-en-iso-linux</id>
+    <id>http://blog.tym-project.fr/2009/05/22/convertir-une-image-bin-cue-en-iso-linux</id>
     <content type="html"><![CDATA[<p>Sous Linux il est très pratique de monter une image iso (pas besoin de daemon
 tools &amp; Co.) :</p>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: nvidia-current | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/nvidia-current/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/nvidia-current/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ubuntu : réparer les drivers Nvidia pour un nouveau noyau]]></title>
-    <link href="http://tym-project.github.com/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu/"/>
+    <link href="http://blog.tym-project.fr/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu/"/>
     <updated>2010-11-10T15:48:15+00:00</updated>
-    <id>http://tym-project.github.com/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu</id>
+    <id>http://blog.tym-project.fr/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu</id>
     <content type="html"><![CDATA[<p>J'utilise de plus en plus Ubuntu, en particulier
 sur mon media-center (avec Xbmc). Mais je recontre très souvent le même
 problème : quand je met à jour mon noyau (via apt), je suis sûr à 100% de voir

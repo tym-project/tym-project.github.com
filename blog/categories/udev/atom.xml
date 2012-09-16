@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: udev | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/udev/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/udev/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ubuntu : Permuter et renommer des cartes réseau]]></title>
-    <link href="http://tym-project.github.com/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware/"/>
+    <link href="http://blog.tym-project.fr/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware/"/>
     <updated>2011-02-23T12:00:00+00:00</updated>
-    <id>http://tym-project.github.com/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware</id>
+    <id>http://blog.tym-project.fr/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware</id>
     <content type="html"><![CDATA[<p>Après la mise en place d'une VM Ubuntu avec
 Vmware, et surtout suite à sa copie je me suis rendu compte que je n'avais
 plus de réseau...ou du moins <code>eth0</code> n'était pas configurée. Après un

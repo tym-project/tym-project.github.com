@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Socks 5 | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/socks-5/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/socks-5/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Socksifier une application sous Linux]]></title>
-    <link href="http://tym-project.github.com/2009/04/27/socksifier-une-application-sous-linux-2/"/>
+    <link href="http://blog.tym-project.fr/2009/04/27/socksifier-une-application-sous-linux-2/"/>
     <updated>2009-04-27T21:17:05+00:00</updated>
-    <id>http://tym-project.github.com/2009/04/27/socksifier-une-application-sous-linux-2</id>
+    <id>http://blog.tym-project.fr/2009/04/27/socksifier-une-application-sous-linux-2</id>
     <content type="html"><![CDATA[<p>Si vous avez suivi <a href="http://www.tym-project.fr/blog/2009/04/installer-un-serveur-ssh-destine-au-tunneling/">cet article</a>, vous savez faire des tunnels ssh sous
 Linux. Mais que faire quand vos applications n'intègrent pas la fonctionnalité
 de proxy Socks ?<br/>

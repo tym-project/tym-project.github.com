@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: dev | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/dev/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/dev/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Fade-in/Fade-out effect with Java]]></title>
-    <link href="http://tym-project.github.com/2009/03/24/fade-infade-out-effect-with-java/"/>
+    <link href="http://blog.tym-project.fr/2009/03/24/fade-infade-out-effect-with-java/"/>
     <updated>2009-03-24T23:19:06+00:00</updated>
-    <id>http://tym-project.github.com/2009/03/24/fade-infade-out-effect-with-java</id>
+    <id>http://blog.tym-project.fr/2009/03/24/fade-infade-out-effect-with-java</id>
     <content type="html"><![CDATA[<p>A nice face-in when a text appears is developer's drug...but how is it
 possible to achieve that using Java/Swing?</p>
 

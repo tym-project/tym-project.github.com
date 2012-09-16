@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: fun | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/fun/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/fun/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Tutoriel : comment utiliser Google ?]]></title>
-    <link href="http://tym-project.github.com/2009/06/24/tutoriel-comment-utiliser-google/"/>
+    <link href="http://blog.tym-project.fr/2009/06/24/tutoriel-comment-utiliser-google/"/>
     <updated>2009-06-24T14:04:25+00:00</updated>
-    <id>http://tym-project.github.com/2009/06/24/tutoriel-comment-utiliser-google</id>
+    <id>http://blog.tym-project.fr/2009/06/24/tutoriel-comment-utiliser-google</id>
     <content type="html"><![CDATA[<p>Vous trouverez un exemple <a href="http://www.lmgtfy.com/?q=tym-project+le+blog+IT+%40SUPINFO">ici</a> ! :D</p>
 
 <p>Pour réaliser vous même votre propre tutoriel, ça se passe là : <a href="http://www.lmgtfy.com/">Let Me Google That For You</a>.</p>

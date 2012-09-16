@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: données privées | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/données-privées/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/données-privées/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Je t'aime...moi non plus (mais ça va mieux) !]]></title>
-    <link href="http://tym-project.github.com/2009/08/11/je-taime-moi-non-plus-mais-ca-va-mieux/"/>
+    <link href="http://blog.tym-project.fr/2009/08/11/je-taime-moi-non-plus-mais-ca-va-mieux/"/>
     <updated>2009-08-11T14:21:47+00:00</updated>
-    <id>http://tym-project.github.com/2009/08/11/je-taime-moi-non-plus-mais-ca-va-mieux</id>
+    <id>http://blog.tym-project.fr/2009/08/11/je-taime-moi-non-plus-mais-ca-va-mieux</id>
     <content type="html"><![CDATA[<p>Après réflexion (et surtout lecture de <a href="http://yro.slashdot.org/comments.pl?sid=280049&amp;cid=20362721">différents articles</a>), le fait que
 <a href="http://www.tym-project.fr/blog/2009/08/je-taime-moi-non-plus/">Skype jette un oeil dans le répertoire de Firefox</a> n'est pas si étrange.
 Pourquoi Skype ne serait-il tout simplement pas en train de vérifier que le
@@ -34,9 +34,9 @@ vous ;-)</p>
   
   <entry>
     <title type="html"><![CDATA[Je t'aime...moi non plus !]]></title>
-    <link href="http://tym-project.github.com/2009/08/05/je-taime-moi-non-plus/"/>
+    <link href="http://blog.tym-project.fr/2009/08/05/je-taime-moi-non-plus/"/>
     <updated>2009-08-05T13:55:18+00:00</updated>
-    <id>http://tym-project.github.com/2009/08/05/je-taime-moi-non-plus</id>
+    <id>http://blog.tym-project.fr/2009/08/05/je-taime-moi-non-plus</id>
     <content type="html"><![CDATA[<p>Je me suis récemment mis à Skype pour communiquer avec le monde extérieur. En
 effet j'ai de moins en moins l'envie de passer des heures à tapoter : vive la
 vidéo-conférence ! Ne connaissant pas grand chose à cet univers, je me suis

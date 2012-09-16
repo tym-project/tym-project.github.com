@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: vmware | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/vmware/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/vmware/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ubuntu : Permuter et renommer des cartes réseau]]></title>
-    <link href="http://tym-project.github.com/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware/"/>
+    <link href="http://blog.tym-project.fr/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware/"/>
     <updated>2011-02-23T12:00:00+00:00</updated>
-    <id>http://tym-project.github.com/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware</id>
+    <id>http://blog.tym-project.fr/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware</id>
     <content type="html"><![CDATA[<p>Après la mise en place d'une VM Ubuntu avec
 Vmware, et surtout suite à sa copie je me suis rendu compte que je n'avais
 plus de réseau...ou du moins <code>eth0</code> n'était pas configurée. Après un
@@ -99,9 +99,9 @@ wifi0  Link encap:Ethernet  HWaddr 00:21:6a:67:e1:88
   
   <entry>
     <title type="html"><![CDATA[Installer Vmware Server 2 sur un Kimsufi 250 (Ovh)]]></title>
-    <link href="http://tym-project.github.com/2010/06/30/installer-vmware-server-2-sur-un-kimsufi-250-ovh/"/>
+    <link href="http://blog.tym-project.fr/2010/06/30/installer-vmware-server-2-sur-un-kimsufi-250-ovh/"/>
     <updated>2010-06-30T12:05:49+00:00</updated>
-    <id>http://tym-project.github.com/2010/06/30/installer-vmware-server-2-sur-un-kimsufi-250-ovh</id>
+    <id>http://blog.tym-project.fr/2010/06/30/installer-vmware-server-2-sur-un-kimsufi-250-ovh</id>
     <content type="html"><![CDATA[<p>J'ai très récemment eu à installer Vmware Server
 version 2 sur un serveur dédié Kimsufi de Ovh. Plus précisément sur une
 Unbuntu 9.04. Facile ? Non ! Faisable ? Oui...</p>

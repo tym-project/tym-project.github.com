@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: fichier formatté | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/fichier-formatté/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/fichier-formatté/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Comment lire un fichier formatté sous Linux]]></title>
-    <link href="http://tym-project.github.com/2009/04/11/comment-lire-un-fichier-formatte-sous-linux-2/"/>
+    <link href="http://blog.tym-project.fr/2009/04/11/comment-lire-un-fichier-formatte-sous-linux-2/"/>
     <updated>2009-04-11T09:28:33+00:00</updated>
-    <id>http://tym-project.github.com/2009/04/11/comment-lire-un-fichier-formatte-sous-linux-2</id>
+    <id>http://blog.tym-project.fr/2009/04/11/comment-lire-un-fichier-formatte-sous-linux-2</id>
     <content type="html"><![CDATA[<p>Imaginons que vous ayiez un fichier <code>names</code> sous la forme suivante :</p>
 
 <pre><code>Thomas:Tym Kitty:Hello Kitty

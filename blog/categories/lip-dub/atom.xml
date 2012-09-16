@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: lip dub | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/lip-dub/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/lip-dub/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SUPINFO, c'est rigolo !]]></title>
-    <link href="http://tym-project.github.com/2009/06/03/supinfo-cest-rigolo/"/>
+    <link href="http://blog.tym-project.fr/2009/06/03/supinfo-cest-rigolo/"/>
     <updated>2009-06-03T12:55:43+00:00</updated>
-    <id>http://tym-project.github.com/2009/06/03/supinfo-cest-rigolo</id>
+    <id>http://blog.tym-project.fr/2009/06/03/supinfo-cest-rigolo</id>
     <content type="html"><![CDATA[<p>Si si !</p>
 
 <p><a href="http://vimeo.com/4883861">Lipdub SUPINFO, campus Montpellier</a> from <a href="http://vimeo.com/scomontpellier">SCO Montpellier</a> on

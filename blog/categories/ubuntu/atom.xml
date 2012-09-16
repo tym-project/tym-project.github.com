@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: ubuntu | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/ubuntu/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/ubuntu/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ubuntu : réparer les drivers Nvidia pour un nouveau noyau]]></title>
-    <link href="http://tym-project.github.com/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu/"/>
+    <link href="http://blog.tym-project.fr/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu/"/>
     <updated>2010-11-10T15:48:15+00:00</updated>
-    <id>http://tym-project.github.com/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu</id>
+    <id>http://blog.tym-project.fr/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu</id>
     <content type="html"><![CDATA[<p>J'utilise de plus en plus Ubuntu, en particulier
 sur mon media-center (avec Xbmc). Mais je recontre très souvent le même
 problème : quand je met à jour mon noyau (via apt), je suis sûr à 100% de voir
@@ -73,9 +73,9 @@ disponible en cas de plantage :</p>
   
   <entry>
     <title type="html"><![CDATA[Curiosité : Microsoft ne fait rien comme tout le monde !]]></title>
-    <link href="http://tym-project.github.com/2009/03/31/curiosite-microsoft-ne-fait-rien-comme-tout-le-monde-2/"/>
+    <link href="http://blog.tym-project.fr/2009/03/31/curiosite-microsoft-ne-fait-rien-comme-tout-le-monde-2/"/>
     <updated>2009-03-31T15:14:33+00:00</updated>
-    <id>http://tym-project.github.com/2009/03/31/curiosite-microsoft-ne-fait-rien-comme-tout-le-monde-2</id>
+    <id>http://blog.tym-project.fr/2009/03/31/curiosite-microsoft-ne-fait-rien-comme-tout-le-monde-2</id>
     <content type="html"><![CDATA[<p>Lors de l'émission d'un paquet ICMP, on remplit le champ "données" avec une
 valeur aléatoire car il faut simplement que ce champ ne soit pas vide. On peut
 utiliser n'importe quelles valeurs. Sous Linux c'est une suite de caractères,

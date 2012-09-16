@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: powershell | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/powershell/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/powershell/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Adaptation de "sed" en PowerShell (Windows)]]></title>
-    <link href="http://tym-project.github.com/2011/03/02/sed-en-powershell-et-redirection/"/>
+    <link href="http://blog.tym-project.fr/2011/03/02/sed-en-powershell-et-redirection/"/>
     <updated>2011-03-02T12:00:44+00:00</updated>
-    <id>http://tym-project.github.com/2011/03/02/sed-en-powershell-et-redirection</id>
+    <id>http://blog.tym-project.fr/2011/03/02/sed-en-powershell-et-redirection</id>
     <content type="html"><![CDATA[<p>PowerShell est un langage de script développé par
 Microsoft, le <code>#!/bin/bash</code> de Windows en quelque sorte. Ce langage propose de
 très nombreuses fonctionnalités, et après un petit temps d'adaptation, devient

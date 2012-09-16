@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: tab | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/tab/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/tab/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Putty Tray, THE utilitaire de SSH sous Windows !]]></title>
-    <link href="http://tym-project.github.com/2009/04/09/putty-tray-the-utilitaire-de-ssh-sous-windows-2/"/>
+    <link href="http://blog.tym-project.fr/2009/04/09/putty-tray-the-utilitaire-de-ssh-sous-windows-2/"/>
     <updated>2009-04-09T21:39:12+00:00</updated>
-    <id>http://tym-project.github.com/2009/04/09/putty-tray-the-utilitaire-de-ssh-sous-windows-2</id>
+    <id>http://blog.tym-project.fr/2009/04/09/putty-tray-the-utilitaire-de-ssh-sous-windows-2</id>
     <content type="html"><![CDATA[<p>J'utilise très souvent PuTTY pour faire des tunnels ssh (je vous en
 reparlerais bientôt) afin de sécuriser un minimum ma connexion.Inconvénient
 majeur : Putty ne se réduit pas en zone de notification, et j'ai donc toujours

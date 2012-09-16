@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Autres | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/autres/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/autres/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Analyse d'une "arnaque" Facebook]]></title>
-    <link href="http://tym-project.github.com/2011/03/07/manipulation-par-facebook/"/>
+    <link href="http://blog.tym-project.fr/2011/03/07/manipulation-par-facebook/"/>
     <updated>2011-03-07T19:16:09+00:00</updated>
-    <id>http://tym-project.github.com/2011/03/07/manipulation-par-facebook</id>
+    <id>http://blog.tym-project.fr/2011/03/07/manipulation-par-facebook</id>
     <content type="html"><![CDATA[<p>J'utilise Facebook, avec parcimonie certes, mais
 je l'utilise quand même. On sait maintenant qu'il faut être très vigilant sur
 les réseaux sociaux, et cet article en est une preuve supplémentaire.</p>
@@ -100,9 +100,9 @@ doigts pour que pas grand monde ait aperçu votre profil...</p>
   
   <entry>
     <title type="html"><![CDATA[Adaptation de "sed" en PowerShell (Windows)]]></title>
-    <link href="http://tym-project.github.com/2011/03/02/sed-en-powershell-et-redirection/"/>
+    <link href="http://blog.tym-project.fr/2011/03/02/sed-en-powershell-et-redirection/"/>
     <updated>2011-03-02T12:00:44+00:00</updated>
-    <id>http://tym-project.github.com/2011/03/02/sed-en-powershell-et-redirection</id>
+    <id>http://blog.tym-project.fr/2011/03/02/sed-en-powershell-et-redirection</id>
     <content type="html"><![CDATA[<p>PowerShell est un langage de script développé par
 Microsoft, le <code>#!/bin/bash</code> de Windows en quelque sorte. Ce langage propose de
 très nombreuses fonctionnalités, et après un petit temps d'adaptation, devient
@@ -154,9 +154,9 @@ fichier tout à fait viable.</p>
   
   <entry>
     <title type="html"><![CDATA[SED : les astuces à connaître]]></title>
-    <link href="http://tym-project.github.com/2011/02/16/sed-les-astuces-a-connaitre/"/>
+    <link href="http://blog.tym-project.fr/2011/02/16/sed-les-astuces-a-connaitre/"/>
     <updated>2011-02-16T12:00:37+00:00</updated>
-    <id>http://tym-project.github.com/2011/02/16/sed-les-astuces-a-connaitre</id>
+    <id>http://blog.tym-project.fr/2011/02/16/sed-les-astuces-a-connaitre</id>
     <content type="html"><![CDATA[<p><code>[man]Sed[/man]</code> pour ceux qui ne connaîtrait pas
 encore, est un éditeur de texte en ligne de commande. Concrètement il va
 éditer un fichier (ou l'entrée standard, via un pipe) et le modifier vers la
@@ -236,9 +236,9 @@ donnerait qu'un fichier vide :</p>
   
   <entry>
     <title type="html"><![CDATA[Gmail : raccourcir le délai de consultation des comptes externes en POP ]]></title>
-    <link href="http://tym-project.github.com/2011/02/02/gmail-pop-plus-rapide/"/>
+    <link href="http://blog.tym-project.fr/2011/02/02/gmail-pop-plus-rapide/"/>
     <updated>2011-02-02T12:00:19+00:00</updated>
-    <id>http://tym-project.github.com/2011/02/02/gmail-pop-plus-rapide</id>
+    <id>http://blog.tym-project.fr/2011/02/02/gmail-pop-plus-rapide</id>
     <content type="html"><![CDATA[<p>Dans un article précédent j'expliquais en quoi
 Gmail peut très bien devenir votre unique client de messagerie. J'expliquais
 toutefois un petit défaut : la consultation des comptes externes en POP.
@@ -339,9 +339,9 @@ arrivée les messages de motivation :</p>
   
   <entry>
     <title type="html"><![CDATA[Créer une simple extension Wordpress]]></title>
-    <link href="http://tym-project.github.com/2011/01/26/plugin-wordpress-modification-de-texte/"/>
+    <link href="http://blog.tym-project.fr/2011/01/26/plugin-wordpress-modification-de-texte/"/>
     <updated>2011-01-26T21:07:15+00:00</updated>
-    <id>http://tym-project.github.com/2011/01/26/plugin-wordpress-modification-de-texte</id>
+    <id>http://blog.tym-project.fr/2011/01/26/plugin-wordpress-modification-de-texte</id>
     <content type="html"><![CDATA[<p>Si vous administrez un blog Wordpress, vous
 savez certainement qu'il existe un nombre très important d'extensions
 (plugins). De la plus simple à la plus complexe, vous trouverez de tout...mais

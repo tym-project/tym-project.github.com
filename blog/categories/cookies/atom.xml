@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: cookies | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/cookies/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/cookies/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Tu veux un cookie ?]]></title>
-    <link href="http://tym-project.github.com/2009/07/30/tu-veux-un-cookie/"/>
+    <link href="http://blog.tym-project.fr/2009/07/30/tu-veux-un-cookie/"/>
     <updated>2009-07-30T13:53:29+00:00</updated>
-    <id>http://tym-project.github.com/2009/07/30/tu-veux-un-cookie</id>
+    <id>http://blog.tym-project.fr/2009/07/30/tu-veux-un-cookie</id>
     <content type="html"><![CDATA[<p>J'aime les cookies, mais ceux aux pépites de chocolat, pas ceux fourrés aux
 données personnelles !</p>
 

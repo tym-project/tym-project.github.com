@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: gmail | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/gmail/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/gmail/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Envoyer un e-mail via Gmail en ligne de commande]]></title>
-    <link href="http://tym-project.github.com/2010/08/25/mail-avec-gmail-dans-un-script/"/>
+    <link href="http://blog.tym-project.fr/2010/08/25/mail-avec-gmail-dans-un-script/"/>
     <updated>2010-08-25T11:59:21+00:00</updated>
-    <id>http://tym-project.github.com/2010/08/25/mail-avec-gmail-dans-un-script</id>
+    <id>http://blog.tym-project.fr/2010/08/25/mail-avec-gmail-dans-un-script</id>
     <content type="html"><![CDATA[<p>Gmail, on le sait tous, est un outil très
 répandu. Souvent même dans le monde de l'entreprise avec Google Apps. Pourquoi
 alors ne pas l'utiliser pour envoyer des alertes, logs ou autres sauvegardes

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: compatibilité | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/compatibilité/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/compatibilité/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Pourquoi IE6 doit disparaître !]]></title>
-    <link href="http://tym-project.github.com/2009/08/08/pourquoi-ie6-doit-disparaitre/"/>
+    <link href="http://blog.tym-project.fr/2009/08/08/pourquoi-ie6-doit-disparaitre/"/>
     <updated>2009-08-08T14:01:00+00:00</updated>
-    <id>http://tym-project.github.com/2009/08/08/pourquoi-ie6-doit-disparaitre</id>
+    <id>http://blog.tym-project.fr/2009/08/08/pourquoi-ie6-doit-disparaitre</id>
     <content type="html"><![CDATA[<p>Tous simplement car il ne respecte pas les standards du web W3C, et puis qu'il
 est moche, vieux et pas pratique (pas d'onglets par exemple !). Vous trouverez
 plus d'informations sur <a href="http://www.numerama.com/magazine/13619-IE6-No-More-72-sites-veulent-en-finir-avec-Internet-Explorer-6.html">Numérama</a>. Je me joins à cet effort en mettant en

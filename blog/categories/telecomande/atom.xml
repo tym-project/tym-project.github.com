@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: telecomande | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/telecomande/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/telecomande/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ma nouvelle configuration Media Center sous Linux]]></title>
-    <link href="http://tym-project.github.com/2011/08/21/xbmc-et-archlinux-pour-un-media-center/"/>
+    <link href="http://blog.tym-project.fr/2011/08/21/xbmc-et-archlinux-pour-un-media-center/"/>
     <updated>2011-08-21T12:00:02+00:00</updated>
-    <id>http://tym-project.github.com/2011/08/21/xbmc-et-archlinux-pour-un-media-center</id>
+    <id>http://blog.tym-project.fr/2011/08/21/xbmc-et-archlinux-pour-un-media-center</id>
     <content type="html"><![CDATA[<p>J'avais déjà évoqué dans un précédent article que
 je possède un Media center sous Linux. Suite à une petite bidouille
 malheureuse, il s'est retrouvé complètement planté. J'ai donc décidé de tout

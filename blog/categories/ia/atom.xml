@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: IA | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/ia/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/ia/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA["It's Me, Mario ! And I'm moving on my own !"]]></title>
-    <link href="http://tym-project.github.com/2009/08/07/its-me-mario-and-im-moving-on-my-own/"/>
+    <link href="http://blog.tym-project.fr/2009/08/07/its-me-mario-and-im-moving-on-my-own/"/>
     <updated>2009-08-07T13:57:59+00:00</updated>
-    <id>http://tym-project.github.com/2009/08/07/its-me-mario-and-im-moving-on-my-own</id>
+    <id>http://blog.tym-project.fr/2009/08/07/its-me-mario-and-im-moving-on-my-own</id>
     <content type="html"><![CDATA[<p>Des gens très forts que l'on appelle "Scientifiques" on lancé un concours
 visant à améliorer les algorithmes d'apprentissage en autonomie.
 L'Intelligence Artificielle est alors testée dans un niveau du jeux Mario

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: cracking | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/cracking/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/cracking/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Choisir un mot de passe sécurisé et facile à retenir]]></title>
-    <link href="http://tym-project.github.com/2010/09/08/methode-de-choix-de-mot-de-passe-efficace/"/>
+    <link href="http://blog.tym-project.fr/2010/09/08/methode-de-choix-de-mot-de-passe-efficace/"/>
     <updated>2010-09-08T18:44:28+00:00</updated>
-    <id>http://tym-project.github.com/2010/09/08/methode-de-choix-de-mot-de-passe-efficace</id>
+    <id>http://blog.tym-project.fr/2010/09/08/methode-de-choix-de-mot-de-passe-efficace</id>
     <content type="html"><![CDATA[<p>Un mot de passe c'est important. A vrai dire
 c'est souvent votre premier rempart contre une attaque sur vos données
 personnelles. Mais avoir une bonne "hygiène de mots de passe" est souvent un

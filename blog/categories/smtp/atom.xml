@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: smtp | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/smtp/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/smtp/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Tester le niveau de sécurité de son serveur/client de messagerie]]></title>
-    <link href="http://tym-project.github.com/2009/05/02/tester-le-niveau-de-securite-de-son-serveurclient-de-messagerie-2/"/>
+    <link href="http://blog.tym-project.fr/2009/05/02/tester-le-niveau-de-securite-de-son-serveurclient-de-messagerie-2/"/>
     <updated>2009-05-02T21:27:49+00:00</updated>
-    <id>http://tym-project.github.com/2009/05/02/tester-le-niveau-de-securite-de-son-serveurclient-de-messagerie-2</id>
+    <id>http://blog.tym-project.fr/2009/05/02/tester-le-niveau-de-securite-de-son-serveurclient-de-messagerie-2</id>
     <content type="html"><![CDATA[<p>"Il était une fois un stagiaire qui travaillait comme technicien réseau dans
 une PME. Un beau jour il envoya un e-mail via son adresse professionnelle.
 Quelle ne fût pas sa surprise de recevoir une réponse dans le style : YOUR IP

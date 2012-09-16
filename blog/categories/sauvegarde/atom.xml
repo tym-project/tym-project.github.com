@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: sauvegarde | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/sauvegarde/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/sauvegarde/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Dropbox : l'outil de sauvegarde ultime]]></title>
-    <link href="http://tym-project.github.com/2010/10/20/dropbox-loutil-de-sauvegarde-ultime/"/>
+    <link href="http://blog.tym-project.fr/2010/10/20/dropbox-loutil-de-sauvegarde-ultime/"/>
     <updated>2010-10-20T11:54:58+00:00</updated>
-    <id>http://tym-project.github.com/2010/10/20/dropbox-loutil-de-sauvegarde-ultime</id>
+    <id>http://blog.tym-project.fr/2010/10/20/dropbox-loutil-de-sauvegarde-ultime</id>
     <content type="html"><![CDATA[<p><a href="http://www.dropbox.com/referrals/NTEyMjU5NzMzOQ">Dropbox</a> est un outil qui devient de plus
 en plus populaire. Pour ceux qui ne connaîtrait pas, c'est un espace de
 stockage en ligne associé à un logiciel qui permet de synchroniser plusieurs
@@ -95,9 +95,9 @@ ayant synchronisé mon profil avec Dropbox depuis Windows.</p>
   
   <entry>
     <title type="html"><![CDATA[Rsync, le protocole qui adore sauvegarder !]]></title>
-    <link href="http://tym-project.github.com/2009/07/15/rsync-le-protocole-qui-adore-sauvegarder/"/>
+    <link href="http://blog.tym-project.fr/2009/07/15/rsync-le-protocole-qui-adore-sauvegarder/"/>
     <updated>2009-07-15T14:27:43+00:00</updated>
-    <id>http://tym-project.github.com/2009/07/15/rsync-le-protocole-qui-adore-sauvegarder</id>
+    <id>http://blog.tym-project.fr/2009/07/15/rsync-le-protocole-qui-adore-sauvegarder</id>
     <content type="html"><![CDATA[<p>J'aime la sauvegarde ! Oui j'assume, je suis un boulet de la surpression
 (parfois <a href="http://www.tym-project.fr/blog/2009/04/installez-votre-windows-xp-en-le-rendant-indestructible-2/">Windows me file un coup de pouce</a> aussi...), alors il faut que je
 mette de coté mes données importantes à intervalles réguliers. Pour faire cela

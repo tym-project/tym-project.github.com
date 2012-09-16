@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: jeu | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/jeu/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/jeu/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Quoi de de mieux que "Command & Conquer" ?]]></title>
-    <link href="http://tym-project.github.com/2010/02/20/quoi-de-de-mieux-que-command-conquer/"/>
+    <link href="http://blog.tym-project.fr/2010/02/20/quoi-de-de-mieux-que-command-conquer/"/>
     <updated>2010-02-20T19:42:01+00:00</updated>
-    <id>http://tym-project.github.com/2010/02/20/quoi-de-de-mieux-que-command-conquer</id>
+    <id>http://blog.tym-project.fr/2010/02/20/quoi-de-de-mieux-que-command-conquer</id>
     <content type="html"><![CDATA[<p>"Command &amp; Conquer" gratuitement téléchargeable
 légalement ! Bien entendu il est question ici dans anciennes versions ("Red
 Alert", "Tiberian Sun" et autres...). Pour ma part j'ai apprécié me replonger
@@ -27,9 +27,9 @@ dans ces jeux, aussi vieux soient-ils :) Tout cela se télécharge sur <a href="
   
   <entry>
     <title type="html"><![CDATA[World Of Goo, le jeu qu'il est bien qu'il est bô !]]></title>
-    <link href="http://tym-project.github.com/2009/10/22/world-of-goo-le-jeu-quil-est-bien-quil-est-bo/"/>
+    <link href="http://blog.tym-project.fr/2009/10/22/world-of-goo-le-jeu-quil-est-bien-quil-est-bo/"/>
     <updated>2009-10-22T09:09:43+00:00</updated>
-    <id>http://tym-project.github.com/2009/10/22/world-of-goo-le-jeu-quil-est-bien-quil-est-bo</id>
+    <id>http://blog.tym-project.fr/2009/10/22/world-of-goo-le-jeu-quil-est-bien-quil-est-bo</id>
     <content type="html"><![CDATA[<p>Je joue très peu, mais parfois je m'accroche
 sur une petite perle vidéo-ludique. C'est le cas de World Of Goo, un jeu au
 concept assez génial et super bien réalisé. Addictif, tout court !</p>
@@ -57,9 +57,9 @@ Linux (si si, j'insiste !). </a> Bon jeu ;-)</p>
   
   <entry>
     <title type="html"><![CDATA[Un peu de divertissement "qui fait du bien par où ça passe" !]]></title>
-    <link href="http://tym-project.github.com/2009/04/18/un-peu-de-divertissement-qui-fait-du-bien-par-ou-ca-passe-2/"/>
+    <link href="http://blog.tym-project.fr/2009/04/18/un-peu-de-divertissement-qui-fait-du-bien-par-ou-ca-passe-2/"/>
     <updated>2009-04-18T21:04:36+00:00</updated>
-    <id>http://tym-project.github.com/2009/04/18/un-peu-de-divertissement-qui-fait-du-bien-par-ou-ca-passe-2</id>
+    <id>http://blog.tym-project.fr/2009/04/18/un-peu-de-divertissement-qui-fait-du-bien-par-ou-ca-passe-2</id>
     <content type="html"><![CDATA[<p>Voici un projet que je trouve vraiment bien : Defend Unreal Territories ! Mais
 rien de mieux qu'une présentation par l'équipe elle même : _ "Tout d'abord,
 DUT, qu'est-ce que c'est ?_</p>

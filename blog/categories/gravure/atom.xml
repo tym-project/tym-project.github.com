@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: gravure | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/gravure/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/gravure/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Convertir une image .bin/.cue en .iso (Linux)]]></title>
-    <link href="http://tym-project.github.com/2009/05/22/convertir-une-image-bin-cue-en-iso-linux/"/>
+    <link href="http://blog.tym-project.fr/2009/05/22/convertir-une-image-bin-cue-en-iso-linux/"/>
     <updated>2009-05-22T12:48:29+00:00</updated>
-    <id>http://tym-project.github.com/2009/05/22/convertir-une-image-bin-cue-en-iso-linux</id>
+    <id>http://blog.tym-project.fr/2009/05/22/convertir-une-image-bin-cue-en-iso-linux</id>
     <content type="html"><![CDATA[<p>Sous Linux il est très pratique de monter une image iso (pas besoin de daemon
 tools &amp; Co.) :</p>
 
@@ -41,9 +41,9 @@ de plus simple pour l'utiliser :</p>
   
   <entry>
     <title type="html"><![CDATA[Créer et graver des images ISO en ligne de commande (Linux)]]></title>
-    <link href="http://tym-project.github.com/2009/05/04/creer-et-graver-des-images-iso-en-ligne-de-commande-linux-2/"/>
+    <link href="http://blog.tym-project.fr/2009/05/04/creer-et-graver-des-images-iso-en-ligne-de-commande-linux-2/"/>
     <updated>2009-05-04T21:33:45+00:00</updated>
-    <id>http://tym-project.github.com/2009/05/04/creer-et-graver-des-images-iso-en-ligne-de-commande-linux-2</id>
+    <id>http://blog.tym-project.fr/2009/05/04/creer-et-graver-des-images-iso-en-ligne-de-commande-linux-2</id>
     <content type="html"><![CDATA[<p>Ce que j'aime dans mon Linux c'est la CLI (Command Line Interface) car c'est
 rapide et pratique ! Il est même possible de créer des images iso sans
 interface graphique. Vous pouvez aussi bien entendu graver ces mêmes iso en

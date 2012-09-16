@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: gta | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/gta/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/gta/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA["C'était (vraiment) mieux avant !"]]></title>
-    <link href="http://tym-project.github.com/2009/06/27/cetait-vraiment-mieux-avant/"/>
+    <link href="http://blog.tym-project.fr/2009/06/27/cetait-vraiment-mieux-avant/"/>
     <updated>2009-06-27T14:19:17+00:00</updated>
-    <id>http://tym-project.github.com/2009/06/27/cetait-vraiment-mieux-avant</id>
+    <id>http://blog.tym-project.fr/2009/06/27/cetait-vraiment-mieux-avant</id>
     <content type="html"><![CDATA[<p>Je vous parlait hier de GTA 2, et bien vous pouvez vous le procurer
 gratuitement (et légalement) auprès de son éditeur <a href="http://www.rockstargames.com/classics/">ici</a>. Vous trouverez
 également GTA premier du nom et Wild Metal, je n'ai joué à aucun des deux et

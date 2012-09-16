@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: oldies | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/oldies/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/oldies/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA["C'était mieux avant !"]]></title>
-    <link href="http://tym-project.github.com/2009/06/26/cetait-mieux-avant-2/"/>
+    <link href="http://blog.tym-project.fr/2009/06/26/cetait-mieux-avant-2/"/>
     <updated>2009-06-26T14:17:41+00:00</updated>
-    <id>http://tym-project.github.com/2009/06/26/cetait-mieux-avant-2</id>
+    <id>http://blog.tym-project.fr/2009/06/26/cetait-mieux-avant-2</id>
     <content type="html"><![CDATA[<p>Je joue très peu sur mon PC, et quand je joue c'est à des antiquités comme
 Diablo 2, Fallout 2, GTA 2... Le site <a href="http://www.gog.com">Good Old Games</a> vous propose, contre
 la modique somme de 10$ environ, de télécharger des anciens jeux qui

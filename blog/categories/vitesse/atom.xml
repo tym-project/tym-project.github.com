@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: vitesse | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/vitesse/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/vitesse/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Augmenter son débit avec free : le test complet]]></title>
-    <link href="http://tym-project.github.com/2010/06/16/augmenter-son-debit-avec-free-le-test-complet/"/>
+    <link href="http://blog.tym-project.fr/2010/06/16/augmenter-son-debit-avec-free-le-test-complet/"/>
     <updated>2010-06-16T14:46:56+00:00</updated>
-    <id>http://tym-project.github.com/2010/06/16/augmenter-son-debit-avec-free-le-test-complet</id>
+    <id>http://blog.tym-project.fr/2010/06/16/augmenter-son-debit-avec-free-le-test-complet</id>
     <content type="html"><![CDATA[<p>Cela fait maintenant quelques mois que je vous
 avais expliqué <a href="http://www.tym-project.fr/blog/2009/07/augmenter-son-debit-avec-free/">comment "augmenter votre débit"</a> si vous possédez une
 freebox. J'ai pris mon courage à deux mains, et surtout un peu de temps pour

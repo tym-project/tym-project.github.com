@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: pacpan | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/pacpan/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/pacpan/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Pour s'occuper pendant l'hiver : faire du Perl sous Archlinux]]></title>
-    <link href="http://tym-project.github.com/2009/06/09/pour-soccuper-lhiver-faire-du-perl-sous-archlinux/"/>
+    <link href="http://blog.tym-project.fr/2009/06/09/pour-soccuper-lhiver-faire-du-perl-sous-archlinux/"/>
     <updated>2009-06-09T13:56:58+00:00</updated>
-    <id>http://tym-project.github.com/2009/06/09/pour-soccuper-lhiver-faire-du-perl-sous-archlinux</id>
+    <id>http://blog.tym-project.fr/2009/06/09/pour-soccuper-lhiver-faire-du-perl-sous-archlinux</id>
     <content type="html"><![CDATA[<p>Je me suis mis en tête de mettre en place HellaSmella, une interface Web pour
 HellANzb. Une interface Web en PERL pour être précis. Une interface Web en
 PERL qui utilise le framework CATALYST. Nous avons donc l'équation suivante :

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: idées | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/idées/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/idées/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par jour (ou presque)]]></title>
-    <link href="http://tym-project.github.com/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar/"/>
+    <link href="http://blog.tym-project.fr/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar/"/>
     <updated>2011-08-31T19:39:34+00:00</updated>
-    <id>http://tym-project.github.com/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar</id>
+    <id>http://blog.tym-project.fr/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar</id>
     <content type="html"><![CDATA[<p>Ayant tout un tas de liens que je garde depuis (très) longtemps à droite ou à
 gauche, j'ai décidé de les diffuser ici 5 par 5 quand bon me semblera ! A
 l'avenir j'essaierai peut-être de les regrouper par catégories...</p>
@@ -38,9 +38,9 @@ s'y faire ;-)</p>
   
   <entry>
     <title type="html"><![CDATA["Chéri, y'a quoi a la TV ce soir ?"]]></title>
-    <link href="http://tym-project.github.com/2009/07/29/cheri-ya-quoi-a-la-tv-ce-soir/"/>
+    <link href="http://blog.tym-project.fr/2009/07/29/cheri-ya-quoi-a-la-tv-ce-soir/"/>
     <updated>2009-07-29T13:47:33+00:00</updated>
-    <id>http://tym-project.github.com/2009/07/29/cheri-ya-quoi-a-la-tv-ce-soir</id>
+    <id>http://blog.tym-project.fr/2009/07/29/cheri-ya-quoi-a-la-tv-ce-soir</id>
     <content type="html"><![CDATA[<p>"Rien, ce soir on loue un dévédéraum !" "Oui, mais quoi ? J'ai pas vraiment
 d'idées..." "Oh bah on va faire un tour sur <a href="http://www.clerkdogs.com">ClerkDogs</a> !" "Ah oui pas
 bête, t'es vraiment trop fort mon chéri !" "Oui, Level 98 sur Diablo 2 !"</p>

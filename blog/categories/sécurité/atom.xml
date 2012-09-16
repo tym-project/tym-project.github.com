@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Sécurité | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/sécurité/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/sécurité/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mon script de configuration iptables]]></title>
-    <link href="http://tym-project.github.com/2011/04/06/iptables-et-lancement-automatique/"/>
+    <link href="http://blog.tym-project.fr/2011/04/06/iptables-et-lancement-automatique/"/>
     <updated>2011-04-06T12:00:02+00:00</updated>
-    <id>http://tym-project.github.com/2011/04/06/iptables-et-lancement-automatique</id>
+    <id>http://blog.tym-project.fr/2011/04/06/iptables-et-lancement-automatique</id>
     <content type="html"><![CDATA[<p>Pour ceux qui ne connaitraient pas, iptables est une
 interface de gestion du module netfilter du noyau Linux. En termes clairs :
 c'est un pare-feu. Iptables est donc un ensemble de commandes permettant de
@@ -413,9 +413,9 @@ Bon firewalling ;-)</p>
   
   <entry>
     <title type="html"><![CDATA[Analyse d'une "arnaque" Facebook]]></title>
-    <link href="http://tym-project.github.com/2011/03/07/manipulation-par-facebook/"/>
+    <link href="http://blog.tym-project.fr/2011/03/07/manipulation-par-facebook/"/>
     <updated>2011-03-07T19:16:09+00:00</updated>
-    <id>http://tym-project.github.com/2011/03/07/manipulation-par-facebook</id>
+    <id>http://blog.tym-project.fr/2011/03/07/manipulation-par-facebook</id>
     <content type="html"><![CDATA[<p>J'utilise Facebook, avec parcimonie certes, mais
 je l'utilise quand même. On sait maintenant qu'il faut être très vigilant sur
 les réseaux sociaux, et cet article en est une preuve supplémentaire.</p>
@@ -498,9 +498,9 @@ doigts pour que pas grand monde ait aperçu votre profil...</p>
   
   <entry>
     <title type="html"><![CDATA[Choisir un mot de passe sécurisé et facile à retenir]]></title>
-    <link href="http://tym-project.github.com/2010/09/08/methode-de-choix-de-mot-de-passe-efficace/"/>
+    <link href="http://blog.tym-project.fr/2010/09/08/methode-de-choix-de-mot-de-passe-efficace/"/>
     <updated>2010-09-08T18:44:28+00:00</updated>
-    <id>http://tym-project.github.com/2010/09/08/methode-de-choix-de-mot-de-passe-efficace</id>
+    <id>http://blog.tym-project.fr/2010/09/08/methode-de-choix-de-mot-de-passe-efficace</id>
     <content type="html"><![CDATA[<p>Un mot de passe c'est important. A vrai dire
 c'est souvent votre premier rempart contre une attaque sur vos données
 personnelles. Mais avoir une bonne "hygiène de mots de passe" est souvent un
@@ -599,9 +599,9 @@ tester sa fiabilité avec par exemple : <a href="http://howsecureismypassword.ne
   
   <entry>
     <title type="html"><![CDATA[Choisir un mot de passe sécurisé et facile à retenir]]></title>
-    <link href="http://tym-project.github.com/2010/09/08/methode-de-choix-de-mot-de-passe-efficace/"/>
+    <link href="http://blog.tym-project.fr/2010/09/08/methode-de-choix-de-mot-de-passe-efficace/"/>
     <updated>2010-09-08T18:44:28+00:00</updated>
-    <id>http://tym-project.github.com/2010/09/08/methode-de-choix-de-mot-de-passe-efficace</id>
+    <id>http://blog.tym-project.fr/2010/09/08/methode-de-choix-de-mot-de-passe-efficace</id>
     <content type="html"><![CDATA[<p>Un mot de passe c'est important. A vrai dire
 c'est souvent votre premier rempart contre une attaque sur vos données
 personnelles. Mais avoir une bonne "hygiène de mots de passe" est souvent un
@@ -700,9 +700,9 @@ tester sa fiabilité avec par exemple : <a href="http://howsecureismypassword.ne
   
   <entry>
     <title type="html"><![CDATA[Mettre en place un tunnel-proxy SSH autonome]]></title>
-    <link href="http://tym-project.github.com/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan/"/>
+    <link href="http://blog.tym-project.fr/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan/"/>
     <updated>2010-03-19T13:00:43+00:00</updated>
-    <id>http://tym-project.github.com/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan</id>
+    <id>http://blog.tym-project.fr/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan</id>
     <content type="html"><![CDATA[<p>Dans <a href="http://www.tym-project.fr/blog/2009/04/installer-un-serveur-ssh-destine-au-tunneling/">cet article</a> je
 vous expliquais comment mettre en place un serveur servant à faire du
 tunneling ssh. Mais quid de la partie client me direz vous ? Et bien c'est ce

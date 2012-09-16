@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: goo | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/goo/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/goo/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[World Of Goo, le jeu qu'il est bien qu'il est bô !]]></title>
-    <link href="http://tym-project.github.com/2009/10/22/world-of-goo-le-jeu-quil-est-bien-quil-est-bo/"/>
+    <link href="http://blog.tym-project.fr/2009/10/22/world-of-goo-le-jeu-quil-est-bien-quil-est-bo/"/>
     <updated>2009-10-22T09:09:43+00:00</updated>
-    <id>http://tym-project.github.com/2009/10/22/world-of-goo-le-jeu-quil-est-bien-quil-est-bo</id>
+    <id>http://blog.tym-project.fr/2009/10/22/world-of-goo-le-jeu-quil-est-bien-quil-est-bo</id>
     <content type="html"><![CDATA[<p>Je joue très peu, mais parfois je m'accroche
 sur une petite perle vidéo-ludique. C'est le cas de World Of Goo, un jeu au
 concept assez génial et super bien réalisé. Addictif, tout court !</p>

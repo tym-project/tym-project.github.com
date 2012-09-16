@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: mises à jour | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/mises-à-jour/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/mises-à-jour/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Firefox : vérifier la validité des ses plugins]]></title>
-    <link href="http://tym-project.github.com/2009/10/06/firefox-verifier-la-validite-des-ses-plugins/"/>
+    <link href="http://blog.tym-project.fr/2009/10/06/firefox-verifier-la-validite-des-ses-plugins/"/>
     <updated>2009-10-06T08:53:33+00:00</updated>
-    <id>http://tym-project.github.com/2009/10/06/firefox-verifier-la-validite-des-ses-plugins</id>
+    <id>http://blog.tym-project.fr/2009/10/06/firefox-verifier-la-validite-des-ses-plugins</id>
     <content type="html"><![CDATA[<p>Flash, Java...tous ces plugins (et non extensions) peuvent parfois présenter
 des <a href="http://www.zdnet.fr/actualites/internet/0,39020774,39705979,00.htm">failles de sécurité</a>. Le site <a href="https://www-trunk.stage.mozilla.com/en-US/plugincheck/">Plug-In-Check</a> vous permet de
 vérifier, et éventuellement mettre à jour les fautifs ! Cela fonctionne

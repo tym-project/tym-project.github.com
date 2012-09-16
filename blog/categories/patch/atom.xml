@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: patch | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/patch/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/patch/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Installer Vmware Server 2 sur un Kimsufi 250 (Ovh)]]></title>
-    <link href="http://tym-project.github.com/2010/06/30/installer-vmware-server-2-sur-un-kimsufi-250-ovh/"/>
+    <link href="http://blog.tym-project.fr/2010/06/30/installer-vmware-server-2-sur-un-kimsufi-250-ovh/"/>
     <updated>2010-06-30T12:05:49+00:00</updated>
-    <id>http://tym-project.github.com/2010/06/30/installer-vmware-server-2-sur-un-kimsufi-250-ovh</id>
+    <id>http://blog.tym-project.fr/2010/06/30/installer-vmware-server-2-sur-un-kimsufi-250-ovh</id>
     <content type="html"><![CDATA[<p>J'ai très récemment eu à installer Vmware Server
 version 2 sur un serveur dédié Kimsufi de Ovh. Plus précisément sur une
 Unbuntu 9.04. Facile ? Non ! Faisable ? Oui...</p>
@@ -262,9 +262,9 @@ l'installation ou du serveur lui même.</p>
   
   <entry>
     <title type="html"><![CDATA[Utiliser la dernière version de "makepasswd" sous Archlinux]]></title>
-    <link href="http://tym-project.github.com/2009/08/27/utiliser-la-derniere-version-de-makepasswd-sous-archlinux/"/>
+    <link href="http://blog.tym-project.fr/2009/08/27/utiliser-la-derniere-version-de-makepasswd-sous-archlinux/"/>
     <updated>2009-08-27T13:04:06+00:00</updated>
-    <id>http://tym-project.github.com/2009/08/27/utiliser-la-derniere-version-de-makepasswd-sous-archlinux</id>
+    <id>http://blog.tym-project.fr/2009/08/27/utiliser-la-derniere-version-de-makepasswd-sous-archlinux</id>
     <content type="html"><![CDATA[<p>Dans cet article j'utilise <code>[man]makepasswd[/man]</code>. Mais j'ai fait
 ces manipulations sous Debian. Avec Archlinux cela se complique un peu car la
 version de <code>makepasswd</code> n'est pas identique à celle de Debian : elle ne gère

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: admin | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/admin/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/admin/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[2012... ou presque !]]></title>
-    <link href="http://tym-project.github.com/2011/12/09/2012-ou-presque/"/>
+    <link href="http://blog.tym-project.fr/2011/12/09/2012-ou-presque/"/>
     <updated>2011-12-09T22:30:00+00:00</updated>
-    <id>http://tym-project.github.com/2011/12/09/2012-ou-presque</id>
+    <id>http://blog.tym-project.fr/2011/12/09/2012-ou-presque</id>
     <content type="html"><![CDATA[<p>La nouvelle année est souvent l'occasion de choisir des résolutions pour les 12 mois qui approchent. Pour Tym-Project cela veut sourtout dire une nouvelle plateforme, ou plutôt un nouveau "CMS" : <a href="http://octopress.org" title="Octopress">Octopress</a>, j'aurai certainement l'occasion d'en reparler par la suite !</p>
 
 <p>Ce changement va aussi impliquer une migration de tout le contenu existant depuis Wordpress... et ça ne vas pas être de la tarte ! Je pense donc laisser les deux blogs actifs pendant un certain temps :-)</p>

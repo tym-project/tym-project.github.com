@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: socks | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/socks/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/socks/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Installation de ss5 sur une Debian 5]]></title>
-    <link href="http://tym-project.github.com/2011/02/09/install-ss5-debian-et-script-init/"/>
+    <link href="http://blog.tym-project.fr/2011/02/09/install-ss5-debian-et-script-init/"/>
     <updated>2011-02-09T12:00:48+00:00</updated>
-    <id>http://tym-project.github.com/2011/02/09/install-ss5-debian-et-script-init</id>
+    <id>http://blog.tym-project.fr/2011/02/09/install-ss5-debian-et-script-init</id>
     <content type="html"><![CDATA[<p><a href="http://ss5.sourceforge.net/">ss5</a> est un service de proxy SOCKS très
 performant, développé par <a href="http://ss5.sourceforge.net/author.htm">une seule personne</a> je tiens à le souligner !
 J'ai eu à l'installer sur une Debian 5, et j'ai donc réalisé un petit script

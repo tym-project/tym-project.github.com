@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: news | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/news/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/news/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Edito du 31 Mars]]></title>
-    <link href="http://tym-project.github.com/2011/03/31/edito-du-31-mars/"/>
+    <link href="http://blog.tym-project.fr/2011/03/31/edito-du-31-mars/"/>
     <updated>2011-03-31T22:16:10+00:00</updated>
-    <id>http://tym-project.github.com/2011/03/31/edito-du-31-mars</id>
+    <id>http://blog.tym-project.fr/2011/03/31/edito-du-31-mars</id>
     <content type="html"><![CDATA[<p>Hop hop, un billet en deux deux (font quatre...) pour vous indiquer que :</p>
 
 <ul>

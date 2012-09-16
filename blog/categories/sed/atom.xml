@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: sed | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/sed/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/sed/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Adaptation de "sed" en PowerShell (Windows)]]></title>
-    <link href="http://tym-project.github.com/2011/03/02/sed-en-powershell-et-redirection/"/>
+    <link href="http://blog.tym-project.fr/2011/03/02/sed-en-powershell-et-redirection/"/>
     <updated>2011-03-02T12:00:44+00:00</updated>
-    <id>http://tym-project.github.com/2011/03/02/sed-en-powershell-et-redirection</id>
+    <id>http://blog.tym-project.fr/2011/03/02/sed-en-powershell-et-redirection</id>
     <content type="html"><![CDATA[<p>PowerShell est un langage de script développé par
 Microsoft, le <code>#!/bin/bash</code> de Windows en quelque sorte. Ce langage propose de
 très nombreuses fonctionnalités, et après un petit temps d'adaptation, devient
@@ -69,9 +69,9 @@ fichier tout à fait viable.</p>
   
   <entry>
     <title type="html"><![CDATA[Automatiser la création ou l'édition d'un crontab]]></title>
-    <link href="http://tym-project.github.com/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab/"/>
+    <link href="http://blog.tym-project.fr/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab/"/>
     <updated>2010-08-04T12:00:34+00:00</updated>
-    <id>http://tym-project.github.com/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab</id>
+    <id>http://blog.tym-project.fr/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab</id>
     <content type="html"><![CDATA[<p>Crontab est un outil extrêmement pratique
 servant à planifier l'exécution des tâches/commandes. Habituellement il se
 gère via la commande <code>[man]crontab[/man]</code> : <code>crontab -e</code> pour éditer, <code>crontab
@@ -171,9 +171,9 @@ faisant plutôt exécuter <code>/home/tym/scripts/mon_second_script</code> :
   
   <entry>
     <title type="html"><![CDATA[SED, trucs et astuces pour le remplacement et la mise en mémoire d'expressions]]></title>
-    <link href="http://tym-project.github.com/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions/"/>
+    <link href="http://blog.tym-project.fr/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions/"/>
     <updated>2009-08-21T22:57:08+00:00</updated>
-    <id>http://tym-project.github.com/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions</id>
+    <id>http://blog.tym-project.fr/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions</id>
     <content type="html"><![CDATA[<p><code>[man]sed[/man]</code> est un éditeur de texte en
 ligne de commande. Il vous permet donc de modifier un fichier par une suite de
 directives, sans utiliser de logiciels comme <code>[man]vim[/man]</code> ou

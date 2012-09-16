@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: internet | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/internet/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/internet/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[L'histoire d'internet, une très bonne vidéo]]></title>
-    <link href="http://tym-project.github.com/2010/05/01/lhistoire-dinternet-une-tres-bonne-video/"/>
+    <link href="http://blog.tym-project.fr/2010/05/01/lhistoire-dinternet-une-tres-bonne-video/"/>
     <updated>2010-05-01T01:25:33+00:00</updated>
-    <id>http://tym-project.github.com/2010/05/01/lhistoire-dinternet-une-tres-bonne-video</id>
+    <id>http://blog.tym-project.fr/2010/05/01/lhistoire-dinternet-une-tres-bonne-video</id>
     <content type="html"><![CDATA[<p>Je m'efface devant cette superbe et très instructive explication à propos de
 la création d'internet (<em>en anglais, pensez à activer les sous-titres si
 besoin !</em>) :</p>

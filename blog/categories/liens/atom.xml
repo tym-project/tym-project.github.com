@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Liens | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/liens/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/liens/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par mois de Janvier]]></title>
-    <link href="http://tym-project.github.com/2012/01/28/en-janvier-click-ce-qu-il-te-plait/"/>
+    <link href="http://blog.tym-project.fr/2012/01/28/en-janvier-click-ce-qu-il-te-plait/"/>
     <updated>2012-01-28T17:29:00+00:00</updated>
-    <id>http://tym-project.github.com/2012/01/28/en-janvier-click-ce-qu-il-te-plait</id>
+    <id>http://blog.tym-project.fr/2012/01/28/en-janvier-click-ce-qu-il-te-plait</id>
     <content type="html"><![CDATA[<p>Eh, bonne année ! Pour commencer 2012 en beautée, des liens et encore des liens :)</p>
 
 <ol>
@@ -33,9 +33,9 @@
   
   <entry>
     <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par mois de Décembre]]></title>
-    <link href="http://tym-project.github.com/2011/12/20/liens-de-noel-et-autres-bonnes-idees/"/>
+    <link href="http://blog.tym-project.fr/2011/12/20/liens-de-noel-et-autres-bonnes-idees/"/>
     <updated>2011-12-20T18:03:00+00:00</updated>
-    <id>http://tym-project.github.com/2011/12/20/liens-de-noel-et-autres-bonnes-idees</id>
+    <id>http://blog.tym-project.fr/2011/12/20/liens-de-noel-et-autres-bonnes-idees</id>
     <content type="html"><![CDATA[<p>Hop, c'est le retour de l'article fourre-tout, ici dans son édition de noël.</p>
 
 <ol>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Geeekerie | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/geeekerie/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/geeekerie/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Un sapin de nöel en carton... littéralement.]]></title>
-    <link href="http://tym-project.github.com/2011/12/11/un-sapin-de-noel-en-carton-dot-dot-dot-litteralement/"/>
+    <link href="http://blog.tym-project.fr/2011/12/11/un-sapin-de-noel-en-carton-dot-dot-dot-litteralement/"/>
     <updated>2011-12-11T20:46:00+00:00</updated>
-    <id>http://tym-project.github.com/2011/12/11/un-sapin-de-noel-en-carton-dot-dot-dot-litteralement</id>
+    <id>http://blog.tym-project.fr/2011/12/11/un-sapin-de-noel-en-carton-dot-dot-dot-litteralement</id>
     <content type="html"><![CDATA[<p>Le 24 décembre approche à grands pas, et avec les différentes préparations traditionnelles. Et quoi de mieux qu'un beau sapin pour décorer la pièce ? Un "sapin" qui sort de l'ordinaire !</p>
 
 <!-- more -->

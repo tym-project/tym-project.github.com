@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Moi Je | Tym-Project]]></title>
-  <link href="http://tym-project.github.com/blog/categories/moi-je/atom.xml" rel="self"/>
-  <link href="http://tym-project.github.com/"/>
-  <updated>2012-09-16T16:55:02+00:00</updated>
-  <id>http://tym-project.github.com/</id>
+  <link href="http://blog.tym-project.fr/blog/categories/moi-je/atom.xml" rel="self"/>
+  <link href="http://blog.tym-project.fr/"/>
+  <updated>2012-09-16T16:59:04+00:00</updated>
+  <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[J'ai testé la batterie de secours USB MiPOW Power Tube 2200]]></title>
-    <link href="http://tym-project.github.com/2012/01/14/batterie-de-secours-usb-mipow-powertube/"/>
+    <link href="http://blog.tym-project.fr/2012/01/14/batterie-de-secours-usb-mipow-powertube/"/>
     <updated>2012-01-14T13:26:00+00:00</updated>
-    <id>http://tym-project.github.com/2012/01/14/batterie-de-secours-usb-mipow-powertube</id>
+    <id>http://blog.tym-project.fr/2012/01/14/batterie-de-secours-usb-mipow-powertube</id>
     <content type="html"><![CDATA[<p>Ayant fait l'acquisition d'un HTC Desire d'occasion il-y-a quelques mois, outre la liberté qu'il m'apporte, c'est un éternel combat contre la batterie à plat ! Je suis assez souvent en déplacement, je n'ai donc pas toujours l'occasion de bancher mon mobile... et c'est sans compter sur le désert électrique dans les wagons SNCF :)<br/>
 Je me suis donc mis en quête d'une solution pour recharger mon téléphone "sur la route", et je crois bien avoir trouvé !</p>
 
