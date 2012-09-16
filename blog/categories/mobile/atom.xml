@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: mobile | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/mobile/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard]]></title>
+    <link href="http://TymProject.github.com/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/"/>
+    <updated>2012-08-16T23:02:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard</id>
+    <content type="html"><![CDATA[<p>Je suis l'heureux propriétaire d'un HTC One S, et même si la ROM Sense d'origine est très stable et plutôt agréable à utiliser, je n'ai pas pu résister à l'appel de CM9 !</p>
+
+<!-- more -->
+
+
+<p>Vous l'avez probablement lu sur les interwebs, CM9 vient d'être officielement publiée par l'équipe en charge du projet. Une information à tiroirs, car en fait seulement une pincée d'appareils est officiellement supportée à ce jour (la communauté doit alors travailler sur d'autre terminaux qui, selon la stabilité de la chose, seront intégrés ou non dans la branche officielle).<br/>
+C'est dans cet esprit qu'un portage sur HTC One S est en cours, et est aujourd'hui très proche de son pendant officiel... raison amplemant suffisante pour me lancer dans l'aventure. Je vais donc vous expliquer le processus, vous trouverez certainement des explications plus détaillées ailleurs, je vais donc surtout insister sur les points qui me semblent importants... et surtout comment je me suis sortit de quelques mauvaises passes.</p>
+
+<p><em>N'hésitez pas à utiliser les commentaires pour poser vos questions :)</em></p>
+
+<h2>ROM ? Flash ? Kernel ? ADB ?!</h2>
+
+<p>Avant de rentrer dans le vif du sujet une petite explication sur les principes de base s'impose. Installer (ou flasher) une ROM sur un terminal Android c'est 3 étapes majeures :<br/>
+*  Déverouiller le bootloader, ou plus simplement : virer ces p**** de protections inutiles<br/>
+*  Flasher une Recovery, c'est à dire installer un système de gestion du terminal très bas-niveau, indépendant de la version d'Android. C'est en quelque sorte un BIOS.<br/>
+*  Flasher la ROM (installer le système d'exploitation)</p>
+
+<p>Ces étapes font appel à plusieurs outils, que je connais finalement très peu, mais voici ce que j'en ai compris :<br/>
+*  ADB, un outil pour discuter avec le terminal depuis une autre machine en USB. Je me l'explique comme un terminal SSH.<br/>
+*  Fastboot, le truc un peu obscur qui sert à flasher tout et son contraire... (heureux ?)</p>
+
+<p><strong> Je vous invite très fortement à sauvegarder toute information importante en dehors de votre terminal... on ne sais jamais. Pensez aussi à <a href="http://support.google.com/android/bin/answer.py?hl=en&amp;answer=1663708">activer la synchronisation des paramètres</a> avec votre compte Google, vous gagnerez un temps précieux à la réinstallation. </strong></p>
+
+<h2>Clic clic ?</h2>
+
+<p>Il est tout à fait possible d'effectuer toute la manipulation sans toucher la ligne de commande, c'est d'ailleurs ce que j'ai fait lors de mes premières tentatives (oh, si j'avais su...).<br/>
+L'outil incontournable c'est le <a href="http://forum.xda-developers.com/showthread.php?t=1604677">All-in-one toolkit for HTC One S</a>, très bien documenté un peu partout sur le web.<br/>
+Seul élément qui m'a posé problème c'est l'installation du Recovery, pour une raison que j'ignore seul TWRP est fonctionnel (CWM ne démarrait pas sur mon appareil). Oh et si vous avez des difficultés pour faire reconnaître votre appareil : mettez-vous en mode stockage USB, et activez le déboggage.</p>
+
+<p>Hop, un saut dans le temps et vous voila avec votre terminal déverrouillé, direction la ligne de commande pour la suite.</p>
+
+<h2>adb shell push kamoulox flash recovery</h2>
+
+<p>Démarrez votre terminal en recovery, téléchargez les <a href="http://ville.giev.de/?cat=8">images CM9 à jour</a> et copiez-les sur le téléphone avec un <code>adb push mon_zip.zip /sdcard</code>, facile, non ? Utilisez ensuite le menu de votre Recovery pour installer les .zip.<br/>
+Il faut ensuite flasher le <code>boot.img</code>, soit le noyau de votre linux embarqué (qui va charger les drivers pour le matériel par exemple) : <code>fastboot flash boot boot.img</code>.</p>
+
+<p>On pense bien à vider le cache et le cache dalvik et on redémarre... et oh magie CID (la mascotte) est bien là, sur son fond clignotant. Il a clignoté un bail dans mon cas. A vrai dire il a tellement clignoté que je me croyais en boite de nuit... bref : BOOT LOOP !!!<br/>
+Une boot loop c'est une installation mal faite ou buggée qui n'arrive pas à se lancer et tourne en boucle... Arf !<br/>
+Après quelques recherches, flash, recherches, une solution : démarrer en recovery et faire un Factory reset.</p>
+
+<p>Bien, le téléphone démarre enfin sur la ROM, tout à l'air parfait (et fluide !). "You can now unmout sdcard". Wat ? Mon cher CM9 ne reconnaît donc pas le stockage interne du téléphone. Me voila de retour en recovry, Factory reset, reboot, idem, Factory reset, idem, flash, idem... et puis le lendemain matin la révélation : je démarre mon terminal, pas de sdcard bla bla, un petit tour dans <code>Settings &gt; Backup &amp; reset &gt; Factory data reset</code> et hop, mon téléphone redémarre et reconnait sa sdcard !</p>
+
+<h3>Nous raconte pas ta vie !</h3>
+
+<p>Pour résumer :<br/>
+* Installer CM9 depuis la Recovery<br/>
+* Démarrer une première fois. Si boot loop alors retour en Recovery et Factory reset<br/>
+* Android se lance correctement, si problème de sdcard non reconnue : <code>Settings &gt; Backup &amp; reset &gt; Factory data reset</code></p>
+
+<h2>"J'ai tout pêté, ça marche plus, je pleure..."</h2>
+
+<p>Si jamais vous vous trouvez dans une impasse avec un sytème qui ne démarre plus sa ROM, vous pouvez vous en sortir en suivant <a href="http://www.htconeforum.com/forum/htc-one-s-hacks/389-how-unbrick-restore-your-htc-one-s-back-100-stock-relocked.html">ces explications</a>. Comme indiqué dans le tutoriel, vous allez avoir besoin d'une "RUU", c'est à dire de la ROM officielle du constructeur. Chaque ROM dépend de votre opérateur et de votre version Radio (les chiffres affichés dans le meu du bootloader). Un seul endroit pour trouver votre bonheur : <a href="http://forum.xda-developers.com/showthread.php?t=1543588">ce post sur le forum xda</a>, fouillez bien les réponses car certains membres donnent des liens de téléchargement alternatifs.</p>
+
+<p><strong> De manière générale, documentez-vous bien avant de bidouiller les outils, pour éviter de vous planter... et surtout pour apprendre un maximum sur cet univers passionnant :) </strong></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Non mais de qui les oranges se moquent-elles ?]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/08/16/non-mais-de-qui-les-oranges-se-moquent-elles/"/>
+    <updated>2009-08-16T14:29:19+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/08/16/non-mais-de-qui-les-oranges-se-moquent-elles</id>
+    <content type="html"><![CDATA[<p>Après avoir halluciné sur les prix des forfaits ailleurs que
+dans la douce France, voici que <a href="http://www.pcinpact.com/actu/news/52485-orange-augmente-5-euros-abonnements.htm">PC Inpact en rajoute une couche</a> !</p>
+
+<p>C'est pas que hein, mais bon quoi...argh mais j'y crois pas, augmenter le prix
+des forfaits pour faire migrer les utilisateurs !!! Je trouve ça vraiment
+limite...</p>
+
+<p>(ah et au fait, c'est mon 100ème article :D)</p>
+]]></content>
+  </entry>
+  
+</feed>

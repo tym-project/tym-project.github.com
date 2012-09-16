@@ -1,0 +1,664 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ツ Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="Parfois mon disque dur a des pics d&#8217;activité
+pour une raison que j&#8217;ignore. C&#8217;est affreusement frustrant car bien entendu ma
+machine &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TymProject.github.com/tymproject/blog/page/5/">
+  <link href="/tymproject/favicon.png" rel="icon">
+  <link href="/tymproject/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/tymproject/javascripts/modernizr-2.0.js"></script>
+  <script src="/tymproject/javascripts/ender.js"></script>
+  <script src="/tymproject/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="ツ Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/tymproject/">ツ Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TymProject.github.com/tymproject" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/tymproject/">Blog</a></li>
+  <li><a href="/tymproject/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tymproject/2010/06/02/trouver-la-source-de-lactivite-sur-un-disque-dur-windows/">Trouver La Source De L&#8217;activité Sur Un Disque Dur (Windows)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-02T18:25:44+00:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Parfois mon disque dur a des pics d&#8217;activité
+pour une raison que j&#8217;ignore. C&#8217;est affreusement frustrant car bien entendu ma
+machine perd énormément en performances.<br/>
+J&#8217;ai donc cherché un outil me
+permettant de savoir quels processus accédaient au disque à un instant donné.
+Je suis tombé sur <a href="http://technet.microsoft.com/en-us/sysinternals/bb896653.aspx">Process Explorer</a>, qui fait à peu près ce qui
+m&#8217;intéresse :<br/>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/06-05-2010-11-21-41.png"></p>
+
+<p>Toutefois la lecture des informations n&#8217;est pas toujours simple avec cet
+outil.<br/>
+Avec Windows Seven (et peut-être Vista), vous pouvez aussi obtenir des
+informations sur les accès disque. cet outil s&#8217;appelle le &#8220;Moniteur de
+ressources&#8221;. Il est accessible via le gestionnaire de tâches
+(<code>&lt;CTRL&gt;+&lt;MAJ&gt;+&lt;ECHAP&gt;</code>), onglet &#8220;Performances&#8221;. En plus d&#8217;informations sur la
+RAM, les processus ou le réseau, il donne aussi des statistiques sur
+l&#8217;utilisation des disques :<br/>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/21-04-2010-15-23-19.png"></p>
+
+<p>Dans mon cas c&#8217;est le processus &#8220;df.exe&#8221; qui travaille sur le
+disque&#8230;après réflexion c&#8217;est une tâche de défragmentation (par
+<a href="http://www.piriform.com/defraggler">Defraggler</a>) que j&#8217;ai planifiée moi même&#8230;</p>
+
+<p>Bonnes stats ;-)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tymproject/2010/05/19/ouvrir-une-invite-de-commande-dans-le-dossier-courant-windows/">Ouvrir Une Invite De Commande Dans Le Dossier Courant (Windows)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-19T13:50:10+00:00" pubdate data-updated="true">May 19<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Je n&#8217;aime pas la ligne de commande Windows,
+mais sous Windows 7 je n&#8217;ai pas trop le choix ! Ce qui m&#8217;insupporte encore
+plus c&#8217;est de devoir naviguer dans mon arborescence à coups de <code>cd</code>.<br/>
+Mon
+utilisation de Windows étant essentiellement graphique (sans ligne de commande
+potable&#8230;pas trop le choix !), je me trouve souvent dans le dossier dans
+lequel je veux lancer un traitement avec une commande.</p>
+
+<p>Pour ouvrir une <code>cmd</code>
+dans le dossier courant, il vous suffit de faire <code>&lt;SHIFT&gt; + Clic droit</code>, et
+ensuite de choisir &#8220;Ouvrir une invite de commande ici&#8221; :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/20-04-2010-12-12-30.png"></p>
+
+<p>Simple&#8230;enfin simple !</p>
+
+<p>Bon clic droit ;-)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tymproject/2010/05/05/regler-le-probleme-de-ports-avec-netbeans-6-8glassfish-3-sous-windows-7/">Régler Le Problème De Ports Avec Netbeans 6.8/Glassfish 3 Sous Windows 7</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-05T13:00:04+00:00" pubdate data-updated="true">May 5<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Dans le cadre de mes cours, j&#8217;ai été amené à utiliser Netbeans et le
+serveur d&#8217;application Glassfish&#8230;ce qui m&#8217;a causé quelques soucis avec mon
+Windows Seven.<br/>
+En effet, la politique de sécurité (par défaut je précise) de
+mon Windows faisait bugger l&#8217;attribution de port de Glassfish :<br/>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/nb-gf1.png"></p>
+
+<p>Ce ne sont bien entendu pas
+les bon ports&#8230;et pour cause :<br/>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/nb-gf2.png"></p>
+
+<p>Netbeans ne peut pas accéder à la configuration (fichier <code>domain.xml</code>), il
+crée donc une configuration &#8220;aléatoire&#8221; dans un autre dossier. Pour résoudre
+cela il faut d&#8217;abord supprimer le domaine (serveur Glassfish) mal configuré.
+Dans l&#8217;onglet &#8220;Services&#8221;, supprimez le serveur actuel :<br/>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/nb-gf3.png"></p>
+
+<p>Vous pouvez fermer Netbeans et modifier les droits
+du répertoire de Glassfish (<code>C:\Program Files\sges-v3</code>). Il est conseillé (on
+est jamais trop prudents) de limiter l&#8217;accès à votre utilisateur ou à limite
+au groupe <code>Users</code> :<br/>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/17-02-2010-15-44-12.png"></p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/17-02-2010-15-45-20.png"></p>
+
+<p>Ceci
+fait, relancez Netbeans et appréciez le changement, les ports utilisés sont
+maintenant les bons :<br/>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/nb-gf4.png"></p>
+
+<p>Bon debug ;-)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tymproject/2010/05/01/lhistoire-dinternet-une-tres-bonne-video/">L&#8217;histoire D&#8217;internet, Une Très Bonne Vidéo</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-01T01:25:33+00:00" pubdate data-updated="true">May 1<span>st</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Je m&#8217;efface devant cette superbe et très instructive explication à propos de
+la création d&#8217;internet (<em>en anglais, pensez à activer les sous-titres si
+besoin !</em>) :</p>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/9hIQjrMHTv4" frameborder="0" allowfullscreen></iframe>
+
+
+<p>Eh oui, cocorico, y&#8217;à de la France à l&#8217;origine d&#8217;internet ;-)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tymproject/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan/">Mettre en Place Un Tunnel-proxy SSH Autonome</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-19T13:00:43+00:00" pubdate data-updated="true">Mar 19<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Dans <a href="http://www.tym-project.fr/blog/2009/04/installer-un-serveur-ssh-destine-au-tunneling/">cet article</a> je
+vous expliquais comment mettre en place un serveur servant à faire du
+tunneling ssh. Mais quid de la partie client me direz vous ? Et bien c&#8217;est ce
+dont il est question ici&#8230;</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/tymproject/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan/">Lire la suite &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tymproject/2010/03/03/on-nous-ment/">&#8220;On Nous Ment !&#8221;&#8230;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-03T22:10:27+00:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Si si&#8230;je vous assure ! Mais comme une image vaut
+mieux qu&#8217;un long discours :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-1/wow.png" alt="wow" /></p>
+
+<p>Cherchez l&#8217;erreur&#8230; ;-)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tymproject/2010/02/20/quoi-de-de-mieux-que-command-conquer/">Quoi De De Mieux Que &#8220;Command & Conquer&#8221; ?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-20T19:42:01+00:00" pubdate data-updated="true">Feb 20<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>&#8220;Command &amp; Conquer&#8221; gratuitement téléchargeable
+légalement ! Bien entendu il est question ici dans anciennes versions (&#8220;Red
+Alert&#8221;, &#8220;Tiberian Sun&#8221; et autres&#8230;). Pour ma part j&#8217;ai apprécié me replonger
+dans ces jeux, aussi vieux soient-ils :) Tout cela se télécharge sur <a href="http://www.commandandconquer.com/classic">le site officiel du jeu</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tymproject/2010/01/30/la-musique-adoucit-les-moeurs/">La Musique Adoucit Les Moeurs&#8230;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-30T19:40:24+00:00" pubdate data-updated="true">Jan 30<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Je suis tombé tout à fait par hasard
+sur une très jolie application en flash. Elle ne sert à rien, elle ne code pas
+à votre place ni ne classe vos fichiers&#8230;par contre elle fait de la jolie
+musique ! Je peux passer des heures à faire des mélodie avec <a href="http://lab.andre-michelle.com/tonematrix">Tone Matrix</a>
+!</p>
+
+<p>Bonne composition ;-)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tymproject/2010/01/06/firefox-enlever-des-extensions-capricieuses/">Firefox, Enlever Des Extensions Capricieuses</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-06T19:36:11+00:00" pubdate data-updated="true">Jan 6<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>J&#8217;utilise le même
+profil Firefox depuis un certain temps (au moins un an), je suis aussi
+récemment passé sur la bêta de Firefox 3.6, ce qui a eu pour conséquences de
+mettre le bazar dans mes extensions.<br/>
+Concrètement je ne pouvait ni mettre à
+jour, ni désinstaller mes extensions. Ne voulant pas supprimer complètement
+mon profil, j&#8217;ai décidé de faire le ménage un peu plus en finesse&#8230;</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/tymproject/2010/01/06/firefox-enlever-des-extensions-capricieuses/">Lire la suite &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tymproject/2009/12/30/lutter-contre-le-spam-par-sms/">Lutter Contre Le SPAM Par &#8220;Sms&#8221;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-30T19:34:03+00:00" pubdate data-updated="true">Dec 30<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>&#8220;rappelle moi au 0899XXXXXX je
+suis impatiente !&#8221;. C&#8217;est ce genre de message que tout un chacun a déjà reçu,
+ou recevra certainement sur son mobile. Inutile de préciser que c&#8217;est un SPAM
+visant à vous faire dépenser vos précieux $$$ !</p>
+
+<p>La première solution pour
+&#8220;lutter&#8221; contre ce système c&#8217;est de ne pas tomber dans le piège&#8230; au moins !<br/>
+Mais vous pouvez être encore plus malin et éviter de recevoir encore des
+messages de ce type : il suffit de répondre &#8220;STOP&#8221; à l&#8217;expéditeur du
+message&#8230; la loi oblige alors l&#8217;expéditeur à ne plus vous envoyer de message
+!</p>
+
+<p>J&#8217;ai pour ma part testé cette manipulation à plusieurs reprises, avec succès
+!<br/>
+Enfin, si vous vous sentez l&#8217;âme d&#8217;un bon samaritain, et dans le cas du SPAM
+tout le monde devrait se sentir concerné, vous pouvez dénoncer l&#8217;expéditeur !
+Pour cela transmettez le message au &#8220;33700&#8221;, c&#8217;est un service du gouvernement
+qui rassemble les &#8220;plaintes&#8221; et, dans le cas d&#8217;un grand nombre, engage des
+procédures&#8230; bye bye SPAMmer !<br/>
+Ces deux dernières manipulations ne vous
+coûteront pas plus cher que le prix d&#8217;un sms non surtaxé !</p>
+
+<p>Bon nettoyage ;-)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/tymproject/blog/page/6/">&larr; Older</a>
+    
+    <a href="/tymproject/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/tymproject/blog/page/4/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S&#8230; entre boot loop et sd-cauchemard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande&#8230;</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/02/14/ameliorer-son-debit-internet/">Naviguer plus vite sur internet, améliorer son débit ? C&#8217;est possible !</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

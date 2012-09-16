@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>On se pingue et on se fait un Tunnel SSH ? - ツ Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="Dans le climat actuel (Hadopi &amp; Co.), je n&#8217;aime pas vraiment que mes données
+circulent en clair. Je préfère les crypter et les faire sortir &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TymProject.github.com/tymproject/2009/04/11/on-se-pingue-et-on-se-fait-un-tunnel-ssh-2/">
+  <link href="/tymproject/favicon.png" rel="icon">
+  <link href="/tymproject/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/tymproject/javascripts/modernizr-2.0.js"></script>
+  <script src="/tymproject/javascripts/ender.js"></script>
+  <script src="/tymproject/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="ツ Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/tymproject/">ツ Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TymProject.github.com/tymproject" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/tymproject/">Blog</a></li>
+  <li><a href="/tymproject/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">On Se Pingue Et on Se Fait Un Tunnel SSH ?</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-11T20:26:52+00:00" pubdate data-updated="true">Apr 11<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Dans le climat actuel (Hadopi &amp; Co.), je n&#8217;aime pas vraiment que mes données
+circulent en clair. Je préfère les crypter et les faire sortir disons&#8230; en
+suisse !</p>
+
+<p>Vous avez plusieurs moyens de faire cela : VPN ou Tunnel SSH.</p>
+
+<p>Le tunnel SSH me semble être la solution la plus simple car il ne nécessite
+pas la mise en place d&#8217;une configuration complexe et peut être utilisé sur la
+plupart des connexions (même sur les Wifi en accès libre).</p>
+
+<!-- more -->
+
+
+<p>Partons du principe que vous possédez un serveur dédié dans un pays lointain,
+nous allons mettre en place l&#8217;architecture suivante :
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/tunnel-ssh.jpg">
+Vous devez avoir un accès SSH sur le
+serveur bien évidemment !</p>
+
+<p>Pour l&#8217;exemple disons que vous voulez que tout votre <a href="http://www.tym-project.fr/blog/2009/04/pourquoi-vous-devriez-vraiment-passer-de-outlook-a-thunderbird/">Thunderbird</a> préféré
+passe par le tunnel, et non par le réseau directement.</p>
+
+<p>Sous Windows vous utiliserez <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">Putty</a> (ou son homologue Putty Tray) pour
+tout ce qui concerne SSH car c&#8217;est tout simplement le meilleur ! Voici donc la
+configuration à effectuer. Tout d&#8217;abord les paramètres pour la session, vous
+devez bien entendu donner l&#8217;adresse de votre serveur :
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/ssh1.png"></p>
+
+<p>Allez ensuite dans la gestion des tunnels
+(rubrique &#8220;Connection/SSH/Tunnels&#8221;). Vous avez le choix de faire trois tunnels
+différent : local, remote ou dynamic.</p>
+
+<ul>
+<li>Le tunnel &#8220;Local&#8221; permet de rediriger un port de votre machine vers un hôte distant (par exemple lier le port 25 en local au port 25 d’un serveur de mail “encore plus loin”, via notre serveur “ailleurs”). C’est ce que nous voulons faire, mais peu pratique car il faut définir tout les ports à rediriger, et surtout connaître les adresses des serveurs distants (impossible dans le cas de msn par exemple).</li>
+<li>Le tunnel &#8220;Remote&#8221; va permettre de lier un port d’un serveur du réseau local vers un port sur le serveur “ailleurs”. Concrètement rendre accessible une ressource locale depuis l’extérieur (via le serveur “ailleurs”), très dangereux donc !</li>
+<li>Le tunnel &#8220;Dynamique&#8221; fait sortir tout le traffic du tunnel directement par le serveur &#8220;ailleurs&#8221;, c&#8217;est bien ce que nous voulons faire. voici donc la configuration à adopter, j&#8217;ai choisit le port local 8080 car c&#8217;est très souvent la configuration par défaut de la plupart des logiciels :
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/ssh2.png"></li>
+</ul>
+
+
+<p>Il vous suffit
+donc de cliquer sur &#8220;Add&#8221;, et votre tunnel est ajouté dans la liste :
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/ssh3.png"></p>
+
+<p>Nous allons
+maintenant sauvegarder cette configuration (enfin si ça vous éclate de la
+refaire à chaque fois&#8230;vous êtes libres ;-)). Retournez donc dans la rubrique
+&#8220;Session&#8221; (tout en haut !), donnez un nom à votre configuration et cliquez sur
+&#8220;Save&#8221; :<br/>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/ssh4.png"></p>
+
+<p>Enfin,
+cliquez sur &#8220;Open&#8221; pour ouvrir la connexion. Vous aurez alors un terminal à
+l&#8217;écran, indiquez votre login et votre mot, votre tunnel est fonctionnel (si
+la fenêtre vous gène en barre des tâches, utilisez <a href="http://www.tym-project.fr/blog/2009/04/putty-tray-the-utilitaire-de-ssh-sous-windows/">Putty Tray</a>).</p>
+
+<p>Pour Linux la commande pour créer un tunnel dynamique est la suivante :</p>
+
+<pre><code>ssh –D 8080 chez-moi.com
+</code></pre>
+
+<p>Vous pouvez maintenant
+configurer votre logiciel, <a href="http://www.tym-project.fr/blog/2009/04/pourquoi-vous-devriez-vraiment-passer-de-outlook-a-thunderbird/">Thunderbird</a> pour l’exemple :
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/ssh5.png"></p>
+
+<p>N’oubliez pas d’exclure des
+adresses si par exemple vous utilisez un serveur de messagerie local ou un
+intranet (pour votre navigateur).</p>
+
+<p>Bon tunneling ;-)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">tym</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-11T20:26:52+00:00" pubdate data-updated="true">Apr 11<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/tymproject/blog/categories/linux/'>Linux</a>, <a class='category' href='/tymproject/blog/categories/logiciels/'>Logiciels</a>, <a class='category' href='/tymproject/blog/categories/réseau/'>Réseau</a>, <a class='category' href='/tymproject/blog/categories/sécurité/'>Sécurité</a>, <a class='category' href='/tymproject/blog/categories/windows/'>Windows</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://TymProject.github.com/tymproject/2009/04/11/on-se-pingue-et-on-se-fait-un-tunnel-ssh-2/" data-via="" data-counturl="http://TymProject.github.com/tymproject/2009/04/11/on-se-pingue-et-on-se-fait-un-tunnel-ssh-2/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tymproject/2009/04/11/comment-lire-un-fichier-formatte-sous-linux-2/" title="Previous Post: Comment lire un fichier formatté sous Linux">&laquo; Comment lire un fichier formatté sous Linux</a>
+      
+      
+        <a class="basic-alignment right" href="/tymproject/2009/04/12/site-de-commandes-bien-utiles-pour-linux-2/" title="Next Post: Site de commandes bien utiles pour Linux">Site de commandes bien utiles pour Linux &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/02/14/ameliorer-son-debit-internet/">Naviguer plus vite sur internet, améliorer son débit ? C'est possible !</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TymProject.github.com/tymproject/2009/04/11/on-se-pingue-et-on-se-fait-un-tunnel-ssh-2/';
+        var disqus_url = 'http://TymProject.github.com/tymproject/2009/04/11/on-se-pingue-et-on-se-fait-un-tunnel-ssh-2/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

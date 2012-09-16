@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ligne de commande | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/ligne-de-commande/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Créer et graver des images ISO en ligne de commande (Linux)]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/05/04/creer-et-graver-des-images-iso-en-ligne-de-commande-linux-2/"/>
+    <updated>2009-05-04T21:33:45+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/05/04/creer-et-graver-des-images-iso-en-ligne-de-commande-linux-2</id>
+    <content type="html"><![CDATA[<p>Ce que j'aime dans mon Linux c'est la CLI (Command Line Interface) car c'est
+rapide et pratique ! Il est même possible de créer des images iso sans
+interface graphique. Vous pouvez aussi bien entendu graver ces mêmes iso en
+ligne de commande. Et c'est pour moi la seule utilité de mon graveur ! Voici
+donc comment procéder.</p>
+
+<p>Tout d'abord la création de l'image. Nous allons utiliser <code>[man]dd[/man]</code>, un
+utilitaire de gestion des disques (en très gros, plus d'informations <a href="http://fr.wikipedia.org/wiki/Dd_(Unix)">ici</a>)
+:</p>
+
+<pre><code>$ dd if=/dev/sr0 of=image.iso
+</code></pre>
+
+<p>Et
+voila ! Qui a dit que c'était complexe ? Avec <code>if=</code> on définit le périphérique
+d'entrée, <code>of=</code> la sortie.</p>
+
+<p>Pour graver cette image nous allons utiliser <code>[man]wodim[/man]</code> (dans le
+package <code>cdrkit</code> dans Archlinux). Attention les yeux :</p>
+
+<pre><code># wodim image.iso
+</code></pre>
+
+<p>J'ai pas encore trouvé plus simple et
+plus léger...</p>
+
+<p>Bonne gravure ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: vitesse | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/vitesse/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Augmenter son débit avec free : le test complet]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/06/16/augmenter-son-debit-avec-free-le-test-complet/"/>
+    <updated>2010-06-16T14:46:56+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/06/16/augmenter-son-debit-avec-free-le-test-complet</id>
+    <content type="html"><![CDATA[<p>Cela fait maintenant quelques mois que je vous
+avais expliqué <a href="http://www.tym-project.fr/blog/2009/07/augmenter-son-debit-avec-free/">comment "augmenter votre débit"</a> si vous possédez une
+freebox. J'ai pris mon courage à deux mains, et surtout un peu de temps pour
+tester chaque mode de ping.</p>
+
+<!--more -->
+
+
+<p>Surtout du temps en fait, car entre chaque
+changement de configuration il faut patienter environ 12h (la mise à jour chez
+free se fait entre 00h et 2h du matin). Pour mener ce test j'ai simplement
+utilisé un PC seul sur le réseau, en utilisant un câble ethernet (le Wifi
+aurai induit des variables supplémentaires). Concernant ma ligne, une image
+vaut mieux qu'un long discours :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/ligne.png"></p>
+
+<p>Le protocole de tests que j'ai suivit est le suivant :</p>
+
+<ol>
+<li>Un test de débit sur l'interface de free</li>
+<li>Un test de débit descendant (download) avec Newsleecher</li>
+<li>Un <a href="http://www.tym-project.fr/blog/2009/09/pathping-le-ping-mutant-en-traceroute/">pathping</a> vers clubic.com</li>
+</ol>
+
+
+<p>J'ai fait le test de débit de free simplement à titre indicatif, en sachant
+que ce genre de test n'est jamais extrêmement fiable. J'ai utilisé Newsleecher
+car je sais par expérience qu'il peut télécharger à la vitesse maximum de ma
+ligne, et surtout de m'afficher un graphique de la vitesse. J'effectue mon
+pathping vers clubic.com, plutôt que google.fr, car par expérience je sais que
+google.fr a parfois du mal à répondre ou présente des latences variables.</p>
+
+<h2>Mode Normal (interleave)</h2>
+
+<p>Free le définit ainsi : <em>"permet une latence de ligne de l'ordre de 30ms, avec
+un niveau de sécurité permettant de prévenir les pertes de paquets celles-ci
+pouvant entraîner des sauts d'image sur la télévision."</em></p>
+
+<h3>Des débits montants et descendants prometteurs</h3>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/normal.png" alt="normal" /></p>
+
+<p>Le test de Free montre un débit descendant plus que correct :
+1,59 Mo/s, l'upload est lui aussi très correct avec 111,3 ko/s</p>
+
+<h3>Un débit descendant décevant en pratique</h3>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/normal-ng.png" alt="normal-ng" /></p>
+
+<p>En réalité le mode normal me permet de télécharger seulement à
+1,49 Mo/s en moyenne, mais malgré quelques micro-chutes, cette vitesse est
+assez stable.</p>
+
+<h3>Un ping sans failles</h3>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/normal-ping.png"></p>
+
+<p>Aucune perte de
+données vers clubic, avec une latence habituelle (de 20 à 30 ms).</p>
+
+<h2>Mode Fastpath</h2>
+
+<p><em>"permet d'obtenir le temps de latence minimum mais aucune correction
+d'erreur, réservé aux personnes ayant des conditions de ligne optimales."</em></p>
+
+<h3>Des vitesses moindres, c'est certain</h3>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/fastpath.png" alt="fastpath" /></p>
+
+<p>Ce mode propose les vitesses les plus faibles de ce test, mais
+rien d'étonnant ici, ce n'est pas le but de ce mode.</p>
+
+<h3>Ping, plus rapide que l'éclair</h3>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/fastpath-ping.png"></p>
+
+<p>C'est bel et bien
+pour le ping que le mode Fastpath est fait. De 5 à 15 ms, c'est clairement
+très rapide en comparaison avec les autres modes ! Mais à quel prix...on note
+5% de pertes sur le dernier saut, rien de vraiment bloquant, mais à souligner.</p>
+
+<h3>Une fiabilité moindre</h3>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/fastpath-ng.png" alt="fastpath-ng" /></p>
+
+<p>Newsleecher confirme une chose : ce mode n'est pas fiable à
+100%, comme en témoigne un large décroché au milieu du téléchargement. La
+vitesse par contre reste conséquente.</p>
+
+<h2>Mode Patate</h2>
+
+<p><em>"permet aux freebox d'obtenir une synchro sans bridage (jusqu'a 24Mbps) et
+sans seuil minimum sur le bruit, mais il peut entraîner des erreurs et des
+pertes de paquets. En cas de problème il faut revenir dans les modes
+standards. Utiliser a vos risques et périls"</em></p>
+
+<h3>Vraiment si rapide ?</h3>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/patate.png" alt="patate" /></p>
+
+<p>Ce n'est pas ce que nous dit le test de Free, voire même pire :
+ce mode serait plus lent que le mode Normal.</p>
+
+<h3>Vraiment si rapide !</h3>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/patate-ng.png" alt="patate-ng" /></p>
+
+<p>Newsleecher confirme que ce mode est vraiment le plus rapide
+de tous, au prix de deux décrochés pendant le test.</p>
+
+<h3>Et c'est fiable en plus !</h3>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/patate-ping.png"></p>
+
+<h2>Mode Sérénité</h2>
+
+<p><em>"permet de réduire à un niveau minimum les erreurs ("FECS") sur votre ligne.
+Ce mode est fortement recommandé pour optimiser la qualité de la diffusion de
+la télévision et notamment pour réduire voire supprimer les gels d'image. Ce
+mode peut entrainer une réduction du niveau maximal du débit."</em></p>
+
+<h3>Des débits surprenants</h3>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/serenite.png" alt="serenite" /></p>
+
+<p>Peut de perte de vitesse par rapport aux autres modes, ce mode
+n'entraîne pas systématiquement une perte. Aucune perte de données, et une
+latence de ping normale, parfait !</p>
+
+<h3>Pas si rapide que ça...</h3>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/serenite-ng.png" alt="serenite-ng" /></p>
+
+<p>En pratique la vitesse de download est bien la plus faible
+de ce test, avec en plus trois décrochés (quid de la prétendue fiabilité ?).</p>
+
+<h3>Un ping dans la norme</h3>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/serenite-ping.png"></p>
+
+<p>Rien à signaler
+du coté du ping : pas de pertes et latence normale.</p>
+
+<h2>Conclusion</h2>
+
+<p>Tous les modes répondent à leur description, le mode Patate étant bien entendu
+mon préféré : des débits élevés pour une fiabilité très correcte. En ce qui
+concerne la latence du ping, le graphique suivant montre bien la supériorité
+du Fastpath et la constance de l'ensemble (plus la valeur est faible, le mieux
+c'est) :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/latence-graph.png" alt="latence-graph" /></p>
+
+<p>Concernant la fiabilité du test de Free, on
+constate que les valeurs sont à considérer avec du recul. Ce test est souvent
+un peu trop "optimiste" :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/tests-graph.png" alt="tests-graph" /></p>
+]]></content>
+  </entry>
+  
+</feed>

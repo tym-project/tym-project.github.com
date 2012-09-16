@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: loupe | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/loupe/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Un Linux mediacenter avec une loupe]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/"/>
+    <updated>2011-05-04T12:00:06+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon</id>
+    <content type="html"><![CDATA[<p>Un Linux avec Xbmc au milieu du salon c'est de plus
+en plus en commun, et même si je me trompe, c'est quand même super pratique !
+Mais c'est encore mieux quand cette machine peut aussi servir à consulter ses
+mails, utiliser Youtube... Problème : la résolution d'écran est trop elevée
+pour pouvoir lire à 2m de l'écran. C'est donc là qu'entre en jeu la loupe.</p>
+
+<!-- more -->
+
+
+<p>Gnome propose son outil, gnome-magnifier, tout un tas d'infos <a href="https://wiki.ubuntu.com/Accessibility/Reviews/gnome-mag">sur le Wiki
+d'Ubuntu</a> et <a href="http://man.cx/magnifier">et dans le man</a>.</p>
+
+<h2>De la problèmatique des doigts</h2>
+
+<p>Avoir une loupe c'est une chose, y accéder en est une autre. En effet, la
+problématique est toujours la même si il faut aller cliquer dans un petit menu
+ou sur une petit icône, sans parler de lancer une ligne de commande ! Allons-y
+gaiement avec un raccourci clavier donc... Avec Gnome (2.XX) rien de plus
+simple : <code>Système/Préférences/Raccourcis clavier</code>,la commande étant <code>magnifier
+-m -v</code>. L'option <code>-m</code> pour suivre les mouvements de la souris, <code>-v</code> pour une
+loupe verticale (sur la gauche de l'écran par défaut), eh lisez le <code>man</code> !</p>
+
+<h2>De la problématique du multi-doigt</h2>
+
+<p>Un raccourci pour ouvrir la loupe c'est pratique, mais comment faire pour
+fermer l'outil ? Un autre raccourci ? Non non non, un peu d'ingéniosité que
+diable ! C'est en fait un seul et même raccourci clavier qui va servir, en
+séquence, à :</p>
+
+<ol>
+<li>Lancer la loupe en "vertical"</li>
+<li>Basculer la loupe en "horizontal", pratique pour la lecture de long textes</li>
+<li>Fermer complètement l'application</li>
+</ol>
+
+
+<p>En terme de script (Bash, pour faire vite et bien), cela donne ceci de la
+manière suivante :
+{% codeblock lang:bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<p>function killmag {</p>
+
+<pre><code>kill -9 \ `ps aux | grep -v grep | grep magnifier | tr -s " " | cut -d " " -f 2`
+</code></pre>
+
+<p>}
+case \
+"<code>ps aux | grep -v grep | grep magnifier | \ tr -s " " | cut -d " " -f 12</code>"\
+in</p>
+
+<pre><code>"-v")
+    killmag &amp;&amp; magnifier -h -m
+    ;;
+"-h")
+    killmag
+    ;;
+"")
+    magnifier -v -m
+    ;;
+</code></pre>
+
+<p>esac
+{% endcodeblock %}
+On retrouve donc une fonction pour killer la loupe, car il faut la relancer
+pour changer d'orientation. Petit détail syntaxique : l'utilisation de <code>\</code>
+pour faire des retours à la ligne au milieu d'une commande, pratique pour se
+la raconter un peu sur un article de blog (ou faciliter la lecture, c'est
+selon).</p>
+
+<h2>Algo à gogo</h2>
+
+<p>D'un point de vue algorithmique, et par ordre de déclenchement du script :</p>
+
+<ol>
+<li>Par défaut la loupe n'est pas lancée, donc le résultat du <code>grep</code> dans le <code>case</code> est vide : on lance la loupe en mode vertical</li>
+<li>Un second passage va renvoyer "<code>-v</code>" dans le <code>case</code> : on kill la loupe et on la relance en horizontal</li>
+<li>Le passage suivant renvoit "<code>-h</code>", donc le <code>case</code> kill la loupe pour de bon</li>
+<li>Et ainsi fon fon fon...</li>
+</ol>
+
+
+<p>Bon zoom ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

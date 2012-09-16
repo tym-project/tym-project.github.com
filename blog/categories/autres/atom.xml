@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Autres | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/autres/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Analyse d'une "arnaque" Facebook]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook/"/>
+    <updated>2011-03-07T19:16:09+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook</id>
+    <content type="html"><![CDATA[<p>J'utilise Facebook, avec parcimonie certes, mais
+je l'utilise quand même. On sait maintenant qu'il faut être très vigilant sur
+les réseaux sociaux, et cet article en est une preuve supplémentaire.</p>
+
+<!-- more -->
+
+
+<p>Il est
+question ici d'une page web que vous avez certainement croisé sur votre mur.
+Je met le lien pour information ( <a href="http://likeloverr.com/fun.php?id=12">ici</a>), mais NE L'OUVREZ PAS avant
+d'avoir lu ce qui suit. Une vidéo d'un petit chat, qui peut résister...</p>
+
+<p><em>Edit
+du 8 mars : Il semble que la page ait été modifiée depuis la publication de
+cet article, le lien vous amène maintenant vers un site où il est clairement
+indiqué qu'il faut cliquer sur "J'aime" pour voir la vidéo.</em></p>
+
+<h2>Un anti-robots comme on en fait plus</h2>
+
+<p>Si vous êtes un peu au fait des technologies récentes, il est souvent question
+de s'affranchir des <a href="http://upload.wikimedia.org/wikipedia/commons/6/69/Captcha.jpg">captchas</a> illisibles permettant d'éviter un traitement
+automatisé. Alors quand un site me propose un jeu de logique en guise de
+vérification, j'approuve. Erreur ! Voici la page que vous obtenez quand vous
+tentez de visionner la video en question dans cet article :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/selection_002.png" alt="selection_002" /></p>
+
+<p>Malin pin pin, ni une ni deux, je clique !</p>
+
+<h2>Toi aussi tu aime le javascript ?</h2>
+
+<p>L'arnaque en question dans cet article se situe dans le code source des
+boutons colorés :</p>
+
+<p>{% codeblock lang:html %}</p>
+
+<iframe id=f1 class=iframe src="http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/pages/Chat-Trop-Mignon-Qui-a-Du-Mal-�-Se-Reveiller/115156425228492&layout=button_count&show_faces=false&width=450&action=like&colorscheme=light&height=21" scrolling="no" frameborder="0"style="border:none; overflow:hidden; width:450px; height:21px;"allowTransparency="true"></iframe>
+
+
+<script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
+
+
+<p>&lt;fb:like id=f2 class=iframe href="http://likeloverr.com/fun.php?id=12" layout="button_count" show_faces="false" width="450">&lt;/fb:like>
+{% endcodeblock %}
+Traduction en clair : "Tu clique et tu like !". Eh oui, le fait de cliquer sur
+ces deux boutons vous a :</p>
+
+<ul>
+<li>Rendu "fan" de la page associée à la vidéo</li>
+<li>Fait "Liker" le lien</li>
+</ul>
+
+
+<h2>Cache ta joie !</h2>
+
+<p>Sur le papier c'est déjà un fonctionnement que je juge ignoble, mais en
+pratique c'est encore pire : une des vidéos virales de ce site propose un
+contenu particulièrement osé et, disons-le, pornographique. Je ne donnerai pas
+le lien ici, mais je suis prêt à parier qu'au moins un de vos amis s'est fait
+piéger et s'est donc retrouvé avec ce lien et cette page pas très glorieuse
+dans son profil. <em>Qui a dit licenciement ? ...</em></p>
+
+<h2>Je me suis fait(e) avoir, et après ?</h2>
+
+<p>Il vous suffit de ne plus "Aimer" ni la page ni le lien, et de croiser les
+doigts pour que pas grand monde ait aperçu votre profil...</p>
+
+<p>Soyez donc vigilants ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Adaptation de "sed" en PowerShell (Windows)]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/03/02/sed-en-powershell-et-redirection/"/>
+    <updated>2011-03-02T12:00:44+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/03/02/sed-en-powershell-et-redirection</id>
+    <content type="html"><![CDATA[<p>PowerShell est un langage de script développé par
+Microsoft, le <code>#!/bin/bash</code> de Windows en quelque sorte. Ce langage propose de
+très nombreuses fonctionnalités, et après un petit temps d'adaptation, devient
+assez simple à utiliser. Mais parfois ce n'est pas aussi évident, comme par
+exemple avec la mise en place de l'équivalent d'un <code>[man]sed[/man]</code>.</p>
+
+<!-- more -->
+
+
+<h2>La solution</h2>
+
+<p>Une rapide recherche m'a amené sur <a href="http://blogs.msdn.com/b/zainnab/archive/2007/07/09/grep-and-sed-with-powershell.aspx">cet article</a> qui propose cette solution
+:</p>
+
+<pre><code>cat input.txt | %{$_ -replace "old", "new"} &gt; output.txt
+</code></pre>
+
+<p>Une petite explication s'impose :</p>
+
+<ul>
+<li><code>cat</code> est en PowerShell un alias de la commande <code>Get-Content</code></li>
+<li><code>$_</code> représente le contenu sortant du pipe</li>
+<li><code>&gt;</code> est une classique redirection de la sortie standard</li>
+<li>les <code>{ }</code> délimitent les commandes à effectuer sur la sortie du pipe</li>
+<li>le <code>%</code> signifie "itérer sur la sortie du pipe"</li>
+</ul>
+
+
+<p>En apparence cela fonctionne très bien...en apparence seulement...</p>
+
+<h2>La bonne solution</h2>
+
+<p>J'ai appliqué la solution précédente sur un fichier Xml servant à la
+configuration d'une Webapp dans Tomcat. Dès l'instant où je plaçait ce fichier
+dans l'arborescence, j’obtenais une magnifique erreur 500. Après quelques
+tests il s'est avéré que c'est la redirection, <code>&gt;</code>, qui pose problème d'une
+manière ou d'une autre et qui rend le fichier lisible, mais en fait non... Au
+final j'ai testé cette combinaison, qui fonctionne correctement :</p>
+
+<pre><code>Get-Content input.txt | %{$_ -replace "old", "new"} | Set-Content output.txt
+</code></pre>
+
+<p>L'utilisation de <code>Set-Content</code> donne donc un
+fichier tout à fait viable.</p>
+
+<p>Bon PoSh ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SED : les astuces à connaître]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/02/16/sed-les-astuces-a-connaitre/"/>
+    <updated>2011-02-16T12:00:37+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/02/16/sed-les-astuces-a-connaitre</id>
+    <content type="html"><![CDATA[<p><code>[man]Sed[/man]</code> pour ceux qui ne connaîtrait pas
+encore, est un éditeur de texte en ligne de commande. Concrètement il va
+éditer un fichier (ou l'entrée standard, via un pipe) et le modifier vers la
+sortie standard. Rien de moins complexe ! Enfin c'est seulement la définition,
+car l'outil en lui même peut rapidement devenir très très très riche...<br/>
+J'ai
+donc compilé dans cet article un ensemble d'astuces à connaître pour bien
+utiliser <code>sed</code>.</p>
+
+<!-- more -->
+
+
+<p>Je l'utilise essentiellement pour faire des remplacement :</p>
+
+<pre><code>tym@tym-laptop:~$ cat quote.txt
+Remember, a Jedi can feel the Force flowing through him.
+tym@tym-laptop:~$ sed 's/Jedi/---DUDE WITH A LAMP IN A SOCKET---/g' quote.txt
+Remember, a ---DUDE WITH A LAMP IN A SOCKET--- can feel the Force flowing through him.
+</code></pre>
+
+<p>Voila pour l'exemple, cherchez bien... il-y-a une vanne
+cachée dans ce texte. Oh et bien entendu <code>sed</code> utilise des expressions
+régulières !</p>
+
+<h2>Mise en mémoire</h2>
+
+<p>Pour réutiliser l'expression que vous voulez modifier vous avez deux
+solutions.Avec "<code>&amp;</code>" qui représente l'ensemble de la chaîne trouvée :</p>
+
+<pre><code>tym@tym-laptop:~$ sed 's/Jedi/&amp; (A DUDE WITH A LAMP IN A SOCKET)/g' quote.txt
+Remember, a Jedi (A DUDE WITH A LAMP IN A SOCKET) can feel the Force flowing through him.
+</code></pre>
+
+<p>Avec des parenthèses,
+puis <code>\n</code> pour rappeler l'expression :</p>
+
+<pre><code>tym@tym-laptop:~$ sed 's/\(Je\)\(di\)/\1u\2 (ou Vendredi)/g' quote.txt
+Remember, a Jeudi (ou Vendredi) can feel the Force flowing through him.
+</code></pre>
+
+<p>Notez
+l'utilisation de "\" pour protéger les parenthèses, sans quoi elles seraient
+considérées comme faisant partie de la chaîne à rechercher.</p>
+
+<h2>Trop de slash...</h2>
+
+<p>L'exemple précédent contient un sacré nombre de "/" et de "\", ne rendant pas
+la lisibilité de l'expression aisée ! Soyez rassuré, vous avez le choix des
+délimiteurs :</p>
+
+<ul>
+<li>"_" : <code>sed 's_\(Je\)\(di\)_\1u\2 (ou Vendredi)_g' quote.txt</code></li>
+<li>":" : <code>sed 's:\(Je\)\(di\):\1u\2 (ou Vendredi):g' quote.txt</code></li>
+<li>"|" : <code>sed 's|\(Je\)\(di\)|\1u\2 (ou Vendredi)|g' quote.txt</code></li>
+</ul>
+
+
+<h2>Une bonne fois pour toute !</h2>
+
+<p>Par défaut <code>sed</code> donne le résultat de la commande dans la sortie standard, il
+est donc assez simple de créer un nouveau fichier contenant les modifications
+:</p>
+
+<pre><code>tym@tym-laptop:~$ sed 's/Jedi/DUDE WITH A LAMP IN A SOCKET/g' quote.txt &gt; quote_funny.txt
+</code></pre>
+
+<p>Mais pour réécrire dans le même fichier il faut utiliser l'option <code>-i</code>
+("interactive"), une redirection du type <code>sed .... quote.txt &gt; quote.txt</code> ne
+donnerait qu'un fichier vide :</p>
+
+<pre><code>sed -i 's/Jedi/---DUDE WITH A LAMP IN A SOCKET---/g' quote.txt
+</code></pre>
+
+<p>Bon matching ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gmail : raccourcir le délai de consultation des comptes externes en POP ]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/02/02/gmail-pop-plus-rapide/"/>
+    <updated>2011-02-02T12:00:19+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/02/02/gmail-pop-plus-rapide</id>
+    <content type="html"><![CDATA[<p>Dans un article précédent j'expliquais en quoi
+Gmail peut très bien devenir votre unique client de messagerie. J'expliquais
+toutefois un petit défaut : la consultation des comptes externes en POP.
+Celle-ci se faisant à intervalle très irréguliers...c'est du moins ce que je
+croyais !</p>
+
+<!-- more -->
+
+
+<p>La lecture de <a href="http://hackerne.ws/item?id=2063401">ce commentaire sur Hacker News</a> m'as mis la puce à
+l'oreille : en réalité plus vous recevez de messages en POP, et plus Gmail
+consulte le compte souvent...logique après tout ! Oui mais pas pratique du
+tout à mon sens.<br/>
+La solution à cette problématique est donc de recevoir plus
+de messages sur la-dite adresse...à moins de vous faire pleins de contacts
+d'un coup, il va falloir automatiser tout ça.</p>
+
+<h2>Google Docs ?!</h2>
+
+<p>En approfondissant la question je suis tombé sur cet article : <a href="http://lifehacker.com/5580553/increase-the-frequency-gmail-checks-your-other-email-accounts-for-new-mail">Increase the
+Frequency Gmail Checks Your Other Email Accounts for New Mail</a>, j'apprécie
+l'idée d'utiliser un Google Doc et les fonctions de script. Mais à mon sens
+cette méthode est un peu trop "overkill" et il est inutile de forcer une
+consultation en permanence.</p>
+
+<h2>Bash un jour...</h2>
+
+<p>J'ai préféré utiliser un script bash, avec un <code>[man]cron[/man]</code>, et
+<code>[man]esmtp[/man]</code> comme je <a href="http://www.tym-project.fr/blog/2010/08/mail-avec-gmail-dans-un-script/">l'ai présenté ici</a> :
+{% codeblock lang:bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<h1>file gmail_motivator.sh</h1>
+
+<p>MAIL=/tmp/gmail_motivator_mail</p>
+
+<h1>Entête du message echo</h1>
+
+<p>"To: mon_autre@compte.pop3.com Subject: Gmail
+Motivator! From: foobar@gmail.com " > $MAIL</p>
+
+<h1>Corps du message</h1>
+
+<p>echo "Get fubar motivated, you lazy ass!" >> $MAIL</p>
+
+<h1>Envoi du message</h1>
+
+<p>esmtp -tv &lt; $MAIL</p>
+
+<p>rm $MAIL
+{% endcodeblock %}</p>
+
+<p>Et le <code>cron</code> qui s'exécute toutes les 10 minutes :</p>
+
+<pre><code>*/10 * * * * /home/tym/gmail_motivator
+</code></pre>
+
+<p>Avec cette fréquence, il faudra environ 30 minutes à Gmail pour consulter le
+compte toutes les 2 minutes après réception de la première stimulation.<br/>
+Le
+fonctionnement est tout simple : si Gmail réceptionne un message, il
+consultera 2 minutes plus tôt la fois suivante...et inversement si il ne
+reçoit rien (jusqu'à 60 minutes).</p>
+
+<h2>"Vous ne passerez pas !"</h2>
+
+<p>Il ne reste plus qu'à créer une règle dans votre Gmail pour supprimer dès leur
+arrivée les messages de motivation :</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/selection_011.png %}</p>
+
+<p>Bonne accélération ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Créer une simple extension Wordpress]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/01/26/plugin-wordpress-modification-de-texte/"/>
+    <updated>2011-01-26T21:07:15+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/01/26/plugin-wordpress-modification-de-texte</id>
+    <content type="html"><![CDATA[<p>Si vous administrez un blog Wordpress, vous
+savez certainement qu'il existe un nombre très important d'extensions
+(plugins). De la plus simple à la plus complexe, vous trouverez de tout...mais
+pas forcément ce dont vous avez besoin. Je me suis donc mis en tête de
+développer un ou deux modestes plugins pour mon usage personnel.</p>
+
+<!-- more -->
+
+
+<p>Bien qu'assez
+simple, le processus contient toutefois un ou deux pièges... Je vais vous
+présenter ici comment je génère le texte de légende en dessous des images dans
+mes articles. J'avais prévu de traduire une partie de mes articles, donc il
+est aussi "multilingue". Concrètement il ne fait qu'afficher un texte avec la
+mise en forme définie dans la balise <code>div</code>, mais j'aurai très bien pu plutôt
+donner une classe CSS à cette dernière et l'intégrer dans le thème !
+L'extension étant (très) succincte, elle tient dans un seul fichier, voici
+comment il se décompose avec tout d'abord l'en-tête :
+{% codeblock lang:php %}
+&lt;?php /<em> Plugin Name: Legend Er Plugin URI: http://www.tym-project.fr/blog Description: An automatic legend generator Version: 1.0
+Author: Tym Author URI: http://www.tym-project.fr/blog License: CC </em>/
+{% endcodeblock %}
+Bien qu'elle soit en commentaire, elle est en fait lue par Wordpress pour
+afficher les informations dans la page de plugins. Les champs parlent d'eux-
+mêmes ! Comme mon plugin est intégré dans l'article manuellement (je ne veux
+pas forcément l'appliquer sur toutes les images par exemple), il faut définir
+un <code>Shortcode</code>. De la forme <code>[shortcode]</code> ou <code>[shortcode]...[/shortcode]</code>, il
+permet de définir où ou sur quoi doit s'appliquer l’extension. Dans mon cas je
+pourrai appeler le plugin avec <code>[legend]</code> (lié à la fonction <code>legender</code>), pas
+besoin de le fermer car il ne s'applique pas sur du texte existant :</p>
+
+<pre><code>add_shortcode('legend', 'legender');
+</code></pre>
+
+<p>Ensuite la fonction qui crée la légende en elle-même :
+{% codeblock lang:php %}
+function legender ($atts) {</p>
+
+<pre><code>$ln=$atts['ln'];
+if ($ln == "en"){
+    return '&lt;div style="text-align: center;"&gt;&lt;em&gt;(Click to zoom in)&lt;/em&gt;&lt;/div&gt;';
+}
+if ($ln == "fr"){
+    return '&lt;div style="text-align: center;"&gt;&lt;em&gt;(Cliquez pour agrandir)&lt;/em&gt;&lt;/div&gt;';
+}
+</code></pre>
+
+<p>} ?>
+{% endcodeblock %}</p>
+
+<p>Elle prend donc un paramètre : <code>ln</code>, soit la langue ("fr" ou "en") stockée
+dans un tableau clé/valeur. Je vous parlais de petits pièges, en voilà un :
+<code>$atts</code> est un passage obligé, il ne faut pas nommer cette variable autrement
+!</p>
+
+<p>Voici donc le code complet de l'extension :
+{% codeblock lang:php %}
+&lt;?php /<em> Plugin Name: Legend Er Plugin URI: http://www.tym-project.fr/blog Description: An automatic legend generator Version: 1.0
+Author: Tym Author URI: http://www.tym-project.fr/blog License: CC </em>/
+add_shortcode('legend', 'legender');</p>
+
+<p>function legender ($atts) {</p>
+
+<pre><code>$ln=$atts['ln']; if ($ln == "en"){
+    return '&lt;div style="text-align: center;"&gt;&lt;em&gt;(Click to zoom in)&lt;/em&gt;&lt;/div&gt;';
+}
+if ($ln =="fr"){
+    return '&lt;div style="text-align: center;"&gt;&lt;em&gt;(Cliquez pour agrandir)&lt;/em&gt;&lt;/div&gt;';
+}
+</code></pre>
+
+<p>} ?>
+{% endcodeblock %}</p>
+
+<p>libre à vous de l'utiliser, modifier...</p>
+
+<p>Bon dev' ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

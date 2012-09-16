@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: bookmarks | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/bookmarks/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[3 extensions indispensables pour Firefox]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/02/3-extensions-indispensables-pour-firefox-2/"/>
+    <updated>2009-04-02T15:35:32+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/02/3-extensions-indispensables-pour-firefox-2</id>
+    <content type="html"><![CDATA[<p>Comme vous vous en doutez, je n'utilise que Firefox pour naviguer sur le web.
+Voici donc 3 extensions qui me facilitent la vie de tous les jours.</p>
+
+<p><a href="https://addons.mozilla.org/fr/firefox/addon/2410">Foxmarks</a>, qui permet la synchronisation de vos marque-pages entre
+plusieurs machines. Dans mon cas je l'utilise plutôt comme outil de sauvegarde
+de mes favoris. Foxmaks permet aussi de synchroniser vos mots de passe. Un
+point très intéressant est que vous pouvez créer votre propre serveur
+Foxmarks, ainsi plus de problèmes de confidentialité !</p>
+
+<p><a href="https://addons.mozilla.org/fr/firefox/addon/10909">Coral IETab</a>, qui permet d'ouvrir des pages via le moteur de Internet
+Explorer au sein de Firefox. Très utile par exemple pour le site Windows
+Update.</p>
+
+<p><a href="https://addons.mozilla.org/fr/firefox/addon/1865">Add Block Plus</a>, qui est un bloqueur/nettoyeur de publicités. Si dans un
+page il détecte une publicité, elle sera tout simplement enlevée : moins de
+pollution visuelle et plus de place à l'écran.</p>
+
+<p>Bon surf ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

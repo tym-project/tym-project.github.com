@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: mises à jour | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/mises-à-jour/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Firefox : vérifier la validité des ses plugins]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/10/06/firefox-verifier-la-validite-des-ses-plugins/"/>
+    <updated>2009-10-06T08:53:33+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/10/06/firefox-verifier-la-validite-des-ses-plugins</id>
+    <content type="html"><![CDATA[<p>Flash, Java...tous ces plugins (et non extensions) peuvent parfois présenter
+des <a href="http://www.zdnet.fr/actualites/internet/0,39020774,39705979,00.htm">failles de sécurité</a>. Le site <a href="https://www-trunk.stage.mozilla.com/en-US/plugincheck/">Plug-In-Check</a> vous permet de
+vérifier, et éventuellement mettre à jour les fautifs ! Cela fonctionne
+uniquement avec Firefox bien entendu :) Pour ma part j'ai (un peu) de boulot :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-4/plugincheck.png"></p>
+
+<p>Bonne vérification ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

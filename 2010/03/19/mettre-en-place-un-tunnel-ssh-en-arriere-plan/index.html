@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mettre en place un tunnel-proxy SSH autonome - ツ Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="Dans cet article je
+vous expliquais comment mettre en place un serveur servant à faire du
+tunneling ssh. Mais quid de la partie client me direz vous &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TymProject.github.com/tymproject/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan/">
+  <link href="/tymproject/favicon.png" rel="icon">
+  <link href="/tymproject/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/tymproject/javascripts/modernizr-2.0.js"></script>
+  <script src="/tymproject/javascripts/ender.js"></script>
+  <script src="/tymproject/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="ツ Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/tymproject/">ツ Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TymProject.github.com/tymproject" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/tymproject/">Blog</a></li>
+  <li><a href="/tymproject/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Mettre en Place Un Tunnel-proxy SSH Autonome</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-19T13:00:43+00:00" pubdate data-updated="true">Mar 19<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Dans <a href="http://www.tym-project.fr/blog/2009/04/installer-un-serveur-ssh-destine-au-tunneling/">cet article</a> je
+vous expliquais comment mettre en place un serveur servant à faire du
+tunneling ssh. Mais quid de la partie client me direz vous ? Et bien c&#8217;est ce
+dont il est question ici&#8230;</p>
+
+<!-- more -->
+
+
+<p>Je vais donc vous présenter un script que
+j&#8217;utilise pour gérer un tunnel ssh permanent, en réutilisant les principes
+d&#8217;authentification sans mot de passe. La première chose à faire est donc de
+générer une paire de clés sur le client :</p>
+
+<pre><code>ssh-keygen -t rsa
+</code></pre>
+
+<p>Comme habituellement, on copie la clé publique par un
+quelconque moyen sur le serveur. Comme ici l&#8217;utilisateur <code>prox</code> ne possède pas
+de mot de passe, on va passer par un autre compte. Il est déconseillé
+d&#8217;utiliser le compte <code>root</code> directement, il faut donc passer par un user
+normal. Voici par exemple une suite de commandes à exécuter :</p>
+
+<pre><code>scp ~/.ssh/id_rsa.pub tym@server.chez-moi.com:~
+ssh -p 443 tym@server.chez-moi.com
+</code></pre>
+
+<p>Puis sur le serveur, où l&#8217;on
+passe en utilisateur <code>root</code> :</p>
+
+<pre><code>su - cat id_rsa.pub &gt;&gt; /home/tun1/.ssh/know_hosts &amp;&amp; rm id_rsa.pub
+</code></pre>
+
+<p>Le serveur est maintenant prêt à nous authentifier sans mot de passe, il est
+temps de se pencher sur le script client. La première fonction est celle qui
+crée le tunnel. En l&#8217;occurrence dynamiquement sur le port 8080 :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">function </span>ssh_to_server<span class="o">(){</span>
+</span><span class='line'>    /usr/bin/ssh -nN -D 8080 -p 443 tun1@server.chez-moi.com &amp;
+</span><span class='line'>    <span class="nb">echo</span> <span class="nv">$!</span> &gt; /var/run/ssh_prox_pid
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ce qui est intéressant ici c&#8217;est l&#8217;utilisation des options <code>n</code> et <code>N</code>
+(<a href="http://www.delafond.org/traducmanfr/man/man1/ssh.1.html">source</a>) :</p>
+
+<pre><code>-N
+    N'exécute aucune commande distante. Utilisé pour les transferts de ports (seulement dans la version 2 du protocole). 
+-n
+    redirige l'entrée standard vers /dev/null (en fait, empêche la lecture depuis l'entrée standard). À utiliser lors d'une utilisation de ssh en arrière-plan. [...]
+</code></pre>
+
+<p>Donc l&#8217;utilisation de ces deux options en plus du &#8221;<code>&amp;</code>&#8221; (lancement dans un
+processus fils) permettent de lancer le tunnel en arrière plan.</p>
+
+<p>Afin que le script soit suffisamment robuste nous allons ajouter un peu plus
+de code. Tout d&#8217;abord une fonction pour vérifier la bonne connectivité à
+internet&#8230;inutile d&#8217;essayer d&#8217;ouvrir le tunnel pour rien :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">function </span>test_network<span class="o">(){</span>
+</span><span class='line'>    ping -c 2 clubic.com
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ensuite une fonction pour tester si le tunnel est déjà lancé ou non :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">function </span>test_prox<span class="o">(){</span>
+</span><span class='line'>    ps aux | grep -v <span class="s1">&#39;grep&#39;</span> | grep <span class="sb">`</span>cat /var/run/ssh_prox_pid<span class="sb">`</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ici
+&#8221;<code>[man]grep[/man] -v grep</code>&#8221; sert à ne pas afficher le processus du <code>grep</code>, et
+donc ne pas fausser le résultat (sinon il serait toujours positif, même sans
+tunnel en route).</p>
+
+<p>Et enfin le corps du script :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">while</span> :; <span class="k">do</span>
+</span><span class='line'>    <span class="c">#Si le tunnel n&#39;est pas déjà lancé</span>
+</span><span class='line'>    <span class="k">if</span> ! test_prox ;<span class="k">then</span>
+</span><span class='line'>        <span class="c">#Alors on teste si le réseau est bien connecté</span>
+</span><span class='line'>        <span class="k">if </span>test_network;then
+</span><span class='line'>            <span class="c">#Si oui ou ouvre le tunnel ssh_to_server</span>
+</span><span class='line'>        <span class="k">else</span>
+</span><span class='line'>            <span class="c">#Si non le script &quot;dors&quot; 5 secondes</span>
+</span><span class='line'>            sleep 5
+</span><span class='line'>        <span class="k">fi</span>
+</span><span class='line'><span class="k">    fi</span>
+</span><span class='line'><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Il ne reste plus qu&#8217;a planifier le lancement du script au démarrage, en
+utilisant <code>[man]crontab[/man]</code> par exemple :</p>
+
+<pre><code># m h dom mon dow command @reboot /root/ssh_prox &amp;
+</code></pre>
+
+<p>Voici le code du script complet :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">function </span>ssh_to_server<span class="o">(){</span>
+</span><span class='line'>    /usr/bin/ssh -nN -D 8080 -p 443 tun1@server.chez-moi.com &amp;
+</span><span class='line'>    <span class="nb">echo</span> <span class="nv">$!</span> &gt; /var/run/ssh_prox_pid
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">function </span>test_network<span class="o">(){</span>
+</span><span class='line'>    ping -c 2 clubic.com
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">function </span>test_prox<span class="o">(){</span>
+</span><span class='line'>    ps aux | grep -v <span class="s2">&quot;grep&quot;</span> | grep <span class="sb">`</span>cat /var/run/ssh_prox_pid<span class="sb">`</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">while</span> :;do
+</span><span class='line'>    <span class="k">if</span> ! test_prox ;<span class="k">then</span>
+</span><span class='line'><span class="k">        if </span>test_network;then
+</span><span class='line'>            ssh_to_server
+</span><span class='line'>        <span class="k">else</span>
+</span><span class='line'><span class="k">            </span>sleep  5
+</span><span class='line'>        <span class="k">fi</span>
+</span><span class='line'><span class="k">    fi</span>
+</span><span class='line'><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Bon bash ;-)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">tym</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-19T13:00:43+00:00" pubdate data-updated="true">Mar 19<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/tymproject/blog/categories/bash/'>Bash</a>, <a class='category' href='/tymproject/blog/categories/bash/'>Bash</a>, <a class='category' href='/tymproject/blog/categories/linux/'>Linux</a>, <a class='category' href='/tymproject/blog/categories/réseau/'>Réseau</a>, <a class='category' href='/tymproject/blog/categories/sécurité/'>Sécurité</a>, <a class='category' href='/tymproject/blog/categories/proxy/'>proxy</a>, <a class='category' href='/tymproject/blog/categories/script/'>script</a>, <a class='category' href='/tymproject/blog/categories/ssh/'>ssh</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://TymProject.github.com/tymproject/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan/" data-via="" data-counturl="http://TymProject.github.com/tymproject/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tymproject/2010/03/03/on-nous-ment/" title="Previous Post: "On nous ment !"...">&laquo; "On nous ment !"...</a>
+      
+      
+        <a class="basic-alignment right" href="/tymproject/2010/05/01/lhistoire-dinternet-une-tres-bonne-video/" title="Next Post: L'histoire d'internet, une très bonne vidéo">L'histoire d'internet, une très bonne vidéo &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/02/14/ameliorer-son-debit-internet/">Naviguer plus vite sur internet, améliorer son débit ? C'est possible !</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TymProject.github.com/tymproject/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan/';
+        var disqus_url = 'http://TymProject.github.com/tymproject/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: pacpan | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/pacpan/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Pour s'occuper pendant l'hiver : faire du Perl sous Archlinux]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/06/09/pour-soccuper-lhiver-faire-du-perl-sous-archlinux/"/>
+    <updated>2009-06-09T13:56:58+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/06/09/pour-soccuper-lhiver-faire-du-perl-sous-archlinux</id>
+    <content type="html"><![CDATA[<p>Je me suis mis en tête de mettre en place HellaSmella, une interface Web pour
+HellANzb. Une interface Web en PERL pour être précis. Une interface Web en
+PERL qui utilise le framework CATALYST. Nous avons donc l'équation suivante :
+Archlinux + Perl + Catalyst = "Ouh pinaize...je vais jamais m'en sortir...!"</p>
+
+<!-- more -->
+
+
+<p>C'est pas facile à faire, pas facile du tout car Archlinux a trop peu de
+modules Perl dans ses dépots. Comme souvent dans le monde du libre, il existe
+un outil pour palier à ce problème : <code>[man]pacpan[/man]</code>.<br/>
+C'est un
+gestionnaire de paquets pour les modules Perl, top moumoute ! Oui...mais non !
+En fait cet outil n'est pas parfait...et j'ai bien gratté pour m'en sortir (et
+encore, pas complètement...). Voici donc comment résoudre les problèmes les
+plus classiques de pacpan...</p>
+
+<p>Tout d'abord faites tout en <code>root</code>, cela vous épargnera des erreurs sur des
+fichiers non lisibles. Cela a pour conséquence de devoir rajouter une option à
+<code>makepkg</code> : <code>--asroot</code>. Si vous n'utilisez pas une installation vierge de tout
+paquet perl (ce qui est fort probablement le cas), utilisez l'option pour
+forcer les installations : <code>-f</code>. Ce qui nous donne :</p>
+
+<pre><code>./build_cpan --makepkg-args --asroot -f --pacman-args -f
+</code></pre>
+
+<p>Certains paquets sont mal configurés, et n'utilisent pas la bonne
+convention de nommage. Vous obtiendrez alors des erreurs lors de l'execution
+de la commande précédente.<br/>
+Il faut donc modifier le fichier <code>build_cpan</code>.
+Trouvez la section qui correspond au paquet récalcitrant et localisez la
+fonction <code>build()</code>. Voici les lignes qui nous intéressent :</p>
+
+<pre><code>_makefile=$(find $srcdir -iname Makefile.PL)
+[...]
+PERL_MM_USE_DEFAULT=1
+perl Makefile.PL INSTALLDIRS=vendor || return 1
+make || return 1
+make install DESTDIR=${pkgdir} || return 1
+</code></pre>
+
+<p>C'est dans
+la plupart des cas le fichier <code>Makefile.PL</code> qui est remplacé par un script :
+<code>Build</code>. Vous devez donc modifier les lignes comme suit :</p>
+
+<pre><code>_makefile=$(find $srcdir -iname Build)
+[...]
+PERL_MM_USE_DEFAULT=1
+perl Build INSTALLDIRS=vendor || return 1
+./Build || return 1 make install DESTDIR=${pkgdir} || return 1
+</code></pre>
+
+<p>Il existe surement d'autres problèmes et d'autres solutions mais j'ai jeté
+l'éponge !</p>
+
+<p>Bon "galérage" ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

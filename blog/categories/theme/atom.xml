@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: theme | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/theme/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Sa-ping de noël et boule de GUI !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/12/23/sa-ping-de-noel-et-boule-de-gui/"/>
+    <updated>2010-12-23T17:08:26+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/12/23/sa-ping-de-noel-et-boule-de-gui</id>
+    <content type="html"><![CDATA[<p>Comme vous l'aurez certainement remarqué, j'ai très peu posté ces derniers
+temps... Rassurez vous le blog n'est pas mort, loin de là, j'ai simplement pas
+mal de boulot pour ma dernière année à SUPINFO. Au programme de cette future
+année 2011 : <strong>un nouveau thème</strong> (<a href="http://lab.yukei.net/wp-demo/">Satorii</a>) légèrement modifié pour les
+besoins du blog, mais surtout <strong>un post par semaine et pas moins</strong> (mais
+pourquoi pas plus...). Un air de bonne résolution ? Tout à fait ! Il ne me
+reste plus qu'à vous souhaiter de <strong>joyeuses fêtes et une superbe (allez hop,
+soyons fous) année 2011</strong> !</p>
+]]></content>
+  </entry>
+  
+</feed>

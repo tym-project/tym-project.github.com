@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard - ツ Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="Je suis l&#8217;heureux propriétaire d&#8217;un HTC One S, et même si la ROM Sense d&#8217;origine est très stable et plutôt agréable à utiliser, je &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TymProject.github.com/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">
+  <link href="/tymproject/favicon.png" rel="icon">
+  <link href="/tymproject/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/tymproject/javascripts/modernizr-2.0.js"></script>
+  <script src="/tymproject/javascripts/ender.js"></script>
+  <script src="/tymproject/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="ツ Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/tymproject/">ツ Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TymProject.github.com/tymproject" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/tymproject/">Blog</a></li>
+  <li><a href="/tymproject/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">CyanogenMod 9 Sur Un HTC One S... Entre Boot Loop Et Sd-cauchemard</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-16T23:02:00+00:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Je suis l&#8217;heureux propriétaire d&#8217;un HTC One S, et même si la ROM Sense d&#8217;origine est très stable et plutôt agréable à utiliser, je n&#8217;ai pas pu résister à l&#8217;appel de CM9 !</p>
+
+<!-- more -->
+
+
+<p>Vous l&#8217;avez probablement lu sur les interwebs, CM9 vient d&#8217;être officielement publiée par l&#8217;équipe en charge du projet. Une information à tiroirs, car en fait seulement une pincée d&#8217;appareils est officiellement supportée à ce jour (la communauté doit alors travailler sur d&#8217;autre terminaux qui, selon la stabilité de la chose, seront intégrés ou non dans la branche officielle).<br/>
+C&#8217;est dans cet esprit qu&#8217;un portage sur HTC One S est en cours, et est aujourd&#8217;hui très proche de son pendant officiel&#8230; raison amplemant suffisante pour me lancer dans l&#8217;aventure. Je vais donc vous expliquer le processus, vous trouverez certainement des explications plus détaillées ailleurs, je vais donc surtout insister sur les points qui me semblent importants&#8230; et surtout comment je me suis sortit de quelques mauvaises passes.</p>
+
+<p><em>N&#8217;hésitez pas à utiliser les commentaires pour poser vos questions :)</em></p>
+
+<h2>ROM ? Flash ? Kernel ? ADB ?!</h2>
+
+<p>Avant de rentrer dans le vif du sujet une petite explication sur les principes de base s&#8217;impose. Installer (ou flasher) une ROM sur un terminal Android c&#8217;est 3 étapes majeures :<br/>
+*  Déverouiller le bootloader, ou plus simplement : virer ces p**** de protections inutiles<br/>
+*  Flasher une Recovery, c&#8217;est à dire installer un système de gestion du terminal très bas-niveau, indépendant de la version d&#8217;Android. C&#8217;est en quelque sorte un BIOS.<br/>
+*  Flasher la ROM (installer le système d&#8217;exploitation)</p>
+
+<p>Ces étapes font appel à plusieurs outils, que je connais finalement très peu, mais voici ce que j&#8217;en ai compris :<br/>
+*  ADB, un outil pour discuter avec le terminal depuis une autre machine en USB. Je me l&#8217;explique comme un terminal SSH.<br/>
+*  Fastboot, le truc un peu obscur qui sert à flasher tout et son contraire&#8230; (heureux ?)</p>
+
+<p><strong> Je vous invite très fortement à sauvegarder toute information importante en dehors de votre terminal&#8230; on ne sais jamais. Pensez aussi à <a href="http://support.google.com/android/bin/answer.py?hl=en&amp;answer=1663708">activer la synchronisation des paramètres</a> avec votre compte Google, vous gagnerez un temps précieux à la réinstallation. </strong></p>
+
+<h2>Clic clic ?</h2>
+
+<p>Il est tout à fait possible d&#8217;effectuer toute la manipulation sans toucher la ligne de commande, c&#8217;est d&#8217;ailleurs ce que j&#8217;ai fait lors de mes premières tentatives (oh, si j&#8217;avais su&#8230;).<br/>
+L&#8217;outil incontournable c&#8217;est le <a href="http://forum.xda-developers.com/showthread.php?t=1604677">All-in-one toolkit for HTC One S</a>, très bien documenté un peu partout sur le web.<br/>
+Seul élément qui m&#8217;a posé problème c&#8217;est l&#8217;installation du Recovery, pour une raison que j&#8217;ignore seul TWRP est fonctionnel (CWM ne démarrait pas sur mon appareil). Oh et si vous avez des difficultés pour faire reconnaître votre appareil : mettez-vous en mode stockage USB, et activez le déboggage.</p>
+
+<p>Hop, un saut dans le temps et vous voila avec votre terminal déverrouillé, direction la ligne de commande pour la suite.</p>
+
+<h2>adb shell push kamoulox flash recovery</h2>
+
+<p>Démarrez votre terminal en recovery, téléchargez les <a href="http://ville.giev.de/?cat=8">images CM9 à jour</a> et copiez-les sur le téléphone avec un <code>adb push mon_zip.zip /sdcard</code>, facile, non ? Utilisez ensuite le menu de votre Recovery pour installer les .zip.<br/>
+Il faut ensuite flasher le <code>boot.img</code>, soit le noyau de votre linux embarqué (qui va charger les drivers pour le matériel par exemple) : <code>fastboot flash boot boot.img</code>.</p>
+
+<p>On pense bien à vider le cache et le cache dalvik et on redémarre&#8230; et oh magie CID (la mascotte) est bien là, sur son fond clignotant. Il a clignoté un bail dans mon cas. A vrai dire il a tellement clignoté que je me croyais en boite de nuit&#8230; bref : BOOT LOOP !!!<br/>
+Une boot loop c&#8217;est une installation mal faite ou buggée qui n&#8217;arrive pas à se lancer et tourne en boucle&#8230; Arf !<br/>
+Après quelques recherches, flash, recherches, une solution : démarrer en recovery et faire un Factory reset.</p>
+
+<p>Bien, le téléphone démarre enfin sur la ROM, tout à l&#8217;air parfait (et fluide !). &#8220;You can now unmout sdcard&#8221;. Wat ? Mon cher CM9 ne reconnaît donc pas le stockage interne du téléphone. Me voila de retour en recovry, Factory reset, reboot, idem, Factory reset, idem, flash, idem&#8230; et puis le lendemain matin la révélation : je démarre mon terminal, pas de sdcard bla bla, un petit tour dans <code>Settings &gt; Backup &amp; reset &gt; Factory data reset</code> et hop, mon téléphone redémarre et reconnait sa sdcard !</p>
+
+<h3>Nous raconte pas ta vie !</h3>
+
+<p>Pour résumer :<br/>
+* Installer CM9 depuis la Recovery<br/>
+* Démarrer une première fois. Si boot loop alors retour en Recovery et Factory reset<br/>
+* Android se lance correctement, si problème de sdcard non reconnue : <code>Settings &gt; Backup &amp; reset &gt; Factory data reset</code></p>
+
+<h2>&#8220;J&#8217;ai tout pêté, ça marche plus, je pleure&#8230;&#8221;</h2>
+
+<p>Si jamais vous vous trouvez dans une impasse avec un sytème qui ne démarre plus sa ROM, vous pouvez vous en sortir en suivant <a href="http://www.htconeforum.com/forum/htc-one-s-hacks/389-how-unbrick-restore-your-htc-one-s-back-100-stock-relocked.html">ces explications</a>. Comme indiqué dans le tutoriel, vous allez avoir besoin d&#8217;une &#8220;RUU&#8221;, c&#8217;est à dire de la ROM officielle du constructeur. Chaque ROM dépend de votre opérateur et de votre version Radio (les chiffres affichés dans le meu du bootloader). Un seul endroit pour trouver votre bonheur : <a href="http://forum.xda-developers.com/showthread.php?t=1543588">ce post sur le forum xda</a>, fouillez bien les réponses car certains membres donnent des liens de téléchargement alternatifs.</p>
+
+<p><strong> De manière générale, documentez-vous bien avant de bidouiller les outils, pour éviter de vous planter&#8230; et surtout pour apprendre un maximum sur cet univers passionnant :) </strong></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tym</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-16T23:02:00+00:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/tymproject/blog/categories/mobile/'>mobile</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://TymProject.github.com/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/" data-via="" data-counturl="http://TymProject.github.com/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/" title="Previous Post: Flux RSS : idées de lecture et méthodes de gestion">&laquo; Flux RSS : idées de lecture et méthodes de gestion</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/02/14/ameliorer-son-debit-internet/">Naviguer plus vite sur internet, améliorer son débit ? C'est possible !</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TymProject.github.com/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/';
+        var disqus_url = 'http://TymProject.github.com/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

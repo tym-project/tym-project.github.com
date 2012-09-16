@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: x64 | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/x64/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Installer Google Gears sous Linux 64 bits]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/06/10/installer-google-gears-sous-linux-64-bits/"/>
+    <updated>2009-06-10T14:03:14+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/06/10/installer-google-gears-sous-linux-64-bits</id>
+    <content type="html"><![CDATA[<p>Le 32 bits c'est bien, le 64 bits c'est mieux ! Oui mais parfois (souvent ?)
+les applications ne sont pas gérées sur une architecture 64 bits. C'est par
+exemple le cas de Google Gears qui permet de stocker sur votre machine des
+éléments "en ligne" (e-mails, flux rss...). Un Linuxien avisé s'est attelé à
+la compilation de cette application en 64 bits, <a href="http://nielspeen.com/blog/2009/02/google-gears-64-bit/">c'est ici</a> !</p>
+
+<p>Bonne installation ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: log | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/log/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Monitorer une application sous Linux]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/07/17/monitorer-une-application-sous-linux/"/>
+    <updated>2009-07-17T14:32:33+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/07/17/monitorer-une-application-sous-linux</id>
+    <content type="html"><![CDATA[<p>Il peut être très utile de vérifier l'état d'une application à intervalles
+réguliers : mon serveur de streaming est-il opérationnel, mon tunnel ssh est-
+il encore ouvert ?... Mais comment faire quand le service en question ne
+propose pas de moyen "natif" de vérifier ces infos ?</p>
+
+<!-- more -->
+
+
+<p>Pour ma part j'utilise un simple script bash et <code>[man]crontab[/man]</code> pour la
+planification. Dans l'exemple je vais vérifier que mon serveur de streaming
+fonctionne bien, soit quand vlc n'inscrit pas "video server down" dans son log
+(exemple tout à fait fictif) :
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;VLC_LOG<span class="o">=</span><span class="s2">&quot;/var/log/vlc.log&quot;</span>
+</span><span class='line'><span class="nv">ERROR_LOG</span><span class="o">=</span><span class="s2">&quot;/var/log/vlc_error.log&quot;</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;if tail -500 <span class="nv">$VLC_LOG</span> | grep <span class="s1">&#39;video server down&#39;</span>; <span class="k">then</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;echo <span class="s2">&quot;$date Server down&quot;</span> &amp;gt;&amp;gt; <span class="nv">$LOG_FILE</span> /home/tym/vlc_server/restart
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;fi
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Ce script vérifie donc l'état du service en fonction du fichier journal. Si il
+détecte une erreur il peut (par exemple) redémarrer le service. Les
+possibilités sont quasi infinies (envoie de mail, connexion à un autre
+serveur...), la seule limitation est la capacité du service à créer un log
+suffisamment détaillé.</p>
+
+<p>Pour le planifier, utilisez <code>[man]crontab[/man] -e</code> avec une ligne dans ce
+style :</p>
+
+<pre><code>*/1 * * * * /home/tym/scripts/check_vlc
+</code></pre>
+
+<p>Si vous voulez vérifier à un intervalle inférieur à 1 minute vous pouver
+modifier le script comme suit (et ne plus utiliser cron) :
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;VLC_LOG<span class="o">=</span><span class="s2">&quot;/var/log/vlc.log&quot;</span>
+</span><span class='line'><span class="nv">ERROR_LOG</span><span class="o">=</span><span class="s2">&quot;/var/log/vlc_error.log&quot;</span>
+</span><span class='line'><span class="k">while</span> :; <span class="k">do</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;if tail -500 <span class="nv">$VLC_LOG</span> | grep <span class="s1">&#39;video server down&#39;</span>; <span class="k">then</span>
+</span><span class='line'><span class="k">    </span><span class="nb">echo</span> <span class="s2">&quot;$date Server down&quot;</span> &amp;gt;&amp;gt; <span class="nv">$LOG_FILE</span>
+</span><span class='line'>    /home/tym/vlc_server/restart
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>sleep 15
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;done
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+Bon monitoring ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

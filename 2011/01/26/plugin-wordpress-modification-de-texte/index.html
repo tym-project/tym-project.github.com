@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Créer une simple extension Wordpress - ツ Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="Si vous administrez un blog Wordpress, vous
+savez certainement qu&#8217;il existe un nombre très important d&#8217;extensions
+(plugins). De la plus &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TymProject.github.com/tymproject/2011/01/26/plugin-wordpress-modification-de-texte/">
+  <link href="/tymproject/favicon.png" rel="icon">
+  <link href="/tymproject/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/tymproject/javascripts/modernizr-2.0.js"></script>
+  <script src="/tymproject/javascripts/ender.js"></script>
+  <script src="/tymproject/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="ツ Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/tymproject/">ツ Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TymProject.github.com/tymproject" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/tymproject/">Blog</a></li>
+  <li><a href="/tymproject/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Créer Une Simple Extension Wordpress</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-26T21:07:15+00:00" pubdate data-updated="true">Jan 26<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Si vous administrez un blog Wordpress, vous
+savez certainement qu&#8217;il existe un nombre très important d&#8217;extensions
+(plugins). De la plus simple à la plus complexe, vous trouverez de tout&#8230;mais
+pas forcément ce dont vous avez besoin. Je me suis donc mis en tête de
+développer un ou deux modestes plugins pour mon usage personnel.</p>
+
+<!-- more -->
+
+
+<p>Bien qu&#8217;assez
+simple, le processus contient toutefois un ou deux pièges&#8230; Je vais vous
+présenter ici comment je génère le texte de légende en dessous des images dans
+mes articles. J&#8217;avais prévu de traduire une partie de mes articles, donc il
+est aussi &#8220;multilingue&#8221;. Concrètement il ne fait qu&#8217;afficher un texte avec la
+mise en forme définie dans la balise <code>div</code>, mais j&#8217;aurai très bien pu plutôt
+donner une classe CSS à cette dernière et l&#8217;intégrer dans le thème !
+L&#8217;extension étant (très) succincte, elle tient dans un seul fichier, voici
+comment il se décompose avec tout d&#8217;abord l&#8217;en-tête :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="cm">/* Plugin Name: Legend Er Plugin URI: http://www.tym-project.fr/blog Description: An automatic legend generator Version: 1.0</span>
+</span><span class='line'><span class="cm">Author: Tym Author URI: http://www.tym-project.fr/blog License: CC */</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Bien qu&#8217;elle soit en commentaire, elle est en fait lue par Wordpress pour
+afficher les informations dans la page de plugins. Les champs parlent d&#8217;eux-
+mêmes ! Comme mon plugin est intégré dans l&#8217;article manuellement (je ne veux
+pas forcément l&#8217;appliquer sur toutes les images par exemple), il faut définir
+un <code>Shortcode</code>. De la forme <code>[shortcode]</code> ou <code>[shortcode]...[/shortcode]</code>, il
+permet de définir où ou sur quoi doit s&#8217;appliquer l’extension. Dans mon cas je
+pourrai appeler le plugin avec <code>[legend]</code> (lié à la fonction <code>legender</code>), pas
+besoin de le fermer car il ne s&#8217;applique pas sur du texte existant :</p>
+
+<pre><code>add_shortcode('legend', 'legender');
+</code></pre>
+
+<p>Ensuite la fonction qui crée la légende en elle-même :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">function legender ($atts) {</span>
+</span><span class='line'><span class="x">    $ln=$atts[&#39;ln&#39;];</span>
+</span><span class='line'><span class="x">    if ($ln == &quot;en&quot;){</span>
+</span><span class='line'><span class="x">        return &#39;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;em&gt;(Click to zoom in)&lt;/em&gt;&lt;/div&gt;&#39;;</span>
+</span><span class='line'><span class="x">    }</span>
+</span><span class='line'><span class="x">    if ($ln == &quot;fr&quot;){</span>
+</span><span class='line'><span class="x">        return &#39;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;em&gt;(Cliquez pour agrandir)&lt;/em&gt;&lt;/div&gt;&#39;;</span>
+</span><span class='line'><span class="x">    }</span>
+</span><span class='line'><span class="x">} ?&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Elle prend donc un paramètre : <code>ln</code>, soit la langue (&#8220;fr&#8221; ou &#8220;en&#8221;) stockée
+dans un tableau clé/valeur. Je vous parlais de petits pièges, en voilà un :
+<code>$atts</code> est un passage obligé, il ne faut pas nommer cette variable autrement
+!</p>
+
+<p>Voici donc le code complet de l&#8217;extension :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="cm">/* Plugin Name: Legend Er Plugin URI: http://www.tym-project.fr/blog Description: An automatic legend generator Version: 1.0</span>
+</span><span class='line'><span class="cm">Author: Tym Author URI: http://www.tym-project.fr/blog License: CC */</span>
+</span><span class='line'><span class="nx">add_shortcode</span><span class="p">(</span><span class="s1">&#39;legend&#39;</span><span class="p">,</span> <span class="s1">&#39;legender&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">function</span> <span class="nf">legender</span> <span class="p">(</span><span class="nv">$atts</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nv">$ln</span><span class="o">=</span><span class="nv">$atts</span><span class="p">[</span><span class="s1">&#39;ln&#39;</span><span class="p">];</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$ln</span> <span class="o">==</span> <span class="s2">&quot;en&quot;</span><span class="p">){</span>
+</span><span class='line'>        <span class="k">return</span> <span class="s1">&#39;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;em&gt;(Click to zoom in)&lt;/em&gt;&lt;/div&gt;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nv">$ln</span> <span class="o">==</span><span class="s2">&quot;fr&quot;</span><span class="p">){</span>
+</span><span class='line'>        <span class="k">return</span> <span class="s1">&#39;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;em&gt;(Cliquez pour agrandir)&lt;/em&gt;&lt;/div&gt;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span> <span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>libre à vous de l&#8217;utiliser, modifier&#8230;</p>
+
+<p>Bon dev&#8217; ;-)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">tym</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-26T21:07:15+00:00" pubdate data-updated="true">Jan 26<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/tymproject/blog/categories/autres/'>Autres</a>, <a class='category' href='/tymproject/blog/categories/php/'>Php</a>, <a class='category' href='/tymproject/blog/categories/programmation-scripting/'>Programmation - Scripting</a>, <a class='category' href='/tymproject/blog/categories/wordpress-plugin/'>Wordpress plugin</a>, <a class='category' href='/tymproject/blog/categories/maison/'>maison</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://TymProject.github.com/tymproject/2011/01/26/plugin-wordpress-modification-de-texte/" data-via="" data-counturl="http://TymProject.github.com/tymproject/2011/01/26/plugin-wordpress-modification-de-texte/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tymproject/2011/01/19/microsoft-office-word-sommaire-personnalise/" title="Previous Post: Microsoft Office Word : Changer la structure d'un sommaire automatique">&laquo; Microsoft Office Word : Changer la structure d'un sommaire automatique</a>
+      
+      
+        <a class="basic-alignment right" href="/tymproject/2011/02/02/gmail-pop-plus-rapide/" title="Next Post: Gmail : raccourcir le délai de consultation des comptes externes en POP ">Gmail : raccourcir le délai de consultation des comptes externes en POP  &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/02/14/ameliorer-son-debit-internet/">Naviguer plus vite sur internet, améliorer son débit ? C'est possible !</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TymProject.github.com/tymproject/2011/01/26/plugin-wordpress-modification-de-texte/';
+        var disqus_url = 'http://TymProject.github.com/tymproject/2011/01/26/plugin-wordpress-modification-de-texte/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

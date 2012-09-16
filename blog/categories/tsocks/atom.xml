@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tsocks | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/tsocks/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Socksifier une application sous Linux]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/27/socksifier-une-application-sous-linux-2/"/>
+    <updated>2009-04-27T21:17:05+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/27/socksifier-une-application-sous-linux-2</id>
+    <content type="html"><![CDATA[<p>Si vous avez suivi <a href="http://www.tym-project.fr/blog/2009/04/installer-un-serveur-ssh-destine-au-tunneling/">cet article</a>, vous savez faire des tunnels ssh sous
+Linux. Mais que faire quand vos applications n'intègrent pas la fonctionnalité
+de proxy Socks ?<br/>
+tsocks va bien vous simplifier la vie : c'est un
+"socksifieur", une application qui fait passer tout et n'importe quoi via un
+proxy Socks. Sous Archlinux, rien de plus simple ! Commencez par installer le
+package :</p>
+
+<pre><code># pacman -S tsocks
+</code></pre>
+
+<p>Le fichier de configuration se trouve dans <code>/etc/tsocks.conf</code> (il faut le créer
+la première fois) , éditez le et configurez le selon vos besoins. Voici mes
+paramètres pour un tunnel SSH sur le port 8080 :</p>
+
+<pre><code># Adresse du serveur
+server = 127.0.0.1
+# Port du serveur
+server_port = 8080
+# Type de sereur socks, ssh fait du 5
+server_type = 5
+</code></pre>
+
+<p>Ensuite pour
+socksifier une application (Pidgin dans l'exemple) :</p>
+
+<pre><code>tsocks pidgin
+</code></pre>
+
+<p>Bon socks ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

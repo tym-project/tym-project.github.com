@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: outlook | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/outlook/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Pourquoi vous devriez vraiment passer de Outlook à Thunderbird]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/06/pourquoi-vous-devriez-vraiment-passer-de-outlook-a-thunderbird-2/"/>
+    <updated>2009-04-06T21:26:39+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/06/pourquoi-vous-devriez-vraiment-passer-de-outlook-a-thunderbird-2</id>
+    <content type="html"><![CDATA[<p>J'ai pendant très longtemps utilisé Outlook pour gérer mes e-mails et mon
+calendrier. Mais un sombre jour de mars (le même jour où j'ai foutu en l'air
+ma partition de données) j'ai dit adieu à la technologie Microsoft et bonjour
+à Thunderbird. Voici donc un comparatif des fonctionnalités dont je me servait
+sous Outlook avec les alternatives que j'utilise aujourd'hui :</p>
+
+<ul>
+<li>Récupération de mes e-mails en Pop : intégrée à Thunderbird (encore heureux !)</li>
+<li>Gestion de mon calendrier : avec <a href="https://addons.mozilla.org/fr/thunderbird/addon/2313">Lightning</a></li>
+<li>Connexion au LDAP de SUPINFO : intégrée à Thunderbird</li>
+<li>Sauvegarde de mes messages : tout est dans le dossier de profils</li>
+<li>Classer mes messages selon des règles : intégrée à Thunderbird</li>
+<li>Réduction en zone de notification : via <a href="https://addons.mozilla.org/fr/thunderbird/addon/2110">MinimizeToTray</a></li>
+</ul>
+
+
+<p>Voila pour les fonctionnalités de base. Mais Thunderbird me permet de faire
+maintenant des choses encore mieux :</p>
+
+<ul>
+<li>Mise en place d'une règle pour envoyer systématiquement les messages en CCI à mon adresse de sauvegarde (c'est possible sous Outlook, mais seulement en CC).</li>
+<li>Synchronisation de mon calendrier avec GCalendar (très pratique quand je n'ai pas accès à ma machine)</li>
+<li>Sauvegarde de TOUT mes paramètres (extensions, règles...) et ce très simplement car tout est dans un seul dossier. En plus ce dossier est utilisable indifféremment sous Linux ou Windows...le must du dual-boot !</li>
+<li>Thunderbird me semble moins lourd que Outlook, mais je n'ai pas fait de réel comparatifs</li>
+<li>Changer l'interface grâce aux très nombreux thèmes disponibles</li>
+<li>Ajouter pléthore de fonctionnalités avec des très nombreux plugins</li>
+<li>C'est un logiciel libre</li>
+</ul>
+
+
+<p>C'est donc un changement concluant, et ça ne peut que s'améliorer avec la
+sortie imminente de Thunderbird 3 !</p>
+
+<p>Bon basculement ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

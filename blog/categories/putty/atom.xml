@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: putty | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/putty/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Putty et le pavé numérique : "Argh, ça marche pas dans VI !!!"]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/05/29/putty-et-le-pave-numerique-argh-ca-marche-pas-dans-vi/"/>
+    <updated>2009-05-29T12:25:53+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/05/29/putty-et-le-pave-numerique-argh-ca-marche-pas-dans-vi</id>
+    <content type="html"><![CDATA[<p><code>[man]Vi[/man]</code> (ou <code>[man]Vim[/man]</code>) + Putty + Pavé numérique = Grosse soupe
+de caractères !</p>
+
+<p>Pou résoudre ce problème :</p>
+
+<ul>
+<li>Lancer Putty</li>
+<li>Aller dans "Terminal"</li>
+<li>Aller dans "Features"</li>
+<li>Cocher la case : "Disable application keymap mode"</li>
+</ul>
+
+
+<p>Et en images :</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/putty-keymap.png %}</p>
+
+<p>Bon chiffres ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Utiliser Putty avec l’authentification par clé rsa…“Server refused our key”]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/15/utiliser-putty-avec-le28099authentification-par-cle-rsae280a6e2809cserver-refused-our-keye2809d-2/"/>
+    <updated>2009-04-15T20:33:59+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/15/utiliser-putty-avec-le28099authentification-par-cle-rsae280a6e2809cserver-refused-our-keye2809d-2</id>
+    <content type="html"><![CDATA[<p>Il est un mystère avec <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">Putty</a> : à chaque fois que j’essaye de créer un
+couple clé publique/privée pour faire <a href="http://www.tym-project.fr/blog/2009/04/on-se-pingue-et-on-se-fait-un-tunnel-ssh-2/">ce genre de choses</a>, j’ai une
+magnifique erreur “Server refused our key”. J’ai tenté un tas de choses pour
+éviter ce souci, rien n’y fait !</p>
+
+<!-- more -->
+
+
+<p>Voici finalement la solution : Vous devez en
+fait générer le couple de clés sur une machine Linux, et pour se simplifier
+encore plus la vie, sur le serveur ssh.</p>
+
+<p>Loggez vous donc sous l’utilisateur
+cible (tym pour l’exemple) et générez un couple de clés. Pensez bien à leur
+donner un nom spécifique, vous risqueriez sinon d’écraser des clés existantes
+:</p>
+
+<pre><code>$ ssh-keygen -t rsa Generating public/private rsa keypair.
+    Enter file in which to save the key (/home/tym/.ssh/id_rsa): putty_key
+    Enter passphrase (empty for no passphrase):
+    Enter same passphrase again:
+    Your identification has been saved in putty_key.
+    Your public key has been saved in putty_key.pub.
+</code></pre>
+
+<p>Si il n’existe pas, créez le répertoire <code>~/.ssh</code> et donnez
+lui les droits adéquats :</p>
+
+<pre><code>mkdir ~/.ssh
+chmod 700 ~/.ssh
+</code></pre>
+
+<p>Ajoutez la clé publique dans la liste des clés
+autorisées :</p>
+
+<pre><code>cat putty_key.pub &gt; ~/.ssh/authorized_keys
+</code></pre>
+
+<p>et vérifiez les droits sur le fichier :</p>
+
+<pre><code>chmod 600 ~/.ssh/authorized_keys
+</code></pre>
+
+<p>A l’aide de WinSCP par exemple, copiez la clé privée sur votre machine Windows
+(une fois cela fait, supprimez bien les deux fichiers sur le serveur !).
+Utilisez alors <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuttyGen</a> pour convertir la clé privée au format
+PuttyPrivateKey (.ppk).</p>
+
+<p>Ouvrez le logiciel et cliquez sur “Import key” dans le menu “Conversions” :</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/putty1.png %}</p>
+
+<p>Choisissez alors la clé privée (putty_key dans l’exemple et validez), vous verrez alors votre
+clé à l’écran, vous pouvez cliquer sur “Save private key” pour la sauvegarder
+au format .ppk :</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/putty2.png %}</p>
+
+<p>Votre clé est maintenant utilisable depuis Putty pour vous logger sur votre
+serveur Linux !</p>
+
+<p>Bonne conversion ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Putty Tray, THE utilitaire de SSH sous Windows !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/09/putty-tray-the-utilitaire-de-ssh-sous-windows-2/"/>
+    <updated>2009-04-09T21:39:12+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/09/putty-tray-the-utilitaire-de-ssh-sous-windows-2</id>
+    <content type="html"><![CDATA[<p>J'utilise très souvent PuTTY pour faire des tunnels ssh (je vous en
+reparlerais bientôt) afin de sécuriser un minimum ma connexion.Inconvénient
+majeur : Putty ne se réduit pas en zone de notification, et j'ai donc toujours
+une fenêtre de terminal qui traîne dans ma barre des tâches. Pas vraiment
+pratique !</p>
+
+<p>J'ai trouvé un utilitaire très pratique : Putty Tray. C'est un clone de Putty
+(basé sur l'original et qui suit son développement, donc toujours à jour !)
+avec de nombreuses améliorations qui permettent surtout de réduire votre
+terminal en zone de notification. Putty Tray importe automatiquement vos
+configurations depuis Putty...un must !</p>
+
+<p><a href="http://haanstra.eu/putty/">C'est ici</a>, et c'est à télécharger d'urgence !</p>
+
+<p>Bon ssh ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

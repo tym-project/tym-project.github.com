@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Archlinux | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/archlinux/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Utiliser la dernière version de "makepasswd" sous Archlinux]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/08/27/utiliser-la-derniere-version-de-makepasswd-sous-archlinux/"/>
+    <updated>2009-08-27T13:04:06+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/08/27/utiliser-la-derniere-version-de-makepasswd-sous-archlinux</id>
+    <content type="html"><![CDATA[<p>Dans cet article j'utilise <code>[man]makepasswd[/man]</code>. Mais j'ai fait
+ces manipulations sous Debian. Avec Archlinux cela se complique un peu car la
+version de <code>makepasswd</code> n'est pas identique à celle de Debian : elle ne gère
+pas le cryptage md5. Il va donc falloir faire une petite manipulation de
+derrière les fagots !</p>
+
+<p>Cela se résume en fait à utiliser le binaire de Debian sur notre Arch. Comme
+il n'existe pas "out of the box", il va falloir patcher les sources. Les
+fichiers nécessaires sont <a href="http://packages.debian.org/lenny/makepasswd">ici</a>. Il vous faut récupérer
+<code>makepasswd_1.10.orig.tar.gz</code> et <code>makepasswd_1.10-3.diff.gz</code> :</p>
+
+<pre><code>wget http://ftp.de.debian.org/debian/pool/main/m/makepasswd/makepasswd_1.10.orig.tar.gz
+wget http://ftp.de.debian.org/debian/pool/main/m/makepasswd/makepasswd_1.10-3.diff.gz
+</code></pre>
+
+<p>Il faut extraire les
+sources :</p>
+
+<pre><code>tar xzvf makepasswd_1.10.orig.tar.gz
+</code></pre>
+
+<p>puis le patch :</p>
+
+<pre><code>gunzip makepasswd_1.10-3.diff.gz
+</code></pre>
+
+<p>et enfin patcher le
+binaire de <code>makepasswd</code></p>
+
+<pre><code>patch makepasswd_1.10/makepasswd makepasswd_1.10-3.diff
+</code></pre>
+
+<p>Vous pouvez
+maintenant utiliser <code>makepasswd</code> avec l'option <code>--crypt-md5</code>, si vous avez
+installé une version antérieure il vous suffit de copier le binaire à la place
+des fichiers obsolètes.</p>
+
+<p>Bon patching ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Archlinux : pour ou contre ?]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/06/28/archlinux-pour-ou-contre/"/>
+    <updated>2009-06-28T14:21:17+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/06/28/archlinux-pour-ou-contre</id>
+    <content type="html"><![CDATA[<p>Je travaille sous Archlinux...et parfois j'ai envie de retourner sous Windows
+! <em>Pardonnez moi mon père car j'ai péché...</em></p>
+
+<p>Mais pourquoi ? Et bien voici les raisons principales :</p>
+
+<ul>
+<li>Le support de Silverlight 2 est inexistant (<a href="http://www.go-mono.com/moonlight-preview/">moonlight</a> est encore en développement)</li>
+<li>Le support de Shockwave est proche de 0 (j'en ai besoin pour une plateforme d'apprentissage)</li>
+<li>Le support de Flash est mauvais (<a href="http://www.microsoft.com/france/education/msitacademy/default.mspx">IT Academy</a> n'est pas compatible)</li>
+<li>VMWare me fait planter mon clavier</li>
+</ul>
+
+
+<p>Mais à part ces détails, je "kiffe" avec mon Linux ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Pour s'occuper pendant l'hiver : faire du Perl sous Archlinux]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/06/09/pour-soccuper-lhiver-faire-du-perl-sous-archlinux/"/>
+    <updated>2009-06-09T13:56:58+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/06/09/pour-soccuper-lhiver-faire-du-perl-sous-archlinux</id>
+    <content type="html"><![CDATA[<p>Je me suis mis en tête de mettre en place HellaSmella, une interface Web pour
+HellANzb. Une interface Web en PERL pour être précis. Une interface Web en
+PERL qui utilise le framework CATALYST. Nous avons donc l'équation suivante :
+Archlinux + Perl + Catalyst = "Ouh pinaize...je vais jamais m'en sortir...!"</p>
+
+<!-- more -->
+
+
+<p>C'est pas facile à faire, pas facile du tout car Archlinux a trop peu de
+modules Perl dans ses dépots. Comme souvent dans le monde du libre, il existe
+un outil pour palier à ce problème : <code>[man]pacpan[/man]</code>.<br/>
+C'est un
+gestionnaire de paquets pour les modules Perl, top moumoute ! Oui...mais non !
+En fait cet outil n'est pas parfait...et j'ai bien gratté pour m'en sortir (et
+encore, pas complètement...). Voici donc comment résoudre les problèmes les
+plus classiques de pacpan...</p>
+
+<p>Tout d'abord faites tout en <code>root</code>, cela vous épargnera des erreurs sur des
+fichiers non lisibles. Cela a pour conséquence de devoir rajouter une option à
+<code>makepkg</code> : <code>--asroot</code>. Si vous n'utilisez pas une installation vierge de tout
+paquet perl (ce qui est fort probablement le cas), utilisez l'option pour
+forcer les installations : <code>-f</code>. Ce qui nous donne :</p>
+
+<pre><code>./build_cpan --makepkg-args --asroot -f --pacman-args -f
+</code></pre>
+
+<p>Certains paquets sont mal configurés, et n'utilisent pas la bonne
+convention de nommage. Vous obtiendrez alors des erreurs lors de l'execution
+de la commande précédente.<br/>
+Il faut donc modifier le fichier <code>build_cpan</code>.
+Trouvez la section qui correspond au paquet récalcitrant et localisez la
+fonction <code>build()</code>. Voici les lignes qui nous intéressent :</p>
+
+<pre><code>_makefile=$(find $srcdir -iname Makefile.PL)
+[...]
+PERL_MM_USE_DEFAULT=1
+perl Makefile.PL INSTALLDIRS=vendor || return 1
+make || return 1
+make install DESTDIR=${pkgdir} || return 1
+</code></pre>
+
+<p>C'est dans
+la plupart des cas le fichier <code>Makefile.PL</code> qui est remplacé par un script :
+<code>Build</code>. Vous devez donc modifier les lignes comme suit :</p>
+
+<pre><code>_makefile=$(find $srcdir -iname Build)
+[...]
+PERL_MM_USE_DEFAULT=1
+perl Build INSTALLDIRS=vendor || return 1
+./Build || return 1 make install DESTDIR=${pkgdir} || return 1
+</code></pre>
+
+<p>Il existe surement d'autres problèmes et d'autres solutions mais j'ai jeté
+l'éponge !</p>
+
+<p>Bon "galérage" ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Créer et graver des images ISO en ligne de commande (Linux)]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/05/04/creer-et-graver-des-images-iso-en-ligne-de-commande-linux-2/"/>
+    <updated>2009-05-04T21:33:45+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/05/04/creer-et-graver-des-images-iso-en-ligne-de-commande-linux-2</id>
+    <content type="html"><![CDATA[<p>Ce que j'aime dans mon Linux c'est la CLI (Command Line Interface) car c'est
+rapide et pratique ! Il est même possible de créer des images iso sans
+interface graphique. Vous pouvez aussi bien entendu graver ces mêmes iso en
+ligne de commande. Et c'est pour moi la seule utilité de mon graveur ! Voici
+donc comment procéder.</p>
+
+<p>Tout d'abord la création de l'image. Nous allons utiliser <code>[man]dd[/man]</code>, un
+utilitaire de gestion des disques (en très gros, plus d'informations <a href="http://fr.wikipedia.org/wiki/Dd_(Unix)">ici</a>)
+:</p>
+
+<pre><code>$ dd if=/dev/sr0 of=image.iso
+</code></pre>
+
+<p>Et
+voila ! Qui a dit que c'était complexe ? Avec <code>if=</code> on définit le périphérique
+d'entrée, <code>of=</code> la sortie.</p>
+
+<p>Pour graver cette image nous allons utiliser <code>[man]wodim[/man]</code> (dans le
+package <code>cdrkit</code> dans Archlinux). Attention les yeux :</p>
+
+<pre><code># wodim image.iso
+</code></pre>
+
+<p>J'ai pas encore trouvé plus simple et
+plus léger...</p>
+
+<p>Bonne gravure ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cet article peut gravement nuire à Windows !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/20/cet-article-peut-gravement-nuire-a-windows-2/"/>
+    <updated>2009-04-20T21:08:07+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/20/cet-article-peut-gravement-nuire-a-windows-2</id>
+    <content type="html"><![CDATA[<p>Je travaille sous Windows depuis...longtemps (toujours en fait !). J'ai bien
+tenté des passages sous Linux (Debian, Ubuntu, Gentoo...) mais sans succès,
+j'ai toujours rencontré un problème "ennuyeux" (Ubuntu trop lourd, Debian pas
+assez à jour...). Mais tout cela est bel et bien finit !Je suis passé sous
+<a href="http://www.archlinux.org/">Archlinux</a>, à mon sens une très bonne distribution pour une utilisation de
+tout les jours.</p>
+
+<p>C'est léger, mais surtout vous avez à disposition les dernières versions des
+logiciels. On est loin des 4 ans de test chez Debian, mais c'est très pratique
+pour installer des pilotes récents par exemple !</p>
+
+<p>Rien de mieux que <a href="http://archlinux.fr/">le site officiel en français</a> pour plus d'informations !</p>
+
+<p>Bonne installation ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

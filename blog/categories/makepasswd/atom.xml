@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: makepasswd | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/makepasswd/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Utiliser la dernière version de "makepasswd" sous Archlinux]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/08/27/utiliser-la-derniere-version-de-makepasswd-sous-archlinux/"/>
+    <updated>2009-08-27T13:04:06+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/08/27/utiliser-la-derniere-version-de-makepasswd-sous-archlinux</id>
+    <content type="html"><![CDATA[<p>Dans cet article j'utilise <code>[man]makepasswd[/man]</code>. Mais j'ai fait
+ces manipulations sous Debian. Avec Archlinux cela se complique un peu car la
+version de <code>makepasswd</code> n'est pas identique à celle de Debian : elle ne gère
+pas le cryptage md5. Il va donc falloir faire une petite manipulation de
+derrière les fagots !</p>
+
+<p>Cela se résume en fait à utiliser le binaire de Debian sur notre Arch. Comme
+il n'existe pas "out of the box", il va falloir patcher les sources. Les
+fichiers nécessaires sont <a href="http://packages.debian.org/lenny/makepasswd">ici</a>. Il vous faut récupérer
+<code>makepasswd_1.10.orig.tar.gz</code> et <code>makepasswd_1.10-3.diff.gz</code> :</p>
+
+<pre><code>wget http://ftp.de.debian.org/debian/pool/main/m/makepasswd/makepasswd_1.10.orig.tar.gz
+wget http://ftp.de.debian.org/debian/pool/main/m/makepasswd/makepasswd_1.10-3.diff.gz
+</code></pre>
+
+<p>Il faut extraire les
+sources :</p>
+
+<pre><code>tar xzvf makepasswd_1.10.orig.tar.gz
+</code></pre>
+
+<p>puis le patch :</p>
+
+<pre><code>gunzip makepasswd_1.10-3.diff.gz
+</code></pre>
+
+<p>et enfin patcher le
+binaire de <code>makepasswd</code></p>
+
+<pre><code>patch makepasswd_1.10/makepasswd makepasswd_1.10-3.diff
+</code></pre>
+
+<p>Vous pouvez
+maintenant utiliser <code>makepasswd</code> avec l'option <code>--crypt-md5</code>, si vous avez
+installé une version antérieure il vous suffit de copier le binaire à la place
+des fichiers obsolètes.</p>
+
+<p>Bon patching ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

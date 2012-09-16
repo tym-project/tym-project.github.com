@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: cinéma | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/cinéma/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA["Chéri, y'a quoi a la TV ce soir ?"]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/07/29/cheri-ya-quoi-a-la-tv-ce-soir/"/>
+    <updated>2009-07-29T13:47:33+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/07/29/cheri-ya-quoi-a-la-tv-ce-soir</id>
+    <content type="html"><![CDATA[<p>"Rien, ce soir on loue un dévédéraum !" "Oui, mais quoi ? J'ai pas vraiment
+d'idées..." "Oh bah on va faire un tour sur <a href="http://www.clerkdogs.com">ClerkDogs</a> !" "Ah oui pas
+bête, t'es vraiment trop fort mon chéri !" "Oui, Level 98 sur Diablo 2 !"</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: indenti.ca | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/indenti-ca/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Un twitter à la sauce GPL]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/05/17/un-twitter-a-la-sauce-gpl/"/>
+    <updated>2009-05-17T12:33:37+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/05/17/un-twitter-a-la-sauce-gpl</id>
+    <content type="html"><![CDATA[<p>GPL pour General Public Licence, twitter...pour twitter. Si vous ne connaissez
+pas <a href="http://twitter.com/">Twitter</a>, la nouvelle mode du Web 2.0, c'est un sytème de "micro
+blogging". Vous pouvez diffuser sur votre page des messages, de 140 caractères
+maximum, pour informer vos "followers" (fans, abonnés) :</p>
+
+<ul>
+<li>"Je mange des pommes, saybon mangay des pommes !"</li>
+<li>"Mon serveur est down, je raaaaame !!!"</li>
+<li>...</li>
+</ul>
+
+
+<p>Je suis tombé par hasard sur <a href="http://www.tym-project.fr/blog/2009/05/un-twitter-a-la-sauce-gpl">identi.ca</a> (Identica), un clone de Twitter,
+orienté vers le monde du libre :</p>
+
+<p><em>"identi.ca is an <a href="http://opendefinition.org/ossd">Open Network Service</a>. Our main goal is to provide a
+fair and transparent service that preserves users' autonomy. In particular,
+all the software used for Identi.ca is <a href="http://en.wikipedia.org/wiki/Free_Software">Free Software</a>, and all the data is
+available under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a> license, making it
+Open Data."</em></p>
+
+<p>Moi je dis pourquoi pas et je vais tenter l'expérience. Vous pourrez donc
+suivre <a href="http://identi.ca/thomasdesor">ma vie tout à fait passionnante ici</a> !</p>
+
+<p>Bon pseudo-tweet-à-la-sauce-open ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

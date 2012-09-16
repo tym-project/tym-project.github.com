@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Debug | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/debug/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Android : perte du signal 3g après activation du GPS]]></title>
+    <link href="http://TymProject.github.com/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/"/>
+    <updated>2012-03-24T19:04:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2012/03/24/android-perte-signal-3g-avec-gps</id>
+    <content type="html"><![CDATA[<p>Android c'est super, Google Navigation encore plus. Sauf quand ça plante. Surtout en voiture, paumé au milieu de la cambrouse...<br/>
+Oh j'ai la solution, mais laissez moi vous raconter...</p>
+
+<!-- more -->
+
+
+<h2>Vous avez dit "stressant" ?</h2>
+
+<p>Le problème est donc le suivant :</p>
+
+<ul>
+<li>Mon téléphone est connecté en 3g (ou Edge, peut importe), tout va bien</li>
+<li>Je lance Google Navigation, tout va bien</li>
+<li>Je choisis ma destination, tout va bien</li>
+<li>L'icône du GPS s'affiche dans la barre d'état, je perd la connection data !</li>
+</ul>
+
+
+<p>Frustration et énervement, le seul moyen que j'avais trouvé pour pouvoir retrouver une connexion data était de couper/réactiver la connectivité de mon mobile.<br/>
+En bref, le fait d'allumer le module GPS (y compris dans Facebook ou toute autre application de localisation) avait pour conséquence facheuse de me faire perdre toute connectivité 3g.</p>
+
+<h2>Google est ton ami... mais ça suffit pas toujours</h2>
+
+<p>La miracle se trouve evidemment sur l'interweb, faut-il encore comprendre ce qui y est expliqué. Il est donc question d'APN, soit "Appareil Photo Numérique" en français. Oui, rien à voir avec le sujet !<br/>
+Recherche recherche... ah ! Eureka ! APN c'est en fait "Access Point Name", soit les points d'accès réseau.</p>
+
+<p>Le bug en question fait que si vous avez plus de un "APN" dans la fameuse liste, activer le GPS fait perdre les pédales à votre terminal et il est incapable de retrouver sa connectivité d'origine.</p>
+
+<h2>Bon, tu la donne la solution ou quoi ?!</h2>
+
+<p>Hop, un petit tour dans <code>Paramètres&gt;Sans fil et réseaux&gt;Réseaux mobiles&gt;Noms des points d'accès</code>, faites un peu de ménage pour arriver au résultat suivant (le nom va bien entendu varier en fonction de votre opérateur adoré) :</p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/pics.tym-project.fr/2012-1/2012-01-28+17.38.42.png"></p>
+
+<p>On garde donc le minimum : l'accès données et l'accès MMS (qui sont deux chose bien différentes).</p>
+
+<p>Allez, votre calvaire est terminé, finit la crise de nerf ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

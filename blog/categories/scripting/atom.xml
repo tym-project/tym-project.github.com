@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: scripting | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/scripting/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Automatiser la création ou l'édition d'un crontab]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab/"/>
+    <updated>2010-08-04T12:00:34+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab</id>
+    <content type="html"><![CDATA[<p>Crontab est un outil extrêmement pratique
+servant à planifier l'exécution des tâches/commandes. Habituellement il se
+gère via la commande <code>[man]crontab[/man]</code> : <code>crontab -e</code> pour éditer, <code>crontab
+-l</code> pour lister...et d'autres encore. <code>crontab -u user -l</code> permet de lister
+pour l'utilisateur en question. Mais comment faire pour scripter la création
+ou la modification d'une ligne dans un crontab ?</p>
+
+<!-- more -->
+
+
+<p>Tout se passe en fait dans le
+répertoire <code>/var/spool/cron/crontabs</code> :</p>
+
+<pre><code>root@Server:~# ls -l /var/spool/cron/crontabs/ total 8
+-rw------- 1 root crontab 294 2010-07-12 19:54 root
+-rw------- 1 server crontab 264 2010-07-24 10:54 server
+</code></pre>
+
+<h2>Ajouter un crontab</h2>
+
+<p>Partons du principe que je veux ajouter un crontab pour l'utilisateur "tym"
+via un script. Il va donc falloir que je crée le fichier
+<code>/var/spool/cron/crontabs/tym</code>, oui mais que faire si il existe déjà ? On va
+se compliquer un peu la vie, mais vous allez comprendre pourquoi :
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;CRONTAB<span class="o">=</span><span class="s2">&quot;/var/spool/cron/crontabs/tym&quot;</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;if ! <span class="o">[</span> -e <span class="nv">$CRONTAB</span> <span class="o">]</span>;<span class="k">then</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;touch <span class="nv">$CRONTAB</span>
+</span><span class='line'>chown tym:crontab <span class="nv">$CRONTAB</span>
+</span><span class='line'>chmod 600 <span class="nv">$CRONTAB</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;fi
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Comme vous pouvez le voir, on modifie les droits sur
+le fichier que lorsqu'il faut créer. Pour ajouter une tâche, rien de plus
+simple :</p>
+
+<pre><code>echo '*/1 * * * * /home/tym/scripts/mon_script' &gt;&gt; $CRONTAB
+</code></pre>
+
+<p>Attention à la syntaxe
+car ici pas de vérifications via la commande <code>crontab</code> !</p>
+
+<h2>Modifier une ligne de crontab</h2>
+
+<p>Je veux modifier la ligne que je viens de créer dans le crontab de "tym", en
+faisant plutôt exécuter <code>/home/tym/scripts/mon_second_script</code> :
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>lang: bash </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>!/bin/bash&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>CRONTAB="/var/spool/cron/crontabs/tym"&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>OLD="\/home\/tym\/scripts\/mon_script"
+</span><span class='line'>NEW="\/home\/tym\/scripts\/mon_second_script"&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>sed "s/$OLD/$NEW/" $CRONTAB > /tmp/buffer &amp;&amp; cat /tmp/buffer > $CRONTAB</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Et hop, l'affaire est pliée ! Notez l'utilisation des "\/" pour protéger les
+"/" dans le sed.</p>
+
+<p>Bonne planification ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: css | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/css/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Wordpress : ne plus avoir de texte qui déborde avec la balise "pre"]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/11/17/wordpress-ne-plus-avoir-de-texte-qui-deborde-avec-la-balise-pre/"/>
+    <updated>2009-11-17T12:35:53+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/11/17/wordpress-ne-plus-avoir-de-texte-qui-deborde-avec-la-balise-pre</id>
+    <content type="html"><![CDATA[<p>J'utilise énormément la balise <code>pre</code>, qui
+permet d'afficher du code (scripts...) de manière lisible et surtout détachée
+du texte. Mais cette méthode à un inconvénient majeur : si la ligne est trop
+longue elle va tout simplement dépasser du "cadre", et aller baver sur le menu
+de droite par exemple. Il existe une petite astuce en CSS pour résoudre ce
+problème, attention les yeux... Vous devez utiliser le code suivant :
+{% codeblock lang:css %}
+white-space: pre-wrap;
+/<em> css-3 </em>/
+white-space: -moz-pre-wrap !important;
+/<em> Mozilla, since 1999 </em>/
+white-space: -pre-wrap;
+/<em> Opera 4-6 </em>/
+white-space: -o-pre-wrap;
+/<em> Opera 7 </em>/
+word-wrap: break-word;
+/<em> Internet Explorer 5.5+ </em>/
+{% endcodeblock %}
+Après modification, au lieu de ça :</p>
+
+<pre><code>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et molestie sapien. Aliquam vel felis in massa bibendum iaculis sit amet nec tortor. 
+</code></pre>
+
+<p>Vous aurez ça :</p>
+
+<pre><code>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et molestie sapien. Aliquam vel felis in massa bibendum iaculis sit amet nec tortor. 
+</code></pre>
+
+<p><em>Comme je ne suis lpus sur Wordpress, l'exemple n'est plus du tout parlant... sorry !</em></p>
+
+<p>Bon CSS ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

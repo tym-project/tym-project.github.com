@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rsync | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/rsync/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rsync, le protocole qui adore sauvegarder !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/07/15/rsync-le-protocole-qui-adore-sauvegarder/"/>
+    <updated>2009-07-15T14:27:43+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/07/15/rsync-le-protocole-qui-adore-sauvegarder</id>
+    <content type="html"><![CDATA[<p>J'aime la sauvegarde ! Oui j'assume, je suis un boulet de la surpression
+(parfois <a href="http://www.tym-project.fr/blog/2009/04/installez-votre-windows-xp-en-le-rendant-indestructible-2/">Windows me file un coup de pouce</a> aussi...), alors il faut que je
+mette de coté mes données importantes à intervalles réguliers. Pour faire cela
+j'utilise <code>[man]rsync[/man]</code>.</p>
+
+<!-- more -->
+
+
+<p>C'est un protocole de synchronisation, mais je
+l'utilise surtout en mode unidirectionnel. Sa grande force c'est de proposer
+une copie "intelligente" : il ne transfère que ce qu'il n'a pas encore
+sauvegardé. En pratique cela veux dire que si vous travaillez sur des fichiers
+de petite taille (en dévellopement par exemple), vos sauvegardes seront quasi
+instantanées, passé la première (forcément plus longue). Par souci de
+confidentialité, <code>[man]rsync[/man]</code> peut utiliser <code>[man]ssh[/man]</code> pour
+communiquer avec le serveur. C'est bien entendu la méthode que je vais vous
+montrer.</p>
+
+<p>Avant tout vous devez mettre en place un serveur <code>[man]ssh[/man]</code> qui utilise
+des certificats. Vous pouvez suivre <a href="http://www.tym-project.fr/blog/2009/04/installer-un-serveur-ssh-destine-au-tunneling/">ce tutoriel</a> (en omettant toute la
+partie "limitation" des accès). Comme nous utilisons un tunnel SSH, nous
+n'allons pas utiliser la fonction serveur de <code>[man]rsync[/man]</code>. En fait c'est
+comme si le client et le serveur n'était qu'une seule et même machine. Il faut
+donc simplement installer le client rsync sur le serveur (allez un effort,
+relisez cette phrase, ça va aller...). Pour Debian :</p>
+
+<pre><code>apt-get update
+apt-get install rsync
+</code></pre>
+
+<p>Pour Archlinux :</p>
+
+<pre><code>pacman -Sy rsync
+</code></pre>
+
+<p>Et...voila !</p>
+
+<p>Vous pouvez créer un répertoire pour accueillir vos sauvegardes sur le
+serveur, idéalement dans votre <code>home</code> (cela simplifiera les commandes coté
+client) :</p>
+
+<pre><code>mkdir ~/save
+</code></pre>
+
+<p>Et voici un
+exemple de commande pour sauvegarder un répertoire :</p>
+
+<pre><code>rsync -avvz -e "ssh -p 443" /home/tym/myprojects my-server.com:save
+</code></pre>
+
+<p>L'option <code>a</code> pour archiver (sauvegarder sans
+synchroniser), <code>z</code> pour compresser et <code>vv</code> (verbose) pour avoir plus d'infos
+sur ce qui se passe.</p>
+
+<p>Bonne synchro ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

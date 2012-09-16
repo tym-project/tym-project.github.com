@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Faire des captures d'écran en ligne de commande (Linux) - ツ Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="Dans la lignée de cet article, voici comment vous simplifier la vie pour
+faire des screenshots. Tout d&#8217;abord une commande incluse par défaut, [ &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TymProject.github.com/tymproject/2009/05/07/faire-des-captures-decran-en-ligne-de-commande-linux/">
+  <link href="/tymproject/favicon.png" rel="icon">
+  <link href="/tymproject/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/tymproject/javascripts/modernizr-2.0.js"></script>
+  <script src="/tymproject/javascripts/ender.js"></script>
+  <script src="/tymproject/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="ツ Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/tymproject/">ツ Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TymProject.github.com/tymproject" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/tymproject/">Blog</a></li>
+  <li><a href="/tymproject/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Faire Des Captures D'écran en Ligne De Commande (Linux)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-07T12:12:08+00:00" pubdate data-updated="true">May 7<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Dans la lignée de <a href="http://www.tym-project.fr/blog/2009/05/creer-et-graver-des-images-iso-en-ligne-de-commande-linux/">cet article</a>, voici comment vous simplifier la vie pour
+faire des screenshots.</p>
+
+<p>Tout d&#8217;abord une commande incluse par défaut, <code>[man]import[/man]</code>. Comme vous
+allez capturer des images, il vous faut aussi le petit programme
+<code>[man]feh[/man]</code> :</p>
+
+<pre><code># pacman -Sy feh
+</code></pre>
+
+<p>Ensuite pour faire une capture :</p>
+
+<pre><code>import fichier_de_sortie.png
+</code></pre>
+
+<p>Pour voir toutes les options disponibles,
+utilisez <code>man import</code>. <code>[man]import[/man]</code> me pose parfois des soucis, c&#8217;est
+pourquoi j&#8217;utilise plus souvent <code>[man]scrot[/man]</code> :</p>
+
+<pre><code># pacman -Sy scrot
+</code></pre>
+
+<p>Pour prendre une capture dans 5
+secondes et générer aussi une miniature de 80% de la taille de la capture :</p>
+
+<pre><code>scrot -d 5 -t 80 fichier_de_sortie.png
+</code></pre>
+
+<p>Bonnes captures ;-)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">tym</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-07T12:12:08+00:00" pubdate data-updated="true">May 7<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/tymproject/blog/categories/linux/'>Linux</a>, <a class='category' href='/tymproject/blog/categories/moi-je/'>Moi je</a>, <a class='category' href='/tymproject/blog/categories/capture/'>capture</a>, <a class='category' href='/tymproject/blog/categories/screenshot/'>screenshot</a>, <a class='category' href='/tymproject/blog/categories/scrot/'>scrot</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://TymProject.github.com/tymproject/2009/05/07/faire-des-captures-decran-en-ligne-de-commande-linux/" data-via="" data-counturl="http://TymProject.github.com/tymproject/2009/05/07/faire-des-captures-decran-en-ligne-de-commande-linux/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tymproject/2009/05/04/creer-et-graver-des-images-iso-en-ligne-de-commande-linux-2/" title="Previous Post: Créer et graver des images ISO en ligne de commande (Linux)">&laquo; Créer et graver des images ISO en ligne de commande (Linux)</a>
+      
+      
+        <a class="basic-alignment right" href="/tymproject/2009/05/09/generer-des-mots-de-passe-sous-linux/" title="Next Post: Générer des mots de passe sous Linux">Générer des mots de passe sous Linux &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/02/14/ameliorer-son-debit-internet/">Naviguer plus vite sur internet, améliorer son débit ? C'est possible !</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TymProject.github.com/tymproject/2009/05/07/faire-des-captures-decran-en-ligne-de-commande-linux/';
+        var disqus_url = 'http://TymProject.github.com/tymproject/2009/05/07/faire-des-captures-decran-en-ligne-de-commande-linux/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

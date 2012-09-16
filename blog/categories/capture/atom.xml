@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: capture | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/capture/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Faire des captures d'écran en ligne de commande (Linux)]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/05/07/faire-des-captures-decran-en-ligne-de-commande-linux/"/>
+    <updated>2009-05-07T12:12:08+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/05/07/faire-des-captures-decran-en-ligne-de-commande-linux</id>
+    <content type="html"><![CDATA[<p>Dans la lignée de <a href="http://www.tym-project.fr/blog/2009/05/creer-et-graver-des-images-iso-en-ligne-de-commande-linux/">cet article</a>, voici comment vous simplifier la vie pour
+faire des screenshots.</p>
+
+<p>Tout d'abord une commande incluse par défaut, <code>[man]import[/man]</code>. Comme vous
+allez capturer des images, il vous faut aussi le petit programme
+<code>[man]feh[/man]</code> :</p>
+
+<pre><code># pacman -Sy feh
+</code></pre>
+
+<p>Ensuite pour faire une capture :</p>
+
+<pre><code>import fichier_de_sortie.png
+</code></pre>
+
+<p>Pour voir toutes les options disponibles,
+utilisez <code>man import</code>. <code>[man]import[/man]</code> me pose parfois des soucis, c'est
+pourquoi j'utilise plus souvent <code>[man]scrot[/man]</code> :</p>
+
+<pre><code># pacman -Sy scrot
+</code></pre>
+
+<p>Pour prendre une capture dans 5
+secondes et générer aussi une miniature de 80% de la taille de la capture :</p>
+
+<pre><code>scrot -d 5 -t 80 fichier_de_sortie.png
+</code></pre>
+
+<p>Bonnes captures ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

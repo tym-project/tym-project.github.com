@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: nvidia-current | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/nvidia-current/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu : réparer les drivers Nvidia pour un nouveau noyau]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu/"/>
+    <updated>2010-11-10T15:48:15+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu</id>
+    <content type="html"><![CDATA[<p>J'utilise de plus en plus Ubuntu, en particulier
+sur mon media-center (avec Xbmc). Mais je recontre très souvent le même
+problème : quand je met à jour mon noyau (via apt), je suis sûr à 100% de voir
+mon serveur X crasher au reboot. L'explication est toute simple, cela vient de
+ma carte graphique (Nvidia) qui fonctionne graĉe à des modules... spécifiques à
+chaque noyau (comme tous les modules). J'ai donc mis en place un processus
+pour éviter de devoir réinstaller manuellement les drivers en cas de mise à
+jour.</p>
+
+<!-- more -->
+
+
+<p>Le principe du script est relativement simple : au boot, il vérifie si X
+est lancé correctement. Si ce n'est pas le cas il lance alors la
+réinstallation des drivers (moyen simple de forcer la compilation des
+modules)... et puis c'est tout ! Voici le code :</p>
+
+<pre><code>#!/bin/bash
+sleep 30
+PATH=$PATH":/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+if ! ps aux | grep -v grep | grep /usr/bin/X &gt; /dev/null;then
+    echo "######### UPDATING Nvidia Module, do NOT reboot!!! ###########"
+    apt-get -y update
+    apt-get -y install linux-headers-`uname -r`
+    apt-get -y remove --purge nvidia-current
+    apt-get -y install nvidia-current
+    echo "######### Done, rebooting in 5s ###########"
+    sleep 5
+    reboot
+fi
+</code></pre>
+
+<p>Le script commence par dormir
+quelques secondes car en réalité, même en cas de plantage, X se lance quelques
+secondes avant de se couper. Il est bien entendu possible d'améliorer cette
+vérification avec une boucle... mais cela en vaut-il vraiment la peine ? :-)
+Nvidia ayant besoin des sources du noyau pour compiler, je les installe en
+fonction du kernel en cours d'utilisation.</p>
+
+<p>La planification du script se fait bien entendu via [man]crontab[/man]. Afin
+d'avoir une information visuelle sur le déroulement, je redirige la sortie
+standard vers <code>/dev/tty1</code>. C'est tout simplement la première console, celle
+disponible en cas de plantage :</p>
+
+<pre><code>#m h dom mon dow command
+@reboot /home/server/check_nvidia &gt; /dev/tty1 [/code]
+</code></pre>
+
+<p>Bonne réparation ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

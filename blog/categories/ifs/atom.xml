@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ifs | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/ifs/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Comment lire un fichier formatté sous Linux]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/11/comment-lire-un-fichier-formatte-sous-linux-2/"/>
+    <updated>2009-04-11T09:28:33+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/11/comment-lire-un-fichier-formatte-sous-linux-2</id>
+    <content type="html"><![CDATA[<p>Imaginons que vous ayiez un fichier <code>names</code> sous la forme suivante :</p>
+
+<pre><code>Thomas:Tym Kitty:Hello Kitty
+</code></pre>
+
+<p>Vous voulez afficher à
+l'écran <code>Votre nom est XXXX, vous avez YYYY comme pseudo !</code>. Rien de plus
+simple grâce à <code>IFS</code> (dans un script) :
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">while </span><span class="nv">IFS</span><span class="o">=</span>: <span class="nb">read </span>NAME NICKNAME <span class="k">do</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;echo <span class="s2">&quot;Votre nom est $NAME, vous avez $NICKNAME comme pseudo !&quot;</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;done &amp;lt; <span class="nv">$FILE</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+Cela mérite quelques
+explications ! Le <code>while</code> permet de parcourir tout le fichier (sinon on ne
+lirait qu'une seule ligne), <code>IFS=[séparateur]</code>(ici "<code>:</code>", donc <code>IFS=:</code>) puis
+le nom des variables à assigner aux champs.</p>
+
+<p>Bon bash ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

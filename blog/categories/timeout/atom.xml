@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: timeout | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/timeout/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Pathping : le ping mutant en traceroute !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/09/21/pathping-le-ping-mutant-en-traceroute/"/>
+    <updated>2009-09-21T08:07:44+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/09/21/pathping-le-ping-mutant-en-traceroute</id>
+    <content type="html"><![CDATA[<p>Pour rappel l'outil <code>[man]traceroute[/man]</code>
+permet de voir le chemin suivit par un message sur le réseau. C'est donc une
+commande très pratique pour diagnostiquer et résoudre des problèmes de
+routage.</p>
+
+<p>Vous connaissez certainement <code>ping</code> qui permet de vérifier la
+connectivité avec une machine (via le protocole ICMP). Il existe une commande
+qui rassemble ces deux éléments : <code>pathping</code>. Cet outil est disponible sous Windows
+nativement, et via certains paquets sous Linux (selon la distribution).</p>
+
+<p>Mais
+comme une image vaut mieux qu'un long discours...voici (cliquez pour agrandir)
+:</p>
+
+<p>{% img  http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-3/pathping.png %}</p>
+
+<p>Comme on peut le
+voir sur la capture, <code>pathping</code> détermine l'itinéraire suivit par le paquet,
+ainsi que le temps passé sur chaque hôte intermédiaire...pratique pour
+détecter d'éventuels points de congestion dans le réseau !</p>
+
+<p>Bon pings ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

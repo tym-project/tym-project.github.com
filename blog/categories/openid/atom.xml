@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: openid | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/openid/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[OpenID : l'authentification unifiée]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/05/19/openid-lauthentification-unifiee/"/>
+    <updated>2009-05-19T12:45:36+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/05/19/openid-lauthentification-unifiee</id>
+    <content type="html"><![CDATA[<p>OpenID c'est la petite technologie qui monte en ce moment. Pour faire simple
+cela vous permet de vous authentifier, sur les sites supportant cette
+technologie, avec le même mot de passe.Plus besoin donc de gérer plusieurs
+identifiants et mots de passe différents...tout est centralisé.</p>
+
+<p>L'avantage que je vois c'est que si vous avez l'habitude de stocker vos mots
+de passe, ce n'est plus nécessaire et donc plus sécurisé.</p>
+
+<p>L'inconvénient c'est que, une fois un site marqué comme "de confiance", vous
+pouvez vous enregistrer sur un site seulement avec votre OpenID. Plus de mots
+de passe pendant le temps où votre session est active...</p>
+
+<p><a href="http://www.tym-project.fr/blog/2009/05/un-twitter-a-la-sauce-gpl">Identica</a> fait partie des nombreux sites utilisant OpenID.</p>
+
+<p>A vous de voir, pour plus d'informations c'est<a href="http://fr.wikipedia.org/wiki/OpenID"> ici</a>.</p>
+
+<p>Bonne lecture ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

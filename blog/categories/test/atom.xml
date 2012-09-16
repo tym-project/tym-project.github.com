@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: test | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/test/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Moi, mon Kindle et moi]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/07/15/test-kindle-long-et-retour-experience/"/>
+    <updated>2011-07-15T17:50:12+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/07/15/test-kindle-long-et-retour-experience</id>
+    <content type="html"><![CDATA[<p>Je suis l'heureux possesseur d'un Amazon Kindle
+depuis 8 mois environ, et je vais donc décrire ici l'utilisation que j'en fait
+ainsi que ce que je trouve bien...et moins bien.</p>
+
+<!-- more -->
+
+
+<p>Il est question ici du Kindle
+3, modèle 3G et Wifi,<a href="http://www.amazon.com/gp/product/B003DZ1Y72?amp%3Brw_absolute=y"> en vente sur Amazon</a> au prix de 189$ (auxquels il
+faut rajouter bien entendu les frais de port et de douane). Si tant est que
+vous n'ayez pas encore entendu parler de cette objet (vous Internet dans votre
+grotte ?), voici quelques tests sympathiques en français chez <a href="http://korben.info/petit-test-du-kindle-3.html">Korben</a> ou
+chez <a href="http://gonzague.me/test-amazon-kindle-3">Gonzague</a>. Outre l'écran très lisible, j'apprécie surtout beaucoup
+les boutons <code>Page suivante</code> et <code>Page précédente</code> à l'identique des deux cotés
+de l'appareil, ce qui permet de le tenir dans tous les sens (main gauche ou
+droite, à une main ou non, par le coté ou par le bas...) et ce sans souffrir
+d'une quelconque gène...comme avec un vrai livre.</p>
+
+<h2>C'est en lisant que l'on devient...lecteur</h2>
+
+<p>Le premier moyen que j'utilise pour trouver des livres est bien entendu le
+<a href="http://www.amazon.com/kindle-store-ebooks-newspapers-blogs/b/ref=topnav_storetab_kinc?ie=UTF8&amp;node=133141011" title="Kindle Store">Kindle Store</a>. Accessible depuis un PC, mais surtout en Wifi ou 3G depuis
+le Kindle, il est très fourni en titres en anglais et je n'y ai que très
+rarement pas trouvé mon bonheur. Aujourd'hui c'est surtout pour moi un moyen
+de lire des extraits de livres, qui sont envoyés gratuitement sur le Kindle,
+très utile dans le cas de livres techniques où le fond est aussi important que
+la forme. Notez toutefois que, malgré une conversion €/$ parfois très
+avantageuse, certaines banques facturent les frais de conversion (les piles de
+calculette ça coûte cher...).</p>
+
+<p>Il existe bien entendu de nombreuses autres sources pour vous procurer
+(gratuitement ou non) des e-books, Google est votre ami. Le Kindle ne sait pas
+lire les livres au format <code>epub</code> (assez répandu), mais pas d'inquiétudes, le
+logiciel <a href="http://calibre-ebook.com/" title="Calibre">Calibre</a> vous permettra d'effectuer la conversion au format
+<code>mobi</code> très simplement.</p>
+
+<h3>Des images avec des mots</h3>
+
+<p>Calibre sera d'ailleurs aussi très utile pour convertir des Mangas, Comics ou
+Bds au format <code>cbr</code> (une sorte d'archive contenant les images classées dans
+l'ordre). Il sera alors très agréable de lire sur le Kindle, qui considérera
+le fichier comme n'importe quel e-book. Le fait que l'écran soit en noir et
+blanc peut, au premier abord, paraitre comme un élément très gênant...mais en
+fait pas du tout ! Tout d'abord beaucoup des supports sont d'origine en noir
+et blanc (surtout pour les Mangas), et si ils ne le sont pas, la qualité des
+niveaux de gris est telle que ce n'est plus un problème.</p>
+
+<h2>Quand j'étais petit garçon, Je repassais mes leçon...</h2>
+
+<p><em>...en les lisant sur un Kindle 3.</em> Le Kindle sait lire les PDFs, mais aussi
+convertir vos documents lorsque vous les envoyez à votre adresse mail Kindle :
+<code>@kindle.com</code> pour une livraison en 3G mais payante, ou <code>@free.kindle.com</code>
+pour une réception en Wifi seulement. Très utile donc pour des supports de
+cours, des documentations ou bien entendu vos notes personnelles.</p>
+
+<h2>Un écran c'est bien, un Kindle c'est mieux !</h2>
+
+<p>Je lis énormément de news et d'articles sur écran...et, c'est bien connu, tout
+cela devient rapidement très fatiguant pour les yeux. Vous pouvez bien entendu
+copier-coller tout cela dans un e-mail pour votre adresse Kindle, mais il
+existe plus simple et plus ergonomique. Je pense à l'occurence à
+<a href="http://www.instapaper.com/" title="Instapaper">Instapaper</a> Instapaper permet de "sauvegarder" vos articles pour les lire
+plus tard, et ce à l'aide de deux moyens : via un bookmarklet ou une adresse
+e-mail spécifique. J'utilise souvent le bookmarklet avec une sorte de
+raccourci dans Firefox, j'ai en fait inséré le code javascript en question
+dans un marque-page puis associé ce dernier à un "Mot clé". Je peux donc
+envoyer une page très facilement avec la combinaison suivante : <code>Ctrl+L</code>
+(barre d'adresse) puis le "Mot clé", et hop <code>Entrée</code> et emballé c'est
+enregistré ! Il vous suffira ensuite de configurer l'envoi journalier des
+articles sur votre adresse mail Kindle, et vous voila paré pour lire vos
+articles dans les transports en commun.</p>
+
+<p>Dans un esprit similaire, un certain Dave se propose de vous envoyer à un
+rythme hebdomadaire des articles (en anglais) qu'il a sélectionné. Parfois
+j'aime, parfois non, mais je vous invite à essayer <a href="http://delivereads.com/" title="Delivereads">Delivereads</a>.</p>
+
+<h2>Vers l'infini et l'au delà !</h2>
+
+<p>La fonctionnalité de lecture de PDFs, associé à l'outil de zoom, me permet de
+gagner du temps lors de mes nombreux déplacements professionnels. En effet, je
+peux envoyer mes e-billets (SNCF et Air France, je n'ai pas essayé pour le
+reste) sur mon Kindle et les faire scanner par le personnel comme n'importe
+quel billet papier. Attention toutefois car certaines machines peuvent avoir
+des difficultés, tout comme les agents qui sont parfois assez surpris face à
+l'appareil. C'est en tout cas une bonne solution de secours si je n'ai pas le
+temps de retirer mes billets.</p>
+
+<h2>Du plastique et des Hommes</h2>
+
+<p>Un Kindle c'est surtout un bout de plastique avec de la magie dedans...et la
+magie ça courgiecuite et ça tombe en panne. Dans mon cas j'ai expérimenté cela
+dès le premier mois, avec une connectivité 3G qui ne voulait plus connectiver.
+<em>Bon hop, finit les jeux de mots.</em> J'ai donc commencé par contacter le support
+par chat, après description de mon problème on m'a logiquement invité à
+contacter le support par téléphone. Aux US. Merci Free (c'est gratuit). Une
+petite heure de débug plus tard, et après des manipulations cohérentes (menus
+de diagnostic "cachés", hard reboot et j'en passe), le verdict tombe : retour
+à la case départ (l'entrepôt Amazon). Amazon m'a très gentiment renvoyé un
+autre appareil dans la foulée, leur ayant expliqué que j'avais besoin de
+garder le modèle légèrement défectueux le temps de mes révisions. J'ai un peu
+bataillé pour obtenir une étiquette de retour UPS, qui m'a permit d'éviter
+d'avancer les frais d'expédition (mais logiquement remboursés). J'ai apprécié
+le geste commercial (15$), alors que je n'ai jamais évoqué la question. Petite
+astuce, n'hésitez pas à demande un "Kindle Specialist" à votre premier
+interlocuteur dans le chat, vous gagnerez du temps. Le Kindle que j'ai
+aujourd'hui fonctionne sans problèmes depuis un peu plus de 7 mois, pas mal
+non ?!</p>
+
+<h3>Stress Test</h3>
+
+<p>Je n'utilise pas de housse pour mon Kindle, mais en 8 mois d'utilisation
+intensive je n'ai que deux éléments abimés à relever : l'écran qui a été abimé
+sur une petit zone de 1cm², et le boitier qui tend à se fêler au niveau du bas
+du cadre. Le fait qu'il soit tombé deux fois, au point de se déboiter doit
+jouer...Donc oui, je le considère comme très résistant car une fois "reboité"
+il était comme neuf ! L'écran ne me semble pas rayé, ou si il l'est (dur à
+déterminer), cela ne gêne en rien ma lecture.</p>
+
+<h2>Et sinon ?</h2>
+
+<p>Je n'ai donc que très peu de choses à reprocher à mon Kindle, je note surtout
+des fonctionnalités manquantes comme un outil de prise de notes ou le coût des
+envois personnels en 3G (<code>@kindle.com</code>). Je n'ai pas trop de problèmes avec la
+langue anglaise, mais ce n'est pas le cas de tout le monde, donc je considère
+cela comme une limitation (surtout pour le support !)</p>
+
+<p>Bonne lecture ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

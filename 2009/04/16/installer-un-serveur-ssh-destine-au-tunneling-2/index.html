@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Installer un serveur SSH destiné au tunneling - ツ Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="Suite à cet article, j’ai jugé bon de vous expliquer comment mettre en
+place un serveur ssh sécurisé qui sera destiné seulement à faire du tunneling &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TymProject.github.com/tymproject/2009/04/16/installer-un-serveur-ssh-destine-au-tunneling-2/">
+  <link href="/tymproject/favicon.png" rel="icon">
+  <link href="/tymproject/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/tymproject/javascripts/modernizr-2.0.js"></script>
+  <script src="/tymproject/javascripts/ender.js"></script>
+  <script src="/tymproject/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="ツ Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/tymproject/">ツ Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TymProject.github.com/tymproject" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/tymproject/">Blog</a></li>
+  <li><a href="/tymproject/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Installer Un Serveur SSH Destiné Au Tunneling</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-16T20:42:23+00:00" pubdate data-updated="true">Apr 16<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Suite à <a href="http://www.tym-project.fr/blog/2009/04/on-se-pingue-et-on-se-fait-un-tunnel-ssh-2/">cet article</a>, j’ai jugé bon de vous expliquer comment mettre en
+place un serveur ssh sécurisé qui sera destiné seulement à faire du tunneling.
+La configuration va être plus poussée que pour un serveur classique car vous
+aurez en permanence un terminal ouvert sur le serveur, ce qui augmente donc
+les risques que quelqu’un prenne la main sur votre serveur.Notre serveur sera
+une Debian 5.0.</p>
+
+<!--  more -->
+
+
+<p>Installons donc les paquets nécessaires :</p>
+
+<pre><code>apt-get update
+apt-get install openssh-server
+</code></pre>
+
+<p>Commencez par démarrer le serveur avec la configuration de base</p>
+
+<pre><code>/etc/init.d/sshd start
+</code></pre>
+
+<p>Créons maintenant
+le groupe <code>tunnelers</code> :</p>
+
+<pre><code>groupadd tunnelers
+</code></pre>
+
+<p>Puis un utilisateur, l’option <code>-G</code> permet de le rendre membre du
+groupe que l’on vient de créer et <code>-m</code> de forcer la création du home :</p>
+
+<pre><code>useradd -G tunnelers -m tun1
+</code></pre>
+
+<p><F2>Nous allons
+lui donner un mot de passe temporaire car à terme cet utilisateur n&#8217;en aura
+plus :</p>
+
+<pre><code>passwd tun1
+</code></pre>
+
+<p>Il est temps de
+créer le couple de clés RSA. Si vous êtes sous Windows et que vous utilisez
+<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">Putty</a>, consultez <a href="http://www.tym-project.fr/blog/2009/04/utiliser-putty-avec-l%E2%80%99authentification-par-cle-rsa%E2%80%A6%E2%80%9Cserver-refused-our-key%E2%80%9D-2/">cet article</a> pour avoir des clés utilisables.<br/>
+Sur la machine client, exécutez la commande suivante :</p>
+
+<pre><code>ssh-keygen –t rsa
+</code></pre>
+
+<p>Vous aurez alors la possibilité de
+choisir un mot de passe pour votre clé, moins pratique, mais plus sécurisé…</p>
+
+<p>Il faut maintenant placer la clé publique sur le serveur :</p>
+
+<pre><code>ssh-copy-id -i .ssh/id_rsa.pub tun1@server.chez-moi.com
+</code></pre>
+
+<p>Une fois la clé placée correctement, nous allons supprimer le mot de
+passe de l’utilisateur tun1 :</p>
+
+<pre><code>passwd –d tun1
+</code></pre>
+
+<p>Nous allons aussi lui attribuer un shell limité. Pour cela il
+faut éditer le fichier <code>/etc/passwd</code> et changer la ligne :</p>
+
+<pre><code>tun1:x:1001:1002::/home/tun1:/bin/sh
+</code></pre>
+
+<p>par (rbash signifie Restricted Bash) :</p>
+
+<pre><code>tun1:x:1001:1002::/home/tun1:/bin/rbash
+</code></pre>
+
+<p>Enfin pour éviter tout
+problèmes dans le répertoire personnel de tun1, nous allons changer les droits
+comme suit :</p>
+
+<pre><code>chown root:root /home/tun1
+</code></pre>
+
+<p>et supprimer tout ce qui n’est pas nécessaire au login ssh :</p>
+
+<pre><code>rm .bash*
+rm .profile
+</code></pre>
+
+<p>L’utilisateur tun1
+n’est donc plus propriétaire de son home, et ne peut effectuer qu’un nombre
+très restreint de commandes.</p>
+
+<p>Passons à la configuration du serveur.</p>
+
+<p>Le fichier de configuration du serveur est <code>/etc/ssh/sshd_config</code>. Effacez
+complètement de fichier, nous allons en créer un nouveau avec les lignes
+suivantes :</p>
+
+<pre><code>Port 443
+Protocol 2
+HostKey /etc/ssh/ssh_host_rsa_key
+UsePrivilegeSeparation yes
+SyslogFacility AUTH
+LogLevel INFO
+PermitRootLogin no
+StrictModes yes
+RSAAuthentication yes
+# Don't read the user's ~/.rhosts and ~/.shosts files
+IgnoreRhosts yes
+# For this to work you will also need host keys in /etc/ssh_known_hosts
+RhostsRSAAuthentication no
+# similar for protocol version 2
+HostbasedAuthentication no
+PermitEmptyPasswords no
+# Change to yes to enable challenge-response passwords (beware issues with
+# some PAM modules and threads)
+ChallengeResponseAuthentication no
+
+# Change to no to disable tunnelled clear text passwords
+PasswordAuthentication no
+
+KerberosAuthentication no
+
+GSSAPIAuthentication no
+
+X11Forwarding no
+TCPKeepAlive yes
+# Allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+</code></pre>
+
+<p>Nous pouvons maintenant redémarrer le serveur :</p>
+
+<pre><code>/etc/init.d/sshd restart
+</code></pre>
+
+<p>Vous pouvez maintenant
+utiliser votre nouveau serveur tout beau, tout “secure” :
+ssh –p 443 –l tun1 –D 8080 –i ~/.ssh/id_rsa server.chez-moi.com</p>
+
+<p>Essayez donc de mettre le bazar sur le serveur avec tun1,
+c&#8217;est assez compliqué !</p>
+
+<p>Bonne sécurisation ;-)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">tym</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-16T20:42:23+00:00" pubdate data-updated="true">Apr 16<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/tymproject/blog/categories/bash/'>Bash</a>, <a class='category' href='/tymproject/blog/categories/linux/'>Linux</a>, <a class='category' href='/tymproject/blog/categories/logiciels/'>Logiciels</a>, <a class='category' href='/tymproject/blog/categories/os/'>OS</a>, <a class='category' href='/tymproject/blog/categories/réseau/'>Réseau</a>, <a class='category' href='/tymproject/blog/categories/sécurité/'>Sécurité</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://TymProject.github.com/tymproject/2009/04/16/installer-un-serveur-ssh-destine-au-tunneling-2/" data-via="" data-counturl="http://TymProject.github.com/tymproject/2009/04/16/installer-un-serveur-ssh-destine-au-tunneling-2/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tymproject/2009/04/16/inserer-des-images-et-les-ajouter-au-jar-java/" title="Previous Post: Insérer des images et les ajouter au .jar (Java)">&laquo; Insérer des images et les ajouter au .jar (Java)</a>
+      
+      
+        <a class="basic-alignment right" href="/tymproject/2009/04/17/la-bible-du-reseau-abc-du-reseau-pour-les-debutants-2/" title="Next Post: La bible du réseau / ABC du réseau pour les débutants">La bible du réseau / ABC du réseau pour les débutants &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/02/14/ameliorer-son-debit-internet/">Naviguer plus vite sur internet, améliorer son débit ? C'est possible !</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TymProject.github.com/tymproject/2009/04/16/installer-un-serveur-ssh-destine-au-tunneling-2/';
+        var disqus_url = 'http://TymProject.github.com/tymproject/2009/04/16/installer-un-serveur-ssh-destine-au-tunneling-2/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

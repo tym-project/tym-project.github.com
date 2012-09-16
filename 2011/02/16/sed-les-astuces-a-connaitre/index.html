@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>SED : les astuces à connaître - ツ Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="[man]Sed[/man] pour ceux qui ne connaîtrait pas
+encore, est un éditeur de texte en ligne de commande. Concrètement il va
+éditer un fichier (ou l&# &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TymProject.github.com/tymproject/2011/02/16/sed-les-astuces-a-connaitre/">
+  <link href="/tymproject/favicon.png" rel="icon">
+  <link href="/tymproject/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/tymproject/javascripts/modernizr-2.0.js"></script>
+  <script src="/tymproject/javascripts/ender.js"></script>
+  <script src="/tymproject/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="ツ Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/tymproject/">ツ Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TymProject.github.com/tymproject" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/tymproject/">Blog</a></li>
+  <li><a href="/tymproject/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">SED : Les Astuces à Connaître</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-16T12:00:37+00:00" pubdate data-updated="true">Feb 16<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><code>[man]Sed[/man]</code> pour ceux qui ne connaîtrait pas
+encore, est un éditeur de texte en ligne de commande. Concrètement il va
+éditer un fichier (ou l&#8217;entrée standard, via un pipe) et le modifier vers la
+sortie standard. Rien de moins complexe ! Enfin c&#8217;est seulement la définition,
+car l&#8217;outil en lui même peut rapidement devenir très très très riche&#8230;<br/>
+J&#8217;ai
+donc compilé dans cet article un ensemble d&#8217;astuces à connaître pour bien
+utiliser <code>sed</code>.</p>
+
+<!-- more -->
+
+
+<p>Je l&#8217;utilise essentiellement pour faire des remplacement :</p>
+
+<pre><code>tym@tym-laptop:~$ cat quote.txt
+Remember, a Jedi can feel the Force flowing through him.
+tym@tym-laptop:~$ sed 's/Jedi/---DUDE WITH A LAMP IN A SOCKET---/g' quote.txt
+Remember, a ---DUDE WITH A LAMP IN A SOCKET--- can feel the Force flowing through him.
+</code></pre>
+
+<p>Voila pour l&#8217;exemple, cherchez bien&#8230; il-y-a une vanne
+cachée dans ce texte. Oh et bien entendu <code>sed</code> utilise des expressions
+régulières !</p>
+
+<h2>Mise en mémoire</h2>
+
+<p>Pour réutiliser l&#8217;expression que vous voulez modifier vous avez deux
+solutions.Avec &#8221;<code>&amp;</code>&#8221; qui représente l&#8217;ensemble de la chaîne trouvée :</p>
+
+<pre><code>tym@tym-laptop:~$ sed 's/Jedi/&amp; (A DUDE WITH A LAMP IN A SOCKET)/g' quote.txt
+Remember, a Jedi (A DUDE WITH A LAMP IN A SOCKET) can feel the Force flowing through him.
+</code></pre>
+
+<p>Avec des parenthèses,
+puis <code>\n</code> pour rappeler l&#8217;expression :</p>
+
+<pre><code>tym@tym-laptop:~$ sed 's/\(Je\)\(di\)/\1u\2 (ou Vendredi)/g' quote.txt
+Remember, a Jeudi (ou Vendredi) can feel the Force flowing through him.
+</code></pre>
+
+<p>Notez
+l&#8217;utilisation de &#8220;&#34; pour protéger les parenthèses, sans quoi elles seraient
+considérées comme faisant partie de la chaîne à rechercher.</p>
+
+<h2>Trop de slash&#8230;</h2>
+
+<p>L&#8217;exemple précédent contient un sacré nombre de &#8220;/&#8221; et de &#8220;&#34;, ne rendant pas
+la lisibilité de l&#8217;expression aisée ! Soyez rassuré, vous avez le choix des
+délimiteurs :</p>
+
+<ul>
+<li>&#8220;_&#8221; : <code>sed 's_\(Je\)\(di\)_\1u\2 (ou Vendredi)_g' quote.txt</code></li>
+<li>&#8221;:&#8221; : <code>sed 's:\(Je\)\(di\):\1u\2 (ou Vendredi):g' quote.txt</code></li>
+<li>&#8221;|&#8221; : <code>sed 's|\(Je\)\(di\)|\1u\2 (ou Vendredi)|g' quote.txt</code></li>
+</ul>
+
+
+<h2>Une bonne fois pour toute !</h2>
+
+<p>Par défaut <code>sed</code> donne le résultat de la commande dans la sortie standard, il
+est donc assez simple de créer un nouveau fichier contenant les modifications
+:</p>
+
+<pre><code>tym@tym-laptop:~$ sed 's/Jedi/DUDE WITH A LAMP IN A SOCKET/g' quote.txt &gt; quote_funny.txt
+</code></pre>
+
+<p>Mais pour réécrire dans le même fichier il faut utiliser l&#8217;option <code>-i</code>
+(&#8220;interactive&#8221;), une redirection du type <code>sed .... quote.txt &gt; quote.txt</code> ne
+donnerait qu&#8217;un fichier vide :</p>
+
+<pre><code>sed -i 's/Jedi/---DUDE WITH A LAMP IN A SOCKET---/g' quote.txt
+</code></pre>
+
+<p>Bon matching ;-)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">tym</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-16T12:00:37+00:00" pubdate data-updated="true">Feb 16<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/tymproject/blog/categories/autres/'>Autres</a>, <a class='category' href='/tymproject/blog/categories/bash/'>Bash</a>, <a class='category' href='/tymproject/blog/categories/linux/'>Linux</a>, <a class='category' href='/tymproject/blog/categories/linux/'>Linux</a>, <a class='category' href='/tymproject/blog/categories/os/'>OS</a>, <a class='category' href='/tymproject/blog/categories/programmation-scripting/'>Programmation - Scripting</a>, <a class='category' href='/tymproject/blog/categories/edition/'>edition</a>, <a class='category' href='/tymproject/blog/categories/rechercher-remplacer/'>rechercher remplacer</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://TymProject.github.com/tymproject/2011/02/16/sed-les-astuces-a-connaitre/" data-via="" data-counturl="http://TymProject.github.com/tymproject/2011/02/16/sed-les-astuces-a-connaitre/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tymproject/2011/02/09/install-ss5-debian-et-script-init/" title="Previous Post: Installation de ss5 sur une Debian 5">&laquo; Installation de ss5 sur une Debian 5</a>
+      
+      
+        <a class="basic-alignment right" href="/tymproject/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware/" title="Next Post: Ubuntu : Permuter et renommer des cartes réseau">Ubuntu : Permuter et renommer des cartes réseau &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/02/14/ameliorer-son-debit-internet/">Naviguer plus vite sur internet, améliorer son débit ? C'est possible !</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TymProject.github.com/tymproject/2011/02/16/sed-les-astuces-a-connaitre/';
+        var disqus_url = 'http://TymProject.github.com/tymproject/2011/02/16/sed-les-astuces-a-connaitre/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

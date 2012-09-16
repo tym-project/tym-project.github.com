@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Sécurité | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/sécurité/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mon script de configuration iptables]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/04/06/iptables-et-lancement-automatique/"/>
+    <updated>2011-04-06T12:00:02+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/04/06/iptables-et-lancement-automatique</id>
+    <content type="html"><![CDATA[<p>Pour ceux qui ne connaitraient pas, iptables est une
+interface de gestion du module netfilter du noyau Linux. En termes clairs :
+c'est un pare-feu. Iptables est donc un ensemble de commandes permettant de
+créer des règles, je ne vais pas rentrer dans les détails, vous trouverez plus
+d'infos sur <a href="http://www.techrepublic.com/blog/10things/10-iptables-rules-to-help-secure-your-linux-box/539">cette page par exemple</a>. Dans cet article il sera question de
+comment je gère ma configuration de pare-feu à travers un script d'init.</p>
+
+<!-- more -->
+
+
+<h2>init.d, t'es initié ?</h2>
+
+<p>Le but de ce script est qu'il se lance au démarrage de mon poste, et en bonus
+que je puisse couper/relancer mon pare-feu à loisir : c'est là le rôle d'un
+script "init.d". Commençons donc par la fin, avec les différents arguments que
+peut prendre le script :
+{% codeblock lang:bash %}
+case $1 in</p>
+
+<pre><code>start)
+    start
+    ;;
+stop)
+    stop
+    ;;
+restart)
+    restart
+    ;;
+*)
+    echo "usage: iptables {start|stop|restart}"
+    exit 1
+    ;;
+</code></pre>
+
+<p>esac
+{% endcodeblock %}</p>
+
+<p>Logiquement on retrouve les
+fonction <code>start</code>, <code>stop</code> et <code>restart</code> avec une explication des arguments pour
+toute valeur en dehors de ce choix.</p>
+
+<h2>En fonction des fonctions...</h2>
+
+<p>la fonction <code>restart</code> est très simple :</p>
+
+<pre><code>function restart {
+    stop start
+}
+</code></pre>
+
+<p>la fonction <code>stop</code> est un peu plus complexe et est chargée de vider les règles
+iptable, de changer la politique par défaut et de restarter
+<code>[man]fail2ban[/man]</code> si besoin :
+{% codeblock lang:bash %}
+function stop {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -P INPUT ACCEPT
+    $IPTABLES -P FORWARD ACCEPT
+    $IPTABLES -P OUTPUT ACCEPT
+    $IPTABLES -F $IPTABLES -X
+done
+
+if [ -e /etc/init.d/fail2ban ]; then
+    /etc/init.d/fail2ban restart
+fi
+</code></pre>
+
+<p>}
+{% endcodeblock %}
+L'utilisation de <code>for IPTABLES in iptables ip6tables</code> permet de configurer à
+la fois pour ipv4 et ipv6.</p>
+
+<p>La fonction <code>start</code> utilise une variable <code>$TCP_PORTS</code> (qui contient les port
+TCP à ouvrir) définie ainsi :</p>
+
+<pre><code>TCP_PORTS="80 443"
+</code></pre>
+
+<p>Et la fonction en elle-même :
+{% codeblock lang:bash %}
+function start {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -F $IPTABLES -P INPUT DROP
+    $IPTABLES -P FORWARD DROP
+    $IPTABLES -P OUTPUT DROP
+
+    $IPTABLES -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+    for port in $TCP_PORTS;do
+        $IPTABLES -A INPUT -p tcp --dport $port -j ACCEPT
+    done
+
+    $IPTABLES -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+    $IPTABLES -A INPUT -i lo -j ACCEPT $IPTABLES -A OUTPUT -o lo -j ACCEPT
+    # ICMP (Ping)
+    #$IPTABLES -A INPUT -p icmp -j ACCEPT
+done
+</code></pre>
+
+<p>if [ -e /etc/init.d/fail2ban ];then</p>
+
+<pre><code>/etc/init.d/fail2ban restart
+</code></pre>
+
+<p>fi
+}
+{% endcodeblock %}</p>
+
+<h2>Configuration et installation</h2>
+
+<p>Pour placer le script dans <code>/etc/init.d/</code> deux solutions sont possibles :</p>
+
+<ul>
+<li>le copier dans le répertoire</li>
+<li>faire un lien symbolique avec <code>ln -s /emplacement/script/iptables /etc/init.d/iptables</code></li>
+</ul>
+
+
+<p>Si vous mettez ce script en place sur serveur sans accès physique, je vous
+conseille formetment de le tester avant de le mettre au démarrage de la
+machine...c'est trop bête de se faire enfermer dehors :)</p>
+
+<p>La mise en place du scritpt au démarrage peut se faire manuellement en mettant
+en place des liens symboliques dans <code>/etc/rc*.d/</code>, mais il est plus simple de
+passer par <code>update-rc.d</code> :</p>
+
+<pre><code>sudo update-rc.d iptables defaults
+update-rc.d: warning: /etc/init.d/iptables missing LSB information
+update-rc.d: see &lt;http://wiki.debian.org/LSBInitScripts&gt;
+</code></pre>
+
+<p>Suite aux erreurs du <code>LSB</code> j'ai ajouté cela au début du script :</p>
+
+<pre><code>### BEGIN INIT INFO
+# Provides: iptables
+# Required-Start: $local_fs $remote_fs $network $syslog
+# Required-Stop: $local_fs $remote_fs $network $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Set up iptables at boot time
+# Description: Enable service provided by iptables.
+### END INIT INFO
+</code></pre>
+
+<p>Voici donc le fichier dans son intégralité :
+{% codeblock lang:bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<h1>iptables-default</h1>
+
+<h1>www.tym-project.fr/blog</h1>
+
+<h1>tym@tym-project.fr</h1>
+
+<h3>BEGIN INIT INFO</h3>
+
+<h1>Provides:          iptables</h1>
+
+<h1>Required-Start:    $local_fs $remote_fs $network $syslog</h1>
+
+<h1>Required-Stop:     $local_fs $remote_fs $network $syslog</h1>
+
+<h1>Default-Start:     2 3 4 5</h1>
+
+<h1>Default-Stop:      0 1 6</h1>
+
+<h1>Short-Description: Set up iptables at boot time</h1>
+
+<h1>Description:       Enable service provided by iptables.</h1>
+
+<h3>END INIT INFO</h3>
+
+<p>PATH="/sbin"
+TCP_PORTS="80 443"
+function stop {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -P INPUT ACCEPT
+    $IPTABLES -P FORWARD ACCEPT
+    $IPTABLES -P OUTPUT ACCEPT
+    $IPTABLES -F
+    $IPTABLES -X
+done
+if [ -e /etc/init.d/fail2ban ]; then
+    /etc/init.d/fail2ban restart
+fi
+</code></pre>
+
+<p>}
+function start {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -F
+    $IPTABLES -P INPUT DROP
+    $IPTABLES -P FORWARD DROP
+    $IPTABLES -P OUTPUT DROP
+    $IPTABLES -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+for port in $TCP_PORTS;do
+    $IPTABLES -A INPUT -p tcp --dport $port -j ACCEPT
+done
+$IPTABLES -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+$IPTABLES -A INPUT -i lo -j ACCEPT
+$IPTABLES -A OUTPUT -o lo -j ACCEPT
+# ICMP (Ping)
+#$IPTABLES -A INPUT -p icmp -j ACCEPT
+done
+if [ -e /etc/init.d/fail2ban ];then
+    /etc/init.d/fail2ban restart
+fi
+</code></pre>
+
+<p>}
+function restart {</p>
+
+<pre><code>stop
+start
+</code></pre>
+
+<p>}
+case $1 in</p>
+
+<pre><code>start)
+start
+;;
+stop)
+stop
+;;
+restart)
+restart
+;;
+*)
+echo "usage: iptables {start|stop|restart}"
+exit 1
+;;
+</code></pre>
+
+<p>esac
+{% endcodeblock %}
+Bon firewalling ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Analyse d'une "arnaque" Facebook]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook/"/>
+    <updated>2011-03-07T19:16:09+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook</id>
+    <content type="html"><![CDATA[<p>J'utilise Facebook, avec parcimonie certes, mais
+je l'utilise quand même. On sait maintenant qu'il faut être très vigilant sur
+les réseaux sociaux, et cet article en est une preuve supplémentaire.</p>
+
+<!-- more -->
+
+
+<p>Il est
+question ici d'une page web que vous avez certainement croisé sur votre mur.
+Je met le lien pour information ( <a href="http://likeloverr.com/fun.php?id=12">ici</a>), mais NE L'OUVREZ PAS avant
+d'avoir lu ce qui suit. Une vidéo d'un petit chat, qui peut résister...</p>
+
+<p><em>Edit
+du 8 mars : Il semble que la page ait été modifiée depuis la publication de
+cet article, le lien vous amène maintenant vers un site où il est clairement
+indiqué qu'il faut cliquer sur "J'aime" pour voir la vidéo.</em></p>
+
+<h2>Un anti-robots comme on en fait plus</h2>
+
+<p>Si vous êtes un peu au fait des technologies récentes, il est souvent question
+de s'affranchir des <a href="http://upload.wikimedia.org/wikipedia/commons/6/69/Captcha.jpg">captchas</a> illisibles permettant d'éviter un traitement
+automatisé. Alors quand un site me propose un jeu de logique en guise de
+vérification, j'approuve. Erreur ! Voici la page que vous obtenez quand vous
+tentez de visionner la video en question dans cet article :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/selection_002.png" alt="selection_002" /></p>
+
+<p>Malin pin pin, ni une ni deux, je clique !</p>
+
+<h2>Toi aussi tu aime le javascript ?</h2>
+
+<p>L'arnaque en question dans cet article se situe dans le code source des
+boutons colorés :</p>
+
+<p>{% codeblock lang:html %}</p>
+
+<iframe id=f1 class=iframe src="http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/pages/Chat-Trop-Mignon-Qui-a-Du-Mal-�-Se-Reveiller/115156425228492&layout=button_count&show_faces=false&width=450&action=like&colorscheme=light&height=21" scrolling="no" frameborder="0"style="border:none; overflow:hidden; width:450px; height:21px;"allowTransparency="true"></iframe>
+
+
+<script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
+
+
+<p>&lt;fb:like id=f2 class=iframe href="http://likeloverr.com/fun.php?id=12" layout="button_count" show_faces="false" width="450">&lt;/fb:like>
+{% endcodeblock %}
+Traduction en clair : "Tu clique et tu like !". Eh oui, le fait de cliquer sur
+ces deux boutons vous a :</p>
+
+<ul>
+<li>Rendu "fan" de la page associée à la vidéo</li>
+<li>Fait "Liker" le lien</li>
+</ul>
+
+
+<h2>Cache ta joie !</h2>
+
+<p>Sur le papier c'est déjà un fonctionnement que je juge ignoble, mais en
+pratique c'est encore pire : une des vidéos virales de ce site propose un
+contenu particulièrement osé et, disons-le, pornographique. Je ne donnerai pas
+le lien ici, mais je suis prêt à parier qu'au moins un de vos amis s'est fait
+piéger et s'est donc retrouvé avec ce lien et cette page pas très glorieuse
+dans son profil. <em>Qui a dit licenciement ? ...</em></p>
+
+<h2>Je me suis fait(e) avoir, et après ?</h2>
+
+<p>Il vous suffit de ne plus "Aimer" ni la page ni le lien, et de croiser les
+doigts pour que pas grand monde ait aperçu votre profil...</p>
+
+<p>Soyez donc vigilants ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Choisir un mot de passe sécurisé et facile à retenir]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/09/08/methode-de-choix-de-mot-de-passe-efficace/"/>
+    <updated>2010-09-08T18:44:28+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/09/08/methode-de-choix-de-mot-de-passe-efficace</id>
+    <content type="html"><![CDATA[<p>Un mot de passe c'est important. A vrai dire
+c'est souvent votre premier rempart contre une attaque sur vos données
+personnelles. Mais avoir une bonne "hygiène de mots de passe" est souvent un
+casse tête virant à la paranoïa généralisée. Alors plutôt que de brûler tous
+vos biens et partir vivre dans les bois, je vais vous proposer ici quelques
+astuces pour vous sécuriser la vie !</p>
+
+<!-- more -->
+
+
+<h2>La définition d'un bon mot de passe</h2>
+
+<p>D'après <a href="http://edition.cnn.com/2010/TECH/innovation/08/20/super.passwords/index.html#fbid=OEN683j9hW8&amp;wom=false">une récente étude</a>, votre mot de passe doit avoir une longueur
+d'au moins <strong>12 caractères</strong>. Il doit contenir des <strong>lettres majuscules et
+minuscules</strong>, des <strong>chiffres</strong> et des <strong>caractères spéciaux</strong>. Évitez au
+maximum d'y intégrer des <strong>éléments propres à vous faciles à deviner</strong> : date
+de naissance, prénom des enfants ou du chien (ça vaut aussi pour les chats !),
+ville d'origine...à vrai dire tout ce qu'un inconnu pourrai apprendre sur vous
+avec un minimum de recherches (<em>vous avez dit Facebook ?</em>). N'utilisez <strong>pas
+non-plus de variation de votre identifiant</strong> : la combinaison "root/toor" est
+la première testée par le célèbre <a href="http://www.openwall.com/john/">John The Ripper</a>. L'utilisation du
+langage "l33t", c'est à dire de plus ou moins remplacer des lettres par des
+chiffres est aussi à proscrire. Inutile de penser que dessiner un motif au
+clavier est sécurisé : "aqwzsx"...grillé d'avance ! Au final beaucoup
+d'interdits, et un mot de passe que vous ne retiendrez certainement pas.</p>
+
+<h2>De la raison et de la complexité</h2>
+
+<p>Un mot de passe trop long et trop complexe ? Le post-it/clavier à coup sûr.
+Perdu. Trouver un mot de passe équilibré est tout un art, c'est aussi une
+affaire d'habitude. La clé réside dans le fait de pouvoir apprendre, sans pour
+autant compromettre. Pour cela j'ai une méthode toute simple : je change de
+mot de passe le vendredi soir. Ainsi j'ai <strong>tout le Week-end pour le
+retenir</strong>, en l'ayant si besoin noté sur un coin de feuille (dans mon
+appartement, pas au travail bien entendu). Attention, pas écrit dans un
+fichier texte, ni dans mon portefeuille mais bel et bien sur un bout de papier
+sur mon bureau personnel. Ce mémo restera là maximum une semaine avant de
+finir brulé, haché, décomposé...bref : détruit pour de bon.</p>
+
+<h2>Une affaire de "mnémotechnie"</h2>
+
+<p>Il est souvent complexe de trouver un bon mot de passe par soi-même : nous
+avons naturellement tendance à utiliser la même racine, le même
+principe...adieu hasard ! Heureusement de <a href="http://www.google.fr/#hl=fr&amp;source=hp&amp;q=password+generator+online&amp;aq=1&amp;aqi=g10&amp;aql=&amp;oq=password+ge&amp;gs_rfai=&amp;fp=c7f2b8020399a72c">très nombreux outils</a> existent
+pour faire le travail à notre place.</p>
+
+<h3>Pwgen dans ta face !</h3>
+
+<p>Avec les générateurs automatiques on retombe à nouveau sur un problème de
+mémorisation, sauf avec <code>pwgen</code>. C'est mon outil préféré car il génère des
+mots de passe "compréhensibles", qui ont une certaine "sonorité", un "rythme",
+bref : on peut les retenir plus facilement ! Il exite plusieurs
+implémentations de cet outil :</p>
+
+<ul>
+<li><a href="http://linux.die.net/man/1/pwgen">L'original</a>, la commande Linux</li>
+<li><a href="http://8-p.info/pwgen/">En javascript</a>, pratique mais sans caractères spéciaux</li>
+<li><a href="http://code.google.com/p/pwgen-php/">En Php</a>, à intégrer sur votre site web</li>
+<li><a href="http://pwgen-win.sourceforge.net/">En exécutable</a>, avec l'option "easytoread"</li>
+</ul>
+
+
+<h2>La théorie de l'évolution</h2>
+
+<p>Idéalement il faudrait changer de mot de passe le plus souvent possible. En
+réalité cela n'est pas aussi simple...reprendre à zéro un processus qui vous a
+déja pris une semaine ? Non, la vie est trop courte ! J'utilise la méthode
+dite du "double effet Kiss Cool" : le mot de passe en question est déjà assez
+complexe, mais je le connais bien.<br/>
+Régulièrement, mais pas trop souvent, je
+lui ajoute un ou plusieurs éléments :</p>
+
+<ol>
+<li>A#6!v</li>
+<li>A#6!vW</li>
+<li>A_f#6!vW</li>
+<li>A_f#6!v2W</li>
+<li>...</li>
+</ol>
+
+
+<p><em>Est-ce utile de préciser que ce n'est qu'un exemple ? Si vous avez bien
+suivi, ce mot de passe est d'ailleurs trop court.</em> Au final un mot de passe de
+plus en plus long, de plus en plus complexe et toujours aussi facile à retenir
+pour moi !</p>
+
+<h2>Conclusion</h2>
+
+<p>Trouver un mot de passe dits "forts" est une question de temps, d'habitude et
+de gymnastique de l'esprit. Et si vous avez une doute, vous pourrez toujours
+tester sa fiabilité avec par exemple : <a href="http://howsecureismypassword.net/">How Secure Is My Password?</a>.</p>
+
+<p>Bonne réflexion ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Choisir un mot de passe sécurisé et facile à retenir]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/09/08/methode-de-choix-de-mot-de-passe-efficace/"/>
+    <updated>2010-09-08T18:44:28+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/09/08/methode-de-choix-de-mot-de-passe-efficace</id>
+    <content type="html"><![CDATA[<p>Un mot de passe c'est important. A vrai dire
+c'est souvent votre premier rempart contre une attaque sur vos données
+personnelles. Mais avoir une bonne "hygiène de mots de passe" est souvent un
+casse tête virant à la paranoïa généralisée. Alors plutôt que de brûler tous
+vos biens et partir vivre dans les bois, je vais vous proposer ici quelques
+astuces pour vous sécuriser la vie !</p>
+
+<!-- more -->
+
+
+<h2>La définition d'un bon mot de passe</h2>
+
+<p>D'après <a href="http://edition.cnn.com/2010/TECH/innovation/08/20/super.passwords/index.html#fbid=OEN683j9hW8&amp;wom=false">une récente étude</a>, votre mot de passe doit avoir une longueur
+d'au moins <strong>12 caractères</strong>. Il doit contenir des <strong>lettres majuscules et
+minuscules</strong>, des <strong>chiffres</strong> et des <strong>caractères spéciaux</strong>. Évitez au
+maximum d'y intégrer des <strong>éléments propres à vous faciles à deviner</strong> : date
+de naissance, prénom des enfants ou du chien (ça vaut aussi pour les chats !),
+ville d'origine...à vrai dire tout ce qu'un inconnu pourrai apprendre sur vous
+avec un minimum de recherches (<em>vous avez dit Facebook ?</em>). N'utilisez <strong>pas
+non-plus de variation de votre identifiant</strong> : la combinaison "root/toor" est
+la première testée par le célèbre <a href="http://www.openwall.com/john/">John The Ripper</a>. L'utilisation du
+langage "l33t", c'est à dire de plus ou moins remplacer des lettres par des
+chiffres est aussi à proscrire. Inutile de penser que dessiner un motif au
+clavier est sécurisé : "aqwzsx"...grillé d'avance ! Au final beaucoup
+d'interdits, et un mot de passe que vous ne retiendrez certainement pas.</p>
+
+<h2>De la raison et de la complexité</h2>
+
+<p>Un mot de passe trop long et trop complexe ? Le post-it/clavier à coup sûr.
+Perdu. Trouver un mot de passe équilibré est tout un art, c'est aussi une
+affaire d'habitude. La clé réside dans le fait de pouvoir apprendre, sans pour
+autant compromettre. Pour cela j'ai une méthode toute simple : je change de
+mot de passe le vendredi soir. Ainsi j'ai <strong>tout le Week-end pour le
+retenir</strong>, en l'ayant si besoin noté sur un coin de feuille (dans mon
+appartement, pas au travail bien entendu). Attention, pas écrit dans un
+fichier texte, ni dans mon portefeuille mais bel et bien sur un bout de papier
+sur mon bureau personnel. Ce mémo restera là maximum une semaine avant de
+finir brulé, haché, décomposé...bref : détruit pour de bon.</p>
+
+<h2>Une affaire de "mnémotechnie"</h2>
+
+<p>Il est souvent complexe de trouver un bon mot de passe par soi-même : nous
+avons naturellement tendance à utiliser la même racine, le même
+principe...adieu hasard ! Heureusement de <a href="http://www.google.fr/#hl=fr&amp;source=hp&amp;q=password+generator+online&amp;aq=1&amp;aqi=g10&amp;aql=&amp;oq=password+ge&amp;gs_rfai=&amp;fp=c7f2b8020399a72c">très nombreux outils</a> existent
+pour faire le travail à notre place.</p>
+
+<h3>Pwgen dans ta face !</h3>
+
+<p>Avec les générateurs automatiques on retombe à nouveau sur un problème de
+mémorisation, sauf avec <code>pwgen</code>. C'est mon outil préféré car il génère des
+mots de passe "compréhensibles", qui ont une certaine "sonorité", un "rythme",
+bref : on peut les retenir plus facilement ! Il exite plusieurs
+implémentations de cet outil :</p>
+
+<ul>
+<li><a href="http://linux.die.net/man/1/pwgen">L'original</a>, la commande Linux</li>
+<li><a href="http://8-p.info/pwgen/">En javascript</a>, pratique mais sans caractères spéciaux</li>
+<li><a href="http://code.google.com/p/pwgen-php/">En Php</a>, à intégrer sur votre site web</li>
+<li><a href="http://pwgen-win.sourceforge.net/">En exécutable</a>, avec l'option "easytoread"</li>
+</ul>
+
+
+<h2>La théorie de l'évolution</h2>
+
+<p>Idéalement il faudrait changer de mot de passe le plus souvent possible. En
+réalité cela n'est pas aussi simple...reprendre à zéro un processus qui vous a
+déja pris une semaine ? Non, la vie est trop courte ! J'utilise la méthode
+dite du "double effet Kiss Cool" : le mot de passe en question est déjà assez
+complexe, mais je le connais bien.<br/>
+Régulièrement, mais pas trop souvent, je
+lui ajoute un ou plusieurs éléments :</p>
+
+<ol>
+<li>A#6!v</li>
+<li>A#6!vW</li>
+<li>A_f#6!vW</li>
+<li>A_f#6!v2W</li>
+<li>...</li>
+</ol>
+
+
+<p><em>Est-ce utile de préciser que ce n'est qu'un exemple ? Si vous avez bien
+suivi, ce mot de passe est d'ailleurs trop court.</em> Au final un mot de passe de
+plus en plus long, de plus en plus complexe et toujours aussi facile à retenir
+pour moi !</p>
+
+<h2>Conclusion</h2>
+
+<p>Trouver un mot de passe dits "forts" est une question de temps, d'habitude et
+de gymnastique de l'esprit. Et si vous avez une doute, vous pourrez toujours
+tester sa fiabilité avec par exemple : <a href="http://howsecureismypassword.net/">How Secure Is My Password?</a>.</p>
+
+<p>Bonne réflexion ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mettre en place un tunnel-proxy SSH autonome]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan/"/>
+    <updated>2010-03-19T13:00:43+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan</id>
+    <content type="html"><![CDATA[<p>Dans <a href="http://www.tym-project.fr/blog/2009/04/installer-un-serveur-ssh-destine-au-tunneling/">cet article</a> je
+vous expliquais comment mettre en place un serveur servant à faire du
+tunneling ssh. Mais quid de la partie client me direz vous ? Et bien c'est ce
+dont il est question ici...</p>
+
+<!-- more -->
+
+
+<p>Je vais donc vous présenter un script que
+j'utilise pour gérer un tunnel ssh permanent, en réutilisant les principes
+d'authentification sans mot de passe. La première chose à faire est donc de
+générer une paire de clés sur le client :</p>
+
+<pre><code>ssh-keygen -t rsa
+</code></pre>
+
+<p>Comme habituellement, on copie la clé publique par un
+quelconque moyen sur le serveur. Comme ici l'utilisateur <code>prox</code> ne possède pas
+de mot de passe, on va passer par un autre compte. Il est déconseillé
+d'utiliser le compte <code>root</code> directement, il faut donc passer par un user
+normal. Voici par exemple une suite de commandes à exécuter :</p>
+
+<pre><code>scp ~/.ssh/id_rsa.pub tym@server.chez-moi.com:~
+ssh -p 443 tym@server.chez-moi.com
+</code></pre>
+
+<p>Puis sur le serveur, où l'on
+passe en utilisateur <code>root</code> :</p>
+
+<pre><code>su - cat id_rsa.pub &gt;&gt; /home/tun1/.ssh/know_hosts &amp;&amp; rm id_rsa.pub
+</code></pre>
+
+<p>Le serveur est maintenant prêt à nous authentifier sans mot de passe, il est
+temps de se pencher sur le script client. La première fonction est celle qui
+crée le tunnel. En l'occurrence dynamiquement sur le port 8080 :</p>
+
+<p>{% codeblock lang:bash %}
+function ssh_to_server(){</p>
+
+<pre><code>/usr/bin/ssh -nN -D 8080 -p 443 tun1@server.chez-moi.com &amp;
+echo $! &gt; /var/run/ssh_prox_pid
+</code></pre>
+
+<p>}
+{% endcodeblock %}</p>
+
+<p>Ce qui est intéressant ici c'est l'utilisation des options <code>n</code> et <code>N</code>
+(<a href="http://www.delafond.org/traducmanfr/man/man1/ssh.1.html">source</a>) :</p>
+
+<pre><code>-N
+    N'exécute aucune commande distante. Utilisé pour les transferts de ports (seulement dans la version 2 du protocole). 
+-n
+    redirige l'entrée standard vers /dev/null (en fait, empêche la lecture depuis l'entrée standard). À utiliser lors d'une utilisation de ssh en arrière-plan. [...]
+</code></pre>
+
+<p>Donc l'utilisation de ces deux options en plus du "<code>&amp;</code>" (lancement dans un
+processus fils) permettent de lancer le tunnel en arrière plan.</p>
+
+<p>Afin que le script soit suffisamment robuste nous allons ajouter un peu plus
+de code. Tout d'abord une fonction pour vérifier la bonne connectivité à
+internet...inutile d'essayer d'ouvrir le tunnel pour rien :
+{% codeblock lang:bash %}
+function test_network(){</p>
+
+<pre><code>ping -c 2 clubic.com
+</code></pre>
+
+<p>}
+{% endcodeblock %}</p>
+
+<p>Ensuite une fonction pour tester si le tunnel est déjà lancé ou non :
+{% codeblock lang:bash %}
+function test_prox(){</p>
+
+<pre><code>ps aux | grep -v 'grep' | grep `cat /var/run/ssh_prox_pid`
+</code></pre>
+
+<p>}
+{% endcodeblock %}
+Ici
+"<code>[man]grep[/man] -v grep</code>" sert à ne pas afficher le processus du <code>grep</code>, et
+donc ne pas fausser le résultat (sinon il serait toujours positif, même sans
+tunnel en route).</p>
+
+<p>Et enfin le corps du script :
+{% codeblock lang:bash %}
+while :; do</p>
+
+<pre><code>#Si le tunnel n'est pas déjà lancé
+if ! test_prox ;then
+    #Alors on teste si le réseau est bien connecté
+    if test_network;then
+        #Si oui ou ouvre le tunnel ssh_to_server
+    else
+        #Si non le script "dors" 5 secondes
+        sleep 5
+    fi
+fi
+</code></pre>
+
+<p>done
+{% endcodeblock %}
+Il ne reste plus qu'a planifier le lancement du script au démarrage, en
+utilisant <code>[man]crontab[/man]</code> par exemple :</p>
+
+<pre><code># m h dom mon dow command @reboot /root/ssh_prox &amp;
+</code></pre>
+
+<p>Voici le code du script complet :
+{% codeblock lang:bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<p>function ssh_to_server(){</p>
+
+<pre><code>/usr/bin/ssh -nN -D 8080 -p 443 tun1@server.chez-moi.com &amp;
+echo $! &gt; /var/run/ssh_prox_pid
+</code></pre>
+
+<p>}</p>
+
+<p>function test_network(){</p>
+
+<pre><code>ping -c 2 clubic.com
+</code></pre>
+
+<p>}</p>
+
+<p>function test_prox(){</p>
+
+<pre><code>ps aux | grep -v "grep" | grep `cat /var/run/ssh_prox_pid`
+</code></pre>
+
+<p>}</p>
+
+<p>while :;do</p>
+
+<pre><code>if ! test_prox ;then
+    if test_network;then
+        ssh_to_server
+    else
+        sleep  5
+    fi
+fi
+</code></pre>
+
+<p>done
+{% endcodeblock %}
+Bon bash ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

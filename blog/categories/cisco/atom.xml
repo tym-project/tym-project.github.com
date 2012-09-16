@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: cisco | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/cisco/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[La bible du réseau / ABC du réseau pour les débutants]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/17/la-bible-du-reseau-abc-du-reseau-pour-les-debutants-2/"/>
+    <updated>2009-04-17T20:52:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/17/la-bible-du-reseau-abc-du-reseau-pour-les-debutants-2</id>
+    <content type="html"><![CDATA[<p>Je suis étudiant à SUPINFO, et dans le cadre de mon cursus je peux passer des
+certifications Cisco pour pas cher…gratuit en fait. (Aparté : ce sont en fait
+des certifications “Academic” donc pas vraiment dures et pas vraiment
+valorisées dans la vrai vie : le monde du travail, du vrai, pas celui tout
+rose des études). Je dois donc RÉ-VI-SER !<br/>
+Je passe ma vie (ou presque) devant
+un écran, et je me voyait mal enchaîner des pages et des pages de Pdf, j’ai
+donc acheté un livre avec du vrai papier pas recyclé dedans ! Cet ouvrage
+c’est <a href="http://www.amazon.fr/CCNA-Cisco-Certified-Network-Associate/dp/0470110082/ref=sr_1_1?ie=UTF8&amp;qid=1239832186&amp;sr=8-1">“CCNA, Cisco Certified Network Associate: Exam 640-802” par Todd
+Lamble</a> . Il est tout simplement génial, très bien écrit, très bien
+expliqué, très clair (parfois amusant aussi). Que vous débutiez ou que vous
+soyez confirmé dans le monde des réseaux, vous apprendrez forcément quelque
+chose.C’est long…1000 pages…ce n’est pas traduit…mais ça vaut la peine de
+tenter le coup !</p>
+
+<p>Bonne lecture ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Bien débuter en administration de matériels Cisco]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/03/29/bien-debuter-en-administration-de-materiels-cisco-2/"/>
+    <updated>2009-03-29T14:35:23+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/03/29/bien-debuter-en-administration-de-materiels-cisco-2</id>
+    <content type="html"><![CDATA[<p>A mon sens le meilleur moyen d'administrer un matériel Cisco c'est la CLI : la
+ligne de commande (Command Line Interface). Il existe quelques astuces pour se
+simplifier la vie. Mais tout d'abord quelques petits rappels :</p>
+
+<ul>
+<li>La CLI d'un Cisco est accessible par deux moyens principaux, le port série et le réseau</li>
+<li>La CLI comporte deux modes : normal et privilégié (l'équivalent de "root" sous Linux)</li>
+<li>Le mode privilégié se divise en deux : normal et configure</li>
+</ul>
+
+
+<p>Et maintenant les petits trucs qui aident bien, utilisables quel que soit le
+mode de connexion au routeur :</p>
+
+<ul>
+<li>En CLI tout s'abrège : <code>enable</code> devient <code>en</code>, <code>show</code> devient <code>sh</code>, <code>fastethernet0/0</code> se raccourci en <code>fa0/0</code>...</li>
+<li>Certaines commandes comme <code>show</code> (<code>sh</code>) ou <code>write</code> (<code>wr</code>) ne se font que en mode normal dans enable (donc pas en <code>configure terminal</code>, <code>conf t</code> si vous avez suivi). Pour palier à ça sans quitter le <code>conf t</code>, précédez votre commande de <code>do</code> : <code>do wr</code>, <code>do sh ip int br</code> (<code>show ip interfaces brief</code>, oui oui c'est mieux en abrégé !)</li>
+<li>Imaginez que vous êtes au fin fond du <code>conf t</code> (dans les méandres des sous interfaces par exemple) et que vous devez aller dans le mode normal (sachant que <code>do</code> fait souvent l'affaire, mais passons !) : un petit <code>end</code> vous remontera directement en mode <code>conf t</code>. Si par contre vous voulez remonter d'un niveau seulement : <code>exit</code></li>
+</ul>
+
+
+<p>Selon le mode de connexion que vous utilisez, vous allez pouvoir plus
+(connexion par le réseau) ou moins (connexion série) vous simplifier la vie.
+En mode console série : pas d'autres alternatives que HyperTerminal (ou
+consorts)...argh ! En mode réseau (ethernet par exemple) utilisez Putty (ou
+autre, mais Putty c'est à mon sens le top du top de la moumoute sous Windows
+!) avec l'autcomplétion et l'historique des commandes passées. Toutefois il
+existe une astuce commune au deux modes de connexion : <code>?</code>. Grâce au <code>?</code>,
+votre élément actif va vous dire quoi mettre après : <code>show ?</code> vous proposera,
+parmi d'autres, <code>ip</code> ou <code>running configuration</code>. Cela est valable partout et
+vous dira par exemple quel type de masque (CIDR ou classique) mettre dans la
+définition d'une route, etc</p>
+
+<p>Bonnes configurations ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

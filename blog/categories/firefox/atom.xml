@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: firefox | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/firefox/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Firefox, enlever des extensions capricieuses]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/01/06/firefox-enlever-des-extensions-capricieuses/"/>
+    <updated>2010-01-06T19:36:11+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/01/06/firefox-enlever-des-extensions-capricieuses</id>
+    <content type="html"><![CDATA[<p>J'utilise le même
+profil Firefox depuis un certain temps (au moins un an), je suis aussi
+récemment passé sur la bêta de Firefox 3.6, ce qui a eu pour conséquences de
+mettre le bazar dans mes extensions.<br/>
+Concrètement je ne pouvait ni mettre à
+jour, ni désinstaller mes extensions. Ne voulant pas supprimer complètement
+mon profil, j'ai décidé de faire le ménage un peu plus en finesse...</p>
+
+<!-- more -->
+
+
+<p>Toutes
+les manipulations se font dans votre dossier de profil. Pour cette
+démonstration je vais partir du principe que c'est l'extension Weave que je
+veux désinstaller. Il vous faut supprimer le dossier de l'extension, pour le
+trouver vous pouvez regarder dans le fichier <code>extensions.ini</code>. Voici le
+contenu de mon fichier :</p>
+
+<pre><code>[ExtensionDirs]
+Extension0=D:\Users\Tym\Firefox\extensions\{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}
+Extension1=D:\Users\Tym\Firefox\extensions\bettergreader@ginatrapani.org
+Extension2=D:\Users\Tym\Firefox\extensions\{20a82645-c095-46ed-80e3-08825760534b}
+Extension3=D:\Users\Tym\Firefox\extensions\{340c2bbc-ce74-4362-90b5-7c26312808ef}
+Extension4=D:\Users\Tym\Firefox\extensions\foxmarks@kei.com
+Extension5=C:\Program Files\Mozilla Firefox 3.6 Beta4\extensions\{CAFEEFAC-0016-0000-0017-ABCDEFFEDCBA}
+Extension6=D:\Users\Tym\Firefox\extensions\{1280606b-2510-4fe0-97ef-9b5a22eafe41}
+[ThemeDirs]
+Extension0=C:\Program Files\Mozilla Firefox 3.6 Beta4\extensions\{972ce4c6-7e08-4474-a285-3208198ce6fd}
+</code></pre>
+
+<p>Comme vous pouvez
+le voir, les extensions ne sont pas forcément toutes nommées de manière
+explicite...il va donc falloir mener une petite enquête pour trouver le bon
+dossier. Pour cela je me rend dans le dossier de chaque extension, et je
+regarde le fichier <code>install.rfd</code>, je cherche alors le mot clé "weave". Après
+quelques essais infructueux j'ai trouvé le bon dossier, comme me l'indique
+<code>install.rfd</code> :</p>
+
+<pre><code>&lt;em:name&gt;Weave&lt;/em:name&gt;
+&lt;em:description&gt;Weave is the Mozilla Labs prototype for online services.&lt;/em:description&gt;
+&lt;em:creator&gt;Mozilla Labs Team&lt;/em:creator&gt;
+&lt;em:homepageURL&gt;http://labs.mozilla.com/projects/weave/&lt;/em:homepageURL&gt;
+</code></pre>
+
+<p>Il ne me reste donc qu'à supprimer ce dossier, et le tour est joué !</p>
+
+<p>Bonne suppression ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Firefox : vérifier la validité des ses plugins]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/10/06/firefox-verifier-la-validite-des-ses-plugins/"/>
+    <updated>2009-10-06T08:53:33+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/10/06/firefox-verifier-la-validite-des-ses-plugins</id>
+    <content type="html"><![CDATA[<p>Flash, Java...tous ces plugins (et non extensions) peuvent parfois présenter
+des <a href="http://www.zdnet.fr/actualites/internet/0,39020774,39705979,00.htm">failles de sécurité</a>. Le site <a href="https://www-trunk.stage.mozilla.com/en-US/plugincheck/">Plug-In-Check</a> vous permet de
+vérifier, et éventuellement mettre à jour les fautifs ! Cela fonctionne
+uniquement avec Firefox bien entendu :) Pour ma part j'ai (un peu) de boulot :</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-4/plugincheck.png %}</p>
+
+<p>Bonne vérification ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Je t'aime...moi non plus (et encore moins) !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/08/11/je-taime-moi-non-plus-et-encore-moins/"/>
+    <updated>2009-08-11T14:12:20+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/08/11/je-taime-moi-non-plus-et-encore-moins</id>
+    <content type="html"><![CDATA[<p>Skype j'aime de moins en moins...j'ai cru en avoir fini <a href="http://www.tym-project.fr/blog/2009/08/je-taime-moi-non-plus/">après ça</a>...mais
+non ! L'extension Skype pour Firefox (qui permet de repérer les numéros de
+téléphone dans les pages web) fait tout simplement planter le navigateur !
+J'en suis même venu à installer Opera, Chrome...et même utiliser IE (oh et
+j'ai aussi détruit mon profil Firefox). Il m'aurait suffit de virer cette
+foutu extension dès le départ !</p>
+
+<p>Merci Skype ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[3 extensions indispensables pour Firefox]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/02/3-extensions-indispensables-pour-firefox-2/"/>
+    <updated>2009-04-02T15:35:32+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/02/3-extensions-indispensables-pour-firefox-2</id>
+    <content type="html"><![CDATA[<p>Comme vous vous en doutez, je n'utilise que Firefox pour naviguer sur le web.
+Voici donc 3 extensions qui me facilitent la vie de tous les jours.</p>
+
+<p><a href="https://addons.mozilla.org/fr/firefox/addon/2410">Foxmarks</a>, qui permet la synchronisation de vos marque-pages entre
+plusieurs machines. Dans mon cas je l'utilise plutôt comme outil de sauvegarde
+de mes favoris. Foxmaks permet aussi de synchroniser vos mots de passe. Un
+point très intéressant est que vous pouvez créer votre propre serveur
+Foxmarks, ainsi plus de problèmes de confidentialité !</p>
+
+<p><a href="https://addons.mozilla.org/fr/firefox/addon/10909">Coral IETab</a>, qui permet d'ouvrir des pages via le moteur de Internet
+Explorer au sein de Firefox. Très utile par exemple pour le site Windows
+Update.</p>
+
+<p><a href="https://addons.mozilla.org/fr/firefox/addon/1865">Add Block Plus</a>, qui est un bloqueur/nettoyeur de publicités. Si dans un
+page il détecte une publicité, elle sera tout simplement enlevée : moins de
+pollution visuelle et plus de place à l'écran.</p>
+
+<p>Bon surf ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,1539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard]]></title>
+    <link href="http://TymProject.github.com/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/"/>
+    <updated>2012-08-16T23:02:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard</id>
+    <content type="html"><![CDATA[<p>Je suis l&#8217;heureux propriétaire d&#8217;un HTC One S, et même si la ROM Sense d&#8217;origine est très stable et plutôt agréable à utiliser, je n&#8217;ai pas pu résister à l&#8217;appel de CM9 !</p>
+
+<!-- more -->
+
+
+<p>Vous l&#8217;avez probablement lu sur les interwebs, CM9 vient d&#8217;être officielement publiée par l&#8217;équipe en charge du projet. Une information à tiroirs, car en fait seulement une pincée d&#8217;appareils est officiellement supportée à ce jour (la communauté doit alors travailler sur d&#8217;autre terminaux qui, selon la stabilité de la chose, seront intégrés ou non dans la branche officielle).<br/>
+C&#8217;est dans cet esprit qu&#8217;un portage sur HTC One S est en cours, et est aujourd&#8217;hui très proche de son pendant officiel&#8230; raison amplemant suffisante pour me lancer dans l&#8217;aventure. Je vais donc vous expliquer le processus, vous trouverez certainement des explications plus détaillées ailleurs, je vais donc surtout insister sur les points qui me semblent importants&#8230; et surtout comment je me suis sortit de quelques mauvaises passes.</p>
+
+<p><em>N&#8217;hésitez pas à utiliser les commentaires pour poser vos questions :)</em></p>
+
+<h2>ROM ? Flash ? Kernel ? ADB ?!</h2>
+
+<p>Avant de rentrer dans le vif du sujet une petite explication sur les principes de base s&#8217;impose. Installer (ou flasher) une ROM sur un terminal Android c&#8217;est 3 étapes majeures :<br/>
+*  Déverouiller le bootloader, ou plus simplement : virer ces p**** de protections inutiles<br/>
+*  Flasher une Recovery, c&#8217;est à dire installer un système de gestion du terminal très bas-niveau, indépendant de la version d&#8217;Android. C&#8217;est en quelque sorte un BIOS.<br/>
+*  Flasher la ROM (installer le système d&#8217;exploitation)</p>
+
+<p>Ces étapes font appel à plusieurs outils, que je connais finalement très peu, mais voici ce que j&#8217;en ai compris :<br/>
+*  ADB, un outil pour discuter avec le terminal depuis une autre machine en USB. Je me l&#8217;explique comme un terminal SSH.<br/>
+*  Fastboot, le truc un peu obscur qui sert à flasher tout et son contraire&#8230; (heureux ?)</p>
+
+<p><strong> Je vous invite très fortement à sauvegarder toute information importante en dehors de votre terminal&#8230; on ne sais jamais. Pensez aussi à <a href="http://support.google.com/android/bin/answer.py?hl=en&amp;answer=1663708">activer la synchronisation des paramètres</a> avec votre compte Google, vous gagnerez un temps précieux à la réinstallation. </strong></p>
+
+<h2>Clic clic ?</h2>
+
+<p>Il est tout à fait possible d&#8217;effectuer toute la manipulation sans toucher la ligne de commande, c&#8217;est d&#8217;ailleurs ce que j&#8217;ai fait lors de mes premières tentatives (oh, si j&#8217;avais su&#8230;).<br/>
+L&#8217;outil incontournable c&#8217;est le <a href="http://forum.xda-developers.com/showthread.php?t=1604677">All-in-one toolkit for HTC One S</a>, très bien documenté un peu partout sur le web.<br/>
+Seul élément qui m&#8217;a posé problème c&#8217;est l&#8217;installation du Recovery, pour une raison que j&#8217;ignore seul TWRP est fonctionnel (CWM ne démarrait pas sur mon appareil). Oh et si vous avez des difficultés pour faire reconnaître votre appareil : mettez-vous en mode stockage USB, et activez le déboggage.</p>
+
+<p>Hop, un saut dans le temps et vous voila avec votre terminal déverrouillé, direction la ligne de commande pour la suite.</p>
+
+<h2>adb shell push kamoulox flash recovery</h2>
+
+<p>Démarrez votre terminal en recovery, téléchargez les <a href="http://ville.giev.de/?cat=8">images CM9 à jour</a> et copiez-les sur le téléphone avec un <code>adb push mon_zip.zip /sdcard</code>, facile, non ? Utilisez ensuite le menu de votre Recovery pour installer les .zip.<br/>
+Il faut ensuite flasher le <code>boot.img</code>, soit le noyau de votre linux embarqué (qui va charger les drivers pour le matériel par exemple) : <code>fastboot flash boot boot.img</code>.</p>
+
+<p>On pense bien à vider le cache et le cache dalvik et on redémarre&#8230; et oh magie CID (la mascotte) est bien là, sur son fond clignotant. Il a clignoté un bail dans mon cas. A vrai dire il a tellement clignoté que je me croyais en boite de nuit&#8230; bref : BOOT LOOP !!!<br/>
+Une boot loop c&#8217;est une installation mal faite ou buggée qui n&#8217;arrive pas à se lancer et tourne en boucle&#8230; Arf !<br/>
+Après quelques recherches, flash, recherches, une solution : démarrer en recovery et faire un Factory reset.</p>
+
+<p>Bien, le téléphone démarre enfin sur la ROM, tout à l&#8217;air parfait (et fluide !). &#8220;You can now unmout sdcard&#8221;. Wat ? Mon cher CM9 ne reconnaît donc pas le stockage interne du téléphone. Me voila de retour en recovry, Factory reset, reboot, idem, Factory reset, idem, flash, idem&#8230; et puis le lendemain matin la révélation : je démarre mon terminal, pas de sdcard bla bla, un petit tour dans <code>Settings &gt; Backup &amp; reset &gt; Factory data reset</code> et hop, mon téléphone redémarre et reconnait sa sdcard !</p>
+
+<h3>Nous raconte pas ta vie !</h3>
+
+<p>Pour résumer :<br/>
+* Installer CM9 depuis la Recovery<br/>
+* Démarrer une première fois. Si boot loop alors retour en Recovery et Factory reset<br/>
+* Android se lance correctement, si problème de sdcard non reconnue : <code>Settings &gt; Backup &amp; reset &gt; Factory data reset</code></p>
+
+<h2>&#8220;J&#8217;ai tout pêté, ça marche plus, je pleure&#8230;&#8221;</h2>
+
+<p>Si jamais vous vous trouvez dans une impasse avec un sytème qui ne démarre plus sa ROM, vous pouvez vous en sortir en suivant <a href="http://www.htconeforum.com/forum/htc-one-s-hacks/389-how-unbrick-restore-your-htc-one-s-back-100-stock-relocked.html">ces explications</a>. Comme indiqué dans le tutoriel, vous allez avoir besoin d&#8217;une &#8220;RUU&#8221;, c&#8217;est à dire de la ROM officielle du constructeur. Chaque ROM dépend de votre opérateur et de votre version Radio (les chiffres affichés dans le meu du bootloader). Un seul endroit pour trouver votre bonheur : <a href="http://forum.xda-developers.com/showthread.php?t=1543588">ce post sur le forum xda</a>, fouillez bien les réponses car certains membres donnent des liens de téléchargement alternatifs.</p>
+
+<p><strong> De manière générale, documentez-vous bien avant de bidouiller les outils, pour éviter de vous planter&#8230; et surtout pour apprendre un maximum sur cet univers passionnant :) </strong></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Flux RSS : idées de lecture et méthodes de gestion]]></title>
+    <link href="http://TymProject.github.com/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/"/>
+    <updated>2012-07-15T15:07:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2012/07/15/sources-et-organisation-de-flux-rss</id>
+    <content type="html"><![CDATA[<p>De temps en temps un article ou un tweet annoncent la fin du flux RSS&#8230; mais l&#8217;ancètre fait de la résistance ! Heureusement d&#8217;ailleurs, car personellement je ne peux pas rester collé à Twitter ou autre réseau social, plein de bonnes choses, mais très prolifique et encombré par du bruit inutile.</p>
+
+<h2>Balance tes sources !</h2>
+
+<p>Je vous épargne les incontournables comme Numerama, PC Inpact ou encore Gizmodo pour me concentrer sur ceux plus confidentiels ou moins connus (à mon sens) en France.</p>
+
+<p>Voici donc une sélection de mes flux favoris <!-- more --> :<br/>
+* Sécurité</p>
+
+<pre><code>* [F-Secure](http://www.f-secure.com/weblog/)
+* [Krebs On Security](http://krebsonsecurity.com/) - Des articles passionants, qui explorent des sujets en détails
+* [Sucuri](http://blog.sucuri.net)
+</code></pre>
+
+<ul>
+<li><p>Life Hacking (bidouilles au quotidien)</p>
+
+<ul>
+<li><a href="http://lifehacker.com">Lifehacker</a> - L&#8217;incontournable !</li>
+<li><a href="http://www.ikeahackers.net">Ikea Hacker</a> - De super idées pour améliorer votre intérieur&#8230; pour peu que vous soyez un minimum bricoleur !</li>
+</ul>
+</li>
+<li><p>Les &#8220;gens&#8221;</p>
+
+<ul>
+<li><a href="http://korben.info">Korben</a></li>
+<li><a href="http://akibag.com">Akibag</a> - Un produit sympa, mais surtout de passionants articles sur l&#8217;entreuprenariat en France</li>
+<li><a href="http://shiii.org">Shiii</a> - Très prolixe à une époque, plus calme aujourd&#8217;hui mais toujours quelques perles qui me font sourire</li>
+<li><a href="http://blog.spyou.org">Turb(l)o(g)</a> - En ce moment le rédacteur refait une maison en mode ultra geek&#8230; need !</li>
+<li><a href="http://www.codinghorror.com">Coding Horror</a> - L&#8217;excellent Jeff Atwood nous parle de code, mais pas que&#8230; passionant</li>
+</ul>
+</li>
+<li><p>Gadgets et geekeries</p>
+
+<ul>
+<li><a href="http://craziestgadgets.com">Craziest Gadgets</a></li>
+<li><a href="http://www.geekologie.com/">Geekologie</a> - Parfois hilarant, souvent drôle, j&#8217;adore !</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Si je devais choisir LE flux à suivre absolument, ce serait <a href="http://news.ycombinator.com/">Hacker News</a>. C&#8217;est un flux richissime en informations diverses, sur un ensemble de sujets technologiques&#8230; attention par contre&#8230; c&#8217;est au minimum 100 articles par jour :-)<br/>
+Il existe des agréagateurs pour Hacker News comme <a href="http://www.daemonology.net/hn-weekly-ask/">Hacker News Weekly</a> ou des <a href="http://talkfast.org/2010/07/23/a-cure-for-hacker-news-overload">flux filtrés</a> pour n&#8217;avoir que les articles les plus populaires.</p>
+
+<h2>Astuces de lecture</h2>
+
+<p>J&#8217;utilise Google Reader pour lire mes flux. La première raison est que c&#8217;est une moyen simple de centraliser l&#8217;information independamment de la plateforme : depuis mon PC perso, pro, mon Android ou encore toute machine connectée au Web.<br/>
+J&#8217;apprécie aussi le classement par dossiers ou encore la possibilité de &#8220;marquer&#8221; (mettre en favoris) certains articles pour les relire plus tard, typiquement quand je suis sur mon téléphone pour des textes très longs ou avec des vidéos.</p>
+
+<p>Bonus, Google Reader est compatible avec des applications très sympathiques comme Fliboard (Android et iOs) ou <a href="http://feedly.com/">Feedly</a>.</p>
+
+<p>Un élément très important est d&#8217;éviter de s&#8217;abonner à trop d&#8217;information, au risque de passer son temps à éliminer le contenu qui ne vous intéresse pas.<br/>
+Mais comment faire alors quand un flux vous attire mais qu&#8217;il est &#8220;pollué&#8221;, au hasard, pas des news Apple&#8230; ?<br/>
+La solution : fragmenter ses abonnements sur un même site. Prenons comme exemple <a href="http://arstechnica.com/">ars technica</a> qui propose <a href="http://arstechnica.com/rss-feeds/">une page pour différencer ses flux</a>.<br/>
+Moins simple mais toujours faisable avec d&#8217;autres sites comme Le Journal du Geek, où il suffit de naviguer dans une catégorie (exemple : <a href="http://www.journaldugeek.com/category/telephonie/">téléphonie</a>), puis d&#8217;utiliser la fonction <a href="http://support.mozilla.org/fr/kb/Marque-pages%20dynamiques">&#8220;S&#8217;abonner à &#8230;&#8221;</a> de Firefox&#8230; et hop un flux débarrassé du bruit ambiant !</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Android : perte du signal 3g après activation du GPS]]></title>
+    <link href="http://TymProject.github.com/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/"/>
+    <updated>2012-03-24T19:04:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2012/03/24/android-perte-signal-3g-avec-gps</id>
+    <content type="html"><![CDATA[<p>Android c&#8217;est super, Google Navigation encore plus. Sauf quand ça plante. Surtout en voiture, paumé au milieu de la cambrouse&#8230;<br/>
+Oh j&#8217;ai la solution, mais laissez moi vous raconter&#8230;</p>
+
+<!-- more -->
+
+
+<h2>Vous avez dit &#8220;stressant&#8221; ?</h2>
+
+<p>Le problème est donc le suivant :</p>
+
+<ul>
+<li>Mon téléphone est connecté en 3g (ou Edge, peut importe), tout va bien</li>
+<li>Je lance Google Navigation, tout va bien</li>
+<li>Je choisis ma destination, tout va bien</li>
+<li>L&#8217;icône du GPS s&#8217;affiche dans la barre d&#8217;état, je perd la connection data !</li>
+</ul>
+
+
+<p>Frustration et énervement, le seul moyen que j&#8217;avais trouvé pour pouvoir retrouver une connexion data était de couper/réactiver la connectivité de mon mobile.<br/>
+En bref, le fait d&#8217;allumer le module GPS (y compris dans Facebook ou toute autre application de localisation) avait pour conséquence facheuse de me faire perdre toute connectivité 3g.</p>
+
+<h2>Google est ton ami&#8230; mais ça suffit pas toujours</h2>
+
+<p>La miracle se trouve evidemment sur l&#8217;interweb, faut-il encore comprendre ce qui y est expliqué. Il est donc question d&#8217;APN, soit &#8220;Appareil Photo Numérique&#8221; en français. Oui, rien à voir avec le sujet !<br/>
+Recherche recherche&#8230; ah ! Eureka ! APN c&#8217;est en fait &#8220;Access Point Name&#8221;, soit les points d&#8217;accès réseau.</p>
+
+<p>Le bug en question fait que si vous avez plus de un &#8220;APN&#8221; dans la fameuse liste, activer le GPS fait perdre les pédales à votre terminal et il est incapable de retrouver sa connectivité d&#8217;origine.</p>
+
+<h2>Bon, tu la donne la solution ou quoi ?!</h2>
+
+<p>Hop, un petit tour dans <code>Paramètres&gt;Sans fil et réseaux&gt;Réseaux mobiles&gt;Noms des points d'accès</code>, faites un peu de ménage pour arriver au résultat suivant (le nom va bien entendu varier en fonction de votre opérateur adoré) :</p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/pics.tym-project.fr/2012-1/2012-01-28+17.38.42.png"></p>
+
+<p>On garde donc le minimum : l&#8217;accès données et l&#8217;accès MMS (qui sont deux chose bien différentes).</p>
+
+<p>Allez, votre calvaire est terminé, finit la crise de nerf ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Un Gmail, une ligne de commande...]]></title>
+    <link href="http://TymProject.github.com/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/"/>
+    <updated>2012-03-16T22:21:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis</id>
+    <content type="html"><![CDATA[<p>&#8230; et c&#8217;est le retour du mail en ligne de commande ! Du Python qui fonctionne mieux que le précédent qui, pour une raison inconnue, n&#8217;envoyait plus mes chers messages plein de bits (oh oh!).</p>
+
+<p>Trève de bons mots :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">email.mime.multipart</span> <span class="kn">import</span> <span class="n">MIMEMultipart</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">email.mime.base</span> <span class="kn">import</span> <span class="n">MIMEBase</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">email.mime.text</span> <span class="kn">import</span> <span class="n">MIMEText</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">email.utils</span> <span class="kn">import</span> <span class="n">COMMASPACE</span><span class="p">,</span> <span class="n">formatdate</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">email</span> <span class="kn">import</span> <span class="n">encoders</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">os</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">smtplib</span> <span class="kn">import</span> <span class="n">SMTP</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">send_mail</span><span class="p">(</span><span class="n">send_from</span><span class="p">,</span> <span class="n">send_to</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="p">[]):</span>
+</span><span class='line'>        <span class="n">smtp_serv</span> <span class="o">=</span> <span class="n">SMTP</span><span class="p">(</span><span class="s">&#39;smtp.gmail.com&#39;</span><span class="p">,</span><span class="s">&#39;587&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">smtp_serv</span><span class="o">.</span><span class="n">starttls</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">smtp_serv</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s">&#39;i-mel-a-dresse@gmail.com&#39;</span><span class="p">,</span> <span class="s">&#39;mot de passe moi le sel veux tu&#39;</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">date_</span> <span class="o">=</span> <span class="n">formatdate</span><span class="p">(</span><span class="n">localtime</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">()</span>
+</span><span class='line'>        <span class="n">msg</span><span class="p">[</span><span class="s">&#39;From&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">send_from</span>
+</span><span class='line'>        <span class="n">msg</span><span class="p">[</span><span class="s">&#39;To&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">COMMASPACE</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">send_to</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">msg</span><span class="p">[</span><span class="s">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date_</span>
+</span><span class='line'>        <span class="n">msg</span><span class="p">[</span><span class="s">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subject</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">MIMEText</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">file_part</span> <span class="o">=</span> <span class="n">MIMEBase</span><span class="p">(</span><span class="s">&#39;application&#39;</span><span class="p">,</span> <span class="s">&quot;octet-stream&quot;</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">file_part</span><span class="o">.</span><span class="n">set_payload</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s">&quot;rb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</span><span class='line'>            <span class="n">encoders</span><span class="o">.</span><span class="n">encode_base64</span><span class="p">(</span><span class="n">file_part</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">file_part</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&#39;Content-Disposition&#39;</span><span class="p">,</span> <span class="s">&#39;attachment; filename=&quot;</span><span class="si">%s</span><span class="s">&quot;&#39;</span>
+</span><span class='line'>                       <span class="o">%</span> <span class="n">file_name</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">file_part</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">smtp_serv</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">send_from</span><span class="p">,</span> <span class="n">send_to</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">())</span>
+</span><span class='line'>        <span class="n">smtp_serv</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Sans rentrer dans les détails, cette fonction prend en argument l&#8217;expéditeur, le destinataire, l&#8217;objet, le message et un tableau de fichiers (chemin complet).</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Naviguer plus vite sur internet, améliorer son débit ? C'est possible !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2012/02/14/ameliorer-son-debit-internet/"/>
+    <updated>2012-02-14T21:11:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2012/02/14/ameliorer-son-debit-internet</id>
+    <content type="html"><![CDATA[<p>Avoir un débit rapide pour accéder à internet c&#8217;est important, et cela varie fonction de différents facteurs comme votre fournisseur d&#8217;accès ou la qualité de votre Wifi&#8230; oui c&#8217;est en effet un sujet assez vaste !<br/>
+Un moyen assez simple d&#8217;accélérer le temps d&#8217;accès aux site que vous visitez avec votre brouteur préféré c&#8217;est le DNS.</p>
+
+<!-- more -->
+
+
+<h2>Quoi qu&#8217;où qu&#8217;est-ce le DNS ??</h2>
+
+<p>Quand il est question de réseau on parle très souvent d&#8217;IP (Internet Protocol), et donc d&#8217;adresses sous la forme <code>192.168.1.208</code> par exemple. On a beau être vachement balèzes en technologie de l&#8217;information, c&#8217;est tout de même pas la panacée de se souvenir d&#8217;autant d&#8217;adresses numériques que de sites webs visités&#8230;<br/>
+On inventa donc le DNS, ou Domain Name System, qui permet tout simplement d&#8217;associer un nom à une adresse. Par exemple :<code>blog.tym-project.fr</code> est accessible à l&#8217;adresse IP <code>207.97.227.245</code>&#8230; ou presque, mais c&#8217;est une autre histoire.</p>
+
+<p>Cette résolution de nom (ouais mon gars, c&#8217;est le terme ad-hoc pour ce processus) est faite par un serveur qui a dans sa configuration une liste <code>Nom:IP</code>. Tout simplement. Bon pas aussi évident en réalité, mais Wikipedai aura moins la flemme que moi de vous expliquer !</p>
+
+<h2>Plus vite, plus vite, plus viiiite</h2>
+
+<p>A chaque site que vous visitez votre navigateur va donc interroger le serveur DNS configuré dans votre machine pour trouver l&#8217;adresse IP du site correspondant, et c&#8217;est sur ce point que vous allez pouvoir grapiller quelques secondes. <em>La phrase précédente est en lice pour &#8220;la phrase qui tue les asmathiques&#8221;, repirez !</em></p>
+
+<p>Il va donc falloir trouver le serveur DNS qui répond le plus vite aux demandes de votre machine, et il n&#8217;existe pas de solution ultime généralisée, vous allez devoir tester !</p>
+
+<p>Si vous êtes plutôt Windowsien, alors je vous invite à tester <a href="http://www.grc.com/dns/benchmark.htm">DNS Benchmark</a> : cet outil va vous permettre de tester le temps de réponse DNS d&#8217;un ensemble de serveurs avec des couleurs, des graphiques et des chiffres. Je n&#8217;ai pas essayé, mais j&#8217;y crois, ça devrait marcher :)</p>
+
+<p>Pour les Linuxiens, pas de solution toute faite&#8230; mais c&#8217;est pas gênant, bash à la rescousse ! J&#8217;ai écrit un petit bout de script tout simple qui va vous permettre de faire des statistiques un peu &#8220;à la pelle&#8221;, mais suffisament explicites dans mon cas.</p>
+
+<pre><code>while :; do for i in 8.8.8.8 208.67.222.222 89.2.0.1 80.10.246.2; do echo "###  $i"; time nslookup blog.tym-project.fr $i | grep real ; sleep 1; done; echo "--------";done
+</code></pre>
+
+<p>Cette commande va donc tourner en boucle, pour avoir des points de mesure un minimum valables, et vous donner pour chaque serveur DNS le temps aproximatif de la résolution.</p>
+
+<p>Tel qu&#8217;il est défini ici je test : Google DNS, Open DNS, DartyBox DNS, Orange DNS. En pratique  qui nous intéresse c&#8217;est la valeur &#8220;real&#8221; :</p>
+
+<pre><code>### 8.8.8.8 ###
+real    0m0.021s
+user    0m0.003s
+sys 0m0.003s
+
+###  208.67.222.222 ###
+real    0m0.026s
+user    0m0.003s
+sys 0m0.003s
+
+###  89.2.0.1 ###
+real    0m0.015s
+user    0m0.003s
+sys 0m0.003s
+
+###  80.10.246.2 ###
+real    0m15.017s
+user    0m0.007s
+sys 0m0.000s
+--------
+
+###  8.8.8.8 ###
+real    0m0.021s
+user    0m0.000s
+sys 0m0.007s
+
+[...]    
+</code></pre>
+
+<p>Un rapide coup d&#8217;oeil désigne le gagnant : les DNS DartyBox sont plus efficaces, en partie logique car ils sont techniquement plus proches de ma Box.</p>
+
+<p>Une fois l&#8217;heureux élu trouvé chez vous, il ne vous reste plus qu&#8217;à paraméter votre machine ou même votre Box pour utiliser le nouveau serveur DNS.</p>
+
+<h2>Je vois rouge ! Oh, Orange, pardon&#8230;</h2>
+
+<p>Ce test m&#8217;a permis de confirmer ce que j&#8217;ai expérimenté douloureusement par le passé : les DNS d&#8217;Orange sont complètement à la ramasse, y compris pour les clients Livebox (à vérifier). Les mesures sont flagrantes : 15 secondes contre 15 milli-secondes par rapport au DNS Darty par exemple, soit <strong>1000 fois plus lent</strong>&#8230; C&#8217;est une abbération totale !</p>
+
+<p>Si vous voulez augmenter votre débit avec Orange (ou Livebox), commencez donc par changer de serveur DNS (si vous ne savez pas comment faire, demandez dans les commentaires).</p>
+
+<p>C&#8217;est cadeau juste  pour le plaisir, et pourtant j&#8217;ai bien suivi les <a href="http://assistance.orange.fr/les-adresses-dns-791.php">préconisations</a> de l&#8217;opérateur historique :</p>
+
+<pre><code>###  80.10.246.2 ###
+real    0m15.017s
+</code></pre>
+
+<p>C&#8217;est sûr la #MamieDuCantal elle a le temps d&#8217;attendre sa résolution de noms à ce rythme&#8230;</p>
+
+<p>Et ben&#8230; ;-)</p>
+
+<p><em>Edit : en toute transparence, des chiffres fournis par un camarade chez Orange, où le constat n&#8217;est pas si sombre (cf. dernière ligne). Je suis preneur de vos tests !</em></p>
+
+<pre><code>### 8.8.8.8 ###
+real 0m0.136s
+user 0m0.000s
+sys 0m0.008s
+
+### 208.67.222.222
+real 0m0.071s
+user 0m0.012s
+sys 0m0.004s
+
+### 89.2.0.1
+real 0m0.059s
+user 0m0.004s
+sys 0m0.008s
+
+### 80.10.246.2
+real 0m0.053s
+user 0m0.000s
+sys 0m0.012s
+--------
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par mois de Janvier]]></title>
+    <link href="http://TymProject.github.com/tymproject/2012/01/28/en-janvier-click-ce-qu-il-te-plait/"/>
+    <updated>2012-01-28T17:29:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2012/01/28/en-janvier-click-ce-qu-il-te-plait</id>
+    <content type="html"><![CDATA[<p>Eh, bonne année ! Pour commencer 2012 en beautée, des liens et encore des liens :)</p>
+
+<ol>
+<li><a href="http://www.0boxer.com/">Limiter le bazar dans sa boite Gmail&#8230; en jouant !</a></li>
+<li><a href="www.reddit.com/r/linux/comments/mi80x/give_me_that_one_command_you_wish_you_knew_years/">Une mine de commandes pas connues sur Linux</a></li>
+<li><a href="http://lifehacker.com/5845627/store-pot-covers-inside-your-cabinet-doors-with-a-few-inexpensive-hooks">Pas bête l&#8217;idée pour stocker les couvercles dans la cuisine (oui, dans la vrai vie !)</a></li>
+<li><a href="http://httpstat.us/">Un outil pour le dev : une API qui sort des codes Http. Très pratique pour débugger</a></li>
+<li><a href="http://sharingmyip.com/">Trouver les sites sur le même hébergement mutualisé ? Facile !</a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[J'ai testé la batterie de secours USB MiPOW Power Tube 2200]]></title>
+    <link href="http://TymProject.github.com/tymproject/2012/01/14/batterie-de-secours-usb-mipow-powertube/"/>
+    <updated>2012-01-14T13:26:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2012/01/14/batterie-de-secours-usb-mipow-powertube</id>
+    <content type="html"><![CDATA[<p>Ayant fait l&#8217;acquisition d&#8217;un HTC Desire d&#8217;occasion il-y-a quelques mois, outre la liberté qu&#8217;il m&#8217;apporte, c&#8217;est un éternel combat contre la batterie à plat ! Je suis assez souvent en déplacement, je n&#8217;ai donc pas toujours l&#8217;occasion de bancher mon mobile&#8230; et c&#8217;est sans compter sur le désert électrique dans les wagons SNCF :)<br/>
+Je me suis donc mis en quête d&#8217;une solution pour recharger mon téléphone &#8220;sur la route&#8221;, et je crois bien avoir trouvé !</p>
+
+<!-- more -->
+
+
+<p>Tout a commencé par un article sur <a href="http://craziestgadgets.com/2011/11/22/review-mipow-powertube-3000/">Craziest Gadgets</a> faisant l&#8217;apologie d&#8217;un produit analogue, un peu trop orienté vers les produits Apple à mon goût, mais m&#8217;orientant vers d&#8217;autres batteries de la marque MiPow.</p>
+
+<p>J&#8217;ai finalement acheté le <a href="http://www.mipow.com/product_detail.php?pid=10&amp;lang=en">Power Tube 2200</a> car moins cher, plus compact et plus joli&#8230; enfin c&#8217;est mon avis (les goûts et les couleurs hein !).</p>
+
+<h2>Quoi qu&#8217;où qu&#8217;est-ce le Power Tube ?</h2>
+
+<p>Une sort de grosse pile en aluminium, légère mais pas trop, avec une multitude d&#8217;embouts et une petite poche en tissu pour transporter le tout :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2012-1/mipow1.jpg"></p>
+
+<p>Beaucoup de choix donc dans les appareils à recharger, dans mon cas mon iPod, mon HTC Desire (micro USB) et mon Nokia.<br/>
+La recharge du Power Tube se fait par USB comme tout gadget moderne, il se branche aux différents appareils via un câble munis de prises &#8220;Jack&#8221; pour connecter les adaptateurs :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2012-1/mipow2.jpg"></p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2012-1/mipow3.jpg"></p>
+
+<h2>Top chrono !</h2>
+
+<p>La bête se recharge complêtement en 4 à 6 heures, et s&#8217;éclaire alors en bleu. Oui, le bleu c&#8217;est geek et classe en même temps !<br/>
+Il faut bien avouer que 5 heures en moyenne c&#8217;est long&#8230; vaut mieux pas être pressé !</p>
+
+<p>Mon HTC Desire branché au Power Tube se recharge de 15% à 95% de batterie en 3 heures environ, vidant la pile portative toute son énergie par la même occasion.</p>
+
+<h2>Bon, c&#8217;est bien ce bidule ou pas ?</h2>
+
+<p>Très utile pour un petit coup de jus en se déplaçant ou dans une poche de part le format compact du Power Tube, je trouve la connectique un peu faiblarde et j&#8217;ai des scrupules à la mettre à rude épreuve. Sur ce modèle l&#8217;USB femelle (universel donc) est lui aussi utilisable seulement avec la connectique Jack, donc pas de salut si tout cela s&#8217;abime, ce qui n&#8217;est pas le cas sur le Power Tube 3000 et plus.</p>
+
+<p>La petite pochette en tissu est très pratique pour éviter de perdre les différents embouts au fond d&#8217;un sac.</p>
+
+<p>Si vous avez les moyens, c&#8217;est donc un gadget intéressant &#8220;au cas où&#8221; ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cadeau : Un mois d'abonnement à Nolife Online]]></title>
+    <link href="http://TymProject.github.com/tymproject/2012/01/01/cadeau-un-mois-dabonnement-a-nolife-online/"/>
+    <updated>2012-01-01T21:39:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2012/01/01/cadeau-un-mois-dabonnement-a-nolife-online</id>
+    <content type="html"><![CDATA[<p>Allez hop, on commence 2012 en beautée avec un cadeau ! Oui, un truc que je vous donne contre&#8230; rien. Un cadeau quoi.<br/>
+Il est donc question de 30 jours d&#8217;abonnement au service <a href="http://nolife-tv.com">Nolife Online</a>, le service de télévision de rattrapage des geeks ! Si vous ne connaissez pas cette  chaîne de TV voici un exemple : <a href="http://online.nolife-tv.com/index.php?id=15771">Chez Marcus - Prince of Persia</a></p>
+
+<p>Pour gagner, rien de plus simple : sois le plus rapide à commenter cet article avec quelques mots cohérents. Donc &#8220;jhghjghjgjhg&#8221; c&#8217;est pas bon du tout :-)</p>
+
+<p>Oh, et bonne année !</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par mois de Décembre]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/12/20/liens-de-noel-et-autres-bonnes-idees/"/>
+    <updated>2011-12-20T18:03:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/12/20/liens-de-noel-et-autres-bonnes-idees</id>
+    <content type="html"><![CDATA[<p>Hop, c&#8217;est le retour de l&#8217;article fourre-tout, ici dans son édition de noël.</p>
+
+<ol>
+<li><a href="http://www.geekologie.com/2011/12/warp-me-awake-stat-the-mario-pipe-coffee.php" title="Mug Mario">Un mug Mario original</a></li>
+<li><a href="http://lifehacker.com/5865321/hang-nearly-anything-on-your-wall-with-sugru-and-lego-bricks%20%22Legos%20pratiques">La bonne idée du mois : Legos-accroche-tout</a></li>
+<li><a href="http://jeromechoain.wordpress.com/2011/11/30/les-peuples-dabord-version-longue-lgw-brassens/" title="JCFrog - Les peuples d'abord">JCFrog et sa nouvelle rengaine&#8230; tellement vrai !</a></li>
+<li><a href="https://buy.louisck.net/" title="Louis CK pour 5$">Louis CK, un comique que j&#8217;adore, vend son dernier live 5$. Pas cher la minute de rire en streaming ou en ddl :)</a></li>
+<li><a href="http://msreport.free.fr/" title="Exchange et autres">Un peu de technique avec un blog sur Exchange et d&#8217;autres technos Microsoft</a></li>
+</ol>
+
+
+<p>Joyeuses fêtes ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Un sapin de nöel en carton... littéralement.]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/12/11/un-sapin-de-noel-en-carton-dot-dot-dot-litteralement/"/>
+    <updated>2011-12-11T20:46:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/12/11/un-sapin-de-noel-en-carton-dot-dot-dot-litteralement</id>
+    <content type="html"><![CDATA[<p>Le 24 décembre approche à grands pas, et avec les différentes préparations traditionnelles. Et quoi de mieux qu&#8217;un beau sapin pour décorer la pièce ? Un &#8220;sapin&#8221; qui sort de l&#8217;ordinaire !</p>
+
+<!-- more -->
+
+
+<p><a href="http://www.mobilier-orika.com">Orika</a> est une société Française qui imagine et produit des meubles en carton. Oui. En carton. De la table à l&#8217;étagère, en passant par le fauteuil, de nombreux modèles existent.
+A l&#8217;occasion des fêtes de fin d&#8217;année Orika a aussi conçu un sapin de noël tout à fait crédible. Trouvant cela interessant, j&#8217;en ai commandé un exemplaire, et voici donc mes impressions sur ce produit.</p>
+
+<h2>Vous avez reçu un colis</h2>
+
+<blockquote><p> <em>Ding Dong</em><br/>
+&#8220;Bonjour, j&#8217;ai un colis pour vous&#8221;<br/>
+&#8220;Ah super, c&#8217;est le sapin !&#8221;<br/>
+&#8220;Ce n&#8217;est pas un sapin&#8230;&#8221;<br/>
+&#8220;Si si je vous assure :)&#8221;<br/>
+&#8220;Euh&#8230; vous pouvez signer ici svp ?&#8221;</p></blockquote>
+
+<p>Et c&#8217;est ainsi que cet énorme, mais plat, paquet contenant <a href="http://www.mobilier-orika.com/objets-decoration_24_sapin-de-noel-petit-format.html">le petit modèle</a> a fait son entrée dans l&#8217;appartement :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-4/orika1.jpg"></p>
+
+<p>Il est donc très bien emballé et protégé par les renforts en carton sur les cotés, mais le tout cela reste simple à ouvrir.</p>
+
+<h2>Vous avez dit Ikea ?</h2>
+
+<p>A l&#8217;intérieur on trouve donc le sapin, les instructions de montage et quelques brochures publicitaires.</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-4/orika2.jpg"></p>
+
+<p>On peut donc passer à l&#8217;assemblage de l&#8217;arbre&#8230; et je dois bien avouer que sur ce point les instructions font un peu &#8220;cheap&#8221;. J&#8217;ose espérer que sur des produits plus complexes à construire elles sont plus claires.</p>
+
+<p>Une fois monté il ne reste plus qu&#8217;à fignoler un peu l&#8217;aspect, en découpant les chutes au centre des étoiles, et hop !</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-4/orika3.jpg"></p>
+
+<p>Je trouve ce sapin original, joli, et surtout personalisable. C&#8217;est à mon avis un gros plus pour occuper les enfants pendant les vacances :)</p>
+
+<p>Merci <a href="http://www.mobilier-orika.com">Orika</a> pour cette brillante idée !</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[2012... ou presque !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/12/09/2012-ou-presque/"/>
+    <updated>2011-12-09T22:30:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/12/09/2012-ou-presque</id>
+    <content type="html"><![CDATA[<p>La nouvelle année est souvent l&#8217;occasion de choisir des résolutions pour les 12 mois qui approchent. Pour Tym-Project cela veut sourtout dire une nouvelle plateforme, ou plutôt un nouveau &#8220;CMS&#8221; : <a href="http://octopress.org" title="Octopress">Octopress</a>, j&#8217;aurai certainement l&#8217;occasion d&#8217;en reparler par la suite !</p>
+
+<p>Ce changement va aussi impliquer une migration de tout le contenu existant depuis Wordpress&#8230; et ça ne vas pas être de la tarte ! Je pense donc laisser les deux blogs actifs pendant un certain temps :-)</p>
+
+<p>A très vite !</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par jour (ou presque)]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar/"/>
+    <updated>2011-08-31T19:39:34+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar</id>
+    <content type="html"><![CDATA[<p>Ayant tout un tas de liens que je garde depuis (très) longtemps à droite ou à
+gauche, j&#8217;ai décidé de les diffuser ici 5 par 5 quand bon me semblera ! A
+l&#8217;avenir j&#8217;essaierai peut-être de les regrouper par catégories&#8230;</p>
+
+<ol>
+<li><a href="http://www.techiemania.com/5-awesome-free-tools-to-help-you-choose-your-website-color-scheme.html">Tools To Help You Choose Your Website Color Scheme</a></li>
+<li><a href="http://packetlife.net/blog/2011/may/9/using-layers-visio/">Using Layers in Visio</a></li>
+<li><a href="http://www.doitwithwordpress.com/rundown-wordpress-theme-files-what-they-do/">A Rundown of WordPress Theme Files and What They All Do</a></li>
+<li><a href="http://linuxfr.org/news/sadms-int%C3%A9grer-des-stations-gnulinux-%C3%A0-active-directory">SADMS : Intégrer des stations GNU/Linux à Active Directory</a></li>
+<li><a href="http://vpourchet.wordpress.com/2011/02/13/ghettovcb-sh-le-vcenter-backup-du-pauvre/">Ghettovcb.sh : Le VCenter Backup du pauvre !</a></li>
+</ol>
+
+
+<p>Oui, il-y-à pas mal de contenu en anglais&#8230;eh c&#8217;est l&#8217;Interweb ici, il faut
+s&#8217;y faire ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ma nouvelle configuration Media Center sous Linux]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/08/21/xbmc-et-archlinux-pour-un-media-center/"/>
+    <updated>2011-08-21T12:00:02+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/08/21/xbmc-et-archlinux-pour-un-media-center</id>
+    <content type="html"><![CDATA[<p>J&#8217;avais déjà évoqué dans un précédent article que
+je possède un Media center sous Linux. Suite à une petite bidouille
+malheureuse, il s&#8217;est retrouvé complètement planté. J&#8217;ai donc décidé de tout
+réinstaller à partir de zéro et de documenter (un peu) l&#8217;opération.<br/>
+Je vais
+donc détailler les principaux composants de cette installation, sans pour
+autant rentrer dans les détails (utilisez les commentaires si besoin).</p>
+
+<!-- more -->
+
+
+<h2>Qui suis-je, où vais-je, &#8230;</h2>
+
+<p><em>&#8230; dans quelle étagère ?</em> Avant de mettre les mains dans la console, une
+petite explication de l&#8217;utilisation que je fais de ma machine s&#8217;impose :</p>
+
+<ul>
+<li>Je passe beaucoup de temps sur <a href="http://xbmc.org/skins/" title="Xbmc">Xbmc</a>, un très bon logiciel de Media Center</li>
+<li>Je regarde aussi beaucoup Nolife Online (<a href="http://www.nolife-tv.com/souscription" title="Nolife Online">Abonnez vous !</a>)</li>
+<li>Je n&#8217;exclue pas l&#8217;idée d&#8217;utiliser d&#8217;autres services de TV de rattrapage comme M6 Replay par exemple.</li>
+</ul>
+
+
+<p>Je possède un clavier sans-fil avec Trackball intégré (<a href="http://www.materiel.net/clavier/enermax-aurora-micro-wireless-kb008w-b-noir-47221.html" title="Clavier Aurora Enermax">celui-ci</a>) ainsi
+qu&#8217;une télécommande &#8220;compatible Windows Media Center&#8221; achetée sur e-bay.</p>
+
+<h2>Arch&#8217; mon ami !</h2>
+
+<p>Archlinux m&#8217;a semblé être le meilleur choix comme distribution pour Mediator
+(le nom que j&#8217;ai donné à cette machine&#8230;bien avant le scandale sur le
+médicament du même nom). Outre sa flexibilité, j&#8217;apprécie surtout le fait
+d&#8217;avoir des paquetages très récents&#8230;très utile pour les drivers vidéo par
+exemple. C&#8217;est aussi une distribution pour laquelle l&#8217;installation de base est
+très légère, sans fioritures. <em>Oui, je pense à Ubuntu en disant cela :)</em> J&#8217;ai
+donc réalisé une installation tout à fait classique, j&#8217;ai seulement eu un
+petit souci avec la configuration de Grub pour le kernel 3.0 qui fera l&#8217;objet
+d&#8217;un prochain (court) article.</p>
+
+<h2>Boot &#8211;> Bureau</h2>
+
+<p>Pour me simplifier un peu la vie j&#8217;ai décidé d&#8217;utiliser un gestionnaire de
+login. L&#8217;heureux élu est &#8220;bien entendu&#8221; Slim, pour sa légèreté et sa facilité
+de configuration. L&#8217;utilisateur principal autre que root est <code>server</code>, et j&#8217;ai
+donc configuré le login automatique de ce dernier via Slim (dans le fichier
+<code>/etc/slim.conf</code>) :</p>
+
+<pre><code>default_user server
+auto_login yes
+</code></pre>
+
+<h2>Gère moi cette fenêtre !</h2>
+
+<p>Mon choix pour le Window Manager s&#8217;est porté, pour les mêmes raisons que Slim,
+vers PekWM. La configuration générale que j&#8217;utilise pour ce dernier est assez
+simple, j&#8217;ai seulement désactivé les bureaux virtuels et changé le thème. En
+ce qui concerne les raccourcis clavier, voici un extrait de mon fichier
+<code>~/.pekwm/keys</code> :</p>
+
+<pre><code>Global {
+    KeyPress = "XF86AudioLowerVolume" { Actions = "Exec /home/server/scripts/bash_vol_manager.sh lower 5 &amp;" }
+    KeyPress = "XF86AudioRaiseVolume" { Actions = "Exec /home/server/scripts/bash_vol_manager.sh raise 5 &amp;" }
+    KeyPress = "XF86AudioMute" { Actions = "Exec /home/server/scripts/bash_vol_manager.sh toggle &amp;" }
+    KeyPress = "XF86Mail" { Actions = "Exec /home/server/scripts/xbmc.sh &amp;" }
+    KeyPress = "Alt Mod4 Alt_L" { Actions = "Exec /home/server/scripts/xbmc.sh &amp;"}
+    KeyPress = "XF86Sleep" { Action = "Exec /home/server/scripts/stop.sh &amp;" }
+...
+</code></pre>
+
+<p>J&#8217;ai donc la gestion du volume avec un petit script maison (que je
+détaillerais dans un autre post), l&#8217;ouverture de Xbmc (via les boutons
+multimédia &#8220;Mail&#8221; de mon clavier et le bouton &#8220;Start&#8221; de ma télécommande).
+Enfin la touche &#8220;Power&#8221; de ma télécommande (qui envoie le signal <code>XF86Sleep</code>)
+pour éteindre la machine.<br/>
+<em>Le dernier raccourci ne fonctionne pas&#8230;et
+j&#8217;ignore pourquoi (ce n&#8217;est pas lié au script associé). Je suis preneur de vos
+suggestions !</em></p>
+
+<p>Le script <code>~/.pekwm/start</code> contient les lignes suivantes :</p>
+
+<pre><code>#!/bin/sh
+firefox &amp;
+sleep 3
+/home/server/scripts/xbmc.sh &amp;
+</code></pre>
+
+<p>Le temps de pause entre le lancement de Firefox et celui de Xbmc
+permet d&#8217;éviter que ce dernier perde le plein écran à cause du précédent.</p>
+
+<h2>Trop fort !</h2>
+
+<p>Avec mon installation précédente je devais souvent jongler avec le volume
+entre une vidéo sur Firefox et un média quelconque sur Xbmc. Le volume doit
+être poussé au maximum sur Xbmc, mais à environ 70% sur Firefox, pour entendre
+correctement dans mon salon.<br/>
+J&#8217;ai donc réfléchi à un moyen d&#8217;automatiser ce
+changement de volume, et cela s&#8217;est traduit par le script <code>xbmc.sh</code> :</p>
+
+<pre><code>#!/bin/bash
+amixer -c 0 sset Master 100%
+xbmc
+amixer -c 0 sset Master 68%
+</code></pre>
+
+<p>Simple mais efficace, il pousse le volume
+à fond puis lance Xbmc. Ce dernier n&#8217;étant pas lancé en arrière plan, dès
+qu&#8217;il est quitté le volume est placé à 68%. Ce script est utilisé à la fois
+dans <code>~/.pekwm/start</code> et <code>~/.pekwm/keys</code>.</p>
+
+<h2>Firefox (à la loupe, sans la loupe)</h2>
+
+<p>J&#8217;ai abandonné <a href="http://www.tym-project.fr/blog/2011/05/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/" title="Un Linux mediacenter avec une loupe">mon système de loupe</a> pour quelque chose de plus simple :
+pousser à fond la taille des caractères à l&#8217;écran (<code>Preferences&gt;Content&gt;Fonts
+&amp; Colors&gt;Advances&gt;Maximum font size</code>). C&#8217;est moche mais pratique, l&#8217;avenir me
+dira si c&#8217;est réellement une bonne alternative. J&#8217;ai aussi modifié le
+<code>about:config</code> pour désactiver la restauration des onglets au lancement (en
+cas de crash ou non) :</p>
+
+<pre><code>browser.sessionstore.resume_from_crash;false
+browser.sessionstore.max_tabs_undo;0
+browser.sessionstore.max_windows_undo;0
+</code></pre>
+
+<h2>shutdown -s -t now</h2>
+
+<p>Si il est toujours possible d&#8217;autoriser la mise hors tension du système via
+des bidouilles avec <code>sudo</code> et <code>halt</code>, cela reste des bidouilles. La manière la
+plus simple est en fait d&#8217;utiliser <code>consolekit</code>, <code>policykit</code> et <code>dbus</code>&#8230; en
+effet : c&#8217;est prévu pour.<br/>
+Avant tout il faut modifier <code>~/.xinitrc</code> ainsi :</p>
+
+<pre><code>#exec pekwm
+exec ck-launch-session pekwm
+</code></pre>
+
+<p>Pour tester si vous avez les droits pour couper le système (par
+exemple), utilisez cette commande qui vous renverra <code>true</code> ou <code>false</code> :</p>
+
+<pre><code>dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.CanStop
+</code></pre>
+
+<p>La commande à utiliser
+pour éteindre la machine sera alors la suivante (une simple modification de la
+dernière directive) :</p>
+
+<pre><code>dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop
+</code></pre>
+
+<p>Si jamais vous n&#8217;avez pas les droits, ou êtes simplement curieux, la
+configuration se situe dans le fichier
+<code>/usr/share/polkit-1/actions/org.freedesktop.consolekit.policy</code>. Une commande
+est autorisée par la directive <code>&lt;allow_active&gt;yes&lt;/allow_active&gt;</code>, mais j&#8217;ai
+parfois dû utiliser <code>&lt;allow_any&gt;yes&lt;/allow_any&gt;</code></p>
+
+<h2>&#8220;Moi vivant, vous n&#8217;aurez jamais de pauses&#8221;</h2>
+
+<p>Par défaut le serveur X coupe l&#8217;écran au bout d&#8217;un temps donné pour économiser
+de l&#8217;énergie. Cela va sans dire que c&#8217;est insupportable pour un écran qui est
+censé être allumé en permanence avec la machine&#8230; Une petite configuration
+dans <code>/etc/X11/xorg.conf</code> et hop !</p>
+
+<pre><code>Section "ServerFlags"
+    Option "BlankTime" "0"
+    Option "StandbyTime" "0"
+    Option "SuspendTime" "0"
+    Option "OffTime" "0"
+EndSection
+</code></pre>
+
+<h2>Sources</h2>
+
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/PekWM" title="PekWM">PekWM</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Slim" title="Slim">Slim</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/ConsoleKit" title="ConsoleKit">ConsoleKit</a></li>
+<li><a href="http://www.shallowsky.com/linux/x-screen-blanking.html" title="X11 Scrren Blanking">Mise en veille de l&#8217;écran avec X11</a></li>
+<li><a href="http://vuedelaprovince.canalblog.com/" title="La citation &quot;Moi vivant ...&quot;">La citation &#8220;Moi vivant&#8230;&#8221;</a></li>
+</ul>
+
+
+<p>Bonne utilisation ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Moi, mon Kindle et moi]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/07/15/test-kindle-long-et-retour-experience/"/>
+    <updated>2011-07-15T17:50:12+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/07/15/test-kindle-long-et-retour-experience</id>
+    <content type="html"><![CDATA[<p>Je suis l&#8217;heureux possesseur d&#8217;un Amazon Kindle
+depuis 8 mois environ, et je vais donc décrire ici l&#8217;utilisation que j&#8217;en fait
+ainsi que ce que je trouve bien&#8230;et moins bien.</p>
+
+<!-- more -->
+
+
+<p>Il est question ici du Kindle
+3, modèle 3G et Wifi,<a href="http://www.amazon.com/gp/product/B003DZ1Y72?amp%3Brw_absolute=y"> en vente sur Amazon</a> au prix de 189$ (auxquels il
+faut rajouter bien entendu les frais de port et de douane). Si tant est que
+vous n&#8217;ayez pas encore entendu parler de cette objet (vous Internet dans votre
+grotte ?), voici quelques tests sympathiques en français chez <a href="http://korben.info/petit-test-du-kindle-3.html">Korben</a> ou
+chez <a href="http://gonzague.me/test-amazon-kindle-3">Gonzague</a>. Outre l&#8217;écran très lisible, j&#8217;apprécie surtout beaucoup
+les boutons <code>Page suivante</code> et <code>Page précédente</code> à l&#8217;identique des deux cotés
+de l&#8217;appareil, ce qui permet de le tenir dans tous les sens (main gauche ou
+droite, à une main ou non, par le coté ou par le bas&#8230;) et ce sans souffrir
+d&#8217;une quelconque gène&#8230;comme avec un vrai livre.</p>
+
+<h2>C&#8217;est en lisant que l&#8217;on devient&#8230;lecteur</h2>
+
+<p>Le premier moyen que j&#8217;utilise pour trouver des livres est bien entendu le
+<a href="http://www.amazon.com/kindle-store-ebooks-newspapers-blogs/b/ref=topnav_storetab_kinc?ie=UTF8&amp;node=133141011" title="Kindle Store">Kindle Store</a>. Accessible depuis un PC, mais surtout en Wifi ou 3G depuis
+le Kindle, il est très fourni en titres en anglais et je n&#8217;y ai que très
+rarement pas trouvé mon bonheur. Aujourd&#8217;hui c&#8217;est surtout pour moi un moyen
+de lire des extraits de livres, qui sont envoyés gratuitement sur le Kindle,
+très utile dans le cas de livres techniques où le fond est aussi important que
+la forme. Notez toutefois que, malgré une conversion €/$ parfois très
+avantageuse, certaines banques facturent les frais de conversion (les piles de
+calculette ça coûte cher&#8230;).</p>
+
+<p>Il existe bien entendu de nombreuses autres sources pour vous procurer
+(gratuitement ou non) des e-books, Google est votre ami. Le Kindle ne sait pas
+lire les livres au format <code>epub</code> (assez répandu), mais pas d&#8217;inquiétudes, le
+logiciel <a href="http://calibre-ebook.com/" title="Calibre">Calibre</a> vous permettra d&#8217;effectuer la conversion au format
+<code>mobi</code> très simplement.</p>
+
+<h3>Des images avec des mots</h3>
+
+<p>Calibre sera d&#8217;ailleurs aussi très utile pour convertir des Mangas, Comics ou
+Bds au format <code>cbr</code> (une sorte d&#8217;archive contenant les images classées dans
+l&#8217;ordre). Il sera alors très agréable de lire sur le Kindle, qui considérera
+le fichier comme n&#8217;importe quel e-book. Le fait que l&#8217;écran soit en noir et
+blanc peut, au premier abord, paraitre comme un élément très gênant&#8230;mais en
+fait pas du tout ! Tout d&#8217;abord beaucoup des supports sont d&#8217;origine en noir
+et blanc (surtout pour les Mangas), et si ils ne le sont pas, la qualité des
+niveaux de gris est telle que ce n&#8217;est plus un problème.</p>
+
+<h2>Quand j&#8217;étais petit garçon, Je repassais mes leçon&#8230;</h2>
+
+<p><em>&#8230;en les lisant sur un Kindle 3.</em> Le Kindle sait lire les PDFs, mais aussi
+convertir vos documents lorsque vous les envoyez à votre adresse mail Kindle :
+<code>@kindle.com</code> pour une livraison en 3G mais payante, ou <code>@free.kindle.com</code>
+pour une réception en Wifi seulement. Très utile donc pour des supports de
+cours, des documentations ou bien entendu vos notes personnelles.</p>
+
+<h2>Un écran c&#8217;est bien, un Kindle c&#8217;est mieux !</h2>
+
+<p>Je lis énormément de news et d&#8217;articles sur écran&#8230;et, c&#8217;est bien connu, tout
+cela devient rapidement très fatiguant pour les yeux. Vous pouvez bien entendu
+copier-coller tout cela dans un e-mail pour votre adresse Kindle, mais il
+existe plus simple et plus ergonomique. Je pense à l&#8217;occurence à
+<a href="http://www.instapaper.com/" title="Instapaper">Instapaper</a> Instapaper permet de &#8220;sauvegarder&#8221; vos articles pour les lire
+plus tard, et ce à l&#8217;aide de deux moyens : via un bookmarklet ou une adresse
+e-mail spécifique. J&#8217;utilise souvent le bookmarklet avec une sorte de
+raccourci dans Firefox, j&#8217;ai en fait inséré le code javascript en question
+dans un marque-page puis associé ce dernier à un &#8220;Mot clé&#8221;. Je peux donc
+envoyer une page très facilement avec la combinaison suivante : <code>Ctrl+L</code>
+(barre d&#8217;adresse) puis le &#8220;Mot clé&#8221;, et hop <code>Entrée</code> et emballé c&#8217;est
+enregistré ! Il vous suffira ensuite de configurer l&#8217;envoi journalier des
+articles sur votre adresse mail Kindle, et vous voila paré pour lire vos
+articles dans les transports en commun.</p>
+
+<p>Dans un esprit similaire, un certain Dave se propose de vous envoyer à un
+rythme hebdomadaire des articles (en anglais) qu&#8217;il a sélectionné. Parfois
+j&#8217;aime, parfois non, mais je vous invite à essayer <a href="http://delivereads.com/" title="Delivereads">Delivereads</a>.</p>
+
+<h2>Vers l&#8217;infini et l&#8217;au delà !</h2>
+
+<p>La fonctionnalité de lecture de PDFs, associé à l&#8217;outil de zoom, me permet de
+gagner du temps lors de mes nombreux déplacements professionnels. En effet, je
+peux envoyer mes e-billets (SNCF et Air France, je n&#8217;ai pas essayé pour le
+reste) sur mon Kindle et les faire scanner par le personnel comme n&#8217;importe
+quel billet papier. Attention toutefois car certaines machines peuvent avoir
+des difficultés, tout comme les agents qui sont parfois assez surpris face à
+l&#8217;appareil. C&#8217;est en tout cas une bonne solution de secours si je n&#8217;ai pas le
+temps de retirer mes billets.</p>
+
+<h2>Du plastique et des Hommes</h2>
+
+<p>Un Kindle c&#8217;est surtout un bout de plastique avec de la magie dedans&#8230;et la
+magie ça courgiecuite et ça tombe en panne. Dans mon cas j&#8217;ai expérimenté cela
+dès le premier mois, avec une connectivité 3G qui ne voulait plus connectiver.
+<em>Bon hop, finit les jeux de mots.</em> J&#8217;ai donc commencé par contacter le support
+par chat, après description de mon problème on m&#8217;a logiquement invité à
+contacter le support par téléphone. Aux US. Merci Free (c&#8217;est gratuit). Une
+petite heure de débug plus tard, et après des manipulations cohérentes (menus
+de diagnostic &#8220;cachés&#8221;, hard reboot et j&#8217;en passe), le verdict tombe : retour
+à la case départ (l&#8217;entrepôt Amazon). Amazon m&#8217;a très gentiment renvoyé un
+autre appareil dans la foulée, leur ayant expliqué que j&#8217;avais besoin de
+garder le modèle légèrement défectueux le temps de mes révisions. J&#8217;ai un peu
+bataillé pour obtenir une étiquette de retour UPS, qui m&#8217;a permit d&#8217;éviter
+d&#8217;avancer les frais d&#8217;expédition (mais logiquement remboursés). J&#8217;ai apprécié
+le geste commercial (15$), alors que je n&#8217;ai jamais évoqué la question. Petite
+astuce, n&#8217;hésitez pas à demande un &#8220;Kindle Specialist&#8221; à votre premier
+interlocuteur dans le chat, vous gagnerez du temps. Le Kindle que j&#8217;ai
+aujourd&#8217;hui fonctionne sans problèmes depuis un peu plus de 7 mois, pas mal
+non ?!</p>
+
+<h3>Stress Test</h3>
+
+<p>Je n&#8217;utilise pas de housse pour mon Kindle, mais en 8 mois d&#8217;utilisation
+intensive je n&#8217;ai que deux éléments abimés à relever : l&#8217;écran qui a été abimé
+sur une petit zone de 1cm², et le boitier qui tend à se fêler au niveau du bas
+du cadre. Le fait qu&#8217;il soit tombé deux fois, au point de se déboiter doit
+jouer&#8230;Donc oui, je le considère comme très résistant car une fois &#8220;reboité&#8221;
+il était comme neuf ! L&#8217;écran ne me semble pas rayé, ou si il l&#8217;est (dur à
+déterminer), cela ne gêne en rien ma lecture.</p>
+
+<h2>Et sinon ?</h2>
+
+<p>Je n&#8217;ai donc que très peu de choses à reprocher à mon Kindle, je note surtout
+des fonctionnalités manquantes comme un outil de prise de notes ou le coût des
+envois personnels en 3G (<code>@kindle.com</code>). Je n&#8217;ai pas trop de problèmes avec la
+langue anglaise, mais ce n&#8217;est pas le cas de tout le monde, donc je considère
+cela comme une limitation (surtout pour le support !)</p>
+
+<p>Bonne lecture ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Un Linux mediacenter avec une loupe]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/"/>
+    <updated>2011-05-04T12:00:06+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon</id>
+    <content type="html"><![CDATA[<p>Un Linux avec Xbmc au milieu du salon c&#8217;est de plus
+en plus en commun, et même si je me trompe, c&#8217;est quand même super pratique !
+Mais c&#8217;est encore mieux quand cette machine peut aussi servir à consulter ses
+mails, utiliser Youtube&#8230; Problème : la résolution d&#8217;écran est trop elevée
+pour pouvoir lire à 2m de l&#8217;écran. C&#8217;est donc là qu&#8217;entre en jeu la loupe.</p>
+
+<!-- more -->
+
+
+<p>Gnome propose son outil, gnome-magnifier, tout un tas d&#8217;infos <a href="https://wiki.ubuntu.com/Accessibility/Reviews/gnome-mag">sur le Wiki
+d&#8217;Ubuntu</a> et <a href="http://man.cx/magnifier">et dans le man</a>.</p>
+
+<h2>De la problèmatique des doigts</h2>
+
+<p>Avoir une loupe c&#8217;est une chose, y accéder en est une autre. En effet, la
+problématique est toujours la même si il faut aller cliquer dans un petit menu
+ou sur une petit icône, sans parler de lancer une ligne de commande ! Allons-y
+gaiement avec un raccourci clavier donc&#8230; Avec Gnome (2.XX) rien de plus
+simple : <code>Système/Préférences/Raccourcis clavier</code>,la commande étant <code>magnifier
+-m -v</code>. L&#8217;option <code>-m</code> pour suivre les mouvements de la souris, <code>-v</code> pour une
+loupe verticale (sur la gauche de l&#8217;écran par défaut), eh lisez le <code>man</code> !</p>
+
+<h2>De la problématique du multi-doigt</h2>
+
+<p>Un raccourci pour ouvrir la loupe c&#8217;est pratique, mais comment faire pour
+fermer l&#8217;outil ? Un autre raccourci ? Non non non, un peu d&#8217;ingéniosité que
+diable ! C&#8217;est en fait un seul et même raccourci clavier qui va servir, en
+séquence, à :</p>
+
+<ol>
+<li>Lancer la loupe en &#8220;vertical&#8221;</li>
+<li>Basculer la loupe en &#8220;horizontal&#8221;, pratique pour la lecture de long textes</li>
+<li>Fermer complètement l&#8217;application</li>
+</ol>
+
+
+<p>En terme de script (Bash, pour faire vite et bien), cela donne ceci de la
+manière suivante :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'><span class="k">function </span>killmag <span class="o">{</span>
+</span><span class='line'>    <span class="nb">kill</span> -9 <span class="se">\ </span><span class="sb">`</span>ps aux | grep -v grep | grep magnifier | tr -s <span class="s2">&quot; &quot;</span> | cut -d <span class="s2">&quot; &quot;</span> -f 2<span class="sb">`</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="k">case</span> <span class="se">\</span>
+</span><span class='line'><span class="s2">&quot;`ps aux | grep -v grep | grep magnifier | \ tr -s &quot;</span> <span class="s2">&quot; | cut -d &quot;</span> <span class="s2">&quot; -f 12`&quot;</span><span class="se">\</span>
+</span><span class='line'>in
+</span><span class='line'>    <span class="s2">&quot;-v&quot;</span><span class="o">)</span>
+</span><span class='line'>        killmag <span class="o">&amp;&amp;</span> magnifier -h -m
+</span><span class='line'>        ;;
+</span><span class='line'>    <span class="s2">&quot;-h&quot;</span><span class="o">)</span>
+</span><span class='line'>        killmag
+</span><span class='line'>        ;;
+</span><span class='line'>    <span class="s2">&quot;&quot;</span><span class="o">)</span>
+</span><span class='line'>        magnifier -v -m
+</span><span class='line'>        ;;
+</span><span class='line'><span class="k">esac</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>On retrouve donc une fonction pour killer la loupe, car il faut la relancer
+pour changer d&#8217;orientation. Petit détail syntaxique : l&#8217;utilisation de <code>\</code>
+pour faire des retours à la ligne au milieu d&#8217;une commande, pratique pour se
+la raconter un peu sur un article de blog (ou faciliter la lecture, c&#8217;est
+selon).</p>
+
+<h2>Algo à gogo</h2>
+
+<p>D&#8217;un point de vue algorithmique, et par ordre de déclenchement du script :</p>
+
+<ol>
+<li>Par défaut la loupe n&#8217;est pas lancée, donc le résultat du <code>grep</code> dans le <code>case</code> est vide : on lance la loupe en mode vertical</li>
+<li>Un second passage va renvoyer &#8221;<code>-v</code>&#8221; dans le <code>case</code> : on kill la loupe et on la relance en horizontal</li>
+<li>Le passage suivant renvoit &#8221;<code>-h</code>&#8221;, donc le <code>case</code> kill la loupe pour de bon</li>
+<li>Et ainsi fon fon fon&#8230;</li>
+</ol>
+
+
+<p>Bon zoom ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Merci Google, sans toi je ne suis rien !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/05/02/merci-google-sans-toi-je-ne-suis-rien/"/>
+    <updated>2011-05-02T23:26:52+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/05/02/merci-google-sans-toi-je-ne-suis-rien</id>
+    <content type="html"><![CDATA[<p>Un petit post sans intérêt, mais je voulais vous
+montrer un mail qui m&#8217;a bien fait marrer. Cela vient de Google pour m&#8217;annoncer
+la migration de Google Apps sur un de mes domaines&#8230;(car oui, je fais <a href="http://www.tym-project.fr/blog/2009/03/associer-google-apps-gmail-gdocs-gcalendar-gtalk-a-son-domaine/">ce que
+j&#8217;écris</a> ;-)) Voilà le message en question :</p>
+
+<blockquote><p>Cher administrateur Google Apps, Les comptes Google Apps font l&#8217;objet d&#8217;une
+amélioration qui vous permettra de donner aux utilisateurs un accès à plus de
+60 applications Google supplémentaires. Nous vous encourageons à effectuer dès
+à présent la transition des comptes de votre organisation selon votre propre
+calendrier.</p>
+
+<p>Effectuer la transition selon votre propre calendrier offre plusieurs
+avantages :</p>
+
+<ul>
+<li><p>Effectuer la transition selon votre propre calendrier</p></li>
+<li><p>Prenez le temps de tester la nouvelle infrastructure sur un échantillon
+de comptes.</p></li>
+<li><p>Utiliser les listes de diffusion et les modèles d’e-mail automatisés
+pour informer préalablement vos utilisateurs</p></li>
+<li><p>Bénéficiez immédiatement d’un accès à plus de 60 applications Google
+supplémentaires</p></li>
+</ul>
+
+
+<p>Lancez la transition dès maintenant en cliquant sur le bouton &#8220;Démarrer&#8221; ou
+&#8220;Effectuer la transition pour d&#8217;autres utilisateurs&#8221; dans votre panneau de
+configuration : https://www.google.com/a/cpanel/********</p>
+
+<p>Nous prévoyons sous peu la transition complète de votre organisation, y
+compris tous les utilisateurs dont vous n’avez pas encore effectué la
+transition vous-même. Si vous n’avez pas effectué la transition avant la
+semaine du 16 mai 2011, nous nous en chargerons à votre place.</p>
+
+<p>Si vous avez des questions à propos de cette transition, nous vous invitons à
+consulter la documentation de notre centre d&#8217;aide à l&#8217;attention des
+administrateurs et des utilisateurs finaux.</p>
+
+<p>Cordialement, L’équipe Google Apps</p>
+
+<p>&#8212;&#8212;&#8212;&#8212;- Cette annonce à lire impérativement vise à vous informer de modifications importantes du service de messagerie associé à votre compte Google Apps.<br/>
+Ne répondez pas à cet e-mail, car nous ne serons pas en mesure d&#8217;examiner
+votre réponse. Vous pouvez déposer un dossier dans votre panneau de
+configuration pour obtenir une aide supplémentaire.</p>
+
+<p>Google Inc. 1600 Amphitheatre Parkway Mountain View, CA 94043, États-Unis</p></blockquote>
+
+<p><em>Cherchez la blague, allez, un petit effort&#8230;</em></p>
+
+<h2>I Loled IRL</h2>
+
+<p>C&#8217;est donc bien expliqué, un peu technique, mais aussi un peu c** je trouve :</p>
+
+<blockquote><p>**Effectuer la transition selon votre propre calendrier offre plusieurs
+avantages :</p>
+
+<ul>
+<li><p>Effectuer la transition selon votre propre calendrier</p></li>
+<li><p>&#8230;_</p></li>
+</ul>
+
+
+<p>**</p></blockquote>
+
+<p>Sans rire ?! Merci pour cette précision Mr. Google, sans toi je ne suis rien !
+Mais attention, la paradoxe temporel n&#8217;est pas loin car le paradoxe temporel
+n&#8217;est pas loin car le paradoxe&#8230;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mon script de configuration iptables]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/04/06/iptables-et-lancement-automatique/"/>
+    <updated>2011-04-06T12:00:02+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/04/06/iptables-et-lancement-automatique</id>
+    <content type="html"><![CDATA[<p>Pour ceux qui ne connaitraient pas, iptables est une
+interface de gestion du module netfilter du noyau Linux. En termes clairs :
+c&#8217;est un pare-feu. Iptables est donc un ensemble de commandes permettant de
+créer des règles, je ne vais pas rentrer dans les détails, vous trouverez plus
+d&#8217;infos sur <a href="http://www.techrepublic.com/blog/10things/10-iptables-rules-to-help-secure-your-linux-box/539">cette page par exemple</a>. Dans cet article il sera question de
+comment je gère ma configuration de pare-feu à travers un script d&#8217;init.</p>
+
+<!-- more -->
+
+
+<h2>init.d, t&#8217;es initié ?</h2>
+
+<p>Le but de ce script est qu&#8217;il se lance au démarrage de mon poste, et en bonus
+que je puisse couper/relancer mon pare-feu à loisir : c&#8217;est là le rôle d&#8217;un
+script &#8220;init.d&#8221;. Commençons donc par la fin, avec les différents arguments que
+peut prendre le script :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">case</span> <span class="nv">$1</span> in
+</span><span class='line'>    start<span class="o">)</span>
+</span><span class='line'>        start
+</span><span class='line'>        ;;
+</span><span class='line'>    stop<span class="o">)</span>
+</span><span class='line'>        stop
+</span><span class='line'>        ;;
+</span><span class='line'>    restart<span class="o">)</span>
+</span><span class='line'>        restart
+</span><span class='line'>        ;;
+</span><span class='line'>    *<span class="o">)</span>
+</span><span class='line'>        <span class="nb">echo</span> <span class="s2">&quot;usage: iptables {start|stop|restart}&quot;</span>
+</span><span class='line'>        <span class="nb">exit </span>1
+</span><span class='line'>        ;;
+</span><span class='line'><span class="k">esac</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Logiquement on retrouve les
+fonction <code>start</code>, <code>stop</code> et <code>restart</code> avec une explication des arguments pour
+toute valeur en dehors de ce choix.</p>
+
+<h2>En fonction des fonctions&#8230;</h2>
+
+<p>la fonction <code>restart</code> est très simple :</p>
+
+<pre><code>function restart {
+    stop start
+}
+</code></pre>
+
+<p>la fonction <code>stop</code> est un peu plus complexe et est chargée de vider les règles
+iptable, de changer la politique par défaut et de restarter
+<code>[man]fail2ban[/man]</code> si besoin :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">function </span>stop <span class="o">{</span>
+</span><span class='line'>    <span class="k">for </span>IPTABLES in iptables ip6tables;do
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -P INPUT ACCEPT
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -P FORWARD ACCEPT
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -P OUTPUT ACCEPT
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -F <span class="nv">$IPTABLES</span> -X
+</span><span class='line'>    <span class="k">done</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">    if</span> <span class="o">[</span> -e /etc/init.d/fail2ban <span class="o">]</span>; <span class="k">then</span>
+</span><span class='line'>        /etc/init.d/fail2ban restart
+</span><span class='line'>    <span class="k">fi</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>L&#8217;utilisation de <code>for IPTABLES in iptables ip6tables</code> permet de configurer à
+la fois pour ipv4 et ipv6.</p>
+
+<p>La fonction <code>start</code> utilise une variable <code>$TCP_PORTS</code> (qui contient les port
+TCP à ouvrir) définie ainsi :</p>
+
+<pre><code>TCP_PORTS="80 443"
+</code></pre>
+
+<p>Et la fonction en elle-même :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">function </span>start <span class="o">{</span>
+</span><span class='line'>    <span class="k">for </span>IPTABLES in iptables ip6tables;do
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -F <span class="nv">$IPTABLES</span> -P INPUT DROP
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -P FORWARD DROP
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -P OUTPUT DROP
+</span><span class='line'>
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+</span><span class='line'>        <span class="k">for </span>port in <span class="nv">$TCP_PORTS</span>;<span class="k">do</span>
+</span><span class='line'>            <span class="nv">$IPTABLES</span> -A INPUT -p tcp --dport <span class="nv">$port</span> -j ACCEPT
+</span><span class='line'>        <span class="k">done</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -A INPUT -i lo -j ACCEPT <span class="nv">$IPTABLES</span> -A OUTPUT -o lo -j ACCEPT
+</span><span class='line'>        <span class="c"># ICMP (Ping)</span>
+</span><span class='line'>        <span class="c">#$IPTABLES -A INPUT -p icmp -j ACCEPT</span>
+</span><span class='line'>    <span class="k">done</span>
+</span><span class='line'><span class="k">if</span> <span class="o">[</span> -e /etc/init.d/fail2ban <span class="o">]</span>;<span class="k">then</span>
+</span><span class='line'>    /etc/init.d/fail2ban restart
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Configuration et installation</h2>
+
+<p>Pour placer le script dans <code>/etc/init.d/</code> deux solutions sont possibles :</p>
+
+<ul>
+<li>le copier dans le répertoire</li>
+<li>faire un lien symbolique avec <code>ln -s /emplacement/script/iptables /etc/init.d/iptables</code></li>
+</ul>
+
+
+<p>Si vous mettez ce script en place sur serveur sans accès physique, je vous
+conseille formetment de le tester avant de le mettre au démarrage de la
+machine&#8230;c&#8217;est trop bête de se faire enfermer dehors :)</p>
+
+<p>La mise en place du scritpt au démarrage peut se faire manuellement en mettant
+en place des liens symboliques dans <code>/etc/rc*.d/</code>, mais il est plus simple de
+passer par <code>update-rc.d</code> :</p>
+
+<pre><code>sudo update-rc.d iptables defaults
+update-rc.d: warning: /etc/init.d/iptables missing LSB information
+update-rc.d: see &lt;http://wiki.debian.org/LSBInitScripts&gt;
+</code></pre>
+
+<p>Suite aux erreurs du <code>LSB</code> j&#8217;ai ajouté cela au début du script :</p>
+
+<pre><code>### BEGIN INIT INFO
+# Provides: iptables
+# Required-Start: $local_fs $remote_fs $network $syslog
+# Required-Stop: $local_fs $remote_fs $network $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Set up iptables at boot time
+# Description: Enable service provided by iptables.
+### END INIT INFO
+</code></pre>
+
+<p>Voici donc le fichier dans son intégralité :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'><span class="c"># iptables-default</span>
+</span><span class='line'><span class="c"># www.tym-project.fr/blog</span>
+</span><span class='line'><span class="c"># tym@tym-project.fr</span>
+</span><span class='line'><span class="c">### BEGIN INIT INFO</span>
+</span><span class='line'><span class="c"># Provides:          iptables</span>
+</span><span class='line'><span class="c"># Required-Start:    $local_fs $remote_fs $network $syslog</span>
+</span><span class='line'><span class="c"># Required-Stop:     $local_fs $remote_fs $network $syslog</span>
+</span><span class='line'><span class="c"># Default-Start:     2 3 4 5</span>
+</span><span class='line'><span class="c"># Default-Stop:      0 1 6</span>
+</span><span class='line'><span class="c"># Short-Description: Set up iptables at boot time</span>
+</span><span class='line'><span class="c"># Description:       Enable service provided by iptables.</span>
+</span><span class='line'><span class="c">### END INIT INFO</span>
+</span><span class='line'><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/sbin&quot;</span>
+</span><span class='line'><span class="nv">TCP_PORTS</span><span class="o">=</span><span class="s2">&quot;80 443&quot;</span>
+</span><span class='line'><span class="k">function </span>stop <span class="o">{</span>
+</span><span class='line'>    <span class="k">for </span>IPTABLES in iptables ip6tables;do
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -P INPUT ACCEPT
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -P FORWARD ACCEPT
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -P OUTPUT ACCEPT
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -F
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -X
+</span><span class='line'>    <span class="k">done</span>
+</span><span class='line'><span class="k">    if</span> <span class="o">[</span> -e /etc/init.d/fail2ban <span class="o">]</span>; <span class="k">then</span>
+</span><span class='line'>        /etc/init.d/fail2ban restart
+</span><span class='line'>    <span class="k">fi</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="k">function </span>start <span class="o">{</span>
+</span><span class='line'>    <span class="k">for </span>IPTABLES in iptables ip6tables;do
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -F
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -P INPUT DROP
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -P FORWARD DROP
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -P OUTPUT DROP
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+</span><span class='line'>    <span class="k">for </span>port in <span class="nv">$TCP_PORTS</span>;<span class="k">do</span>
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -A INPUT -p tcp --dport <span class="nv">$port</span> -j ACCEPT
+</span><span class='line'>    <span class="k">done</span>
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -A INPUT -i lo -j ACCEPT
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -A OUTPUT -o lo -j ACCEPT
+</span><span class='line'>    <span class="c"># ICMP (Ping)</span>
+</span><span class='line'>    <span class="c">#$IPTABLES -A INPUT -p icmp -j ACCEPT</span>
+</span><span class='line'>    <span class="k">done</span>
+</span><span class='line'><span class="k">    if</span> <span class="o">[</span> -e /etc/init.d/fail2ban <span class="o">]</span>;<span class="k">then</span>
+</span><span class='line'>        /etc/init.d/fail2ban restart
+</span><span class='line'>    <span class="k">fi</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="k">function </span>restart <span class="o">{</span>
+</span><span class='line'>    stop
+</span><span class='line'>    start
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="k">case</span> <span class="nv">$1</span> in
+</span><span class='line'>    start<span class="o">)</span>
+</span><span class='line'>    start
+</span><span class='line'>    ;;
+</span><span class='line'>    stop<span class="o">)</span>
+</span><span class='line'>    stop
+</span><span class='line'>    ;;
+</span><span class='line'>    restart<span class="o">)</span>
+</span><span class='line'>    restart
+</span><span class='line'>    ;;
+</span><span class='line'>    *<span class="o">)</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="s2">&quot;usage: iptables {start|stop|restart}&quot;</span>
+</span><span class='line'>    <span class="nb">exit </span>1
+</span><span class='line'>    ;;
+</span><span class='line'><span class="k">esac</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Bon firewalling ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Edito du 31 Mars]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/03/31/edito-du-31-mars/"/>
+    <updated>2011-03-31T22:16:10+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/03/31/edito-du-31-mars</id>
+    <content type="html"><![CDATA[<p>Hop hop, un billet en deux deux (font quatre&#8230;) pour vous indiquer que :</p>
+
+<ul>
+<li>Je vais bien</li>
+<li>J&#8217;ai terminé mes tout derniers exams à SUPINFO (avant la soutenance de mémoire)</li>
+<li>J&#8217;arrive au bout de mon déménagement</li>
+<li>J&#8217;aurai bientôt une vraie connexion internet !</li>
+</ul>
+
+
+<p>A la semaine prochaine donc ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu 64 bits : résoudre les problèmes avec Flash]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/03/16/flash-ubuntu-10-10-x86_64/"/>
+    <updated>2011-03-16T12:00:23+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/03/16/flash-ubuntu-10-10-x86_64</id>
+    <content type="html"><![CDATA[<p>J&#8217;utilise Ubuntu 10.10 depuis quelque temps, et
+ayant 4 Go de RAM j&#8217;utilise la version 64 bits. Bien que cela me chagrine un
+peu, j&#8217;utilise aussi beaucoup Flash pour regarder des vidéos&#8230;malheureusement
+tout cela est assez instable et moche. Mais un passage éclair sous Debian
+Squeeze m&#8217;a prouvé que Flash peut en fait être très stable sous Linux, me
+voila dont partit en quête du plugin parfait&#8230;</p>
+
+<!-- more -->
+
+
+<h2>Le coeur du problème</h2>
+
+<p>Plus qu&#8217;une image vaut bien plus que des mots dans ce cas :
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/selection_007.png"></p>
+
+<p>Remarquez comment les indicateurs
+de temps se retrouvent remplacés par des gros carrés noirs&#8230;je vous laisse
+imaginer la catastrophe quand il s&#8217;agit d&#8217;un jeu ! Maintes et maintes
+recherches m&#8217;ont finalement ammené à explorer une piste : le fait que mon
+Ubuntu soit en 64bits et surtout que Flash ne supportait cette architecture
+que en version expérimentale&#8230;</p>
+
+<h2>La solution au problème</h2>
+
+<p>Je suis finalement tombé sur la page salvatrice dans l&#8217;aide d&#8217;ubuntu :
+<a href="https://help.ubuntu.com/community/RestrictedFormats/Flash#Ubuntu%209.10%20%28Karmic%20Koala%29%20and%20later">RestrictedFormatsFlash </a> En bref il faut tout d&#8217;abord désinstaller Flash
+32 bits :</p>
+
+<pre><code>sudo apt-get remove --purge flashplugin* &amp;&amp; sudo apt-get autoremove
+</code></pre>
+
+<p>Puis ajouter le dépot <code>ppa</code> et
+installer le plugin Flash 64 bits :</p>
+
+<pre><code>sudo add-apt-repository ppa:sevenmachines/flash &amp;&amp; sudo apt-get update &amp;&amp; sudo apt-get install flashplugin64-installer
+</code></pre>
+
+<h2>Tadaaa !!</h2>
+
+<p>Le résultat est sans appel, tout fonctionne !
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/selection_008.png"></p>
+
+<p>Pour info le lien vers la video que j&#8217;utilise en exemple (choisie au hasard
+mais assez sympa en fait) : <a href="http://www.dailymotion.com/video/xft12d_snowboard-kyle-miller-2009-2010_sport">Snowboard: Kyle Miller - 2009-2010 </a></p>
+
+<p>Bon Flashs ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Analyse d'une "arnaque" Facebook]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook/"/>
+    <updated>2011-03-07T19:16:09+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook</id>
+    <content type="html"><![CDATA[<p>J&#8217;utilise Facebook, avec parcimonie certes, mais
+je l&#8217;utilise quand même. On sait maintenant qu&#8217;il faut être très vigilant sur
+les réseaux sociaux, et cet article en est une preuve supplémentaire.</p>
+
+<!-- more -->
+
+
+<p>Il est
+question ici d&#8217;une page web que vous avez certainement croisé sur votre mur.
+Je met le lien pour information ( <a href="http://likeloverr.com/fun.php?id=12">ici</a>), mais NE L&#8217;OUVREZ PAS avant
+d&#8217;avoir lu ce qui suit. Une vidéo d&#8217;un petit chat, qui peut résister&#8230;</p>
+
+<p><em>Edit
+du 8 mars : Il semble que la page ait été modifiée depuis la publication de
+cet article, le lien vous amène maintenant vers un site où il est clairement
+indiqué qu&#8217;il faut cliquer sur &#8220;J&#8217;aime&#8221; pour voir la vidéo.</em></p>
+
+<h2>Un anti-robots comme on en fait plus</h2>
+
+<p>Si vous êtes un peu au fait des technologies récentes, il est souvent question
+de s&#8217;affranchir des <a href="http://upload.wikimedia.org/wikipedia/commons/6/69/Captcha.jpg">captchas</a> illisibles permettant d&#8217;éviter un traitement
+automatisé. Alors quand un site me propose un jeu de logique en guise de
+vérification, j&#8217;approuve. Erreur ! Voici la page que vous obtenez quand vous
+tentez de visionner la video en question dans cet article :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/selection_002.png" alt="selection_002" /></p>
+
+<p>Malin pin pin, ni une ni deux, je clique !</p>
+
+<h2>Toi aussi tu aime le javascript ?</h2>
+
+<p>L&#8217;arnaque en question dans cet article se situe dans le code source des
+boutons colorés :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;iframe</span> <span class="na">id=</span><span class="s">f1</span> <span class="na">class=</span><span class="s">iframe</span> <span class="na">src=</span><span class="s">&quot;http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/pages/Chat-Trop-Mignon-Qui-a-Du-Mal-�-Se-Reveiller/115156425228492&amp;layout=button_count&amp;show_faces=false&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=21&quot;</span> <span class="na">scrolling=</span><span class="s">&quot;no&quot;</span> <span class="na">frameborder=</span><span class="s">&quot;0&quot;</span><span class="na">style=</span><span class="s">&quot;border:none; overflow:hidden; width:450px; height:21px;&quot;</span><span class="na">allowTransparency=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://connect.facebook.net/fr_FR/all.js#xfbml=1&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;fb:like</span> <span class="na">id=</span><span class="s">f2</span> <span class="na">class=</span><span class="s">iframe</span> <span class="na">href=</span><span class="s">&quot;http://likeloverr.com/fun.php?id=12&quot;</span> <span class="na">layout=</span><span class="s">&quot;button_count&quot;</span> <span class="na">show_faces=</span><span class="s">&quot;false&quot;</span> <span class="na">width=</span><span class="s">&quot;450&quot;</span><span class="nt">&gt;&lt;/fb:like&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Traduction en clair : &#8220;Tu clique et tu like !&#8221;. Eh oui, le fait de cliquer sur
+ces deux boutons vous a :</p>
+
+<ul>
+<li>Rendu &#8220;fan&#8221; de la page associée à la vidéo</li>
+<li>Fait &#8220;Liker&#8221; le lien</li>
+</ul>
+
+
+<h2>Cache ta joie !</h2>
+
+<p>Sur le papier c&#8217;est déjà un fonctionnement que je juge ignoble, mais en
+pratique c&#8217;est encore pire : une des vidéos virales de ce site propose un
+contenu particulièrement osé et, disons-le, pornographique. Je ne donnerai pas
+le lien ici, mais je suis prêt à parier qu&#8217;au moins un de vos amis s&#8217;est fait
+piéger et s&#8217;est donc retrouvé avec ce lien et cette page pas très glorieuse
+dans son profil. <em>Qui a dit licenciement ? &#8230;</em></p>
+
+<h2>Je me suis fait(e) avoir, et après ?</h2>
+
+<p>Il vous suffit de ne plus &#8220;Aimer&#8221; ni la page ni le lien, et de croiser les
+doigts pour que pas grand monde ait aperçu votre profil&#8230;</p>
+
+<p>Soyez donc vigilants ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

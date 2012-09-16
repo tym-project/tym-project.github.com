@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: dev | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/dev/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fade-in/Fade-out effect with Java]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/03/24/fade-infade-out-effect-with-java/"/>
+    <updated>2009-03-24T23:19:06+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/03/24/fade-infade-out-effect-with-java</id>
+    <content type="html"><![CDATA[<p>A nice face-in when a text appears is developer's drug...but how is it
+possible to achieve that using Java/Swing?</p>
+
+<p>The easiest way I found (there must be others!) is to use <code>AWTUtilities</code> (to
+handle transparency) and a Timer (for step by step in or out effect).</p>
+
+<!-- more -->
+
+
+<p>As an example, let's use a <code>JDialog</code> which we are going to fade-out, until
+it's full disappearance. It's literally a "splash screen".</p>
+
+<p>Java is objet oriented (who isn't nowadays...), so let's create a class
+dedicated to fade-out :
+{% codeblock lang:java %}
+import java.util.TimerTask;
+import javax.swing.JDialog;
+import com.sun.awt.AWTUtilities;</p>
+
+<p>public class Fader extends TimerTask {</p>
+
+<pre><code>private JDialog jDialog;
+
+public Fader(JDialog jDialog) {
+    this.jDialog = jDialog;
+}
+//As Fader extends from Timer, it's the run() method which does the main job
+@Override public void run() {
+    //The opacity is reduced by 0,01f steps
+    //If this value equals 0 (invisible), we close the JDialog with dispose()
+if(AWTUtilities.getWindowOpacity(jDialog) &amp;gt; 0.01f){
+    AWTUtilities.setWindowOpacity(jDialog,
+    AWTUtilities.getWindowOpacity(jDialog)-0.01f);
+}
+else {
+    jDialog.dispose();
+}
+}
+</code></pre>
+
+<p>}
+{% endcodeblock %}
+And the class containing our JDialog:</p>
+
+<p>{% codeblock lang:java %}
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.util.Timer;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;</p>
+
+<p>public class Splash extends JDialog {</p>
+
+<pre><code>public Splash() { //The JDialog will be in the center of the screen
+    setLocationRelativeTo(null);
+
+    //Title bar is deactivated setUndecorated(true);
+
+    JPanel main = new JPanel(new GridLayout(1, 1));
+    JLabel label = new JLabel(&amp;amp;amp;quot;Hello Kitty !&amp;amp;amp;quot;);
+
+    //We write in BIG LETTERS, the farthest it's seen the better!
+    label.setFont(new Font(&amp;amp;amp;quot;Arial&amp;amp;amp;quot;,Font.BOLD, 20);
+
+    this.add(main); main.add(label); this.setVisible(true); pack();
+
+    //We instanciate the Timer Timer timer = new Timer();
+
+    //And then we launch the fade-out, waiting 500ms before starting
+    //Then we gradually fade out every 5ms
+    timer.schedule(new Fader(this),500, 5);
+}
+</code></pre>
+
+<p>}
+{% endcodeblock %}</p>
+
+<p>For testing you can use a call like that:</p>
+
+<p>{% codeblock lang:java %}
+new Splash();
+{% endcodeblock %}</p>
+
+<p>Enjoy your Swing ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

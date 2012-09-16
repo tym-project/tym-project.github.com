@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ubuntu : réparer les drivers Nvidia pour un nouveau noyau - ツ Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="J&#8217;utilise de plus en plus Ubuntu, en particulier
+sur mon media-center (avec Xbmc). Mais je recontre très souvent le même
+problème : quand je &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TymProject.github.com/tymproject/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu/">
+  <link href="/tymproject/favicon.png" rel="icon">
+  <link href="/tymproject/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/tymproject/javascripts/modernizr-2.0.js"></script>
+  <script src="/tymproject/javascripts/ender.js"></script>
+  <script src="/tymproject/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="ツ Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/tymproject/">ツ Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TymProject.github.com/tymproject" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/tymproject/">Blog</a></li>
+  <li><a href="/tymproject/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Ubuntu : Réparer Les Drivers Nvidia Pour Un Nouveau Noyau</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-10T15:48:15+00:00" pubdate data-updated="true">Nov 10<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>J&#8217;utilise de plus en plus Ubuntu, en particulier
+sur mon media-center (avec Xbmc). Mais je recontre très souvent le même
+problème : quand je met à jour mon noyau (via apt), je suis sûr à 100% de voir
+mon serveur X crasher au reboot. L&#8217;explication est toute simple, cela vient de
+ma carte graphique (Nvidia) qui fonctionne graĉe à des modules&#8230; spécifiques à
+chaque noyau (comme tous les modules). J&#8217;ai donc mis en place un processus
+pour éviter de devoir réinstaller manuellement les drivers en cas de mise à
+jour.</p>
+
+<!-- more -->
+
+
+<p>Le principe du script est relativement simple : au boot, il vérifie si X
+est lancé correctement. Si ce n&#8217;est pas le cas il lance alors la
+réinstallation des drivers (moyen simple de forcer la compilation des
+modules)&#8230; et puis c&#8217;est tout ! Voici le code :</p>
+
+<pre><code>#!/bin/bash
+sleep 30
+PATH=$PATH":/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+if ! ps aux | grep -v grep | grep /usr/bin/X &gt; /dev/null;then
+    echo "######### UPDATING Nvidia Module, do NOT reboot!!! ###########"
+    apt-get -y update
+    apt-get -y install linux-headers-`uname -r`
+    apt-get -y remove --purge nvidia-current
+    apt-get -y install nvidia-current
+    echo "######### Done, rebooting in 5s ###########"
+    sleep 5
+    reboot
+fi
+</code></pre>
+
+<p>Le script commence par dormir
+quelques secondes car en réalité, même en cas de plantage, X se lance quelques
+secondes avant de se couper. Il est bien entendu possible d&#8217;améliorer cette
+vérification avec une boucle&#8230; mais cela en vaut-il vraiment la peine ? :-)
+Nvidia ayant besoin des sources du noyau pour compiler, je les installe en
+fonction du kernel en cours d&#8217;utilisation.</p>
+
+<p>La planification du script se fait bien entendu via [man]crontab[/man]. Afin
+d&#8217;avoir une information visuelle sur le déroulement, je redirige la sortie
+standard vers <code>/dev/tty1</code>. C&#8217;est tout simplement la première console, celle
+disponible en cas de plantage :</p>
+
+<pre><code>#m h dom mon dow command
+@reboot /home/server/check_nvidia &gt; /dev/tty1 [/code]
+</code></pre>
+
+<p>Bonne réparation ;-)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">tym</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-10T15:48:15+00:00" pubdate data-updated="true">Nov 10<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/tymproject/blog/categories/bash/'>Bash</a>, <a class='category' href='/tymproject/blog/categories/linux/'>Linux</a>, <a class='category' href='/tymproject/blog/categories/os/'>OS</a>, <a class='category' href='/tymproject/blog/categories/programmation-scripting/'>Programmation - Scripting</a>, <a class='category' href='/tymproject/blog/categories/drivers/'>drivers</a>, <a class='category' href='/tymproject/blog/categories/kernel/'>kernel</a>, <a class='category' href='/tymproject/blog/categories/nvidia/'>nvidia</a>, <a class='category' href='/tymproject/blog/categories/nvidia-current/'>nvidia-current</a>, <a class='category' href='/tymproject/blog/categories/ubuntu/'>ubuntu</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://TymProject.github.com/tymproject/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu/" data-via="" data-counturl="http://TymProject.github.com/tymproject/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tymproject/2010/10/26/xbmc-suppression-automatique/" title="Previous Post: Xbmc : supprimer automatiquement les fichiers lus (Linux)">&laquo; Xbmc : supprimer automatiquement les fichiers lus (Linux)</a>
+      
+      
+        <a class="basic-alignment right" href="/tymproject/2010/12/23/sa-ping-de-noel-et-boule-de-gui/" title="Next Post: Sa-ping de noël et boule de GUI !">Sa-ping de noël et boule de GUI ! &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/02/14/ameliorer-son-debit-internet/">Naviguer plus vite sur internet, améliorer son débit ? C'est possible !</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TymProject.github.com/tymproject/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu/';
+        var disqus_url = 'http://TymProject.github.com/tymproject/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

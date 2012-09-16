@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: liens | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/liens/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par jour (ou presque)]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar/"/>
+    <updated>2011-08-31T19:39:34+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar</id>
+    <content type="html"><![CDATA[<p>Ayant tout un tas de liens que je garde depuis (très) longtemps à droite ou à
+gauche, j'ai décidé de les diffuser ici 5 par 5 quand bon me semblera ! A
+l'avenir j'essaierai peut-être de les regrouper par catégories...</p>
+
+<ol>
+<li><a href="http://www.techiemania.com/5-awesome-free-tools-to-help-you-choose-your-website-color-scheme.html">Tools To Help You Choose Your Website Color Scheme</a></li>
+<li><a href="http://packetlife.net/blog/2011/may/9/using-layers-visio/">Using Layers in Visio</a></li>
+<li><a href="http://www.doitwithwordpress.com/rundown-wordpress-theme-files-what-they-do/">A Rundown of WordPress Theme Files and What They All Do</a></li>
+<li><a href="http://linuxfr.org/news/sadms-int%C3%A9grer-des-stations-gnulinux-%C3%A0-active-directory">SADMS : Intégrer des stations GNU/Linux à Active Directory</a></li>
+<li><a href="http://vpourchet.wordpress.com/2011/02/13/ghettovcb-sh-le-vcenter-backup-du-pauvre/">Ghettovcb.sh : Le VCenter Backup du pauvre !</a></li>
+</ol>
+
+
+<p>Oui, il-y-à pas mal de contenu en anglais...eh c'est l'Interweb ici, il faut
+s'y faire ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

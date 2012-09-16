@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: visio | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/visio/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Faire de jolis schémas sans Visio !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/06/faire-de-jolis-schemas-sans-visio/"/>
+    <updated>2009-04-06T16:25:50+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/06/faire-de-jolis-schemas-sans-visio</id>
+    <content type="html"><![CDATA[<p>Vous connaissez peut-être Visio, le logiciel de Microsoft qui vous permet de
+faire des schémas (de réseaux dans mon cas) très propres et très clairs !</p>
+
+<p>Seul problème...Visio est bien entendu payant ! Je vous ai trouvé une
+alternative plutôt pas mal pour créer des schémas simples.</p>
+
+<p>C'est ici : <a href="http://www.lovelycharts.com">www.lovelycharts.com</a>, c'est en ligne et la plupart des
+fonctions basiques sont gratuites.</p>
+
+<p>Vous pourrez, entre autres, créer des schémas de réseaux ou des diagrammes de
+fonctionnement, les sauvegarder en ligne et les exporter...</p>
+
+<p>Je trouve ce site très bien pour dépanner, mais ne comptez pas représenter
+tout un réseau sans vous arracher les cheveux !</p>
+
+<p>Bon dessins ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

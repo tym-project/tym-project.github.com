@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: sed | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/sed/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Adaptation de "sed" en PowerShell (Windows)]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/03/02/sed-en-powershell-et-redirection/"/>
+    <updated>2011-03-02T12:00:44+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/03/02/sed-en-powershell-et-redirection</id>
+    <content type="html"><![CDATA[<p>PowerShell est un langage de script développé par
+Microsoft, le <code>#!/bin/bash</code> de Windows en quelque sorte. Ce langage propose de
+très nombreuses fonctionnalités, et après un petit temps d'adaptation, devient
+assez simple à utiliser. Mais parfois ce n'est pas aussi évident, comme par
+exemple avec la mise en place de l'équivalent d'un <code>[man]sed[/man]</code>.</p>
+
+<!-- more -->
+
+
+<h2>La solution</h2>
+
+<p>Une rapide recherche m'a amené sur <a href="http://blogs.msdn.com/b/zainnab/archive/2007/07/09/grep-and-sed-with-powershell.aspx">cet article</a> qui propose cette solution
+:</p>
+
+<pre><code>cat input.txt | %{$_ -replace "old", "new"} &gt; output.txt
+</code></pre>
+
+<p>Une petite explication s'impose :</p>
+
+<ul>
+<li><code>cat</code> est en PowerShell un alias de la commande <code>Get-Content</code></li>
+<li><code>$_</code> représente le contenu sortant du pipe</li>
+<li><code>&gt;</code> est une classique redirection de la sortie standard</li>
+<li>les <code>{ }</code> délimitent les commandes à effectuer sur la sortie du pipe</li>
+<li>le <code>%</code> signifie "itérer sur la sortie du pipe"</li>
+</ul>
+
+
+<p>En apparence cela fonctionne très bien...en apparence seulement...</p>
+
+<h2>La bonne solution</h2>
+
+<p>J'ai appliqué la solution précédente sur un fichier Xml servant à la
+configuration d'une Webapp dans Tomcat. Dès l'instant où je plaçait ce fichier
+dans l'arborescence, j’obtenais une magnifique erreur 500. Après quelques
+tests il s'est avéré que c'est la redirection, <code>&gt;</code>, qui pose problème d'une
+manière ou d'une autre et qui rend le fichier lisible, mais en fait non... Au
+final j'ai testé cette combinaison, qui fonctionne correctement :</p>
+
+<pre><code>Get-Content input.txt | %{$_ -replace "old", "new"} | Set-Content output.txt
+</code></pre>
+
+<p>L'utilisation de <code>Set-Content</code> donne donc un
+fichier tout à fait viable.</p>
+
+<p>Bon PoSh ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Automatiser la création ou l'édition d'un crontab]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab/"/>
+    <updated>2010-08-04T12:00:34+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab</id>
+    <content type="html"><![CDATA[<p>Crontab est un outil extrêmement pratique
+servant à planifier l'exécution des tâches/commandes. Habituellement il se
+gère via la commande <code>[man]crontab[/man]</code> : <code>crontab -e</code> pour éditer, <code>crontab
+-l</code> pour lister...et d'autres encore. <code>crontab -u user -l</code> permet de lister
+pour l'utilisateur en question. Mais comment faire pour scripter la création
+ou la modification d'une ligne dans un crontab ?</p>
+
+<!-- more -->
+
+
+<p>Tout se passe en fait dans le
+répertoire <code>/var/spool/cron/crontabs</code> :</p>
+
+<pre><code>root@Server:~# ls -l /var/spool/cron/crontabs/ total 8
+-rw------- 1 root crontab 294 2010-07-12 19:54 root
+-rw------- 1 server crontab 264 2010-07-24 10:54 server
+</code></pre>
+
+<h2>Ajouter un crontab</h2>
+
+<p>Partons du principe que je veux ajouter un crontab pour l'utilisateur "tym"
+via un script. Il va donc falloir que je crée le fichier
+<code>/var/spool/cron/crontabs/tym</code>, oui mais que faire si il existe déjà ? On va
+se compliquer un peu la vie, mais vous allez comprendre pourquoi :
+{% codeblock lang:bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<p>CRONTAB="/var/spool/cron/crontabs/tym"</p>
+
+<p>if ! [ -e $CRONTAB ];then</p>
+
+<pre><code>touch $CRONTAB
+chown tym:crontab $CRONTAB
+chmod 600 $CRONTAB
+</code></pre>
+
+<p>fi
+{% endcodeblock %}</p>
+
+<p>Comme vous pouvez le voir, on modifie les droits sur
+le fichier que lorsqu'il faut créer. Pour ajouter une tâche, rien de plus
+simple :</p>
+
+<pre><code>echo '*/1 * * * * /home/tym/scripts/mon_script' &gt;&gt; $CRONTAB
+</code></pre>
+
+<p>Attention à la syntaxe
+car ici pas de vérifications via la commande <code>crontab</code> !</p>
+
+<h2>Modifier une ligne de crontab</h2>
+
+<p>Je veux modifier la ligne que je viens de créer dans le crontab de "tym", en
+faisant plutôt exécuter <code>/home/tym/scripts/mon_second_script</code> :
+{% codeblock lang: bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<p>CRONTAB="/var/spool/cron/crontabs/tym"</p>
+
+<p>OLD="\/home\/tym\/scripts\/mon_script"
+NEW="\/home\/tym\/scripts\/mon_second_script"</p>
+
+<p>sed "s/$OLD/$NEW/" $CRONTAB > /tmp/buffer &amp;&amp; cat /tmp/buffer > $CRONTAB
+{% endcodeblock %}</p>
+
+<p>Et hop, l'affaire est pliée ! Notez l'utilisation des "\/" pour protéger les
+"/" dans le sed.</p>
+
+<p>Bonne planification ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SED, trucs et astuces pour le remplacement et la mise en mémoire d'expressions]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions/"/>
+    <updated>2009-08-21T22:57:08+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions</id>
+    <content type="html"><![CDATA[<p><code>[man]sed[/man]</code> est un éditeur de texte en
+ligne de commande. Il vous permet donc de modifier un fichier par une suite de
+directives, sans utiliser de logiciels comme <code>[man]vim[/man]</code> ou
+<code>[man]gedit[/man]</code>. Je vais vous montrer comment je procède pour modifier une
+configuration dans un script.</p>
+
+<!-- more -->
+
+
+<p>Prenons l'exemple du fichier suivant (un extrait
+de <code>[man]rc.conf[/man]</code> sous Archlinux :</p>
+
+<pre><code>LOCALE="en_US.utf8"
+HARDWARECLOCK="localtime"
+USEDIRECTISA="no"
+TIMEZONE="Canada/Pacific"
+KEYMAP="us"
+CONSOLEFONT=
+CONSOLEMAP=
+USECOLOR="yes"
+</code></pre>
+
+<p>Je veux modifier le <code>KEYMAP</code> de <code>"us"</code> vers <code>"fr"</code>. Voici la commande
+que j'utilise :</p>
+
+<pre><code>cat rc.conf | 'sed 's/\(KEYMAP="\)us\("\)/\1fr\2/'
+</code></pre>
+
+<p>La structure d'un <code>[man]sed[/man]</code>
+utilisé pour le remplacement (défini par le <code>s</code>) est :</p>
+
+<pre><code>'s/élément à rechercher/remplacement de l'élément/'
+</code></pre>
+
+<p>J'aurai pu
+utiliser la commande suivante :</p>
+
+<pre><code>sed 's/KEYMAP="us"/KEYMAP="fr"/'
+</code></pre>
+
+<p>Mais il est plus simple mettre en mémoire
+une partie du texte d'origine. Pour cela il suffit de le mettre en
+parenthèses, pour le rappeler il faut utiliser les nombres de 1 à ... l'infini
+(?). Par exemple :</p>
+
+<pre><code>echo "ABcdEF" | sed 's/\(AB\)cd\(EF\)/\1oooooo\2/'
+</code></pre>
+
+<p>donne :</p>
+
+<pre><code>ABooooooEF
+</code></pre>
+
+<p>Les "<code>\</code>" permettent de ne pas prendre en compte les parenthèses et
+les chiffres dans la recherche/remplacement. Et si en plus vous voulez mettre
+<code>"fr"</code> à la place de n'importe qu'elle valeur, utilisez "<code>.*</code>" (n'importe quel
+caractère un nombre indéfini de fois) :</p>
+
+<pre><code>sed 's/\(KEYMAP="\).*\("\)/\1fr\2/'
+</code></pre>
+
+<p>Bon démêlage de neurones ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

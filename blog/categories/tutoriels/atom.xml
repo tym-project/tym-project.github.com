@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tutoriels | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/tutoriels/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[L'usine à tutoriels pour Linux]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/03/29/lusine-a-tutoriels-pour-linux-2/"/>
+    <updated>2009-03-29T14:33:48+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/03/29/lusine-a-tutoriels-pour-linux-2</id>
+    <content type="html"><![CDATA[<p>Mettre en place telle ou telle solution sous Linux ce n'est parfois pas une
+sinécure ! Reste alors à trouver un bon tutoriel...ce qui n'est pas toujours
+évident non plus : mal écrits, incomplets, voir qui ne fonctionnent carrément
+pas...</p>
+
+<p>"<em>Google is your best friend, ever !</em>" ...oui mais <a href="http://www.howtoforge.com">HowToForge.com</a> aussi !
+J'aime vraiment ce site, c'est une véritable mine, très bien fait, très
+complet...un must have dans vos marques pages (ou favoris...vous utilisez
+encore IE ?) ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

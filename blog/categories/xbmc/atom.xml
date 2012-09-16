@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: xbmc | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/xbmc/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Xbmc : un script pour déclencher la mise à jour de la librairie]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/01/12/xbmc-un-script-pour-declencher-la-mise-a-jour-de-la-librairie/"/>
+    <updated>2011-01-12T12:00:16+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/01/12/xbmc-un-script-pour-declencher-la-mise-a-jour-de-la-librairie</id>
+    <content type="html"><![CDATA[<p>Xbmc possède des scrapers très puissants, ce qui
+permet d'avoir une librairie enrichie d'images et autre bonus venant du web.
+Par défaut il existe deux moyens de mettre à jour la librairie : au démarrage
+de l'application ou manuellement. Pourquoi pas, mais quid d'un média center
+qui reste allumé longtemps (et donc Xbmc qui ne redémarre pas) ?</p>
+
+<!-- more -->
+
+
+<p>Grâce à
+<a href="http://wiki.xbmc.org/index.php?title=JSON_RPC">l'API Json de Xbmc</a> il est possible de déclencher cette mise à jour via un
+script. <em>Pensez bien à activer l'interface web de Xbmc au préalable !</em><br/>
+En
+Python voici ce que cela donne pour la librairie vidéo :
+{% codeblock lang:python %}</p>
+
+<h1>!/usr/bin/python</h1>
+
+<p>import urllib2</p>
+
+<p>req = urllib2.Request("http://127.0.0.1:8090/jsonrpc")
+req.method = 'POST'
+req.content_type = 'application/json'</p>
+
+<p>data='{"jsonrpc": "2.0", "method": "VideoLibrary.ScanForContent", "id": 1}'</p>
+
+<p>urllib2.urlopen(req, data)
+{% endcodeblock %}</p>
+
+<p><em>Edit du 24/12/2011 - Voici aussi la version compatible python 3 :</em><br/>
+{% codeblock lang:python %}</p>
+
+<h1>!/usr/bin/python3.2</h1>
+
+<p>import urllib.request</p>
+
+<p>req = urllib.request.Request("http://127.0.0.1:8090/jsonrpc")
+req.method = 'POST'
+req.content_type = 'application/json'
+data=b'{"jsonrpc": "2.0", "method": "VideoLibrary.ScanForContent", "id": 1}'
+urllib.request.urlopen(req, data)
+{% endcodeblock %}</p>
+
+<p>Bien entendu cela fonctionne aussi avec la
+musique :</p>
+
+<pre><code>data='{"jsonrpc": "2.0","method": "AudioLibrary.ScanForContent", "id": 1}'
+</code></pre>
+
+<p>Ensuite il vous
+suffit d'appeler ce script depuis un <code>crontab</code>, ou pourquoi pas depuis
+<a href="http://sabnzbd.org/">SABnzbd</a> ?</p>
+
+<p>Bon scrapping ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Xbmc : supprimer automatiquement les fichiers lus (Linux)]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/10/26/xbmc-suppression-automatique/"/>
+    <updated>2010-10-26T12:55:29+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/10/26/xbmc-suppression-automatique</id>
+    <content type="html"><![CDATA[<p><a href="http://xbmc.org/">Xbmc</a> est un très bon média center, à mon
+sens le meilleur. Parmi ses nombreuses fonctionnalités on trouve une
+médiathèque avec une certaine particularité : elle peut cacher les fichiers
+déjà lus. Dans le cas des vidéos (films ou séries) cela prend tout son sens.
+Toutefois il n'est pas encore possible de supprimer automatiquement un fichier
+déjà visionné. Je vous ait donc concocté un petit script pour palier à ce
+manque.</p>
+
+<!-- more -->
+
+
+<h2>Où ?</h2>
+
+<p>Xbmc utilise une base Sqlite 3 pour stocker les informations sur les fichiers,
+cela inclus bien entendu les chemins complets et si ils ont été lus ou non.
+Pour rappel, Sqlite stocke les données dans des fichiers et dans notre cas
+c'est celui-ci qui nous intéresse : <strong><code>
+~/.xbmc/userdata/Database/MyVideos34.db</code></strong>. <em>Il est possible que le numéro
+dans le nom ne soit pas le même !</em>.</p>
+
+<h2>Comment ?</h2>
+
+<p>Votre distribution adorée dispose certainement d'un client Sqlite <strong>v3</strong>, à
+vos claviers. Prenez bien la version 3, sinon vous obtiendrez l'erreur
+"<code>Unable to open database ".xbmc/userdata/Database/MyVideos34.db": file is
+encrypted or is not a database</code>".<br/>
+Pour Ubuntu :</p>
+
+<pre><code>sudo apt-get install sqlite3
+</code></pre>
+
+<p>Sqlite utilisant <code>Sql</code>,
+voici la requête récupérant les infos nécessaires :</p>
+
+<pre><code>SELECT path.strPath,files.strFilename FROM files,path WHERE files.playCount &gt; 0 AND path.idPath =files.idPath
+</code></pre>
+
+<p>Comme vous pouvez le
+voir on interroge les tables <code>files</code> et <code>path</code>, car <code>files</code> ne contient pas
+les chemins complets.</p>
+
+<p>Un peu de Bash pour récupérer le résultat et faire le ménage :</p>
+
+<pre><code>#!/bin/bash
+#file clean.sh
+ORIG="~/.xbmc/userdata/Database/MyVideos34.db"
+DB="/tmp/xbmc.db" SQL="SELECT path.strPath,files.strFilename FROM files,path WHERE files.playCount &gt; 0 AND path.idPath =files.idPath"
+BUFFER="/tmp/xbmc_clean_buffer"
+
+&gt; $BUFFER
+
+cp $ORIG $DB
+
+sqlite3 $DB "$SQL" | sed 's/|//' | sed 's/ /\\ /g' &gt; $BUFFER
+
+while read file;do
+    if [ -e "$file" ];then
+        date rm -v "$file"
+    fi
+done &lt; $BUFFER
+
+rm $BUFFER
+rm $DB
+</code></pre>
+
+<p>Rien de bien complexe : un peu de [man]<code>sed</code>[/man]
+pour faire le ménage et échapper les espaces, un [man]<code>rm</code>[/man] pour
+supprimer (le <code>-v</code> servant à loguer les suppressions). Par précaution on
+travaille sur une copie de la base.</p>
+
+<h2>Quand ?</h2>
+
+<p>[man]<code>crontab</code>[/man] à la rescousse :</p>
+
+<pre><code># m h dom mon dow command
+*/30 * * * * /home/server/clean.sh &gt;&gt; /home/server/clean_log
+</code></pre>
+
+<p>Notez la redirection dans un log, pour suivre
+les suppressions, on est jamais trop prudents !</p>
+
+<p>Bon Bash ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

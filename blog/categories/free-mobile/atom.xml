@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: free mobile | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/free-mobile/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Free mobile est déja en place !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/06/22/free-mobile-est-deja-en-place/"/>
+    <updated>2010-06-22T12:00:45+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/06/22/free-mobile-est-deja-en-place</id>
+    <content type="html"><![CDATA[<p>C'est en tout cas ce que m'annoncent mes
+statistiques Google Analytics : J'ai reçu une visite le 6 juin sur ce blog
+depuis un iPad (oui oui !) utilisant l'opérateur "free sas". Preuve à l'appui
+:</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/free1_0.png %}</p>
+
+<p>Je ne sais pas
+trop quoi en penser ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: soft phone | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/soft-phone/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Je t'aime...moi non plus !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/08/05/je-taime-moi-non-plus/"/>
+    <updated>2009-08-05T13:55:18+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/08/05/je-taime-moi-non-plus</id>
+    <content type="html"><![CDATA[<p>Je me suis récemment mis à Skype pour communiquer avec le monde extérieur. En
+effet j'ai de moins en moins l'envie de passer des heures à tapoter : vive la
+vidéo-conférence ! Ne connaissant pas grand chose à cet univers, je me suis
+tout naturellement tourné vers Skype...ERREUR MONUMENTALE ! Comme vous pourrez
+le lire <a href="http://blog.philpep.org/post/2008/12/20/Skype-:-un-logiciel-qui-vous-veut-du-bien">sur ce blog</a>, Skype a tendance à être trop curieux concernant les
+données sur votre machine ! Je vais donc rapidement vérifier tout cela par moi
+même et trouver une autre solution (<a href="http://ekiga.org/">Ekiga</a> peut-être...)</p>
+
+<p>Bonne désinstallation ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

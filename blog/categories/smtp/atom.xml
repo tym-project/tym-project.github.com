@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: smtp | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/smtp/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Tester le niveau de sécurité de son serveur/client de messagerie]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/05/02/tester-le-niveau-de-securite-de-son-serveurclient-de-messagerie-2/"/>
+    <updated>2009-05-02T21:27:49+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/05/02/tester-le-niveau-de-securite-de-son-serveurclient-de-messagerie-2</id>
+    <content type="html"><![CDATA[<p>"Il était une fois un stagiaire qui travaillait comme technicien réseau dans
+une PME. Un beau jour il envoya un e-mail via son adresse professionnelle.
+Quelle ne fût pas sa surprise de recevoir une réponse dans le style : YOUR IP
+IS BAAAD, IT SENDS SPAM! SPAM IS EVIL, SO YOUR IP IS BLACKLISTED."</p>
+
+<p>Et oui...un serveur de messagerie ça se sécurise sinon ça devient un relai de
+Spam ! Au boulot !</p>
+
+<p>Une fois le travail consciencieusement effectué, allez faire un tour sur <a href="http://www.pagasa.net/test-smtp/">ce
+site </a>pour vérifier que tout est OK. Ce test n'est pas infaillible ni
+totalement complet mais ça peut dépanner !</p>
+
+<p>Vous pouvez aussi vérifier le niveau de sécurité de votre client de messagerie
+avec <a href="http://www.gfi.com/emailsecuritytest/">ce test</a> (plutôt orienté Windows et Outlook).</p>
+
+<p>Bonne sécurisation ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

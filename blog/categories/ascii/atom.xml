@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ascii | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/ascii/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Google c'est rigolo ! ASCII ASCII (ah si ah si), je vous assure !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/05/01/google-cest-rigolo-ascii-ascii-ah-si-ah-si-je-vous-assure/"/>
+    <updated>2009-05-01T19:24:05+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/05/01/google-cest-rigolo-ascii-ascii-ah-si-ah-si-je-vous-assure</id>
+    <content type="html"><![CDATA[<p>Au détour d'une recherche sur le mot clé "<code>ascii art</code>", je
+suis tombé sur un petite surprise <a href="http://maps.google.fr/maps/place?cid=11972054812773967638&amp;q=mountain+view+google&amp;gl=fr&amp;hl=fr&amp;cd=1&amp;cad=src:pplink&amp;ei=KxXvSuGXNoG0OLjO_dgJ">Made-In-Mountain-View</a> :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/01-05-2010-20-21-39.png" alt="Google asciiart" /></p>
+
+<p><em>L'Ascii Art est le principe d'utiliser des caractères ascii ($, -,
+!...) pour réaliser des images.</em></p>
+
+<p>No comment ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

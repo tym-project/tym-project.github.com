@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: images | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/images/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Convertir une image .bin/.cue en .iso (Linux)]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/05/22/convertir-une-image-bin-cue-en-iso-linux/"/>
+    <updated>2009-05-22T12:48:29+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/05/22/convertir-une-image-bin-cue-en-iso-linux</id>
+    <content type="html"><![CDATA[<p>Sous Linux il est très pratique de monter une image iso (pas besoin de daemon
+tools &amp; Co.) :</p>
+
+<pre><code>sudo mount -o loop -t iso9660 Ubuntu-9.04.iso /media/dvd/
+</code></pre>
+
+<p>Mais que faire quand vous êtes en
+présence d'un couple <code>.bin/.cue</code>... Il va falloir créer un <code>.iso</code> à partir de
+vos deux fichiers. <code>[man]bchunk[/man]</code> est l'utilitaire qu'il vous faut ! Rien
+de plus simple pour l'utiliser :</p>
+
+<pre><code>bchunk fichier.bin fichier.cue nom_final
+</code></pre>
+
+<p>vous donnera un fichier
+<code>nom_final01.iso</code>.</p>
+
+<p>Bonne conversion ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

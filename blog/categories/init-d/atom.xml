@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: init.d | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/init-d/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mon script de configuration iptables]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/04/06/iptables-et-lancement-automatique/"/>
+    <updated>2011-04-06T12:00:02+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/04/06/iptables-et-lancement-automatique</id>
+    <content type="html"><![CDATA[<p>Pour ceux qui ne connaitraient pas, iptables est une
+interface de gestion du module netfilter du noyau Linux. En termes clairs :
+c'est un pare-feu. Iptables est donc un ensemble de commandes permettant de
+créer des règles, je ne vais pas rentrer dans les détails, vous trouverez plus
+d'infos sur <a href="http://www.techrepublic.com/blog/10things/10-iptables-rules-to-help-secure-your-linux-box/539">cette page par exemple</a>. Dans cet article il sera question de
+comment je gère ma configuration de pare-feu à travers un script d'init.</p>
+
+<!-- more -->
+
+
+<h2>init.d, t'es initié ?</h2>
+
+<p>Le but de ce script est qu'il se lance au démarrage de mon poste, et en bonus
+que je puisse couper/relancer mon pare-feu à loisir : c'est là le rôle d'un
+script "init.d". Commençons donc par la fin, avec les différents arguments que
+peut prendre le script :
+{% codeblock lang:bash %}
+case $1 in</p>
+
+<pre><code>start)
+    start
+    ;;
+stop)
+    stop
+    ;;
+restart)
+    restart
+    ;;
+*)
+    echo "usage: iptables {start|stop|restart}"
+    exit 1
+    ;;
+</code></pre>
+
+<p>esac
+{% endcodeblock %}</p>
+
+<p>Logiquement on retrouve les
+fonction <code>start</code>, <code>stop</code> et <code>restart</code> avec une explication des arguments pour
+toute valeur en dehors de ce choix.</p>
+
+<h2>En fonction des fonctions...</h2>
+
+<p>la fonction <code>restart</code> est très simple :</p>
+
+<pre><code>function restart {
+    stop start
+}
+</code></pre>
+
+<p>la fonction <code>stop</code> est un peu plus complexe et est chargée de vider les règles
+iptable, de changer la politique par défaut et de restarter
+<code>[man]fail2ban[/man]</code> si besoin :
+{% codeblock lang:bash %}
+function stop {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -P INPUT ACCEPT
+    $IPTABLES -P FORWARD ACCEPT
+    $IPTABLES -P OUTPUT ACCEPT
+    $IPTABLES -F $IPTABLES -X
+done
+
+if [ -e /etc/init.d/fail2ban ]; then
+    /etc/init.d/fail2ban restart
+fi
+</code></pre>
+
+<p>}
+{% endcodeblock %}
+L'utilisation de <code>for IPTABLES in iptables ip6tables</code> permet de configurer à
+la fois pour ipv4 et ipv6.</p>
+
+<p>La fonction <code>start</code> utilise une variable <code>$TCP_PORTS</code> (qui contient les port
+TCP à ouvrir) définie ainsi :</p>
+
+<pre><code>TCP_PORTS="80 443"
+</code></pre>
+
+<p>Et la fonction en elle-même :
+{% codeblock lang:bash %}
+function start {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -F $IPTABLES -P INPUT DROP
+    $IPTABLES -P FORWARD DROP
+    $IPTABLES -P OUTPUT DROP
+
+    $IPTABLES -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+    for port in $TCP_PORTS;do
+        $IPTABLES -A INPUT -p tcp --dport $port -j ACCEPT
+    done
+
+    $IPTABLES -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+    $IPTABLES -A INPUT -i lo -j ACCEPT $IPTABLES -A OUTPUT -o lo -j ACCEPT
+    # ICMP (Ping)
+    #$IPTABLES -A INPUT -p icmp -j ACCEPT
+done
+</code></pre>
+
+<p>if [ -e /etc/init.d/fail2ban ];then</p>
+
+<pre><code>/etc/init.d/fail2ban restart
+</code></pre>
+
+<p>fi
+}
+{% endcodeblock %}</p>
+
+<h2>Configuration et installation</h2>
+
+<p>Pour placer le script dans <code>/etc/init.d/</code> deux solutions sont possibles :</p>
+
+<ul>
+<li>le copier dans le répertoire</li>
+<li>faire un lien symbolique avec <code>ln -s /emplacement/script/iptables /etc/init.d/iptables</code></li>
+</ul>
+
+
+<p>Si vous mettez ce script en place sur serveur sans accès physique, je vous
+conseille formetment de le tester avant de le mettre au démarrage de la
+machine...c'est trop bête de se faire enfermer dehors :)</p>
+
+<p>La mise en place du scritpt au démarrage peut se faire manuellement en mettant
+en place des liens symboliques dans <code>/etc/rc*.d/</code>, mais il est plus simple de
+passer par <code>update-rc.d</code> :</p>
+
+<pre><code>sudo update-rc.d iptables defaults
+update-rc.d: warning: /etc/init.d/iptables missing LSB information
+update-rc.d: see &lt;http://wiki.debian.org/LSBInitScripts&gt;
+</code></pre>
+
+<p>Suite aux erreurs du <code>LSB</code> j'ai ajouté cela au début du script :</p>
+
+<pre><code>### BEGIN INIT INFO
+# Provides: iptables
+# Required-Start: $local_fs $remote_fs $network $syslog
+# Required-Stop: $local_fs $remote_fs $network $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Set up iptables at boot time
+# Description: Enable service provided by iptables.
+### END INIT INFO
+</code></pre>
+
+<p>Voici donc le fichier dans son intégralité :
+{% codeblock lang:bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<h1>iptables-default</h1>
+
+<h1>www.tym-project.fr/blog</h1>
+
+<h1>tym@tym-project.fr</h1>
+
+<h3>BEGIN INIT INFO</h3>
+
+<h1>Provides:          iptables</h1>
+
+<h1>Required-Start:    $local_fs $remote_fs $network $syslog</h1>
+
+<h1>Required-Stop:     $local_fs $remote_fs $network $syslog</h1>
+
+<h1>Default-Start:     2 3 4 5</h1>
+
+<h1>Default-Stop:      0 1 6</h1>
+
+<h1>Short-Description: Set up iptables at boot time</h1>
+
+<h1>Description:       Enable service provided by iptables.</h1>
+
+<h3>END INIT INFO</h3>
+
+<p>PATH="/sbin"
+TCP_PORTS="80 443"
+function stop {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -P INPUT ACCEPT
+    $IPTABLES -P FORWARD ACCEPT
+    $IPTABLES -P OUTPUT ACCEPT
+    $IPTABLES -F
+    $IPTABLES -X
+done
+if [ -e /etc/init.d/fail2ban ]; then
+    /etc/init.d/fail2ban restart
+fi
+</code></pre>
+
+<p>}
+function start {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -F
+    $IPTABLES -P INPUT DROP
+    $IPTABLES -P FORWARD DROP
+    $IPTABLES -P OUTPUT DROP
+    $IPTABLES -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+for port in $TCP_PORTS;do
+    $IPTABLES -A INPUT -p tcp --dport $port -j ACCEPT
+done
+$IPTABLES -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+$IPTABLES -A INPUT -i lo -j ACCEPT
+$IPTABLES -A OUTPUT -o lo -j ACCEPT
+# ICMP (Ping)
+#$IPTABLES -A INPUT -p icmp -j ACCEPT
+done
+if [ -e /etc/init.d/fail2ban ];then
+    /etc/init.d/fail2ban restart
+fi
+</code></pre>
+
+<p>}
+function restart {</p>
+
+<pre><code>stop
+start
+</code></pre>
+
+<p>}
+case $1 in</p>
+
+<pre><code>start)
+start
+;;
+stop)
+stop
+;;
+restart)
+restart
+;;
+*)
+echo "usage: iptables {start|stop|restart}"
+exit 1
+;;
+</code></pre>
+
+<p>esac
+{% endcodeblock %}
+Bon firewalling ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Installation de ss5 sur une Debian 5]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/02/09/install-ss5-debian-et-script-init/"/>
+    <updated>2011-02-09T12:00:48+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/02/09/install-ss5-debian-et-script-init</id>
+    <content type="html"><![CDATA[<p><a href="http://ss5.sourceforge.net/">ss5</a> est un service de proxy SOCKS très
+performant, développé par <a href="http://ss5.sourceforge.net/author.htm">une seule personne</a> je tiens à le souligner !
+J'ai eu à l'installer sur une Debian 5, et j'ai donc réalisé un petit script
+pour automatiser tout cela.</p>
+
+<!-- more -->
+
+
+<h2>On installe...</h2>
+
+<p>N'oubliez pas de préciser le numéro de version complet dans la variable <code>VER</code>
+:
+{% codeblock lang:bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<p>VER="3.8.4-1"
+DIR="/tmp/ss5_install"
+apt-get update
+apt-get -y install build-essential libpam0g-dev libpam-devperm libldap2-dev libssl-dev</p>
+
+<p>if ! [ -d "$DIR" ];then mkdir $DIR fi
+cd $DIR wget
+http://downloads.sourceforge.net/project/ss5/ss5/$VER/ss5-$VER.tar.gz</p>
+
+<p>tar xzf ss5-$VER.tar.gz</p>
+
+<p>VER=<code>echo $VER | cut -d "-" -f 1</code></p>
+
+<p>cd ss5-$VER</p>
+
+<p>./configure --with-defaultport=80 &amp;&amp; make clean &amp;&amp; make &amp;&amp; make install
+{% endcodeblock %}
+Une particularité du <code>.tar.gz</code> de <code>ss5</code> c'est de ne pas intégrer le
+numéro de sous-version ("-2" par exemple) dans le nom du dossier, ce qui
+oblige à cette pirouette dans le script :</p>
+
+<pre><code>VER=`echo $VER | cut -d "-" -f 1`
+</code></pre>
+
+<h2>...et on démarre !</h2>
+
+<p>J'ai aussi créé un script pour <code>init.d</code> (assez basique), basé sur
+<code>/etc/init.d/skeleton</code>. Il intègre quelques options comme le port par défaut
+ou le lancement en mode daemon (<code>DAEMON_ARGS="-t -u root -b 0.0.0.0:80"</code>) :
+{% codeblock lang:bash %}</p>
+
+<h1>! /bin/sh</h1>
+
+<h3>BEGIN INIT INFO</h3>
+
+<h1>Provides:          ss5</h1>
+
+<h1>Required-Start:    $remote_fs</h1>
+
+<h1>Required-Stop:     $remote_fs</h1>
+
+<h1>Default-Start:     2 3 4 5</h1>
+
+<h1>Default-Stop:      0 1 6</h1>
+
+<h1>Short-Description: Initscript for ss5</h1>
+
+<h1>Description:</h1>
+
+<h3>END INIT INFO</h3>
+
+<h1>PATH should only include /usr/* if it runs after the mountnfs.sh script</h1>
+
+<p>PATH=/bin/:/usr/bin:/sbin:/usr/sbin
+DESC="ss5 proxy server"
+NAME=ss5
+DAEMON=/usr/sbin/$NAME
+DAEMON_ARGS="-t -u root -b 0.0.0.0:80"
+PIDFILE=/var/run/$NAME.pid
+SCRIPTNAME=/etc/init.d/$NAME</p>
+
+<h1>Exit if the package is not installed</h1>
+
+<p>[ -x "$DAEMON" ] || exit 0</p>
+
+<h1>Load the VERBOSE setting and other rcS variables</h1>
+
+<p>. /lib/init/vars.sh</p>
+
+<h1>Define LSB log_* functions.</h1>
+
+<h1>Depend on lsb-base (>= 3.0-6) to ensure that this file is present.</h1>
+
+<p>. /lib/lsb/init-functions
+#</p>
+
+<h1>Function that starts the daemon/service</h1>
+
+<p>#
+do_start()
+{</p>
+
+<pre><code># Return
+#   0 if daemon has been started
+#   1 if daemon was already running
+#   2 if daemon could not be started
+start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON --test &gt; /dev/null \
+    || return 1
+start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON -- \
+    $DAEMON_ARGS \
+    || return 2
+</code></pre>
+
+<p>}
+#</p>
+
+<h1>Function that stops the daemon/service</h1>
+
+<p>#
+do_stop()
+{</p>
+
+<pre><code># Return
+#   0 if daemon has been stopped
+#   1 if daemon was already stopped
+#   2 if daemon could not be stopped
+#   other if a failure occurred
+start-stop-daemon --stop --quiet --retry=TERM/30/KILL/5 --pidfile $PIDFILE --name $NAME
+RETVAL="$?"
+[ "$RETVAL" = 2 ] &amp;&amp; return 2
+# Wait for children to finish too if this is a daemon that forks
+# and if the daemon is only ever run from this initscript.
+# If the above conditions are not satisfied then add some other code
+# that waits for the process to drop all resources that could be
+# needed by services started subsequently.  A last resort is to
+# sleep for some time.
+start-stop-daemon --stop --quiet --oknodo --retry=0/30/KILL/5 --exec $DAEMON
+[ "$?" = 2 ] &amp;&amp; return 2
+# Many daemons don't delete their pidfiles when they exit.
+rm -f $PIDFILE
+return "$RETVAL"
+</code></pre>
+
+<p>}
+case "$1" in
+  start)</p>
+
+<pre><code>[ "$VERBOSE" != no ] &amp;&amp; log_daemon_msg "Starting $DESC" "$NAME"
+do_start
+case "$?" in
+    0|1) [ "$VERBOSE" != no ] &amp;&amp; log_end_msg 0 ;;
+    2) [ "$VERBOSE" != no ] &amp;&amp; log_end_msg 1 ;;
+esac
+;;
+</code></pre>
+
+<p>  stop)</p>
+
+<pre><code>[ "$VERBOSE" != no ] &amp;&amp; log_daemon_msg "Stopping $DESC" "$NAME"
+do_stop
+case "$?" in
+    0|1) [ "$VERBOSE" != no ] &amp;&amp; log_end_msg 0 ;;
+    2) [ "$VERBOSE" != no ] &amp;&amp; log_end_msg 1 ;;
+esac
+;;
+</code></pre>
+
+<p>  restart|force-reload)</p>
+
+<pre><code>log_daemon_msg "Restarting $DESC" "$NAME"
+do_stop
+case "$?" in
+  0|1)
+    do_start
+    case "$?" in
+        0) log_end_msg 0 ;;
+        1) log_end_msg 1 ;; # Old process is still running
+        *) log_end_msg 1 ;; # Failed to start
+    esac
+    ;;
+  *)
+    # Failed to stop
+    log_end_msg 1
+    ;;
+esac
+;;
+</code></pre>
+
+<p>  *)</p>
+
+<pre><code>echo "Usage: $SCRIPTNAME {start|stop|restart|force-reload}" &gt;&amp;2
+exit 3
+;;
+</code></pre>
+
+<p>esac
+{% endcodeblock %}</p>
+
+<p>Bonne installation ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

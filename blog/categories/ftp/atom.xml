@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ftp | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/ftp/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Dropbox : l'outil de sauvegarde ultime]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/10/20/dropbox-loutil-de-sauvegarde-ultime/"/>
+    <updated>2010-10-20T11:54:58+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/10/20/dropbox-loutil-de-sauvegarde-ultime</id>
+    <content type="html"><![CDATA[<p><a href="http://www.dropbox.com/referrals/NTEyMjU5NzMzOQ">Dropbox</a> est un outil qui devient de plus
+en plus populaire. Pour ceux qui ne connaîtrait pas, c'est un espace de
+stockage en ligne associé à un logiciel qui permet de synchroniser plusieurs
+machines. Vous avez un répertoire "Dropbox" qui contient toutes vos données,
+sur Windows Linux, MacOS, Android...la liste est longue ! Si <a href="http://www.dropbox.com/referrals/NTEyMjU5NzMzOQ">Dropbox</a>
+propose des fonctionnalités d'échange entre comptes, c'est surtout pour moi
+une très bonne solution de sauvegarde. Je vais donc vous expliquer le pourquoi
+et le comment de la chose !</p>
+
+<!-- more -->
+
+
+<h2>De la place pour pas cher, et même plus...</h2>
+
+<p>De base <a href="http://www.dropbox.com/referrals/NTEyMjU5NzMzOQ">Dropbox</a> propose 2Go de stockage gratuit. Avant de crier sur tous
+les toits que c'est bien trop peu, repensez-y à deux fois...en forçant un peu
+j'occupe 1,5Go ! Mais je veux bien vous accorder que plus pour le même prix
+(0,00€) c'est mieux ! Et bien c'est tout à fait possible, grâce à un habile
+système de parrainage : pour chaque personne qui s'inscrit via <a href="http://www.dropbox.com/referrals/NTEyMjU5NzMzOQ">le lien d'un
+parrain</a> c'est 250Mo offert pour le parrainé <strong>et</strong> 250Mo pour le parrain.
+Oui, c'est bien 500Mo partagé entre les deux ! C'est pour cela que j'ai posé
+<a href="http://www.dropbox.com/referrals/NTEyMjU5NzMzOQ">mon lien</a> de parrainage un peu partout dans cet article, tout le monde est
+gagnant :) Notez toutefois que ce système a une limite : 8Go...<em>je changerai
+le lien quand j'aurai atteint cette limite, faites moi un mail ou un
+commentaire si vous êtes interessé.</em></p>
+
+<h2>De la sauvegarde 2 en 1</h2>
+
+<p>Quand vous utilisez Dropbox sur une machine vous avez forcément une copie de
+vos données en ligne : la base de toute stratégie de sauvegarde, et la plus
+simple à mettre en place. Mais il vaut mieux aussi avoir une sauvegarde multi-
+site/multi-support...installez donc Dropbox sur plus d'une machine et vous
+voila paré ! Et si en plus vous voulez mettre en place une sauvegarde sur
+disque externe, sur un autre espace en ligne ou autre, rien de plus simple car
+vos donnés sont centralisées sur n'importe laquelle de vos machines (oui,
+centralisé sans être centralisé...mais vous avez l'idée !). Si vous avez
+vraiment confiance en vos amis, rien ne vous empêche de synchroniser une
+partie de vos données avec eux. Cela fonctionne aussi avec votre famille
+proche, alors pourquoi avoir une copie toujours à jour des sauvegardes Diablo
+2 de Mamie chez vous ?</p>
+
+<h2>Un répertoire, mais pas que !</h2>
+
+<p>Dropbox est représenté sur votre machine par un seul répertoire, impossible
+donc de sauvegarder plusieurs répertoires à la fois. Ou pas ! Grâce à
+l'utilisation de liens symboliques vous allez pouvoir synchroniser ce que bon
+vous semble. Voici comme sauvegarder votre profil Xbmc sous Linux :</p>
+
+<pre><code>server@server:~$ ln -s /home/server/.xbmc/Dropbox/Server/.xbmc
+</code></pre>
+
+<p>Ou vos fonds d'écrans sous Windows :</p>
+
+<pre><code>mklink /D "D:\Users\Tym\Documents\My Dropbox\Wallpapers" "D:\Users\Tym\Pictures\Wallpapers"
+</code></pre>
+
+<h3>Retournement de symlink</h3>
+
+<p>Le cas du profil Firefox est un peu particulier car il doit être utilisé sur
+plusieurs machines à la fois. J'ai donc trouvé une petite astuce pour pouvoir
+le synchroniser quelque soit la machine. J'ai pris un exemple sous Linux, en
+ayant synchronisé mon profil avec Dropbox depuis Windows.</p>
+
+<ol>
+<li>Commencez par synchroniser votre répertoire Dropbox sur votre Linux (pour Ubuntu c'est ici), puis copiez le dans un autre emplacement (pour ne pas travailler directement sur le dossier Dropbox, on sait jamais !).</li>
+<li>Coupez votre client Dropbox, et supprimez le répertoire du profil dans votre dossier Dropbox (notez son nom)</li>
+<li>Créer un symlink entre votre dossier Dropbox et votre profil <strong>avec le même nom qu'avant la suppression</strong>.</li>
+<li>Buvez un verre d'eau, c'est important ;-)</li>
+</ol>
+
+
+<p>Bonne sauvegarde ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

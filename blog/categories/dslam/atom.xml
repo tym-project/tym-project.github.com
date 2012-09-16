@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: dslam | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/dslam/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Augmenter son débit avec Free]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/07/28/augmenter-son-debit-avec-free/"/>
+    <updated>2009-07-28T09:31:40+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/07/28/augmenter-son-debit-avec-free</id>
+    <content type="html"><![CDATA[<p>Il est possible d'augmenter sensiblement votre débit (entre 100 ko/s et 300
+ko/s) si vous possédez une Freebox et que votre ligne est de bonne qualité
+(pas trop loin du DSLAM par exemple).</p>
+
+<p>Cela se paramètre dans votre compte, rubrique "Internet" et plus
+particulièrement "Reglage du ping (fastpath)" :</p>
+
+<pre><code>Vous avez la possibilité de régler le temps de latence de votre ligne (le ping).
+Pour ce faire vous disposez de plusieurs modes  
+Interleave Normal (mode par défaut) : permet une latence de ligne de
+l'ordre de 30ms, avec un niveau de sécurité permettant de prévenir les
+ pertes de paquets celles-ci
+pouvant entraîner des sauts d'image sur la télévision.  
+Fastpath : permet d'obtenir le temps de latence minimum mais aucune
+correction d'erreur, réservé aux personnes ayant des conditions de ligne
+optimales.  
+PATATE : permet aux freebox d'obtenir une synchro sans bridage
+(jusqu'a 24Mbps) et sans seuil minimum sur le bruit, mais il peut
+entraîner des erreurs et des pertes de paquets. En cas de problème
+ il faut revenir dans les modes standards. Utiliser a vos risques et périls  
+SÉRÉNITÉ : permet de réduire à un niveau minimum les erreurs ("FECS")
+sur votre ligne. Ce mode est fortement recommandé pour optimiser la
+qualité de la diffusion de la télévision et notamment pour réduire voire
+ supprimer les gels d'image. Ce mode peut entrainer une réduction du
+niveau maximal du débit.  
+ATTENTION : si vous avez un très grand nombre d'erreurs sur la ligne,
+ou des pertes de paquets à répétition nous vous encourageons à remonter
+ votre niveau de latence (mode Interleave)  
+NOTE :
+- La mise à jour intervient toutes les 24 heures entre 00:00 H et 02:00 H
+</code></pre>
+
+<p>Pour ma part je suis en mode <code>Patate</code> (j'admire Free pour leur
+dénominations...) et je n'ai pas de soucis particuliers. J'ai parfois la TV
+qui saute quelques images, mais rien de vraiment gênant !</p>
+
+<p>Bon paramétrages ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

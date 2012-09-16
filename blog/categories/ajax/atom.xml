@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ajax | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/ajax/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Et "Bing" ! C'est recherché !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/08/21/et-bing-cest-recherche/"/>
+    <updated>2009-08-21T22:54:46+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/08/21/et-bing-cest-recherche</id>
+    <content type="html"><![CDATA[<p>Bing est le nouveau nom de Live Search : le moteur de
+recherche de Microsoft. Un <a href="http://www.istartedsomething.com/">blogeur</a> a créé, grâce à des fonctionnalités
+Ajax du moteur, un outil de recherche (expérimental) qui vous donne les
+résultats en même temps que vous tapez : <a href="http://www.istartedsomething.com/livesearch/#">c'est ici !</a> Mon petit doigt me
+dit que si Bing implémente ce genre de technologies...ça pourrait faire mal
+;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

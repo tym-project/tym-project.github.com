@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: powershell | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/powershell/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Adaptation de "sed" en PowerShell (Windows)]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/03/02/sed-en-powershell-et-redirection/"/>
+    <updated>2011-03-02T12:00:44+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/03/02/sed-en-powershell-et-redirection</id>
+    <content type="html"><![CDATA[<p>PowerShell est un langage de script développé par
+Microsoft, le <code>#!/bin/bash</code> de Windows en quelque sorte. Ce langage propose de
+très nombreuses fonctionnalités, et après un petit temps d'adaptation, devient
+assez simple à utiliser. Mais parfois ce n'est pas aussi évident, comme par
+exemple avec la mise en place de l'équivalent d'un <code>[man]sed[/man]</code>.</p>
+
+<!-- more -->
+
+
+<h2>La solution</h2>
+
+<p>Une rapide recherche m'a amené sur <a href="http://blogs.msdn.com/b/zainnab/archive/2007/07/09/grep-and-sed-with-powershell.aspx">cet article</a> qui propose cette solution
+:</p>
+
+<pre><code>cat input.txt | %{$_ -replace "old", "new"} &gt; output.txt
+</code></pre>
+
+<p>Une petite explication s'impose :</p>
+
+<ul>
+<li><code>cat</code> est en PowerShell un alias de la commande <code>Get-Content</code></li>
+<li><code>$_</code> représente le contenu sortant du pipe</li>
+<li><code>&gt;</code> est une classique redirection de la sortie standard</li>
+<li>les <code>{ }</code> délimitent les commandes à effectuer sur la sortie du pipe</li>
+<li>le <code>%</code> signifie "itérer sur la sortie du pipe"</li>
+</ul>
+
+
+<p>En apparence cela fonctionne très bien...en apparence seulement...</p>
+
+<h2>La bonne solution</h2>
+
+<p>J'ai appliqué la solution précédente sur un fichier Xml servant à la
+configuration d'une Webapp dans Tomcat. Dès l'instant où je plaçait ce fichier
+dans l'arborescence, j’obtenais une magnifique erreur 500. Après quelques
+tests il s'est avéré que c'est la redirection, <code>&gt;</code>, qui pose problème d'une
+manière ou d'une autre et qui rend le fichier lisible, mais en fait non... Au
+final j'ai testé cette combinaison, qui fonctionne correctement :</p>
+
+<pre><code>Get-Content input.txt | %{$_ -replace "old", "new"} | Set-Content output.txt
+</code></pre>
+
+<p>L'utilisation de <code>Set-Content</code> donne donc un
+fichier tout à fait viable.</p>
+
+<p>Bon PoSh ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

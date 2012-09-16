@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tls | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/tls/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Envoyer un e-mail via Gmail en ligne de commande]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/08/25/mail-avec-gmail-dans-un-script/"/>
+    <updated>2010-08-25T11:59:21+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/08/25/mail-avec-gmail-dans-un-script</id>
+    <content type="html"><![CDATA[<p>Gmail, on le sait tous, est un outil très
+répandu. Souvent même dans le monde de l'entreprise avec Google Apps. Pourquoi
+alors ne pas l'utiliser pour envoyer des alertes, logs ou autres sauvegardes
+depuis un serveur Linux ? Allons-y...</p>
+
+<!-- more -->
+
+
+<p>Pour envoyer un e-mail depuis un script
+il-y-a en général un passage obligé : un serveur SMTP en local. Hum, trop peu
+pour moi, surtout pour envoyer un log tous les mois ! Heureusement <code>Esmtp</code> est
+là. C'est un outil formidable et simplissime qui n'a qu'un seul rôle : servir
+de relais STMP. Autrement dit, il est incapable d'envoyer un e-mail
+directement, mais seulement de le transmettre à un autre serveur SMTP.</p>
+
+<h2>La base : ESMTP</h2>
+
+<p>Commencez par installer le package (ici sur Debian/Ubuntu) :</p>
+
+<pre><code>apt-get install esmtp
+</code></pre>
+
+<p>Créez, si il
+n'existe pas, le fichier <code>~./esmtprc</code> et changez ses droits :</p>
+
+<pre><code>touch ~/.esmtprc
+chmod 0700 ~/.esmtprc
+</code></pre>
+
+<p>Passons au contenu du fichier, je le rappelle, propre à Gmail :</p>
+
+<pre><code>#file ~/.esmtprc
+identity example@gmail.com
+    hostname smtp.gmail.com:587
+    username "example@gmail.com"
+    password "p@ssw0rd"
+    starttls required
+</code></pre>
+
+<p>Gmail utilisant tls (ssl),
+il va vous falloir obtenir le certificat qu'il utilise. On va donc récupérer
+les principaux certificats utilisés sur le web, avec <code>[man]curl[/man]</code> :
+{% codeblock lang:bash %}
+apt-get install curl
+mkdir ~/.authenticate
+chmod 700 ~/.authenticate
+curl http://curl.haxx.se/ca/cacert.pem >~/.authenticate/ca.pem
+chmod 600 ~/.authenticate/ca.pem
+{% endcodeblock %}
+<em>Attention à bien mettre les bons droits
+sur les répertoires, sans quoi cela ne fonctionnera pas (plus de détails dans
+la suite).</em></p>
+
+<h2>Et pour envoyer un bête mail ?</h2>
+
+<p>Un simple script fera l'affaire :
+{% codeblock lang:bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<h1>Entête du message</h1>
+
+<p>echo "To: copain@example.com Subject: Test de mail From:example@gmail.com " > /tmp/mail</p>
+
+<h1>Corps du message</h1>
+
+<p>echo "Salut copain, je t'envoie un e-mail !" >> /tmp/mail</p>
+
+<h1>Envoie du message</h1>
+
+<p>esmtp -tv &lt; /tmp/mail
+{% endcodeblock %}
+<code>[man]esmtp[/man]</code>
+prends ici deux options : <code>-t</code> pour lire l'entête, <code>-v</code> pour le mode verbeux.
+Si tout se passe bien vous obtiendrez une sortie dans ce style... et un e-mail
+à l'autre bout bien entendu :</p>
+
+<pre><code>Connected to MTA
+StartTLS OK (128 bits)
+From example@gmail.com: 250 OK k7sm4581630wej.2
+To copain@example.com: 250 OK k7sm4581630wej.2
+Message data: .
+Message sent: 250 OK 1280951004 k7sm4581630wej.2
+Disconnected to MTA
+</code></pre>
+
+<p>Sinon, rappelez vous des droits sur les certificats :</p>
+
+<pre><code>Connected to MTA
+StartTLS extension not supported by MTA
+Disconnected to MTA
+0 (null)
+example@gmail.com: 0 (null)
+</code></pre>
+
+<h2>Et avec une pièce jointe ?</h2>
+
+<p>Dans ce cas je n'ai pas, pour le moment, trouvé d'autre solution que
+d'installer <code>[man]sendmail[/man]</code> avant tout. Il va servir d'interface, en
+tant que daemon, avec Esmtp.</p>
+
+<pre><code>apt-get install sendmail
+</code></pre>
+
+<h3>Une Perl</h3>
+
+<p>vous pouvez utiliser un script Perl par exemple :</p>
+
+<p>{% codeblock lang:perl %}</p>
+
+<h1>!/usr/bin/perl -w</h1>
+
+<p>use strict;
+use warnings;
+use MIME::Lite;</p>
+
+<p>my $Message = new MIME::Lite</p>
+
+<pre><code>From =&gt;'example@gmail.com',
+To =&gt;'copain@example.com',
+Subject =&gt;"Mon mail avec un fichier",
+Type =&gt;'multipart/mixed';
+</code></pre>
+
+<p>$Message -> attach(</p>
+
+<pre><code>Type =&gt; 'TEXT',
+Data =&gt; "Voici le fichier",
+);
+</code></pre>
+
+<p>$Message -> attach(</p>
+
+<pre><code>Type =&gt; 'text/plain',
+Path =&gt; "log.txt",
+Filename =&gt; "log.txt",
+);
+</code></pre>
+
+<p>$Message -> send;
+{% endcodeblock %}
+Attention ici aux type Mime (cf. <a href="http://www.sfsu.edu/training/mimetype.htm">Global MIME Types</a>) pour le fichier joint...</p>
+
+<h3>Python !</h3>
+
+<p>Ou du python (j'aime :)). On crée un module générique (source : <a href="http://snippets.dzone.com/posts/show/2038">Send email with attachment(s) in Python</a>) :
+{% codeblock lang:python %}
+import smtplib
+import os
+from email.MIMEMultipart import MIMEMultipart
+from email.MIMEBase import MIMEBase
+from email.MIMEText import MIMEText
+from email.Utils import COMMASPACE, formatdate
+from email import Encoders</p>
+
+<p>def send_mail(send_from, send_to, subject, text, files=[],server="localhost"):</p>
+
+<pre><code>assert type(send_to)==list
+assert type(files)==list
+
+msg = MIMEMultipart()
+msg['From'] = send_from
+msg['To'] = COMMASPACE.join(send_to)
+msg['Date'] = formatdate(localtime=True)
+msg['Subject'] = subject
+
+msg.attach( MIMEText(text) )
+
+for f in files:
+    part = MIMEBase('application', "octet-stream")
+    part.set_payload( open(f,"rb").read() ) Encoders.encode_base64(part)
+    part.add_header('Content-Disposition', 'attachment; filename="%s"' %os.path.basename(f))
+    msg.attach(part)
+
+smtp = smtplib.SMTP(server)
+smtp.sendmail(send_from, send_to, msg.as_string())
+smtp.close()
+</code></pre>
+
+<p>{% endcodeblock %}
+Et son appel :
+{% codeblock lang:python %}
+import my_send_mail
+my_send_mail.send_mail("example@gmail.com",</p>
+
+<pre><code>['copain@example.com'],
+"Mon mail avec un fichier",
+"Voici le fichier",['log.txt'])
+</code></pre>
+
+<p>{% endcodeblock %}
+Bon envois ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

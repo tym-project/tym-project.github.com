@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: giganews | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/giganews/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Un client Newsgroup pour Linux : "Hell, A NZB!"]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/30/un-client-newsgroup-pour-linux-hell-a-nzb-2/"/>
+    <updated>2009-04-30T21:21:20+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/30/un-client-newsgroup-pour-linux-hell-a-nzb-2</id>
+    <content type="html"><![CDATA[<p>Suite à mon fulgurant, mais durable, passage sous Linux, je cherche un
+équivalent à mes applications Windows. Un exemple parmi d'autres : un client
+Newsgroup. Mon choix s'est porté sur Hellanzb. Voici donc comment le mettre en
+place sous Archlinux.</p>
+
+<!-- more -->
+
+
+<p>Mais tout d'abord voici un résumé des mes critères de choix :</p>
+
+<ul>
+<li>Gestion des connexions en SSL</li>
+<li>Réparation automatique (par2...ou par quatre ou cinq...:))</li>
+<li>Extraction automatique</li>
+<li>Légèreté (pas besoin d'une usine à gaz !)</li>
+<li>Gestion des proxy Socks</li>
+</ul>
+
+
+<p>Hellanzb fait tout ça (sauf le Socks, mais avec <a href="http://www.tym-project.fr/blog/2009/04/socksifier-une-application-sous-linux/">tsocks</a>...), il ne dispose
+pas d'interface graphique (donc très léger !).</p>
+
+<p>Allez hop, au travail ! On installe tout d'abord le paquet (disponible
+seulement sur AUR) :</p>
+
+<pre><code>yaourt -Sy hellanzb
+</code></pre>
+
+<p>Comme je veux faire du SSL, et que Hellanzb est en python il me faut
+une librairie en plus :</p>
+
+<pre><code>pacman -Sy pyopenssl
+</code></pre>
+
+<p>Tout est presque fonctionnel, il faut maintenant configurer
+Hellanzb. Pour cela éditez (et donc créez) le fichier
+<code>~/.config/hellanzb.conf</code>. Voici ma configuration pour Giganews en SSL (un
+exemple est présent dans <code>/etc/hellanzb.conf.sample</code>) :</p>
+
+<pre><code>defineServer(id= 'gn',
+hosts = [ 'news-europe.giganews.com:443' ],
+username = 'gnXXXXXX',
+password = 'XXXXXXXXXXXXXXXX',
+connections = 4,
+antiIdle = 0,
+# 0 to disable
+ssl = True )
+# Important locations
+Hellanzb.PREFIX_DIR = '/home/tym/NG/'
+# Where to put queued .nzb files
+Hellanzb.QUEUE_DIR = Hellanzb.PREFIX_DIR + 'nzb/daemon.queue/'
+
+# Where the fully processed archives go
+Hellanzb.DEST_DIR = Hellanzb.PREFIX_DIR + 'usenet/'
+
+# The .nzb currently being downloaded is stored here
+Hellanzb.CURRENT_DIR = Hellanzb.PREFIX_DIR + 'nzb/daemon.current/'
+
+# The archive currently being downloaded is stored here
+Hellanzb.WORKING_DIR = Hellanzb.PREFIX_DIR + 'nzb/daemon.working/'
+
+# Archives interrupted in the middle of downloading are stored here temporarily
+Hellanzb.POSTPONED_DIR = Hellanzb.PREFIX_DIR + 'nzb/daemon.postponed/'
+
+# Archives currently being processed. May contains archive directories, or
+# symbolic links to archive directories
+Hellanzb.PROCESSING_DIR = Hellanzb.PREFIX_DIR + 'nzb/daemon.processing/'
+
+# Temp storage
+Hellanzb.TEMP_DIR = Hellanzb.PREFIX_DIR + 'nzb/daemon.temp/'
+</code></pre>
+
+<p>Cette configuration n'est pas complète (je trouve inutile de recopier
+l'intégralité du fichier d'exemple) mais donne les bases. Lisez bien le
+fichier donné en exemple car il propose des options très intéressantes !</p>
+
+<p>Notre
+configuration fonctionne, lançons Hellaznb :</p>
+
+<pre><code>$ hellanzb.py
+hellanzb v0.13 (config = /home/tym/.config/hellanzb.conf) (gn) 4 connections
+hellanzb - Now monitoring queue... 
+</code></pre>
+
+<p>Si vous avez bien lu vous avez
+remarqué que Hellanzb attends des fichiers dans un file (il peut donc tourner
+en arrière plan tout seul comme un grand !). Il vous suffit donc d'ajouter un
+fichier .nzb dans le dossier <code>daemon.queue</code> :</p>
+
+<pre><code>cp Desktop/ubuntu\ 9.04.nzb NG/nzb/daemon.queue
+</code></pre>
+
+<p>Et le
+téléchargement démarre quelques secondes plus tard :</p>
+
+<pre><code>Now monitoring queue... Found new nzb: ubuntu 9.04 Parsing: ubuntu 9.04.nzb...
+Parsed: 3 files (1911 posts), 723.4MB Queued: 723.4MB [1]
+ubuntu-9.04-desktop-i386.iso - 2% @ 1020.0KB/s [2]
+ubuntu-9.04-desktop-i386.iso [3] ubuntu-9.04-desktop-i386.iso [4]
+ubuntu-9.04-desktop-i386.iso [Total] 1020.0KB/s, 704 MB queued, ETA: 00:11:46
+</code></pre>
+
+<p>Simple, rapide et efficace ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

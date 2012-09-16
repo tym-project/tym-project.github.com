@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: oldies | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/oldies/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA["C'était mieux avant !"]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/06/26/cetait-mieux-avant-2/"/>
+    <updated>2009-06-26T14:17:41+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/06/26/cetait-mieux-avant-2</id>
+    <content type="html"><![CDATA[<p>Je joue très peu sur mon PC, et quand je joue c'est à des antiquités comme
+Diablo 2, Fallout 2, GTA 2... Le site <a href="http://www.gog.com">Good Old Games</a> vous propose, contre
+la modique somme de 10$ environ, de télécharger des anciens jeux qui
+fonctionneront sur Vista (et probablement Seven). Un bon projet pour des
+vacances loin de la mer pour certains ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

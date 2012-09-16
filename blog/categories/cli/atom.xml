@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: cli | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/cli/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SED, trucs et astuces pour le remplacement et la mise en mémoire d'expressions]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions/"/>
+    <updated>2009-08-21T22:57:08+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions</id>
+    <content type="html"><![CDATA[<p><code>[man]sed[/man]</code> est un éditeur de texte en
+ligne de commande. Il vous permet donc de modifier un fichier par une suite de
+directives, sans utiliser de logiciels comme <code>[man]vim[/man]</code> ou
+<code>[man]gedit[/man]</code>. Je vais vous montrer comment je procède pour modifier une
+configuration dans un script.</p>
+
+<!-- more -->
+
+
+<p>Prenons l'exemple du fichier suivant (un extrait
+de <code>[man]rc.conf[/man]</code> sous Archlinux :</p>
+
+<pre><code>LOCALE="en_US.utf8"
+HARDWARECLOCK="localtime"
+USEDIRECTISA="no"
+TIMEZONE="Canada/Pacific"
+KEYMAP="us"
+CONSOLEFONT=
+CONSOLEMAP=
+USECOLOR="yes"
+</code></pre>
+
+<p>Je veux modifier le <code>KEYMAP</code> de <code>"us"</code> vers <code>"fr"</code>. Voici la commande
+que j'utilise :</p>
+
+<pre><code>cat rc.conf | 'sed 's/\(KEYMAP="\)us\("\)/\1fr\2/'
+</code></pre>
+
+<p>La structure d'un <code>[man]sed[/man]</code>
+utilisé pour le remplacement (défini par le <code>s</code>) est :</p>
+
+<pre><code>'s/élément à rechercher/remplacement de l'élément/'
+</code></pre>
+
+<p>J'aurai pu
+utiliser la commande suivante :</p>
+
+<pre><code>sed 's/KEYMAP="us"/KEYMAP="fr"/'
+</code></pre>
+
+<p>Mais il est plus simple mettre en mémoire
+une partie du texte d'origine. Pour cela il suffit de le mettre en
+parenthèses, pour le rappeler il faut utiliser les nombres de 1 à ... l'infini
+(?). Par exemple :</p>
+
+<pre><code>echo "ABcdEF" | sed 's/\(AB\)cd\(EF\)/\1oooooo\2/'
+</code></pre>
+
+<p>donne :</p>
+
+<pre><code>ABooooooEF
+</code></pre>
+
+<p>Les "<code>\</code>" permettent de ne pas prendre en compte les parenthèses et
+les chiffres dans la recherche/remplacement. Et si en plus vous voulez mettre
+<code>"fr"</code> à la place de n'importe qu'elle valeur, utilisez "<code>.*</code>" (n'importe quel
+caractère un nombre indéfini de fois) :</p>
+
+<pre><code>sed 's/\(KEYMAP="\).*\("\)/\1fr\2/'
+</code></pre>
+
+<p>Bon démêlage de neurones ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Lire un mot de passe dans un script (Linux)]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/05/25/lire-un-mot-de-passe-dans-un-script-linux/"/>
+    <updated>2009-05-25T12:50:49+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/05/25/lire-un-mot-de-passe-dans-un-script-linux</id>
+    <content type="html"><![CDATA[<p>Pour lire une entrée au clavier en bash (ou sh, ou autres) on utilise la
+commande <code>read</code>. Par exemple :</p>
+
+<pre><code>read -p "Login : " LOGIN echo " Your login is $LOGIN"
+</code></pre>
+
+<p>va donner :</p>
+
+<pre><code>Login : fooi
+Your login is foo
+</code></pre>
+
+<p>Mais comment faire quand on veut lire une entrée représentant un mot de
+passe...pas très "secure" qu'elle s'affiche à l'écran ! Il vous suffit en fait
+de désactiver l'affichage des caractères tapés à l'écran avec <code>stty echo off</code>
+(<code>stty -echo</code> en raccourci) :</p>
+
+<pre><code>stty -echo
+read -p "Login : " LOGIN
+stty echo
+echo " Your login is $LOGIN"
+</code></pre>
+
+<p>va donner :</p>
+
+<pre><code>Login :
+Your login is bar
+</code></pre>
+
+<p>Pensez bien à faire un <code>stty echo</code>, sinon plus de clavier dans la console (ou
+en tout cas en aveugle...)</p>
+
+<p>Bon scripting ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Bien débuter en administration de matériels Cisco]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/03/29/bien-debuter-en-administration-de-materiels-cisco-2/"/>
+    <updated>2009-03-29T14:35:23+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/03/29/bien-debuter-en-administration-de-materiels-cisco-2</id>
+    <content type="html"><![CDATA[<p>A mon sens le meilleur moyen d'administrer un matériel Cisco c'est la CLI : la
+ligne de commande (Command Line Interface). Il existe quelques astuces pour se
+simplifier la vie. Mais tout d'abord quelques petits rappels :</p>
+
+<ul>
+<li>La CLI d'un Cisco est accessible par deux moyens principaux, le port série et le réseau</li>
+<li>La CLI comporte deux modes : normal et privilégié (l'équivalent de "root" sous Linux)</li>
+<li>Le mode privilégié se divise en deux : normal et configure</li>
+</ul>
+
+
+<p>Et maintenant les petits trucs qui aident bien, utilisables quel que soit le
+mode de connexion au routeur :</p>
+
+<ul>
+<li>En CLI tout s'abrège : <code>enable</code> devient <code>en</code>, <code>show</code> devient <code>sh</code>, <code>fastethernet0/0</code> se raccourci en <code>fa0/0</code>...</li>
+<li>Certaines commandes comme <code>show</code> (<code>sh</code>) ou <code>write</code> (<code>wr</code>) ne se font que en mode normal dans enable (donc pas en <code>configure terminal</code>, <code>conf t</code> si vous avez suivi). Pour palier à ça sans quitter le <code>conf t</code>, précédez votre commande de <code>do</code> : <code>do wr</code>, <code>do sh ip int br</code> (<code>show ip interfaces brief</code>, oui oui c'est mieux en abrégé !)</li>
+<li>Imaginez que vous êtes au fin fond du <code>conf t</code> (dans les méandres des sous interfaces par exemple) et que vous devez aller dans le mode normal (sachant que <code>do</code> fait souvent l'affaire, mais passons !) : un petit <code>end</code> vous remontera directement en mode <code>conf t</code>. Si par contre vous voulez remonter d'un niveau seulement : <code>exit</code></li>
+</ul>
+
+
+<p>Selon le mode de connexion que vous utilisez, vous allez pouvoir plus
+(connexion par le réseau) ou moins (connexion série) vous simplifier la vie.
+En mode console série : pas d'autres alternatives que HyperTerminal (ou
+consorts)...argh ! En mode réseau (ethernet par exemple) utilisez Putty (ou
+autre, mais Putty c'est à mon sens le top du top de la moumoute sous Windows
+!) avec l'autcomplétion et l'historique des commandes passées. Toutefois il
+existe une astuce commune au deux modes de connexion : <code>?</code>. Grâce au <code>?</code>,
+votre élément actif va vous dire quoi mettre après : <code>show ?</code> vous proposera,
+parmi d'autres, <code>ip</code> ou <code>running configuration</code>. Cela est valable partout et
+vous dira par exemple quel type de masque (CIDR ou classique) mettre dans la
+définition d'une route, etc</p>
+
+<p>Bonnes configurations ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

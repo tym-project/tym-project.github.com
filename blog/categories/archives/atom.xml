@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: archives | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/archives/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[C'était mieux avant !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/03/27/cetait-mieux-avant/"/>
+    <updated>2009-03-27T09:55:14+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/03/27/cetait-mieux-avant</id>
+    <content type="html"><![CDATA[<p>Vous cherchez l'ancienne version de votre
+logiciel préféré parce que la nouvelle n'est pas à votre goût ? Pas toujours
+évident de trouver votre bonheur !</p>
+
+<p>Le site <a href="http://www.oldversion.com/">OldVersion.com</a> vous permet de trouver ce que vous cherchez.
+<a href="http://www.filehippo.com/">FileHippo.com</a> donne aussi un historique des versions des logiciels qu'ils
+proposent.</p>
+
+<p>Bon téléchargements ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

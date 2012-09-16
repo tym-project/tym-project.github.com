@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Logiciels | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/logiciels/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mon script de configuration iptables]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/04/06/iptables-et-lancement-automatique/"/>
+    <updated>2011-04-06T12:00:02+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/04/06/iptables-et-lancement-automatique</id>
+    <content type="html"><![CDATA[<p>Pour ceux qui ne connaitraient pas, iptables est une
+interface de gestion du module netfilter du noyau Linux. En termes clairs :
+c'est un pare-feu. Iptables est donc un ensemble de commandes permettant de
+créer des règles, je ne vais pas rentrer dans les détails, vous trouverez plus
+d'infos sur <a href="http://www.techrepublic.com/blog/10things/10-iptables-rules-to-help-secure-your-linux-box/539">cette page par exemple</a>. Dans cet article il sera question de
+comment je gère ma configuration de pare-feu à travers un script d'init.</p>
+
+<!-- more -->
+
+
+<h2>init.d, t'es initié ?</h2>
+
+<p>Le but de ce script est qu'il se lance au démarrage de mon poste, et en bonus
+que je puisse couper/relancer mon pare-feu à loisir : c'est là le rôle d'un
+script "init.d". Commençons donc par la fin, avec les différents arguments que
+peut prendre le script :
+{% codeblock lang:bash %}
+case $1 in</p>
+
+<pre><code>start)
+    start
+    ;;
+stop)
+    stop
+    ;;
+restart)
+    restart
+    ;;
+*)
+    echo "usage: iptables {start|stop|restart}"
+    exit 1
+    ;;
+</code></pre>
+
+<p>esac
+{% endcodeblock %}</p>
+
+<p>Logiquement on retrouve les
+fonction <code>start</code>, <code>stop</code> et <code>restart</code> avec une explication des arguments pour
+toute valeur en dehors de ce choix.</p>
+
+<h2>En fonction des fonctions...</h2>
+
+<p>la fonction <code>restart</code> est très simple :</p>
+
+<pre><code>function restart {
+    stop start
+}
+</code></pre>
+
+<p>la fonction <code>stop</code> est un peu plus complexe et est chargée de vider les règles
+iptable, de changer la politique par défaut et de restarter
+<code>[man]fail2ban[/man]</code> si besoin :
+{% codeblock lang:bash %}
+function stop {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -P INPUT ACCEPT
+    $IPTABLES -P FORWARD ACCEPT
+    $IPTABLES -P OUTPUT ACCEPT
+    $IPTABLES -F $IPTABLES -X
+done
+
+if [ -e /etc/init.d/fail2ban ]; then
+    /etc/init.d/fail2ban restart
+fi
+</code></pre>
+
+<p>}
+{% endcodeblock %}
+L'utilisation de <code>for IPTABLES in iptables ip6tables</code> permet de configurer à
+la fois pour ipv4 et ipv6.</p>
+
+<p>La fonction <code>start</code> utilise une variable <code>$TCP_PORTS</code> (qui contient les port
+TCP à ouvrir) définie ainsi :</p>
+
+<pre><code>TCP_PORTS="80 443"
+</code></pre>
+
+<p>Et la fonction en elle-même :
+{% codeblock lang:bash %}
+function start {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -F $IPTABLES -P INPUT DROP
+    $IPTABLES -P FORWARD DROP
+    $IPTABLES -P OUTPUT DROP
+
+    $IPTABLES -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+    for port in $TCP_PORTS;do
+        $IPTABLES -A INPUT -p tcp --dport $port -j ACCEPT
+    done
+
+    $IPTABLES -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+    $IPTABLES -A INPUT -i lo -j ACCEPT $IPTABLES -A OUTPUT -o lo -j ACCEPT
+    # ICMP (Ping)
+    #$IPTABLES -A INPUT -p icmp -j ACCEPT
+done
+</code></pre>
+
+<p>if [ -e /etc/init.d/fail2ban ];then</p>
+
+<pre><code>/etc/init.d/fail2ban restart
+</code></pre>
+
+<p>fi
+}
+{% endcodeblock %}</p>
+
+<h2>Configuration et installation</h2>
+
+<p>Pour placer le script dans <code>/etc/init.d/</code> deux solutions sont possibles :</p>
+
+<ul>
+<li>le copier dans le répertoire</li>
+<li>faire un lien symbolique avec <code>ln -s /emplacement/script/iptables /etc/init.d/iptables</code></li>
+</ul>
+
+
+<p>Si vous mettez ce script en place sur serveur sans accès physique, je vous
+conseille formetment de le tester avant de le mettre au démarrage de la
+machine...c'est trop bête de se faire enfermer dehors :)</p>
+
+<p>La mise en place du scritpt au démarrage peut se faire manuellement en mettant
+en place des liens symboliques dans <code>/etc/rc*.d/</code>, mais il est plus simple de
+passer par <code>update-rc.d</code> :</p>
+
+<pre><code>sudo update-rc.d iptables defaults
+update-rc.d: warning: /etc/init.d/iptables missing LSB information
+update-rc.d: see &lt;http://wiki.debian.org/LSBInitScripts&gt;
+</code></pre>
+
+<p>Suite aux erreurs du <code>LSB</code> j'ai ajouté cela au début du script :</p>
+
+<pre><code>### BEGIN INIT INFO
+# Provides: iptables
+# Required-Start: $local_fs $remote_fs $network $syslog
+# Required-Stop: $local_fs $remote_fs $network $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Set up iptables at boot time
+# Description: Enable service provided by iptables.
+### END INIT INFO
+</code></pre>
+
+<p>Voici donc le fichier dans son intégralité :
+{% codeblock lang:bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<h1>iptables-default</h1>
+
+<h1>www.tym-project.fr/blog</h1>
+
+<h1>tym@tym-project.fr</h1>
+
+<h3>BEGIN INIT INFO</h3>
+
+<h1>Provides:          iptables</h1>
+
+<h1>Required-Start:    $local_fs $remote_fs $network $syslog</h1>
+
+<h1>Required-Stop:     $local_fs $remote_fs $network $syslog</h1>
+
+<h1>Default-Start:     2 3 4 5</h1>
+
+<h1>Default-Stop:      0 1 6</h1>
+
+<h1>Short-Description: Set up iptables at boot time</h1>
+
+<h1>Description:       Enable service provided by iptables.</h1>
+
+<h3>END INIT INFO</h3>
+
+<p>PATH="/sbin"
+TCP_PORTS="80 443"
+function stop {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -P INPUT ACCEPT
+    $IPTABLES -P FORWARD ACCEPT
+    $IPTABLES -P OUTPUT ACCEPT
+    $IPTABLES -F
+    $IPTABLES -X
+done
+if [ -e /etc/init.d/fail2ban ]; then
+    /etc/init.d/fail2ban restart
+fi
+</code></pre>
+
+<p>}
+function start {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -F
+    $IPTABLES -P INPUT DROP
+    $IPTABLES -P FORWARD DROP
+    $IPTABLES -P OUTPUT DROP
+    $IPTABLES -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+for port in $TCP_PORTS;do
+    $IPTABLES -A INPUT -p tcp --dport $port -j ACCEPT
+done
+$IPTABLES -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+$IPTABLES -A INPUT -i lo -j ACCEPT
+$IPTABLES -A OUTPUT -o lo -j ACCEPT
+# ICMP (Ping)
+#$IPTABLES -A INPUT -p icmp -j ACCEPT
+done
+if [ -e /etc/init.d/fail2ban ];then
+    /etc/init.d/fail2ban restart
+fi
+</code></pre>
+
+<p>}
+function restart {</p>
+
+<pre><code>stop
+start
+</code></pre>
+
+<p>}
+case $1 in</p>
+
+<pre><code>start)
+start
+;;
+stop)
+stop
+;;
+restart)
+restart
+;;
+*)
+echo "usage: iptables {start|stop|restart}"
+exit 1
+;;
+</code></pre>
+
+<p>esac
+{% endcodeblock %}
+Bon firewalling ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu 64 bits : résoudre les problèmes avec Flash]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/03/16/flash-ubuntu-10-10-x86_64/"/>
+    <updated>2011-03-16T12:00:23+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/03/16/flash-ubuntu-10-10-x86_64</id>
+    <content type="html"><![CDATA[<p>J'utilise Ubuntu 10.10 depuis quelque temps, et
+ayant 4 Go de RAM j'utilise la version 64 bits. Bien que cela me chagrine un
+peu, j'utilise aussi beaucoup Flash pour regarder des vidéos...malheureusement
+tout cela est assez instable et moche. Mais un passage éclair sous Debian
+Squeeze m'a prouvé que Flash peut en fait être très stable sous Linux, me
+voila dont partit en quête du plugin parfait...</p>
+
+<!-- more -->
+
+
+<h2>Le coeur du problème</h2>
+
+<p>Plus qu'une image vaut bien plus que des mots dans ce cas :
+{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/selection_007.png %}</p>
+
+<p>Remarquez comment les indicateurs
+de temps se retrouvent remplacés par des gros carrés noirs...je vous laisse
+imaginer la catastrophe quand il s'agit d'un jeu ! Maintes et maintes
+recherches m'ont finalement ammené à explorer une piste : le fait que mon
+Ubuntu soit en 64bits et surtout que Flash ne supportait cette architecture
+que en version expérimentale...</p>
+
+<h2>La solution au problème</h2>
+
+<p>Je suis finalement tombé sur la page salvatrice dans l'aide d'ubuntu :
+<a href="https://help.ubuntu.com/community/RestrictedFormats/Flash#Ubuntu%209.10%20%28Karmic%20Koala%29%20and%20later">RestrictedFormatsFlash </a> En bref il faut tout d'abord désinstaller Flash
+32 bits :</p>
+
+<pre><code>sudo apt-get remove --purge flashplugin* &amp;&amp; sudo apt-get autoremove
+</code></pre>
+
+<p>Puis ajouter le dépot <code>ppa</code> et
+installer le plugin Flash 64 bits :</p>
+
+<pre><code>sudo add-apt-repository ppa:sevenmachines/flash &amp;&amp; sudo apt-get update &amp;&amp; sudo apt-get install flashplugin64-installer
+</code></pre>
+
+<h2>Tadaaa !!</h2>
+
+<p>Le résultat est sans appel, tout fonctionne !
+{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/selection_008.png %}</p>
+
+<p>Pour info le lien vers la video que j'utilise en exemple (choisie au hasard
+mais assez sympa en fait) : <a href="http://www.dailymotion.com/video/xft12d_snowboard-kyle-miller-2009-2010_sport">Snowboard: Kyle Miller - 2009-2010 </a></p>
+
+<p>Bon Flashs ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Dropbox : l'outil de sauvegarde ultime]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/10/20/dropbox-loutil-de-sauvegarde-ultime/"/>
+    <updated>2010-10-20T11:54:58+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/10/20/dropbox-loutil-de-sauvegarde-ultime</id>
+    <content type="html"><![CDATA[<p><a href="http://www.dropbox.com/referrals/NTEyMjU5NzMzOQ">Dropbox</a> est un outil qui devient de plus
+en plus populaire. Pour ceux qui ne connaîtrait pas, c'est un espace de
+stockage en ligne associé à un logiciel qui permet de synchroniser plusieurs
+machines. Vous avez un répertoire "Dropbox" qui contient toutes vos données,
+sur Windows Linux, MacOS, Android...la liste est longue ! Si <a href="http://www.dropbox.com/referrals/NTEyMjU5NzMzOQ">Dropbox</a>
+propose des fonctionnalités d'échange entre comptes, c'est surtout pour moi
+une très bonne solution de sauvegarde. Je vais donc vous expliquer le pourquoi
+et le comment de la chose !</p>
+
+<!-- more -->
+
+
+<h2>De la place pour pas cher, et même plus...</h2>
+
+<p>De base <a href="http://www.dropbox.com/referrals/NTEyMjU5NzMzOQ">Dropbox</a> propose 2Go de stockage gratuit. Avant de crier sur tous
+les toits que c'est bien trop peu, repensez-y à deux fois...en forçant un peu
+j'occupe 1,5Go ! Mais je veux bien vous accorder que plus pour le même prix
+(0,00€) c'est mieux ! Et bien c'est tout à fait possible, grâce à un habile
+système de parrainage : pour chaque personne qui s'inscrit via <a href="http://www.dropbox.com/referrals/NTEyMjU5NzMzOQ">le lien d'un
+parrain</a> c'est 250Mo offert pour le parrainé <strong>et</strong> 250Mo pour le parrain.
+Oui, c'est bien 500Mo partagé entre les deux ! C'est pour cela que j'ai posé
+<a href="http://www.dropbox.com/referrals/NTEyMjU5NzMzOQ">mon lien</a> de parrainage un peu partout dans cet article, tout le monde est
+gagnant :) Notez toutefois que ce système a une limite : 8Go...<em>je changerai
+le lien quand j'aurai atteint cette limite, faites moi un mail ou un
+commentaire si vous êtes interessé.</em></p>
+
+<h2>De la sauvegarde 2 en 1</h2>
+
+<p>Quand vous utilisez Dropbox sur une machine vous avez forcément une copie de
+vos données en ligne : la base de toute stratégie de sauvegarde, et la plus
+simple à mettre en place. Mais il vaut mieux aussi avoir une sauvegarde multi-
+site/multi-support...installez donc Dropbox sur plus d'une machine et vous
+voila paré ! Et si en plus vous voulez mettre en place une sauvegarde sur
+disque externe, sur un autre espace en ligne ou autre, rien de plus simple car
+vos donnés sont centralisées sur n'importe laquelle de vos machines (oui,
+centralisé sans être centralisé...mais vous avez l'idée !). Si vous avez
+vraiment confiance en vos amis, rien ne vous empêche de synchroniser une
+partie de vos données avec eux. Cela fonctionne aussi avec votre famille
+proche, alors pourquoi avoir une copie toujours à jour des sauvegardes Diablo
+2 de Mamie chez vous ?</p>
+
+<h2>Un répertoire, mais pas que !</h2>
+
+<p>Dropbox est représenté sur votre machine par un seul répertoire, impossible
+donc de sauvegarder plusieurs répertoires à la fois. Ou pas ! Grâce à
+l'utilisation de liens symboliques vous allez pouvoir synchroniser ce que bon
+vous semble. Voici comme sauvegarder votre profil Xbmc sous Linux :</p>
+
+<pre><code>server@server:~$ ln -s /home/server/.xbmc/Dropbox/Server/.xbmc
+</code></pre>
+
+<p>Ou vos fonds d'écrans sous Windows :</p>
+
+<pre><code>mklink /D "D:\Users\Tym\Documents\My Dropbox\Wallpapers" "D:\Users\Tym\Pictures\Wallpapers"
+</code></pre>
+
+<h3>Retournement de symlink</h3>
+
+<p>Le cas du profil Firefox est un peu particulier car il doit être utilisé sur
+plusieurs machines à la fois. J'ai donc trouvé une petite astuce pour pouvoir
+le synchroniser quelque soit la machine. J'ai pris un exemple sous Linux, en
+ayant synchronisé mon profil avec Dropbox depuis Windows.</p>
+
+<ol>
+<li>Commencez par synchroniser votre répertoire Dropbox sur votre Linux (pour Ubuntu c'est ici), puis copiez le dans un autre emplacement (pour ne pas travailler directement sur le dossier Dropbox, on sait jamais !).</li>
+<li>Coupez votre client Dropbox, et supprimez le répertoire du profil dans votre dossier Dropbox (notez son nom)</li>
+<li>Créer un symlink entre votre dossier Dropbox et votre profil <strong>avec le même nom qu'avant la suppression</strong>.</li>
+<li>Buvez un verre d'eau, c'est important ;-)</li>
+</ol>
+
+
+<p>Bonne sauvegarde ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Choisir un mot de passe sécurisé et facile à retenir]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/09/08/methode-de-choix-de-mot-de-passe-efficace/"/>
+    <updated>2010-09-08T18:44:28+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/09/08/methode-de-choix-de-mot-de-passe-efficace</id>
+    <content type="html"><![CDATA[<p>Un mot de passe c'est important. A vrai dire
+c'est souvent votre premier rempart contre une attaque sur vos données
+personnelles. Mais avoir une bonne "hygiène de mots de passe" est souvent un
+casse tête virant à la paranoïa généralisée. Alors plutôt que de brûler tous
+vos biens et partir vivre dans les bois, je vais vous proposer ici quelques
+astuces pour vous sécuriser la vie !</p>
+
+<!-- more -->
+
+
+<h2>La définition d'un bon mot de passe</h2>
+
+<p>D'après <a href="http://edition.cnn.com/2010/TECH/innovation/08/20/super.passwords/index.html#fbid=OEN683j9hW8&amp;wom=false">une récente étude</a>, votre mot de passe doit avoir une longueur
+d'au moins <strong>12 caractères</strong>. Il doit contenir des <strong>lettres majuscules et
+minuscules</strong>, des <strong>chiffres</strong> et des <strong>caractères spéciaux</strong>. Évitez au
+maximum d'y intégrer des <strong>éléments propres à vous faciles à deviner</strong> : date
+de naissance, prénom des enfants ou du chien (ça vaut aussi pour les chats !),
+ville d'origine...à vrai dire tout ce qu'un inconnu pourrai apprendre sur vous
+avec un minimum de recherches (<em>vous avez dit Facebook ?</em>). N'utilisez <strong>pas
+non-plus de variation de votre identifiant</strong> : la combinaison "root/toor" est
+la première testée par le célèbre <a href="http://www.openwall.com/john/">John The Ripper</a>. L'utilisation du
+langage "l33t", c'est à dire de plus ou moins remplacer des lettres par des
+chiffres est aussi à proscrire. Inutile de penser que dessiner un motif au
+clavier est sécurisé : "aqwzsx"...grillé d'avance ! Au final beaucoup
+d'interdits, et un mot de passe que vous ne retiendrez certainement pas.</p>
+
+<h2>De la raison et de la complexité</h2>
+
+<p>Un mot de passe trop long et trop complexe ? Le post-it/clavier à coup sûr.
+Perdu. Trouver un mot de passe équilibré est tout un art, c'est aussi une
+affaire d'habitude. La clé réside dans le fait de pouvoir apprendre, sans pour
+autant compromettre. Pour cela j'ai une méthode toute simple : je change de
+mot de passe le vendredi soir. Ainsi j'ai <strong>tout le Week-end pour le
+retenir</strong>, en l'ayant si besoin noté sur un coin de feuille (dans mon
+appartement, pas au travail bien entendu). Attention, pas écrit dans un
+fichier texte, ni dans mon portefeuille mais bel et bien sur un bout de papier
+sur mon bureau personnel. Ce mémo restera là maximum une semaine avant de
+finir brulé, haché, décomposé...bref : détruit pour de bon.</p>
+
+<h2>Une affaire de "mnémotechnie"</h2>
+
+<p>Il est souvent complexe de trouver un bon mot de passe par soi-même : nous
+avons naturellement tendance à utiliser la même racine, le même
+principe...adieu hasard ! Heureusement de <a href="http://www.google.fr/#hl=fr&amp;source=hp&amp;q=password+generator+online&amp;aq=1&amp;aqi=g10&amp;aql=&amp;oq=password+ge&amp;gs_rfai=&amp;fp=c7f2b8020399a72c">très nombreux outils</a> existent
+pour faire le travail à notre place.</p>
+
+<h3>Pwgen dans ta face !</h3>
+
+<p>Avec les générateurs automatiques on retombe à nouveau sur un problème de
+mémorisation, sauf avec <code>pwgen</code>. C'est mon outil préféré car il génère des
+mots de passe "compréhensibles", qui ont une certaine "sonorité", un "rythme",
+bref : on peut les retenir plus facilement ! Il exite plusieurs
+implémentations de cet outil :</p>
+
+<ul>
+<li><a href="http://linux.die.net/man/1/pwgen">L'original</a>, la commande Linux</li>
+<li><a href="http://8-p.info/pwgen/">En javascript</a>, pratique mais sans caractères spéciaux</li>
+<li><a href="http://code.google.com/p/pwgen-php/">En Php</a>, à intégrer sur votre site web</li>
+<li><a href="http://pwgen-win.sourceforge.net/">En exécutable</a>, avec l'option "easytoread"</li>
+</ul>
+
+
+<h2>La théorie de l'évolution</h2>
+
+<p>Idéalement il faudrait changer de mot de passe le plus souvent possible. En
+réalité cela n'est pas aussi simple...reprendre à zéro un processus qui vous a
+déja pris une semaine ? Non, la vie est trop courte ! J'utilise la méthode
+dite du "double effet Kiss Cool" : le mot de passe en question est déjà assez
+complexe, mais je le connais bien.<br/>
+Régulièrement, mais pas trop souvent, je
+lui ajoute un ou plusieurs éléments :</p>
+
+<ol>
+<li>A#6!v</li>
+<li>A#6!vW</li>
+<li>A_f#6!vW</li>
+<li>A_f#6!v2W</li>
+<li>...</li>
+</ol>
+
+
+<p><em>Est-ce utile de préciser que ce n'est qu'un exemple ? Si vous avez bien
+suivi, ce mot de passe est d'ailleurs trop court.</em> Au final un mot de passe de
+plus en plus long, de plus en plus complexe et toujours aussi facile à retenir
+pour moi !</p>
+
+<h2>Conclusion</h2>
+
+<p>Trouver un mot de passe dits "forts" est une question de temps, d'habitude et
+de gymnastique de l'esprit. Et si vous avez une doute, vous pourrez toujours
+tester sa fiabilité avec par exemple : <a href="http://howsecureismypassword.net/">How Secure Is My Password?</a>.</p>
+
+<p>Bonne réflexion ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Skype : le logiciel passe-partout]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/08/11/skype-le-logiciel-peut-passer-a-travers-toutes-les-connexions/"/>
+    <updated>2010-08-11T15:42:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/08/11/skype-le-logiciel-peut-passer-a-travers-toutes-les-connexions</id>
+    <content type="html"><![CDATA[<p>"Vous ne passerez pas !", voila ce que pourrai
+dire un pare-feu à ce bon vieux logiciel de VoIP...oui...mais pas forcément !<br/>
+J'ai décidé de tester l'étendue de cette adaptabilité, pour cela j'ai utilisé
+Comodo Firewall pour plus ou moins limiter les accès sur ma machine. Comodo a
+aussi une fonctionnalité de monitoring, pratique pour voir les connexions
+ouvertes sur la machine (l'équivalent d'un netstat un peu plus "glamour").</p>
+
+<!-- more -->
+
+
+<h2>Aucune connexion internet</h2>
+
+<p>Mais tout d'abord voici l'état des connexions lorsque Skype est lancé mais non
+connecté :<br/>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-3/not-connected.png" alt="not-connected" /></p>
+
+<p>J'ai été assez surpris de voir qu'il écoute sur
+différents ports, y compris <code>Tcp 80</code> et <code>Tcp 443</code>...voyons voir ce que peuvent
+nous dire les tests.</p>
+
+<h2>A travers une connexion "ouverte"</h2>
+
+<p>On note que Skype à une tendance à ouvrir des connexions sortantes sur un
+nombre important de ports :<br/>
+{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-3/open.png %}</p>
+
+<h2>Pour une connexion "Web" seulement</h2>
+
+<p>Si je bloque tous les ports sortants, sauf <code>Tcp 80</code> et <code>Tcp 443</code>, voyons ce
+qu'il se passe :<br/>
+{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-3/80-443.png %}</p>
+
+<p>Skype réussit à se connecter, et utilise bel et bien les deux seuls ports
+ouverts pour cela.</p>
+
+<h2>Tcp 80 seulement</h2>
+
+<p>Si je laisse seulement le port <code>Tcp 80</code>...Skype s'en sort encore :<br/>
+{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-3/80.png %}</p>
+
+<h2>Tcp 443 seulement</h2>
+
+<p>Il en est de même si seulement le port <code>Tcp 443</code> est ouvert, Skype se connecte
+correctement :<br/>
+{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-3/443.png %}</p>
+
+<h2>Et sans DNS ?</h2>
+
+<p>Je n'ai pas eu l'occasion de faire des captures de ce test, mais le résultat
+est le suivant : Skype est capable d'établir une connexion en l'absence de DNS
+valides.</p>
+
+<h2>Conclusion ?</h2>
+
+<p>Skype est donc capable de s'adapter à la pire des situations offrant un
+minimum de connectivité, je pense notamment aux accès "gratuit" via machin-
+box, hot-spots ou autres connexions d'hôtels.</p>
+
+<h2>Mais pourquoi écouter en local</h2>
+
+<p>Après quelques tests, je me suis rendu compte que si un de mes contacts est
+dans le même réseau lcoal que moi, Skype se connecte directement. Ainsi il ne
+fait pas un aller/retour via internet si ce n'est pas nécessaire. Malin Pin
+Pin ! Il me semble que Windows Live Messenger fait la même chose, à confirmer.</p>
+]]></content>
+  </entry>
+  
+</feed>

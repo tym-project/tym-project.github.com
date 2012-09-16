@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ios | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/ios/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Bien débuter en administration de matériels Cisco]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/03/29/bien-debuter-en-administration-de-materiels-cisco-2/"/>
+    <updated>2009-03-29T14:35:23+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/03/29/bien-debuter-en-administration-de-materiels-cisco-2</id>
+    <content type="html"><![CDATA[<p>A mon sens le meilleur moyen d'administrer un matériel Cisco c'est la CLI : la
+ligne de commande (Command Line Interface). Il existe quelques astuces pour se
+simplifier la vie. Mais tout d'abord quelques petits rappels :</p>
+
+<ul>
+<li>La CLI d'un Cisco est accessible par deux moyens principaux, le port série et le réseau</li>
+<li>La CLI comporte deux modes : normal et privilégié (l'équivalent de "root" sous Linux)</li>
+<li>Le mode privilégié se divise en deux : normal et configure</li>
+</ul>
+
+
+<p>Et maintenant les petits trucs qui aident bien, utilisables quel que soit le
+mode de connexion au routeur :</p>
+
+<ul>
+<li>En CLI tout s'abrège : <code>enable</code> devient <code>en</code>, <code>show</code> devient <code>sh</code>, <code>fastethernet0/0</code> se raccourci en <code>fa0/0</code>...</li>
+<li>Certaines commandes comme <code>show</code> (<code>sh</code>) ou <code>write</code> (<code>wr</code>) ne se font que en mode normal dans enable (donc pas en <code>configure terminal</code>, <code>conf t</code> si vous avez suivi). Pour palier à ça sans quitter le <code>conf t</code>, précédez votre commande de <code>do</code> : <code>do wr</code>, <code>do sh ip int br</code> (<code>show ip interfaces brief</code>, oui oui c'est mieux en abrégé !)</li>
+<li>Imaginez que vous êtes au fin fond du <code>conf t</code> (dans les méandres des sous interfaces par exemple) et que vous devez aller dans le mode normal (sachant que <code>do</code> fait souvent l'affaire, mais passons !) : un petit <code>end</code> vous remontera directement en mode <code>conf t</code>. Si par contre vous voulez remonter d'un niveau seulement : <code>exit</code></li>
+</ul>
+
+
+<p>Selon le mode de connexion que vous utilisez, vous allez pouvoir plus
+(connexion par le réseau) ou moins (connexion série) vous simplifier la vie.
+En mode console série : pas d'autres alternatives que HyperTerminal (ou
+consorts)...argh ! En mode réseau (ethernet par exemple) utilisez Putty (ou
+autre, mais Putty c'est à mon sens le top du top de la moumoute sous Windows
+!) avec l'autcomplétion et l'historique des commandes passées. Toutefois il
+existe une astuce commune au deux modes de connexion : <code>?</code>. Grâce au <code>?</code>,
+votre élément actif va vous dire quoi mettre après : <code>show ?</code> vous proposera,
+parmi d'autres, <code>ip</code> ou <code>running configuration</code>. Cela est valable partout et
+vous dira par exemple quel type de masque (CIDR ou classique) mettre dans la
+définition d'une route, etc</p>
+
+<p>Bonnes configurations ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

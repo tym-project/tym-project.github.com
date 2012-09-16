@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: DUT | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/dut/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Un peu de divertissement "qui fait du bien par où ça passe" !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/18/un-peu-de-divertissement-qui-fait-du-bien-par-ou-ca-passe-2/"/>
+    <updated>2009-04-18T21:04:36+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/18/un-peu-de-divertissement-qui-fait-du-bien-par-ou-ca-passe-2</id>
+    <content type="html"><![CDATA[<p>Voici un projet que je trouve vraiment bien : Defend Unreal Territories ! Mais
+rien de mieux qu'une présentation par l'équipe elle même : _ "Tout d'abord,
+DUT, qu'est-ce que c'est ?_</p>
+
+<p><em>Defend Unreal Territories est un nouveau gametype pour Unreal Tournament 3.
+Le concept s'inspire des Tower Defense comme on peut les voir dans Warcraft.
+Le but est d'empêcher les hordes de monstres d'atteindre un objectif donné.
+Dans un premier temps, l'équipe des joueurs luttera donc à pieds, avec des
+armes conventionnelles. Puis les joueurs pourront débloquer des bonus (de
+nouvelles capacités, des objets etc.) grâce aux points accumulés à chaque fois
+qu'un monstre est tué. Grâce aux nouvelles capacités, les joueurs pourront
+être plus rapides, avoir plus de vie, faire plus de dégâts, etc. Nous
+prévoyons aussi de les épauler par des tourelles automatiques.</em></p>
+
+<p><em>Quand est-ce que ce sera fini ?</em></p>
+
+<p><em>Tout dépend de l'avancement de nos travaux... Nous distribuerons sans doute
+une première version du mod le 15 mai 2009 Pour le moment, c'est presque
+jouable. Mais pas franchement intéressant, il nous manque encore plein de
+fonctionnalités. Patience !</em></p>
+
+<p><em>Qui êtes-vous ?</em></p>
+
+<p>_ Une équipe de plusieurs personnes à SUPINFO, l'école supérieur
+d'informatique. Nous avons décidé, avec l'aval de l'administration, d'intégrer
+ce projet dans notre cursus._</p>
+
+<p><em>Le site web du mod est <a href="http://www.defend-ut.com/">www.defend-ut.com</a>"</em></p>
+
+<p>Bon jeu ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

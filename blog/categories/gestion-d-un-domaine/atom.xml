@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Gestion d’un domaine | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/gestion-d-un-domaine/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Une adresse DNS instantanée, avec ipq.co]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/10/13/dns-ultra-rapide-et-gratuit/"/>
+    <updated>2010-10-13T14:06:41+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/10/13/dns-ultra-rapide-et-gratuit</id>
+    <content type="html"><![CDATA[<p>Les adresses Ip c'est bien, les Ipv6 c'est
+mieux, et la mémoire des chiffres c'est le top ! Plus sérieusement, il est
+parfois très pratique de pouvoir se créer une adresse DNS
+(<code>server.example.com</code> par exemple) le temps d'un test ou d'une mise à jour.<br/>
+Comme tout le monde n'est pas l'heureux possesseur ni d'un domaine, ni d'un
+serveur DNS, et que dans tous les cas la mise à jour n'est pas forcément
+rapide (jusqu'a 72h, réplication oblige) il faudrait une solution alternative.</p>
+
+<!-- more -->
+
+
+<h2>Une Ip, et vite !</h2>
+
+<p><strong><a href="http://ipq.co">IP Quick</a></strong> est LA réponse à cette problématique ! Connectez-vous, entrez une Ip (v4), le nom est optionnel :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/28-09-2010-20-34-35.png"></p>
+
+<p>Et magie, en 10s c'est opérationnel (<em>je n'ai pas choisit le nom...</em>) :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/2010-4/28-09-2010-20-36-33.png"></p>
+
+<h2>Oui, mais...</h2>
+
+<p>Le service est pour le moment (trop) <strong>peu connu</strong> : 14 followers sur Twitter
+(autant que moi, c'est dire...).<br/>
+C'est une bonne chose car bien entendu <strong>une
+Ip n'a qu'un seul nom</strong>...donc pour les tests en Lan, <code>10.0.0.1</code> ou autres
+variations habituelles seront prises d'assaut. Dans ce cas pas moyen de
+choisir le nom (mais l'adresse existe bien). Ce qui m'amène au second défaut
+de la popularité, les noms sympathiques seront aussi pris d'assaut... Au final
+est-ce vraiment un problème ? J'en doute car le service reste opérationnel,
+bien que moins flexible...<br/>
+J'ose espérer qu'il sera rapidement possible de
+faire joujou avec Ipv6 sur <a href="http://ipq.co">ipq.co</a> !</p>
+
+<p>Bon tests ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Connaître les fonctionnalités de son hébergement OVH]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/05/18/connaitre-les-fonctionnalites-de-son-hebergement-ovh/"/>
+    <updated>2009-05-18T12:40:54+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/05/18/connaitre-les-fonctionnalites-de-son-hebergement-ovh</id>
+    <content type="html"><![CDATA[<p>Si vous possédez un hébergement chez ovh (comme moi), vous aimeriez peut-être
+savoir quelles sont les fonctionnalités de votre serveur. Par exemple  je
+voulais savoir si mon start1g possède la fonctionnalité "curl".</p>
+
+<p>Il suffit de vous rendre à l'adresse :</p>
+
+<pre><code>http://&lt;type_d'hébergement&gt;.ovh.net/test.php
+</code></pre>
+
+<p>Dans mon cas :</p>
+
+<pre><code>http://perso.ovh.net/test.php
+</code></pre>
+
+<p>Bon tests ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Le Gmail de SUPINFO...]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/02/le-gmail-de-supinfo-2/"/>
+    <updated>2009-04-02T15:37:21+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/02/le-gmail-de-supinfo-2</id>
+    <content type="html"><![CDATA[<p>Vous vous souvenez de l'article sur comment associer son domaine à Google Apps
+(<a href="http://www.tym-project.fr/blog/2009/03/associer-google-apps-gmail-gdocs-gcalendar-gtalk-a-son-domaine/">ici</a>) ? Et bien même les meilleurs s'en servent visiblement : SUPINFO est
+présent sur ce service...un autre grand mystère ! Pour les curieux, ce n'est
+pas destiné à l'étudiant lambda car j'ai eu beau essayer un tas
+d'identifiants, rien n'y fait !</p>
+
+<p>Peut-être est-ce un vestige des débuts de SUPINFO, avant l'ère "Exchangienne".</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/gmailsupinfo.png"></p>
+
+<p><em>Merci aux doigts
+de Cams qui ont entrainé ce heureux hasard !</em></p>
+]]></content>
+  </entry>
+  
+</feed>

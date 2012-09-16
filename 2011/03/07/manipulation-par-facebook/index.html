@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Analyse d'une "arnaque" Facebook - ツ Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="J&#8217;utilise Facebook, avec parcimonie certes, mais
+je l&#8217;utilise quand même. On sait maintenant qu&#8217;il faut être très vigilant sur
+les &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook/">
+  <link href="/tymproject/favicon.png" rel="icon">
+  <link href="/tymproject/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/tymproject/javascripts/modernizr-2.0.js"></script>
+  <script src="/tymproject/javascripts/ender.js"></script>
+  <script src="/tymproject/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="ツ Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/tymproject/">ツ Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TymProject.github.com/tymproject" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/tymproject/">Blog</a></li>
+  <li><a href="/tymproject/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Analyse D'une "Arnaque" Facebook</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-07T19:16:09+00:00" pubdate data-updated="true">Mar 7<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>J&#8217;utilise Facebook, avec parcimonie certes, mais
+je l&#8217;utilise quand même. On sait maintenant qu&#8217;il faut être très vigilant sur
+les réseaux sociaux, et cet article en est une preuve supplémentaire.</p>
+
+<!-- more -->
+
+
+<p>Il est
+question ici d&#8217;une page web que vous avez certainement croisé sur votre mur.
+Je met le lien pour information ( <a href="http://likeloverr.com/fun.php?id=12">ici</a>), mais NE L&#8217;OUVREZ PAS avant
+d&#8217;avoir lu ce qui suit. Une vidéo d&#8217;un petit chat, qui peut résister&#8230;</p>
+
+<p><em>Edit
+du 8 mars : Il semble que la page ait été modifiée depuis la publication de
+cet article, le lien vous amène maintenant vers un site où il est clairement
+indiqué qu&#8217;il faut cliquer sur &#8220;J&#8217;aime&#8221; pour voir la vidéo.</em></p>
+
+<h2>Un anti-robots comme on en fait plus</h2>
+
+<p>Si vous êtes un peu au fait des technologies récentes, il est souvent question
+de s&#8217;affranchir des <a href="http://upload.wikimedia.org/wikipedia/commons/6/69/Captcha.jpg">captchas</a> illisibles permettant d&#8217;éviter un traitement
+automatisé. Alors quand un site me propose un jeu de logique en guise de
+vérification, j&#8217;approuve. Erreur ! Voici la page que vous obtenez quand vous
+tentez de visionner la video en question dans cet article :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/selection_002.png" alt="selection_002" /></p>
+
+<p>Malin pin pin, ni une ni deux, je clique !</p>
+
+<h2>Toi aussi tu aime le javascript ?</h2>
+
+<p>L&#8217;arnaque en question dans cet article se situe dans le code source des
+boutons colorés :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;iframe</span> <span class="na">id=</span><span class="s">f1</span> <span class="na">class=</span><span class="s">iframe</span> <span class="na">src=</span><span class="s">&quot;http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/pages/Chat-Trop-Mignon-Qui-a-Du-Mal-�-Se-Reveiller/115156425228492&amp;layout=button_count&amp;show_faces=false&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=21&quot;</span> <span class="na">scrolling=</span><span class="s">&quot;no&quot;</span> <span class="na">frameborder=</span><span class="s">&quot;0&quot;</span><span class="na">style=</span><span class="s">&quot;border:none; overflow:hidden; width:450px; height:21px;&quot;</span><span class="na">allowTransparency=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://connect.facebook.net/fr_FR/all.js#xfbml=1&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;fb:like</span> <span class="na">id=</span><span class="s">f2</span> <span class="na">class=</span><span class="s">iframe</span> <span class="na">href=</span><span class="s">&quot;http://likeloverr.com/fun.php?id=12&quot;</span> <span class="na">layout=</span><span class="s">&quot;button_count&quot;</span> <span class="na">show_faces=</span><span class="s">&quot;false&quot;</span> <span class="na">width=</span><span class="s">&quot;450&quot;</span><span class="nt">&gt;&lt;/fb:like&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Traduction en clair : &#8220;Tu clique et tu like !&#8221;. Eh oui, le fait de cliquer sur
+ces deux boutons vous a :</p>
+
+<ul>
+<li>Rendu &#8220;fan&#8221; de la page associée à la vidéo</li>
+<li>Fait &#8220;Liker&#8221; le lien</li>
+</ul>
+
+
+<h2>Cache ta joie !</h2>
+
+<p>Sur le papier c&#8217;est déjà un fonctionnement que je juge ignoble, mais en
+pratique c&#8217;est encore pire : une des vidéos virales de ce site propose un
+contenu particulièrement osé et, disons-le, pornographique. Je ne donnerai pas
+le lien ici, mais je suis prêt à parier qu&#8217;au moins un de vos amis s&#8217;est fait
+piéger et s&#8217;est donc retrouvé avec ce lien et cette page pas très glorieuse
+dans son profil. <em>Qui a dit licenciement ? &#8230;</em></p>
+
+<h2>Je me suis fait(e) avoir, et après ?</h2>
+
+<p>Il vous suffit de ne plus &#8220;Aimer&#8221; ni la page ni le lien, et de croiser les
+doigts pour que pas grand monde ait aperçu votre profil&#8230;</p>
+
+<p>Soyez donc vigilants ;-)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">tym</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-07T19:16:09+00:00" pubdate data-updated="true">Mar 7<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/tymproject/blog/categories/attention-/'>Attention !</a>, <a class='category' href='/tymproject/blog/categories/autres/'>Autres</a>, <a class='category' href='/tymproject/blog/categories/moi-je/'>Moi je</a>, <a class='category' href='/tymproject/blog/categories/programmation-scripting/'>Programmation - Scripting</a>, <a class='category' href='/tymproject/blog/categories/scam/'>SCAM</a>, <a class='category' href='/tymproject/blog/categories/sécurité/'>Sécurité</a>, <a class='category' href='/tymproject/blog/categories/facebook/'>facebook</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook/" data-via="" data-counturl="http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tymproject/2011/03/02/sed-en-powershell-et-redirection/" title="Previous Post: Adaptation de "sed" en PowerShell (Windows)">&laquo; Adaptation de "sed" en PowerShell (Windows)</a>
+      
+      
+        <a class="basic-alignment right" href="/tymproject/2011/03/16/flash-ubuntu-10-10-x86_64/" title="Next Post: Ubuntu 64 bits : résoudre les problèmes avec Flash">Ubuntu 64 bits : résoudre les problèmes avec Flash &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/02/14/ameliorer-son-debit-internet/">Naviguer plus vite sur internet, améliorer son débit ? C'est possible !</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook/';
+        var disqus_url = 'http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: sans les mains | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/sans-les-mains/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ma nouvelle configuration Media Center sous Linux]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/08/21/xbmc-et-archlinux-pour-un-media-center/"/>
+    <updated>2011-08-21T12:00:02+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/08/21/xbmc-et-archlinux-pour-un-media-center</id>
+    <content type="html"><![CDATA[<p>J'avais déjà évoqué dans un précédent article que
+je possède un Media center sous Linux. Suite à une petite bidouille
+malheureuse, il s'est retrouvé complètement planté. J'ai donc décidé de tout
+réinstaller à partir de zéro et de documenter (un peu) l'opération.<br/>
+Je vais
+donc détailler les principaux composants de cette installation, sans pour
+autant rentrer dans les détails (utilisez les commentaires si besoin).</p>
+
+<!-- more -->
+
+
+<h2>Qui suis-je, où vais-je, ...</h2>
+
+<p><em>... dans quelle étagère ?</em> Avant de mettre les mains dans la console, une
+petite explication de l'utilisation que je fais de ma machine s'impose :</p>
+
+<ul>
+<li>Je passe beaucoup de temps sur <a href="http://xbmc.org/skins/" title="Xbmc">Xbmc</a>, un très bon logiciel de Media Center</li>
+<li>Je regarde aussi beaucoup Nolife Online (<a href="http://www.nolife-tv.com/souscription" title="Nolife Online">Abonnez vous !</a>)</li>
+<li>Je n'exclue pas l'idée d'utiliser d'autres services de TV de rattrapage comme M6 Replay par exemple.</li>
+</ul>
+
+
+<p>Je possède un clavier sans-fil avec Trackball intégré (<a href="http://www.materiel.net/clavier/enermax-aurora-micro-wireless-kb008w-b-noir-47221.html" title="Clavier Aurora Enermax">celui-ci</a>) ainsi
+qu'une télécommande "compatible Windows Media Center" achetée sur e-bay.</p>
+
+<h2>Arch' mon ami !</h2>
+
+<p>Archlinux m'a semblé être le meilleur choix comme distribution pour Mediator
+(le nom que j'ai donné à cette machine...bien avant le scandale sur le
+médicament du même nom). Outre sa flexibilité, j'apprécie surtout le fait
+d'avoir des paquetages très récents...très utile pour les drivers vidéo par
+exemple. C'est aussi une distribution pour laquelle l'installation de base est
+très légère, sans fioritures. <em>Oui, je pense à Ubuntu en disant cela :)</em> J'ai
+donc réalisé une installation tout à fait classique, j'ai seulement eu un
+petit souci avec la configuration de Grub pour le kernel 3.0 qui fera l'objet
+d'un prochain (court) article.</p>
+
+<h2>Boot --> Bureau</h2>
+
+<p>Pour me simplifier un peu la vie j'ai décidé d'utiliser un gestionnaire de
+login. L'heureux élu est "bien entendu" Slim, pour sa légèreté et sa facilité
+de configuration. L'utilisateur principal autre que root est <code>server</code>, et j'ai
+donc configuré le login automatique de ce dernier via Slim (dans le fichier
+<code>/etc/slim.conf</code>) :</p>
+
+<pre><code>default_user server
+auto_login yes
+</code></pre>
+
+<h2>Gère moi cette fenêtre !</h2>
+
+<p>Mon choix pour le Window Manager s'est porté, pour les mêmes raisons que Slim,
+vers PekWM. La configuration générale que j'utilise pour ce dernier est assez
+simple, j'ai seulement désactivé les bureaux virtuels et changé le thème. En
+ce qui concerne les raccourcis clavier, voici un extrait de mon fichier
+<code>~/.pekwm/keys</code> :</p>
+
+<pre><code>Global {
+    KeyPress = "XF86AudioLowerVolume" { Actions = "Exec /home/server/scripts/bash_vol_manager.sh lower 5 &amp;" }
+    KeyPress = "XF86AudioRaiseVolume" { Actions = "Exec /home/server/scripts/bash_vol_manager.sh raise 5 &amp;" }
+    KeyPress = "XF86AudioMute" { Actions = "Exec /home/server/scripts/bash_vol_manager.sh toggle &amp;" }
+    KeyPress = "XF86Mail" { Actions = "Exec /home/server/scripts/xbmc.sh &amp;" }
+    KeyPress = "Alt Mod4 Alt_L" { Actions = "Exec /home/server/scripts/xbmc.sh &amp;"}
+    KeyPress = "XF86Sleep" { Action = "Exec /home/server/scripts/stop.sh &amp;" }
+...
+</code></pre>
+
+<p>J'ai donc la gestion du volume avec un petit script maison (que je
+détaillerais dans un autre post), l'ouverture de Xbmc (via les boutons
+multimédia "Mail" de mon clavier et le bouton "Start" de ma télécommande).
+Enfin la touche "Power" de ma télécommande (qui envoie le signal <code>XF86Sleep</code>)
+pour éteindre la machine.<br/>
+<em>Le dernier raccourci ne fonctionne pas...et
+j'ignore pourquoi (ce n'est pas lié au script associé). Je suis preneur de vos
+suggestions !</em></p>
+
+<p>Le script <code>~/.pekwm/start</code> contient les lignes suivantes :</p>
+
+<pre><code>#!/bin/sh
+firefox &amp;
+sleep 3
+/home/server/scripts/xbmc.sh &amp;
+</code></pre>
+
+<p>Le temps de pause entre le lancement de Firefox et celui de Xbmc
+permet d'éviter que ce dernier perde le plein écran à cause du précédent.</p>
+
+<h2>Trop fort !</h2>
+
+<p>Avec mon installation précédente je devais souvent jongler avec le volume
+entre une vidéo sur Firefox et un média quelconque sur Xbmc. Le volume doit
+être poussé au maximum sur Xbmc, mais à environ 70% sur Firefox, pour entendre
+correctement dans mon salon.<br/>
+J'ai donc réfléchi à un moyen d'automatiser ce
+changement de volume, et cela s'est traduit par le script <code>xbmc.sh</code> :</p>
+
+<pre><code>#!/bin/bash
+amixer -c 0 sset Master 100%
+xbmc
+amixer -c 0 sset Master 68%
+</code></pre>
+
+<p>Simple mais efficace, il pousse le volume
+à fond puis lance Xbmc. Ce dernier n'étant pas lancé en arrière plan, dès
+qu'il est quitté le volume est placé à 68%. Ce script est utilisé à la fois
+dans <code>~/.pekwm/start</code> et <code>~/.pekwm/keys</code>.</p>
+
+<h2>Firefox (à la loupe, sans la loupe)</h2>
+
+<p>J'ai abandonné <a href="http://www.tym-project.fr/blog/2011/05/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/" title="Un Linux mediacenter avec une loupe">mon système de loupe</a> pour quelque chose de plus simple :
+pousser à fond la taille des caractères à l'écran (<code>Preferences&gt;Content&gt;Fonts
+&amp; Colors&gt;Advances&gt;Maximum font size</code>). C'est moche mais pratique, l'avenir me
+dira si c'est réellement une bonne alternative. J'ai aussi modifié le
+<code>about:config</code> pour désactiver la restauration des onglets au lancement (en
+cas de crash ou non) :</p>
+
+<pre><code>browser.sessionstore.resume_from_crash;false
+browser.sessionstore.max_tabs_undo;0
+browser.sessionstore.max_windows_undo;0
+</code></pre>
+
+<h2>shutdown -s -t now</h2>
+
+<p>Si il est toujours possible d'autoriser la mise hors tension du système via
+des bidouilles avec <code>sudo</code> et <code>halt</code>, cela reste des bidouilles. La manière la
+plus simple est en fait d'utiliser <code>consolekit</code>, <code>policykit</code> et <code>dbus</code>... en
+effet : c'est prévu pour.<br/>
+Avant tout il faut modifier <code>~/.xinitrc</code> ainsi :</p>
+
+<pre><code>#exec pekwm
+exec ck-launch-session pekwm
+</code></pre>
+
+<p>Pour tester si vous avez les droits pour couper le système (par
+exemple), utilisez cette commande qui vous renverra <code>true</code> ou <code>false</code> :</p>
+
+<pre><code>dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.CanStop
+</code></pre>
+
+<p>La commande à utiliser
+pour éteindre la machine sera alors la suivante (une simple modification de la
+dernière directive) :</p>
+
+<pre><code>dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop
+</code></pre>
+
+<p>Si jamais vous n'avez pas les droits, ou êtes simplement curieux, la
+configuration se situe dans le fichier
+<code>/usr/share/polkit-1/actions/org.freedesktop.consolekit.policy</code>. Une commande
+est autorisée par la directive <code>&lt;allow_active&gt;yes&lt;/allow_active&gt;</code>, mais j'ai
+parfois dû utiliser <code>&lt;allow_any&gt;yes&lt;/allow_any&gt;</code></p>
+
+<h2>"Moi vivant, vous n'aurez jamais de pauses"</h2>
+
+<p>Par défaut le serveur X coupe l'écran au bout d'un temps donné pour économiser
+de l'énergie. Cela va sans dire que c'est insupportable pour un écran qui est
+censé être allumé en permanence avec la machine... Une petite configuration
+dans <code>/etc/X11/xorg.conf</code> et hop !</p>
+
+<pre><code>Section "ServerFlags"
+    Option "BlankTime" "0"
+    Option "StandbyTime" "0"
+    Option "SuspendTime" "0"
+    Option "OffTime" "0"
+EndSection
+</code></pre>
+
+<h2>Sources</h2>
+
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/PekWM" title="PekWM">PekWM</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Slim" title="Slim">Slim</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/ConsoleKit" title="ConsoleKit">ConsoleKit</a></li>
+<li><a href="http://www.shallowsky.com/linux/x-screen-blanking.html" title="X11 Scrren Blanking">Mise en veille de l'écran avec X11</a></li>
+<li><a href="http://vuedelaprovince.canalblog.com/" title="La citation &quot;Moi vivant ...&quot;">La citation "Moi vivant..."</a></li>
+</ul>
+
+
+<p>Bonne utilisation ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

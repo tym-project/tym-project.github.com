@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: facebook | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/facebook/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Analyse d'une "arnaque" Facebook]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook/"/>
+    <updated>2011-03-07T19:16:09+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook</id>
+    <content type="html"><![CDATA[<p>J'utilise Facebook, avec parcimonie certes, mais
+je l'utilise quand même. On sait maintenant qu'il faut être très vigilant sur
+les réseaux sociaux, et cet article en est une preuve supplémentaire.</p>
+
+<!-- more -->
+
+
+<p>Il est
+question ici d'une page web que vous avez certainement croisé sur votre mur.
+Je met le lien pour information ( <a href="http://likeloverr.com/fun.php?id=12">ici</a>), mais NE L'OUVREZ PAS avant
+d'avoir lu ce qui suit. Une vidéo d'un petit chat, qui peut résister...</p>
+
+<p><em>Edit
+du 8 mars : Il semble que la page ait été modifiée depuis la publication de
+cet article, le lien vous amène maintenant vers un site où il est clairement
+indiqué qu'il faut cliquer sur "J'aime" pour voir la vidéo.</em></p>
+
+<h2>Un anti-robots comme on en fait plus</h2>
+
+<p>Si vous êtes un peu au fait des technologies récentes, il est souvent question
+de s'affranchir des <a href="http://upload.wikimedia.org/wikipedia/commons/6/69/Captcha.jpg">captchas</a> illisibles permettant d'éviter un traitement
+automatisé. Alors quand un site me propose un jeu de logique en guise de
+vérification, j'approuve. Erreur ! Voici la page que vous obtenez quand vous
+tentez de visionner la video en question dans cet article :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/selection_002.png" alt="selection_002" /></p>
+
+<p>Malin pin pin, ni une ni deux, je clique !</p>
+
+<h2>Toi aussi tu aime le javascript ?</h2>
+
+<p>L'arnaque en question dans cet article se situe dans le code source des
+boutons colorés :</p>
+
+<p>{% codeblock lang:html %}</p>
+
+<iframe id=f1 class=iframe src="http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/pages/Chat-Trop-Mignon-Qui-a-Du-Mal-�-Se-Reveiller/115156425228492&layout=button_count&show_faces=false&width=450&action=like&colorscheme=light&height=21" scrolling="no" frameborder="0"style="border:none; overflow:hidden; width:450px; height:21px;"allowTransparency="true"></iframe>
+
+
+<script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
+
+
+<p>&lt;fb:like id=f2 class=iframe href="http://likeloverr.com/fun.php?id=12" layout="button_count" show_faces="false" width="450">&lt;/fb:like>
+{% endcodeblock %}
+Traduction en clair : "Tu clique et tu like !". Eh oui, le fait de cliquer sur
+ces deux boutons vous a :</p>
+
+<ul>
+<li>Rendu "fan" de la page associée à la vidéo</li>
+<li>Fait "Liker" le lien</li>
+</ul>
+
+
+<h2>Cache ta joie !</h2>
+
+<p>Sur le papier c'est déjà un fonctionnement que je juge ignoble, mais en
+pratique c'est encore pire : une des vidéos virales de ce site propose un
+contenu particulièrement osé et, disons-le, pornographique. Je ne donnerai pas
+le lien ici, mais je suis prêt à parier qu'au moins un de vos amis s'est fait
+piéger et s'est donc retrouvé avec ce lien et cette page pas très glorieuse
+dans son profil. <em>Qui a dit licenciement ? ...</em></p>
+
+<h2>Je me suis fait(e) avoir, et après ?</h2>
+
+<p>Il vous suffit de ne plus "Aimer" ni la page ni le lien, et de croiser les
+doigts pour que pas grand monde ait aperçu votre profil...</p>
+
+<p>Soyez donc vigilants ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

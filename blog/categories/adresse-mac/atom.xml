@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: adresse MAC | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/adresse-mac/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu : Permuter et renommer des cartes réseau]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware/"/>
+    <updated>2011-02-23T12:00:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware</id>
+    <content type="html"><![CDATA[<p>Après la mise en place d'une VM Ubuntu avec
+Vmware, et surtout suite à sa copie je me suis rendu compte que je n'avais
+plus de réseau...ou du moins <code>eth0</code> n'était pas configurée. Après un
+<code>[man]ifconfig[/man]</code> il s'est avéré qu'une nouvelle carte était présente :
+<code>eth1</code>. Quand on connait le fonctionnement de Vmware c'est en fait tout à fait
+logique, mais problématique. Ce comportement viens du fait que en cas de copie
+de machine virtuelle, afin d'éviter des doublons d'adresse MAC, Vmware change
+ces dernières. Ubuntu, et plus particulièrement <code>[man]udev[/man]</code>, se lance
+ensuite et détecte cette carte comme étant nouvelle en rendant ainsi
+<code>[man]eth0[/man]</code> indisponible.</p>
+
+<!-- more -->
+
+
+<h2>En avant la config !</h2>
+
+<p>Le fichier <code>/etc/udev/rules.d/70-persistent-net.rules</code> permet de créer ou de
+modifier des règles existantes. Voici ce qu'il contient (par défaut) sur ma
+machine :</p>
+
+<pre><code># PCI device 0x8086:0x10f5 (e1000e)
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="00:24:e8:bb:2f:41", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="eth*", NAME="eth0"
+# PCI device 0x8086:0x4235 (iwlagn)
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="00:21:6a:67:e1:88", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="wlan*", NAME="wlan0"
+</code></pre>
+
+<p>Et le ifconfig associé :</p>
+
+<pre><code>eth0    Link encap:Ethernet  HWaddr 00:24:e8:bb:2f:41
+           inet6 addr: fe80::224:e8ff:febb:2f41/64 Scope:Linki
+           UP BROADCAST MULTICAST  MTU:1500  Metric:1
+           RX packets:418788 errors:0 dropped:0 overruns:0 frame:0
+           TX packets:246634 errors:0 dropped:0 overruns:0 carrier:0
+           collisions:0 txqueuelen:1000
+           RX bytes:582152791 (582.1 MB)  TX bytes:60938663 (60.9 MB)
+           Interrupt:22 Memory:f6fe0000-f7000000
+wlan0  Link encap:Ethernet  HWaddr 00:21:6a:67:e1:88
+          inet addr:10.21.18.158  Bcast:10.21.19.255  Mask:255.255.252.0
+          inet6 addr: fe80::221:6aff:fe67:e188/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:332526 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:124916 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:245224773 (245.2 MB)  TX bytes:46856320 (46.8 MB)
+</code></pre>
+
+<h2>Renommage dans ta carte !</h2>
+
+<p>Pour renommer <code>wlan0</code> par exemple, rien de plus simple :</p>
+
+<pre><code># PCI device 0x8086:0x4235 (iwlagn)
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="00:21:6a:67:e1:88", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="wlan*", NAME="wifi0"
+</code></pre>
+
+<p>Attention à ne modifier que la variable <code>NAME</code> ! Après un reboot (redémarrer
+le service <code>udev</code> ne suffit pas...) voici le résultat :</p>
+
+<pre><code>eth0    Link encap:Ethernet  HWaddr 00:24:e8:bb:2f:41
+           inet6 addr: fe80::224:e8ff:febb:2f41/64 Scope:Linki
+           UP BROADCAST MULTICAST  MTU:1500  Metric:1
+           RX packets:418788 errors:0 dropped:0 overruns:0 frame:0
+           TX packets:246634 errors:0 dropped:0 overruns:0 carrier:0
+           collisions:0 txqueuelen:1000
+           RX bytes:582152791 (582.1 MB)  TX bytes:60938663 (60.9 MB)
+           Interrupt:22 Memory:f6fe0000-f7000000
+wifi0  Link encap:Ethernet  HWaddr 00:21:6a:67:e1:88
+          inet addr:10.21.18.158  Bcast:10.21.19.255  Mask:255.255.252.0
+          inet6 addr: fe80::221:6aff:fe67:e188/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:332526 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:124916 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:245224773 (245.2 MB)  TX bytes:46856320 (46.8 MB)
+</code></pre>
+
+<p>Bon renommage ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

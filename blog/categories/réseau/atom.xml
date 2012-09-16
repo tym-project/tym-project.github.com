@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Réseau | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/réseau/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Naviguer plus vite sur internet, améliorer son débit ? C'est possible !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2012/02/14/ameliorer-son-debit-internet/"/>
+    <updated>2012-02-14T21:11:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2012/02/14/ameliorer-son-debit-internet</id>
+    <content type="html"><![CDATA[<p>Avoir un débit rapide pour accéder à internet c'est important, et cela varie fonction de différents facteurs comme votre fournisseur d'accès ou la qualité de votre Wifi... oui c'est en effet un sujet assez vaste !<br/>
+Un moyen assez simple d'accélérer le temps d'accès aux site que vous visitez avec votre brouteur préféré c'est le DNS.</p>
+
+<!-- more -->
+
+
+<h2>Quoi qu'où qu'est-ce le DNS ??</h2>
+
+<p>Quand il est question de réseau on parle très souvent d'IP (Internet Protocol), et donc d'adresses sous la forme <code>192.168.1.208</code> par exemple. On a beau être vachement balèzes en technologie de l'information, c'est tout de même pas la panacée de se souvenir d'autant d'adresses numériques que de sites webs visités...<br/>
+On inventa donc le DNS, ou Domain Name System, qui permet tout simplement d'associer un nom à une adresse. Par exemple :<code>blog.tym-project.fr</code> est accessible à l'adresse IP <code>207.97.227.245</code>... ou presque, mais c'est une autre histoire.</p>
+
+<p>Cette résolution de nom (ouais mon gars, c'est le terme ad-hoc pour ce processus) est faite par un serveur qui a dans sa configuration une liste <code>Nom:IP</code>. Tout simplement. Bon pas aussi évident en réalité, mais Wikipedai aura moins la flemme que moi de vous expliquer !</p>
+
+<h2>Plus vite, plus vite, plus viiiite</h2>
+
+<p>A chaque site que vous visitez votre navigateur va donc interroger le serveur DNS configuré dans votre machine pour trouver l'adresse IP du site correspondant, et c'est sur ce point que vous allez pouvoir grapiller quelques secondes. <em>La phrase précédente est en lice pour "la phrase qui tue les asmathiques", repirez !</em></p>
+
+<p>Il va donc falloir trouver le serveur DNS qui répond le plus vite aux demandes de votre machine, et il n'existe pas de solution ultime généralisée, vous allez devoir tester !</p>
+
+<p>Si vous êtes plutôt Windowsien, alors je vous invite à tester <a href="http://www.grc.com/dns/benchmark.htm">DNS Benchmark</a> : cet outil va vous permettre de tester le temps de réponse DNS d'un ensemble de serveurs avec des couleurs, des graphiques et des chiffres. Je n'ai pas essayé, mais j'y crois, ça devrait marcher :)</p>
+
+<p>Pour les Linuxiens, pas de solution toute faite... mais c'est pas gênant, bash à la rescousse ! J'ai écrit un petit bout de script tout simple qui va vous permettre de faire des statistiques un peu "à la pelle", mais suffisament explicites dans mon cas.</p>
+
+<pre><code>while :; do for i in 8.8.8.8 208.67.222.222 89.2.0.1 80.10.246.2; do echo "###  $i"; time nslookup blog.tym-project.fr $i | grep real ; sleep 1; done; echo "--------";done
+</code></pre>
+
+<p>Cette commande va donc tourner en boucle, pour avoir des points de mesure un minimum valables, et vous donner pour chaque serveur DNS le temps aproximatif de la résolution.</p>
+
+<p>Tel qu'il est défini ici je test : Google DNS, Open DNS, DartyBox DNS, Orange DNS. En pratique  qui nous intéresse c'est la valeur "real" :</p>
+
+<pre><code>### 8.8.8.8 ###
+real    0m0.021s
+user    0m0.003s
+sys 0m0.003s
+
+###  208.67.222.222 ###
+real    0m0.026s
+user    0m0.003s
+sys 0m0.003s
+
+###  89.2.0.1 ###
+real    0m0.015s
+user    0m0.003s
+sys 0m0.003s
+
+###  80.10.246.2 ###
+real    0m15.017s
+user    0m0.007s
+sys 0m0.000s
+--------
+
+###  8.8.8.8 ###
+real    0m0.021s
+user    0m0.000s
+sys 0m0.007s
+
+[...]    
+</code></pre>
+
+<p>Un rapide coup d'oeil désigne le gagnant : les DNS DartyBox sont plus efficaces, en partie logique car ils sont techniquement plus proches de ma Box.</p>
+
+<p>Une fois l'heureux élu trouvé chez vous, il ne vous reste plus qu'à paraméter votre machine ou même votre Box pour utiliser le nouveau serveur DNS.</p>
+
+<h2>Je vois rouge ! Oh, Orange, pardon...</h2>
+
+<p>Ce test m'a permis de confirmer ce que j'ai expérimenté douloureusement par le passé : les DNS d'Orange sont complètement à la ramasse, y compris pour les clients Livebox (à vérifier). Les mesures sont flagrantes : 15 secondes contre 15 milli-secondes par rapport au DNS Darty par exemple, soit <strong>1000 fois plus lent</strong>... C'est une abbération totale !</p>
+
+<p>Si vous voulez augmenter votre débit avec Orange (ou Livebox), commencez donc par changer de serveur DNS (si vous ne savez pas comment faire, demandez dans les commentaires).</p>
+
+<p>C'est cadeau juste  pour le plaisir, et pourtant j'ai bien suivi les <a href="http://assistance.orange.fr/les-adresses-dns-791.php">préconisations</a> de l'opérateur historique :</p>
+
+<pre><code>###  80.10.246.2 ###
+real    0m15.017s
+</code></pre>
+
+<p>C'est sûr la #MamieDuCantal elle a le temps d'attendre sa résolution de noms à ce rythme...</p>
+
+<p>Et ben... ;-)</p>
+
+<p><em>Edit : en toute transparence, des chiffres fournis par un camarade chez Orange, où le constat n'est pas si sombre (cf. dernière ligne). Je suis preneur de vos tests !</em></p>
+
+<pre><code>### 8.8.8.8 ###
+real 0m0.136s
+user 0m0.000s
+sys 0m0.008s
+
+### 208.67.222.222
+real 0m0.071s
+user 0m0.012s
+sys 0m0.004s
+
+### 89.2.0.1
+real 0m0.059s
+user 0m0.004s
+sys 0m0.008s
+
+### 80.10.246.2
+real 0m0.053s
+user 0m0.000s
+sys 0m0.012s
+--------
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par jour (ou presque)]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar/"/>
+    <updated>2011-08-31T19:39:34+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar</id>
+    <content type="html"><![CDATA[<p>Ayant tout un tas de liens que je garde depuis (très) longtemps à droite ou à
+gauche, j'ai décidé de les diffuser ici 5 par 5 quand bon me semblera ! A
+l'avenir j'essaierai peut-être de les regrouper par catégories...</p>
+
+<ol>
+<li><a href="http://www.techiemania.com/5-awesome-free-tools-to-help-you-choose-your-website-color-scheme.html">Tools To Help You Choose Your Website Color Scheme</a></li>
+<li><a href="http://packetlife.net/blog/2011/may/9/using-layers-visio/">Using Layers in Visio</a></li>
+<li><a href="http://www.doitwithwordpress.com/rundown-wordpress-theme-files-what-they-do/">A Rundown of WordPress Theme Files and What They All Do</a></li>
+<li><a href="http://linuxfr.org/news/sadms-int%C3%A9grer-des-stations-gnulinux-%C3%A0-active-directory">SADMS : Intégrer des stations GNU/Linux à Active Directory</a></li>
+<li><a href="http://vpourchet.wordpress.com/2011/02/13/ghettovcb-sh-le-vcenter-backup-du-pauvre/">Ghettovcb.sh : Le VCenter Backup du pauvre !</a></li>
+</ol>
+
+
+<p>Oui, il-y-à pas mal de contenu en anglais...eh c'est l'Interweb ici, il faut
+s'y faire ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mon script de configuration iptables]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/04/06/iptables-et-lancement-automatique/"/>
+    <updated>2011-04-06T12:00:02+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/04/06/iptables-et-lancement-automatique</id>
+    <content type="html"><![CDATA[<p>Pour ceux qui ne connaitraient pas, iptables est une
+interface de gestion du module netfilter du noyau Linux. En termes clairs :
+c'est un pare-feu. Iptables est donc un ensemble de commandes permettant de
+créer des règles, je ne vais pas rentrer dans les détails, vous trouverez plus
+d'infos sur <a href="http://www.techrepublic.com/blog/10things/10-iptables-rules-to-help-secure-your-linux-box/539">cette page par exemple</a>. Dans cet article il sera question de
+comment je gère ma configuration de pare-feu à travers un script d'init.</p>
+
+<!-- more -->
+
+
+<h2>init.d, t'es initié ?</h2>
+
+<p>Le but de ce script est qu'il se lance au démarrage de mon poste, et en bonus
+que je puisse couper/relancer mon pare-feu à loisir : c'est là le rôle d'un
+script "init.d". Commençons donc par la fin, avec les différents arguments que
+peut prendre le script :
+{% codeblock lang:bash %}
+case $1 in</p>
+
+<pre><code>start)
+    start
+    ;;
+stop)
+    stop
+    ;;
+restart)
+    restart
+    ;;
+*)
+    echo "usage: iptables {start|stop|restart}"
+    exit 1
+    ;;
+</code></pre>
+
+<p>esac
+{% endcodeblock %}</p>
+
+<p>Logiquement on retrouve les
+fonction <code>start</code>, <code>stop</code> et <code>restart</code> avec une explication des arguments pour
+toute valeur en dehors de ce choix.</p>
+
+<h2>En fonction des fonctions...</h2>
+
+<p>la fonction <code>restart</code> est très simple :</p>
+
+<pre><code>function restart {
+    stop start
+}
+</code></pre>
+
+<p>la fonction <code>stop</code> est un peu plus complexe et est chargée de vider les règles
+iptable, de changer la politique par défaut et de restarter
+<code>[man]fail2ban[/man]</code> si besoin :
+{% codeblock lang:bash %}
+function stop {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -P INPUT ACCEPT
+    $IPTABLES -P FORWARD ACCEPT
+    $IPTABLES -P OUTPUT ACCEPT
+    $IPTABLES -F $IPTABLES -X
+done
+
+if [ -e /etc/init.d/fail2ban ]; then
+    /etc/init.d/fail2ban restart
+fi
+</code></pre>
+
+<p>}
+{% endcodeblock %}
+L'utilisation de <code>for IPTABLES in iptables ip6tables</code> permet de configurer à
+la fois pour ipv4 et ipv6.</p>
+
+<p>La fonction <code>start</code> utilise une variable <code>$TCP_PORTS</code> (qui contient les port
+TCP à ouvrir) définie ainsi :</p>
+
+<pre><code>TCP_PORTS="80 443"
+</code></pre>
+
+<p>Et la fonction en elle-même :
+{% codeblock lang:bash %}
+function start {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -F $IPTABLES -P INPUT DROP
+    $IPTABLES -P FORWARD DROP
+    $IPTABLES -P OUTPUT DROP
+
+    $IPTABLES -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+    for port in $TCP_PORTS;do
+        $IPTABLES -A INPUT -p tcp --dport $port -j ACCEPT
+    done
+
+    $IPTABLES -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+    $IPTABLES -A INPUT -i lo -j ACCEPT $IPTABLES -A OUTPUT -o lo -j ACCEPT
+    # ICMP (Ping)
+    #$IPTABLES -A INPUT -p icmp -j ACCEPT
+done
+</code></pre>
+
+<p>if [ -e /etc/init.d/fail2ban ];then</p>
+
+<pre><code>/etc/init.d/fail2ban restart
+</code></pre>
+
+<p>fi
+}
+{% endcodeblock %}</p>
+
+<h2>Configuration et installation</h2>
+
+<p>Pour placer le script dans <code>/etc/init.d/</code> deux solutions sont possibles :</p>
+
+<ul>
+<li>le copier dans le répertoire</li>
+<li>faire un lien symbolique avec <code>ln -s /emplacement/script/iptables /etc/init.d/iptables</code></li>
+</ul>
+
+
+<p>Si vous mettez ce script en place sur serveur sans accès physique, je vous
+conseille formetment de le tester avant de le mettre au démarrage de la
+machine...c'est trop bête de se faire enfermer dehors :)</p>
+
+<p>La mise en place du scritpt au démarrage peut se faire manuellement en mettant
+en place des liens symboliques dans <code>/etc/rc*.d/</code>, mais il est plus simple de
+passer par <code>update-rc.d</code> :</p>
+
+<pre><code>sudo update-rc.d iptables defaults
+update-rc.d: warning: /etc/init.d/iptables missing LSB information
+update-rc.d: see &lt;http://wiki.debian.org/LSBInitScripts&gt;
+</code></pre>
+
+<p>Suite aux erreurs du <code>LSB</code> j'ai ajouté cela au début du script :</p>
+
+<pre><code>### BEGIN INIT INFO
+# Provides: iptables
+# Required-Start: $local_fs $remote_fs $network $syslog
+# Required-Stop: $local_fs $remote_fs $network $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Set up iptables at boot time
+# Description: Enable service provided by iptables.
+### END INIT INFO
+</code></pre>
+
+<p>Voici donc le fichier dans son intégralité :
+{% codeblock lang:bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<h1>iptables-default</h1>
+
+<h1>www.tym-project.fr/blog</h1>
+
+<h1>tym@tym-project.fr</h1>
+
+<h3>BEGIN INIT INFO</h3>
+
+<h1>Provides:          iptables</h1>
+
+<h1>Required-Start:    $local_fs $remote_fs $network $syslog</h1>
+
+<h1>Required-Stop:     $local_fs $remote_fs $network $syslog</h1>
+
+<h1>Default-Start:     2 3 4 5</h1>
+
+<h1>Default-Stop:      0 1 6</h1>
+
+<h1>Short-Description: Set up iptables at boot time</h1>
+
+<h1>Description:       Enable service provided by iptables.</h1>
+
+<h3>END INIT INFO</h3>
+
+<p>PATH="/sbin"
+TCP_PORTS="80 443"
+function stop {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -P INPUT ACCEPT
+    $IPTABLES -P FORWARD ACCEPT
+    $IPTABLES -P OUTPUT ACCEPT
+    $IPTABLES -F
+    $IPTABLES -X
+done
+if [ -e /etc/init.d/fail2ban ]; then
+    /etc/init.d/fail2ban restart
+fi
+</code></pre>
+
+<p>}
+function start {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -F
+    $IPTABLES -P INPUT DROP
+    $IPTABLES -P FORWARD DROP
+    $IPTABLES -P OUTPUT DROP
+    $IPTABLES -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+for port in $TCP_PORTS;do
+    $IPTABLES -A INPUT -p tcp --dport $port -j ACCEPT
+done
+$IPTABLES -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+$IPTABLES -A INPUT -i lo -j ACCEPT
+$IPTABLES -A OUTPUT -o lo -j ACCEPT
+# ICMP (Ping)
+#$IPTABLES -A INPUT -p icmp -j ACCEPT
+done
+if [ -e /etc/init.d/fail2ban ];then
+    /etc/init.d/fail2ban restart
+fi
+</code></pre>
+
+<p>}
+function restart {</p>
+
+<pre><code>stop
+start
+</code></pre>
+
+<p>}
+case $1 in</p>
+
+<pre><code>start)
+start
+;;
+stop)
+stop
+;;
+restart)
+restart
+;;
+*)
+echo "usage: iptables {start|stop|restart}"
+exit 1
+;;
+</code></pre>
+
+<p>esac
+{% endcodeblock %}
+Bon firewalling ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu : Permuter et renommer des cartes réseau]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware/"/>
+    <updated>2011-02-23T12:00:00+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware</id>
+    <content type="html"><![CDATA[<p>Après la mise en place d'une VM Ubuntu avec
+Vmware, et surtout suite à sa copie je me suis rendu compte que je n'avais
+plus de réseau...ou du moins <code>eth0</code> n'était pas configurée. Après un
+<code>[man]ifconfig[/man]</code> il s'est avéré qu'une nouvelle carte était présente :
+<code>eth1</code>. Quand on connait le fonctionnement de Vmware c'est en fait tout à fait
+logique, mais problématique. Ce comportement viens du fait que en cas de copie
+de machine virtuelle, afin d'éviter des doublons d'adresse MAC, Vmware change
+ces dernières. Ubuntu, et plus particulièrement <code>[man]udev[/man]</code>, se lance
+ensuite et détecte cette carte comme étant nouvelle en rendant ainsi
+<code>[man]eth0[/man]</code> indisponible.</p>
+
+<!-- more -->
+
+
+<h2>En avant la config !</h2>
+
+<p>Le fichier <code>/etc/udev/rules.d/70-persistent-net.rules</code> permet de créer ou de
+modifier des règles existantes. Voici ce qu'il contient (par défaut) sur ma
+machine :</p>
+
+<pre><code># PCI device 0x8086:0x10f5 (e1000e)
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="00:24:e8:bb:2f:41", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="eth*", NAME="eth0"
+# PCI device 0x8086:0x4235 (iwlagn)
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="00:21:6a:67:e1:88", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="wlan*", NAME="wlan0"
+</code></pre>
+
+<p>Et le ifconfig associé :</p>
+
+<pre><code>eth0    Link encap:Ethernet  HWaddr 00:24:e8:bb:2f:41
+           inet6 addr: fe80::224:e8ff:febb:2f41/64 Scope:Linki
+           UP BROADCAST MULTICAST  MTU:1500  Metric:1
+           RX packets:418788 errors:0 dropped:0 overruns:0 frame:0
+           TX packets:246634 errors:0 dropped:0 overruns:0 carrier:0
+           collisions:0 txqueuelen:1000
+           RX bytes:582152791 (582.1 MB)  TX bytes:60938663 (60.9 MB)
+           Interrupt:22 Memory:f6fe0000-f7000000
+wlan0  Link encap:Ethernet  HWaddr 00:21:6a:67:e1:88
+          inet addr:10.21.18.158  Bcast:10.21.19.255  Mask:255.255.252.0
+          inet6 addr: fe80::221:6aff:fe67:e188/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:332526 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:124916 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:245224773 (245.2 MB)  TX bytes:46856320 (46.8 MB)
+</code></pre>
+
+<h2>Renommage dans ta carte !</h2>
+
+<p>Pour renommer <code>wlan0</code> par exemple, rien de plus simple :</p>
+
+<pre><code># PCI device 0x8086:0x4235 (iwlagn)
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="00:21:6a:67:e1:88", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="wlan*", NAME="wifi0"
+</code></pre>
+
+<p>Attention à ne modifier que la variable <code>NAME</code> ! Après un reboot (redémarrer
+le service <code>udev</code> ne suffit pas...) voici le résultat :</p>
+
+<pre><code>eth0    Link encap:Ethernet  HWaddr 00:24:e8:bb:2f:41
+           inet6 addr: fe80::224:e8ff:febb:2f41/64 Scope:Linki
+           UP BROADCAST MULTICAST  MTU:1500  Metric:1
+           RX packets:418788 errors:0 dropped:0 overruns:0 frame:0
+           TX packets:246634 errors:0 dropped:0 overruns:0 carrier:0
+           collisions:0 txqueuelen:1000
+           RX bytes:582152791 (582.1 MB)  TX bytes:60938663 (60.9 MB)
+           Interrupt:22 Memory:f6fe0000-f7000000
+wifi0  Link encap:Ethernet  HWaddr 00:21:6a:67:e1:88
+          inet addr:10.21.18.158  Bcast:10.21.19.255  Mask:255.255.252.0
+          inet6 addr: fe80::221:6aff:fe67:e188/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:332526 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:124916 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:245224773 (245.2 MB)  TX bytes:46856320 (46.8 MB)
+</code></pre>
+
+<p>Bon renommage ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Une adresse DNS instantanée, avec ipq.co]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/10/13/dns-ultra-rapide-et-gratuit/"/>
+    <updated>2010-10-13T14:06:41+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/10/13/dns-ultra-rapide-et-gratuit</id>
+    <content type="html"><![CDATA[<p>Les adresses Ip c'est bien, les Ipv6 c'est
+mieux, et la mémoire des chiffres c'est le top ! Plus sérieusement, il est
+parfois très pratique de pouvoir se créer une adresse DNS
+(<code>server.example.com</code> par exemple) le temps d'un test ou d'une mise à jour.<br/>
+Comme tout le monde n'est pas l'heureux possesseur ni d'un domaine, ni d'un
+serveur DNS, et que dans tous les cas la mise à jour n'est pas forcément
+rapide (jusqu'a 72h, réplication oblige) il faudrait une solution alternative.</p>
+
+<!-- more -->
+
+
+<h2>Une Ip, et vite !</h2>
+
+<p><strong><a href="http://ipq.co">IP Quick</a></strong> est LA réponse à cette problématique ! Connectez-vous, entrez une Ip (v4), le nom est optionnel :</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/28-09-2010-20-34-35.png %}</p>
+
+<p>Et magie, en 10s c'est opérationnel (<em>je n'ai pas choisit le nom...</em>) :</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/2010-4/28-09-2010-20-36-33.png %}</p>
+
+<h2>Oui, mais...</h2>
+
+<p>Le service est pour le moment (trop) <strong>peu connu</strong> : 14 followers sur Twitter
+(autant que moi, c'est dire...).<br/>
+C'est une bonne chose car bien entendu <strong>une
+Ip n'a qu'un seul nom</strong>...donc pour les tests en Lan, <code>10.0.0.1</code> ou autres
+variations habituelles seront prises d'assaut. Dans ce cas pas moyen de
+choisir le nom (mais l'adresse existe bien). Ce qui m'amène au second défaut
+de la popularité, les noms sympathiques seront aussi pris d'assaut... Au final
+est-ce vraiment un problème ? J'en doute car le service reste opérationnel,
+bien que moins flexible...<br/>
+J'ose espérer qu'il sera rapidement possible de
+faire joujou avec Ipv6 sur <a href="http://ipq.co">ipq.co</a> !</p>
+
+<p>Bon tests ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

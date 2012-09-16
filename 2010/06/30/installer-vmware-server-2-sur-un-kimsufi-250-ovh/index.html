@@ -1,0 +1,484 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Installer Vmware Server 2 sur un Kimsufi 250 (Ovh) - ツ Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="J&#8217;ai très récemment eu à installer Vmware Server
+version 2 sur un serveur dédié Kimsufi de Ovh. Plus précisément sur une
+Unbuntu 9.04. Facile &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TymProject.github.com/tymproject/2010/06/30/installer-vmware-server-2-sur-un-kimsufi-250-ovh/">
+  <link href="/tymproject/favicon.png" rel="icon">
+  <link href="/tymproject/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/tymproject/javascripts/modernizr-2.0.js"></script>
+  <script src="/tymproject/javascripts/ender.js"></script>
+  <script src="/tymproject/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="ツ Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/tymproject/">ツ Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TymProject.github.com/tymproject" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/tymproject/">Blog</a></li>
+  <li><a href="/tymproject/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Installer Vmware Server 2 Sur Un Kimsufi 250 (Ovh)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-30T12:05:49+00:00" pubdate data-updated="true">Jun 30<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>J&#8217;ai très récemment eu à installer Vmware Server
+version 2 sur un serveur dédié Kimsufi de Ovh. Plus précisément sur une
+Unbuntu 9.04. Facile ? Non ! Faisable ? Oui&#8230;</p>
+
+<!-- more -->
+
+
+<p>Mon souci principal à été de
+devoir me battre avec un script d&#8217;installation vieillissant, inadapté à
+l&#8217;architecture des noyaux récents. Je commence par installer un ensemble de
+paquets de base :</p>
+
+<pre><code>apt-get update &amp;&amp;  apt-get install build-essential ncurses-dev xinetd
+</code></pre>
+
+<h2>&#8220;Le matin je compile un noyau, ça me décrasse le processeur !&#8221;</h2>
+
+<p>Ces paquets vont me servir à recompiler le noyau du serveur&#8230;et oui car les
+noyaux de Ovh ne sont par défaut pas modulaires. Avec <code>uname -r</code> je peux
+déterminer la version de mon noyau actuel. Avec cette information j&#8217;ai pu
+télécharger la configuration Ovh correspondante :</p>
+
+<pre><code>wget ftp://ftp.ovh.net/made-in-ovh/bzImage/2.6-config-xxxx-std-ipv4-64
+</code></pre>
+
+<p>Hop hop, je récupère la dernière version du kernel 2.6 :</p>
+
+<pre><code>wget http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.33.5.tar.bz2
+</code></pre>
+
+<p>Et me voila partit dans une recompilation &#8220;classique&#8221; (sans utiliser de <code>.deb</code>
+par exemple) :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> /usr/src
+</span><span class='line'>
+</span><span class='line'>tar xvf /root/linux-2.6.33.5.tar.bz2
+</span><span class='line'>
+</span><span class='line'><span class="c"># je crée un lien symbolique pour respecter les règles de compilation d&#39;un noyau</span>
+</span><span class='line'>ln -s linux-2.6.33.5/ linux
+</span><span class='line'><span class="nb">cd </span>linux
+</span><span class='line'>
+</span><span class='line'><span class="c">#un peu de nettoyage...</span>
+</span><span class='line'>make clean <span class="o">&amp;&amp;</span> make mrproper
+</span><span class='line'>
+</span><span class='line'>cp /root/2.6-config-xxxx-std-ipv4-64 ./.config
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Un <code>make menuconfig</code> me permet d&#8217;accéder au menu de configuration du noyau :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/16-06-2010-14-04-52.png"></p>
+
+<p>La première chose
+à faire est de modifier le nom de votre noyau</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/16-06-2010-14-06-18.png">
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/16-06-2010-14-06-40.png"></p>
+
+<p>Très important, activez la gestion des modules avec les
+options suivantes :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/16-06-2010-14-07-07.png">
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/16-06-2010-14-07-57.png"></p>
+
+<p>Vous
+pouvez bien entendu apporter des modifications supplémentaires à la
+configurations, mais j&#8217;ai tendance à le déconseiller pour un premier essai :)
+Une fois votre <code>.config</code> sauvegardé vous pouvez lancer la compilation :</p>
+
+<pre><code>make
+</code></pre>
+
+<p>Patience patience, cela
+peut durer un certain temps ! Copiez ensuite l&#8217;image du noyau dans <code>/boot</code>,
+pensez bien à la renommer :</p>
+
+<pre><code>cp arch/x86_64/boot/bzImage /boot/bzImage-`uname -r`-mod
+</code></pre>
+
+<p>Modifiez la
+configuration de <code>[man]lilo[/man]</code> (<code>/etc/lilo.conf</code>) pour prendre en compte votre nouvelle image
+:</p>
+
+<pre><code>image=/boot/bzImage-2.6.33.5-grsec-xxxx-grs-ipv4-64-mod
+</code></pre>
+
+<p>Mettez à
+jour le boot-loader&#8230;et croisez les doigts pour le reboot :</p>
+
+<pre><code>/sbin/lilo reboot
+</code></pre>
+
+<h2>Et c&#8217;est partit pour une installation bien (trop) compliquée&#8230;</h2>
+
+<p>Votre serveur fonctionnant sur son beau noyau tout neuf, installez les headers
+du noyau en cours en lancez l&#8217;installation de Vmware Server : <em>Attention,
+n&#8217;installez pas les modules tout de suite !</em></p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> /usr/src/linux
+</span><span class='line'>
+</span><span class='line'>make headers_install
+</span><span class='line'>
+</span><span class='line'>tar xzvf VMware-server-2.0.2-203138.x86_64.tar.gz
+</span><span class='line'>
+</span><span class='line'><span class="nb">cd </span>vmware-server-distrib
+</span><span class='line'>
+</span><span class='line'>mkdir /lib/modules/<span class="sb">`</span>uname -r<span class="sb">`</span>
+</span><span class='line'>
+</span><span class='line'>./vmware-install.pl
+</span><span class='line'>
+</span><span class='line'>Before running VMware Server <span class="k">for </span>the first <span class="nb">time</span>, you need to configure it by
+</span><span class='line'>invoking the following <span class="nb">command</span>: <span class="s2">&quot;/usr/bin/vmware-config.pl&quot;</span>.
+</span><span class='line'>Do you want this program to invoke the <span class="nb">command </span><span class="k">for </span>you now? <span class="o">[</span>yes<span class="o">]</span> no
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Vous allez maintenant devoir patcher les modules avant de les compiler. J&#8217;ai
+eu pas mal de soucis, et rassemblé les résultats dans le script qui suit. Elle est
+pas belle la vie ?</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">cd</span> /tmp
+</span><span class='line'>
+</span><span class='line'>wget http://www.tym-project.fr/blog/wp-content/uploads/2010/06/vmnet.tar
+</span><span class='line'>wget http://www.tym-project.fr/blog/wp-content/uploads/2010/06/vmci.tar
+</span><span class='line'>wget http://www.tym-project.fr/blog/wp-content/uploads/2010/06/vsock.tar
+</span><span class='line'>wget http://www.tym-project.fr/blog/wp-content/uploads/2010/06/vmmon.tar
+</span><span class='line'>
+</span><span class='line'><span class="k">for </span>i in vmnet.tar vmci.tar vsock.tar vmmon.tar; <span class="k">do</span>
+</span><span class='line'><span class="k">    </span>mv -vf <span class="nv">$i</span>
+</span><span class='line'>    /usr/lib/vmware/modules/source
+</span><span class='line'><span class="k">done</span>
+</span><span class='line'>
+</span><span class='line'>tar xvf /usr/lib/vmware/modules/source/vmnet.tar -C /tmp
+</span><span class='line'>tar xvf/usr/lib/vmware/modules/source/vmci.tar -C /tmp
+</span><span class='line'>
+</span><span class='line'>perl -pi -e <span class="s1">&#39;s,(&quot;vnetInt.h&quot;),\1\n#include &quot;compat_sched.h&quot;,&#39;</span> vmnet-only/vnetUserListener.c
+</span><span class='line'>perl -pi -e <span class="s1">&#39;s,(&quot;compat_page.h&quot;),\1\n#include &quot;compat_sched.h&quot;,&#39;</span> vmci-only/include/pgtbl.h
+</span><span class='line'>
+</span><span class='line'>tar cvf /usr/lib/vmware/modules/source/vmnet.tar vmnet-only tar cvf
+</span><span class='line'>/usr/lib/vmware/modules/source/vmci.tar vmci-only
+</span><span class='line'>
+</span><span class='line'><span class="c"># Des petites manipulations pour adapter l&#39;architecture du noyau à quelque</span>
+</span><span class='line'>chose de compréhensible par l<span class="err">&#39;</span>installer...
+</span><span class='line'>cat /usr/src/linux/include/generated/utsrelease.h &gt;&gt; /usr/src/linux/include/linux/version.h
+</span><span class='line'>ln -s /usr/src/linux/include/generated/autoconf.h /usr/src/linux/include/linux/
+</span><span class='line'>
+</span><span class='line'>vmware-config.pl
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Ayé, c&#8217;est installé !</h2>
+
+<p>Pour la postérité j&#8217;ai hébergé les différents modules patchés sur ce blog :
+<a href="http://www.tym-project.fr/blog/wp-content/uploads/2010/06/vmnet.tar">vmnet.tar</a>, <a href="http://www.tym-project.fr/blog/wp-content/uploads/2010/06/vmmon.tar">vmmon.tar</a>, <a href="http://www.tym-project.fr/blog/wp-content/uploads/2010/06/vmci.tar">vmci.tar</a> et <a href="http://www.tym-project.fr/blog/wp-content/uploads/2010/06/vsock.tar">vsock.tar</a>.</p>
+
+<p>Après cela votre Vmware Server 2 est censé fonctionner correctement. Pour ma
+part j&#8217;ai un avis très mitigé sur la question : instabilités de l&#8217;interface
+web, réseaux virtuels très lents&#8230;mais je ne peux pas dire si cela vient de
+l&#8217;installation ou du serveur lui même.</p>
+
+<p>Sources :</p>
+
+<ul>
+<li>Compiling VMWare 2.x modules on recent 2.6 kernels</li>
+<li>VMware Server 2.0.2 Update Patch #2</li>
+<li><a href="http://www.infos-du-net.com/forum/263428-10-tuto-compiler-kernel-ubuntu">[Tuto] Compiler son Kernel sous Ubuntu !</a></li>
+<li><a href="http://ubuntuforums.org/showthread.php?t=766676">Compiling vmware server 1.04/1.05 vmmon module errors on 8.04 64bit</a></li>
+<li><a href="http://radu.cotescu.com/2009/10/28/how-to-install-vmware-server-2-0-2-on-ubuntu-9-04-jaunty-jackalope/">How to install VMware Server 2.0.2 on Ubuntu 9.04 Jaunty Jackalope</a></li>
+</ul>
+
+
+<p>Bon courage ;-)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">tym</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-30T12:05:49+00:00" pubdate data-updated="true">Jun 30<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/tymproject/blog/categories/bash/'>Bash</a>, <a class='category' href='/tymproject/blog/categories/linux/'>Linux</a>, <a class='category' href='/tymproject/blog/categories/moi-je/'>Moi je</a>, <a class='category' href='/tymproject/blog/categories/os/'>OS</a>, <a class='category' href='/tymproject/blog/categories/programmation-scripting/'>Programmation - Scripting</a>, <a class='category' href='/tymproject/blog/categories/réseau/'>Réseau</a>, <a class='category' href='/tymproject/blog/categories/kernel-2-6/'>kernel 2.6</a>, <a class='category' href='/tymproject/blog/categories/ovh/'>ovh</a>, <a class='category' href='/tymproject/blog/categories/patch/'>patch</a>, <a class='category' href='/tymproject/blog/categories/vmware/'>vmware</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://TymProject.github.com/tymproject/2010/06/30/installer-vmware-server-2-sur-un-kimsufi-250-ovh/" data-via="" data-counturl="http://TymProject.github.com/tymproject/2010/06/30/installer-vmware-server-2-sur-un-kimsufi-250-ovh/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tymproject/2010/06/22/free-mobile-est-deja-en-place/" title="Previous Post: Free mobile est déja en place !">&laquo; Free mobile est déja en place !</a>
+      
+      
+        <a class="basic-alignment right" href="/tymproject/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab/" title="Next Post: Automatiser la création ou l'édition d'un crontab">Automatiser la création ou l'édition d'un crontab &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/02/14/ameliorer-son-debit-internet/">Naviguer plus vite sur internet, améliorer son débit ? C'est possible !</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TymProject.github.com/tymproject/2010/06/30/installer-vmware-server-2-sur-un-kimsufi-250-ovh/';
+        var disqus_url = 'http://TymProject.github.com/tymproject/2010/06/30/installer-vmware-server-2-sur-un-kimsufi-250-ovh/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

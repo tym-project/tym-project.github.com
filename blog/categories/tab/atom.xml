@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tab | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/tab/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Putty Tray, THE utilitaire de SSH sous Windows !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/09/putty-tray-the-utilitaire-de-ssh-sous-windows-2/"/>
+    <updated>2009-04-09T21:39:12+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/09/putty-tray-the-utilitaire-de-ssh-sous-windows-2</id>
+    <content type="html"><![CDATA[<p>J'utilise très souvent PuTTY pour faire des tunnels ssh (je vous en
+reparlerais bientôt) afin de sécuriser un minimum ma connexion.Inconvénient
+majeur : Putty ne se réduit pas en zone de notification, et j'ai donc toujours
+une fenêtre de terminal qui traîne dans ma barre des tâches. Pas vraiment
+pratique !</p>
+
+<p>J'ai trouvé un utilitaire très pratique : Putty Tray. C'est un clone de Putty
+(basé sur l'original et qui suit son développement, donc toujours à jour !)
+avec de nombreuses améliorations qui permettent surtout de réduire votre
+terminal en zone de notification. Putty Tray importe automatiquement vos
+configurations depuis Putty...un must !</p>
+
+<p><a href="http://haanstra.eu/putty/">C'est ici</a>, et c'est à télécharger d'urgence !</p>
+
+<p>Bon ssh ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

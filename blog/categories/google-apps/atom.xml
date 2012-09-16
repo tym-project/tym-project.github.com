@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: google apps | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/google-apps/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Le Gmail de SUPINFO...]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/02/le-gmail-de-supinfo-2/"/>
+    <updated>2009-04-02T15:37:21+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/02/le-gmail-de-supinfo-2</id>
+    <content type="html"><![CDATA[<p>Vous vous souvenez de l'article sur comment associer son domaine à Google Apps
+(<a href="http://www.tym-project.fr/blog/2009/03/associer-google-apps-gmail-gdocs-gcalendar-gtalk-a-son-domaine/">ici</a>) ? Et bien même les meilleurs s'en servent visiblement : SUPINFO est
+présent sur ce service...un autre grand mystère ! Pour les curieux, ce n'est
+pas destiné à l'étudiant lambda car j'ai eu beau essayer un tas
+d'identifiants, rien n'y fait !</p>
+
+<p>Peut-être est-ce un vestige des débuts de SUPINFO, avant l'ère "Exchangienne".</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/gmailsupinfo.png"></p>
+
+<p><em>Merci aux doigts
+de Cams qui ont entrainé ce heureux hasard !</em></p>
+]]></content>
+  </entry>
+  
+</feed>

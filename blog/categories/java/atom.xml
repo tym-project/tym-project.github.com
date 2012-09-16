@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Java | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Choisir un mot de passe sécurisé et facile à retenir]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/09/08/methode-de-choix-de-mot-de-passe-efficace/"/>
+    <updated>2010-09-08T18:44:28+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/09/08/methode-de-choix-de-mot-de-passe-efficace</id>
+    <content type="html"><![CDATA[<p>Un mot de passe c'est important. A vrai dire
+c'est souvent votre premier rempart contre une attaque sur vos données
+personnelles. Mais avoir une bonne "hygiène de mots de passe" est souvent un
+casse tête virant à la paranoïa généralisée. Alors plutôt que de brûler tous
+vos biens et partir vivre dans les bois, je vais vous proposer ici quelques
+astuces pour vous sécuriser la vie !</p>
+
+<!-- more -->
+
+
+<h2>La définition d'un bon mot de passe</h2>
+
+<p>D'après <a href="http://edition.cnn.com/2010/TECH/innovation/08/20/super.passwords/index.html#fbid=OEN683j9hW8&amp;wom=false">une récente étude</a>, votre mot de passe doit avoir une longueur
+d'au moins <strong>12 caractères</strong>. Il doit contenir des <strong>lettres majuscules et
+minuscules</strong>, des <strong>chiffres</strong> et des <strong>caractères spéciaux</strong>. Évitez au
+maximum d'y intégrer des <strong>éléments propres à vous faciles à deviner</strong> : date
+de naissance, prénom des enfants ou du chien (ça vaut aussi pour les chats !),
+ville d'origine...à vrai dire tout ce qu'un inconnu pourrai apprendre sur vous
+avec un minimum de recherches (<em>vous avez dit Facebook ?</em>). N'utilisez <strong>pas
+non-plus de variation de votre identifiant</strong> : la combinaison "root/toor" est
+la première testée par le célèbre <a href="http://www.openwall.com/john/">John The Ripper</a>. L'utilisation du
+langage "l33t", c'est à dire de plus ou moins remplacer des lettres par des
+chiffres est aussi à proscrire. Inutile de penser que dessiner un motif au
+clavier est sécurisé : "aqwzsx"...grillé d'avance ! Au final beaucoup
+d'interdits, et un mot de passe que vous ne retiendrez certainement pas.</p>
+
+<h2>De la raison et de la complexité</h2>
+
+<p>Un mot de passe trop long et trop complexe ? Le post-it/clavier à coup sûr.
+Perdu. Trouver un mot de passe équilibré est tout un art, c'est aussi une
+affaire d'habitude. La clé réside dans le fait de pouvoir apprendre, sans pour
+autant compromettre. Pour cela j'ai une méthode toute simple : je change de
+mot de passe le vendredi soir. Ainsi j'ai <strong>tout le Week-end pour le
+retenir</strong>, en l'ayant si besoin noté sur un coin de feuille (dans mon
+appartement, pas au travail bien entendu). Attention, pas écrit dans un
+fichier texte, ni dans mon portefeuille mais bel et bien sur un bout de papier
+sur mon bureau personnel. Ce mémo restera là maximum une semaine avant de
+finir brulé, haché, décomposé...bref : détruit pour de bon.</p>
+
+<h2>Une affaire de "mnémotechnie"</h2>
+
+<p>Il est souvent complexe de trouver un bon mot de passe par soi-même : nous
+avons naturellement tendance à utiliser la même racine, le même
+principe...adieu hasard ! Heureusement de <a href="http://www.google.fr/#hl=fr&amp;source=hp&amp;q=password+generator+online&amp;aq=1&amp;aqi=g10&amp;aql=&amp;oq=password+ge&amp;gs_rfai=&amp;fp=c7f2b8020399a72c">très nombreux outils</a> existent
+pour faire le travail à notre place.</p>
+
+<h3>Pwgen dans ta face !</h3>
+
+<p>Avec les générateurs automatiques on retombe à nouveau sur un problème de
+mémorisation, sauf avec <code>pwgen</code>. C'est mon outil préféré car il génère des
+mots de passe "compréhensibles", qui ont une certaine "sonorité", un "rythme",
+bref : on peut les retenir plus facilement ! Il exite plusieurs
+implémentations de cet outil :</p>
+
+<ul>
+<li><a href="http://linux.die.net/man/1/pwgen">L'original</a>, la commande Linux</li>
+<li><a href="http://8-p.info/pwgen/">En javascript</a>, pratique mais sans caractères spéciaux</li>
+<li><a href="http://code.google.com/p/pwgen-php/">En Php</a>, à intégrer sur votre site web</li>
+<li><a href="http://pwgen-win.sourceforge.net/">En exécutable</a>, avec l'option "easytoread"</li>
+</ul>
+
+
+<h2>La théorie de l'évolution</h2>
+
+<p>Idéalement il faudrait changer de mot de passe le plus souvent possible. En
+réalité cela n'est pas aussi simple...reprendre à zéro un processus qui vous a
+déja pris une semaine ? Non, la vie est trop courte ! J'utilise la méthode
+dite du "double effet Kiss Cool" : le mot de passe en question est déjà assez
+complexe, mais je le connais bien.<br/>
+Régulièrement, mais pas trop souvent, je
+lui ajoute un ou plusieurs éléments :</p>
+
+<ol>
+<li>A#6!v</li>
+<li>A#6!vW</li>
+<li>A_f#6!vW</li>
+<li>A_f#6!v2W</li>
+<li>...</li>
+</ol>
+
+
+<p><em>Est-ce utile de préciser que ce n'est qu'un exemple ? Si vous avez bien
+suivi, ce mot de passe est d'ailleurs trop court.</em> Au final un mot de passe de
+plus en plus long, de plus en plus complexe et toujours aussi facile à retenir
+pour moi !</p>
+
+<h2>Conclusion</h2>
+
+<p>Trouver un mot de passe dits "forts" est une question de temps, d'habitude et
+de gymnastique de l'esprit. Et si vous avez une doute, vous pourrez toujours
+tester sa fiabilité avec par exemple : <a href="http://howsecureismypassword.net/">How Secure Is My Password?</a>.</p>
+
+<p>Bonne réflexion ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Régler le problème de ports avec Netbeans 6.8/Glassfish 3 sous Windows 7]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/05/05/regler-le-probleme-de-ports-avec-netbeans-6-8glassfish-3-sous-windows-7/"/>
+    <updated>2010-05-05T13:00:04+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/05/05/regler-le-probleme-de-ports-avec-netbeans-6-8glassfish-3-sous-windows-7</id>
+    <content type="html"><![CDATA[<p>Dans le cadre de mes cours, j'ai été amené à utiliser Netbeans et le
+serveur d'application Glassfish...ce qui m'a causé quelques soucis avec mon
+Windows Seven.<br/>
+En effet, la politique de sécurité (par défaut je précise) de
+mon Windows faisait bugger l'attribution de port de Glassfish :<br/>
+{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/nb-gf1.png %}</p>
+
+<p>Ce ne sont bien entendu pas
+les bon ports...et pour cause :<br/>
+{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/nb-gf2.png %}</p>
+
+<p>Netbeans ne peut pas accéder à la configuration (fichier <code>domain.xml</code>), il
+crée donc une configuration "aléatoire" dans un autre dossier. Pour résoudre
+cela il faut d'abord supprimer le domaine (serveur Glassfish) mal configuré.
+Dans l'onglet "Services", supprimez le serveur actuel :<br/>
+{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/nb-gf3.png %}</p>
+
+<p>Vous pouvez fermer Netbeans et modifier les droits
+du répertoire de Glassfish (<code>C:\Program Files\sges-v3</code>). Il est conseillé (on
+est jamais trop prudents) de limiter l'accès à votre utilisateur ou à limite
+au groupe <code>Users</code> :<br/>
+{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/17-02-2010-15-44-12.png %}</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/17-02-2010-15-45-20.png %}</p>
+
+<p>Ceci
+fait, relancez Netbeans et appréciez le changement, les ports utilisés sont
+maintenant les bons :<br/>
+{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/nb-gf4.png %}</p>
+
+<p>Bon debug ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Firefox : vérifier la validité des ses plugins]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/10/06/firefox-verifier-la-validite-des-ses-plugins/"/>
+    <updated>2009-10-06T08:53:33+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/10/06/firefox-verifier-la-validite-des-ses-plugins</id>
+    <content type="html"><![CDATA[<p>Flash, Java...tous ces plugins (et non extensions) peuvent parfois présenter
+des <a href="http://www.zdnet.fr/actualites/internet/0,39020774,39705979,00.htm">failles de sécurité</a>. Le site <a href="https://www-trunk.stage.mozilla.com/en-US/plugincheck/">Plug-In-Check</a> vous permet de
+vérifier, et éventuellement mettre à jour les fautifs ! Cela fonctionne
+uniquement avec Firefox bien entendu :) Pour ma part j'ai (un peu) de boulot :</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-4/plugincheck.png %}</p>
+
+<p>Bonne vérification ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Insérer des images et les ajouter au .jar (Java)]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/16/inserer-des-images-et-les-ajouter-au-jar-java/"/>
+    <updated>2009-04-16T12:30:15+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/16/inserer-des-images-et-les-ajouter-au-jar-java</id>
+    <content type="html"><![CDATA[<p>Pour ajouter des images à votre application vous avez différentes solutions,
+mais attention, toutes ne fonctionnent pas correctement ! Voici donc comment
+procéder pour avoir un programme fonctionnel une fois compilé...</p>
+
+<!-- more -->
+
+
+<p>Pour notre exemple partons du principe que l'on veut associer une image à un
+bouton (une icône donc). Comme nous sommes organisés, on stocke l'image dans
+le package "resources".<br/>
+Du point de vue du système un package est simplement
+un dossier, voici donc comment créer notre icône :</p>
+
+<pre><code>printButton = new JButton(newImageIcon(".\\src\\ressources\\print.png"));
+</code></pre>
+
+<p>Le constructeur de notre
+bouton permet de l'associer à une image, et le constructeur de l'<code>ImageIcon</code>
+peut prendre en paramètre le CHEMIN de l'image. Si vous lancez votre programme
+avec votre IDE, tout va bien elle est bien là. Mais si vous créez un
+.jar...pouf, disparue !</p>
+
+<p>Et c'est tout à fait normal car dans le .jar plus de notions de "chemins" : si
+ce n'est pas compilé, ce n'est pas présent. Un  point c'est tout.</p>
+
+<p>Il faut donc indiquer par un moyen ou un autre à notre IDE de "compiler" les
+images.Voici comment je procède :</p>
+
+<pre><code>ClassLoader classLoader = getClass().getClassLoader();
+URL file = classLoader.getResource("resources/print.png");
+</code></pre>
+
+<p>Je définis un
+<code>ClassLoader</code> correspondant à ma classe en cours. Il sert à localiser et générer
+des données constituant la définition de la classe.<br/>
+J'utilise alors mon
+ClassLoader pour créer une URL servant donc à localiser mon image. Remarquez
+bien que l'on donne un chemin non pas dans un système de fichiers, mais sous
+forme de package ! C'est là la clé de notre problème : le compilateur va
+intégrer correctement l'image au .jar car elle est définie comme faisant
+partie d'un package.</p>
+
+<p>Nous pouvons maintenant instancier notre bouton :</p>
+
+<pre><code>printButton = new JButton(new ImageIcon(file));
+</code></pre>
+
+<p>Bonnes insertions ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Signer une application Java]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/03/signer-une-application-java-2/"/>
+    <updated>2009-04-03T15:41:24+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/03/signer-une-application-java-2</id>
+    <content type="html"><![CDATA[<p>Pourquoi est-ce important de signer (avec un certificat) une application Java
+? Prenons un exemple concret : laisseriez vous entrer une personne non
+certifiée dans votre appartement pour qu'elle fouille vos placards ? Non je
+l'espère, par contre un policier avec un mandat... là oui (je ne vous le
+souhaite pas :)).<br/>
+Pour les applications c'est la même chose : votre applet ne
+pourra pas accéder à des fichiers sensibles si il n'est pas signé.</p>
+
+<p>Pour ce tutoriel nous allons signer un lecteur Ogg : Cortado. Cet applet est
+destiné à être placé sur un serveur web pour diffuser une web-tv par exemple.
+Dans l'exemple il doit se connecter à un serveur Icecast et il doit donc être
+signé pour avoir le droit de lire le flux.</p>
+
+<p>Vous devez tout d'abord installer le JDK, disponible<a href="http://java.sun.com/javase/downloads/index.jsp"> ici</a>.</p>
+
+<p><em>Je vais vous présenter les manipulations sous Windows, mais elles sont
+identiques sous Linux ou Mac.</em></p>
+
+<p>Placez vous dans le dossier du JDK, dans le répertoire des binaires :</p>
+
+<pre><code>cd "C:\Program Files\Java\jdk1.6.0_12\bin"
+</code></pre>
+
+<p>Nous allons
+tout d'abord créer un certificat. Pour cela utilisez <code>keytool</code>, notre
+certificat sera valide 1 an (365 jours) et aura pour alias (un nom pour le
+réutiliser lors d'une signature) "myCertif". On précise aussi le mot de passe
+du <code>keystore</code> (le coffre qui contient les clés) :</p>
+
+<pre><code>C:\Program Files\Java\jdk1.6.0_12\bin &gt; keytool.exe -genkey -alias myCertif -validity 365 -storepass adadad
+</code></pre>
+
+<p>Vous devez alors donner différentes
+informations comme le nom de l'entreprise, etc...Attention car ces valeurs
+pourront être visibles des utilisateurs ! Vous devrez confirmez les
+informations puis donner un mot de passe à la clé. Votre certificat est crée,
+signons donc notre application avec <code>jarsigner</code> :</p>
+
+<pre><code>C:\Program Files\Java\jdk1.6.0_12\bin &gt; jarsigner.exe -storepass adadad C:\cortado-ovt-stripped-0.2.2.jar myCertif
+</code></pre>
+
+<p>Jarsigner n'est pas très
+bavard, mais si rien n'est précisé alors tout s'est bien passé !</p>
+
+<p>Bonnes signatures ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

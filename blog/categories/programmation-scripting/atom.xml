@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Programmation - Scripting | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/programmation-scripting/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ma nouvelle configuration Media Center sous Linux]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/08/21/xbmc-et-archlinux-pour-un-media-center/"/>
+    <updated>2011-08-21T12:00:02+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/08/21/xbmc-et-archlinux-pour-un-media-center</id>
+    <content type="html"><![CDATA[<p>J'avais déjà évoqué dans un précédent article que
+je possède un Media center sous Linux. Suite à une petite bidouille
+malheureuse, il s'est retrouvé complètement planté. J'ai donc décidé de tout
+réinstaller à partir de zéro et de documenter (un peu) l'opération.<br/>
+Je vais
+donc détailler les principaux composants de cette installation, sans pour
+autant rentrer dans les détails (utilisez les commentaires si besoin).</p>
+
+<!-- more -->
+
+
+<h2>Qui suis-je, où vais-je, ...</h2>
+
+<p><em>... dans quelle étagère ?</em> Avant de mettre les mains dans la console, une
+petite explication de l'utilisation que je fais de ma machine s'impose :</p>
+
+<ul>
+<li>Je passe beaucoup de temps sur <a href="http://xbmc.org/skins/" title="Xbmc">Xbmc</a>, un très bon logiciel de Media Center</li>
+<li>Je regarde aussi beaucoup Nolife Online (<a href="http://www.nolife-tv.com/souscription" title="Nolife Online">Abonnez vous !</a>)</li>
+<li>Je n'exclue pas l'idée d'utiliser d'autres services de TV de rattrapage comme M6 Replay par exemple.</li>
+</ul>
+
+
+<p>Je possède un clavier sans-fil avec Trackball intégré (<a href="http://www.materiel.net/clavier/enermax-aurora-micro-wireless-kb008w-b-noir-47221.html" title="Clavier Aurora Enermax">celui-ci</a>) ainsi
+qu'une télécommande "compatible Windows Media Center" achetée sur e-bay.</p>
+
+<h2>Arch' mon ami !</h2>
+
+<p>Archlinux m'a semblé être le meilleur choix comme distribution pour Mediator
+(le nom que j'ai donné à cette machine...bien avant le scandale sur le
+médicament du même nom). Outre sa flexibilité, j'apprécie surtout le fait
+d'avoir des paquetages très récents...très utile pour les drivers vidéo par
+exemple. C'est aussi une distribution pour laquelle l'installation de base est
+très légère, sans fioritures. <em>Oui, je pense à Ubuntu en disant cela :)</em> J'ai
+donc réalisé une installation tout à fait classique, j'ai seulement eu un
+petit souci avec la configuration de Grub pour le kernel 3.0 qui fera l'objet
+d'un prochain (court) article.</p>
+
+<h2>Boot --> Bureau</h2>
+
+<p>Pour me simplifier un peu la vie j'ai décidé d'utiliser un gestionnaire de
+login. L'heureux élu est "bien entendu" Slim, pour sa légèreté et sa facilité
+de configuration. L'utilisateur principal autre que root est <code>server</code>, et j'ai
+donc configuré le login automatique de ce dernier via Slim (dans le fichier
+<code>/etc/slim.conf</code>) :</p>
+
+<pre><code>default_user server
+auto_login yes
+</code></pre>
+
+<h2>Gère moi cette fenêtre !</h2>
+
+<p>Mon choix pour le Window Manager s'est porté, pour les mêmes raisons que Slim,
+vers PekWM. La configuration générale que j'utilise pour ce dernier est assez
+simple, j'ai seulement désactivé les bureaux virtuels et changé le thème. En
+ce qui concerne les raccourcis clavier, voici un extrait de mon fichier
+<code>~/.pekwm/keys</code> :</p>
+
+<pre><code>Global {
+    KeyPress = "XF86AudioLowerVolume" { Actions = "Exec /home/server/scripts/bash_vol_manager.sh lower 5 &amp;" }
+    KeyPress = "XF86AudioRaiseVolume" { Actions = "Exec /home/server/scripts/bash_vol_manager.sh raise 5 &amp;" }
+    KeyPress = "XF86AudioMute" { Actions = "Exec /home/server/scripts/bash_vol_manager.sh toggle &amp;" }
+    KeyPress = "XF86Mail" { Actions = "Exec /home/server/scripts/xbmc.sh &amp;" }
+    KeyPress = "Alt Mod4 Alt_L" { Actions = "Exec /home/server/scripts/xbmc.sh &amp;"}
+    KeyPress = "XF86Sleep" { Action = "Exec /home/server/scripts/stop.sh &amp;" }
+...
+</code></pre>
+
+<p>J'ai donc la gestion du volume avec un petit script maison (que je
+détaillerais dans un autre post), l'ouverture de Xbmc (via les boutons
+multimédia "Mail" de mon clavier et le bouton "Start" de ma télécommande).
+Enfin la touche "Power" de ma télécommande (qui envoie le signal <code>XF86Sleep</code>)
+pour éteindre la machine.<br/>
+<em>Le dernier raccourci ne fonctionne pas...et
+j'ignore pourquoi (ce n'est pas lié au script associé). Je suis preneur de vos
+suggestions !</em></p>
+
+<p>Le script <code>~/.pekwm/start</code> contient les lignes suivantes :</p>
+
+<pre><code>#!/bin/sh
+firefox &amp;
+sleep 3
+/home/server/scripts/xbmc.sh &amp;
+</code></pre>
+
+<p>Le temps de pause entre le lancement de Firefox et celui de Xbmc
+permet d'éviter que ce dernier perde le plein écran à cause du précédent.</p>
+
+<h2>Trop fort !</h2>
+
+<p>Avec mon installation précédente je devais souvent jongler avec le volume
+entre une vidéo sur Firefox et un média quelconque sur Xbmc. Le volume doit
+être poussé au maximum sur Xbmc, mais à environ 70% sur Firefox, pour entendre
+correctement dans mon salon.<br/>
+J'ai donc réfléchi à un moyen d'automatiser ce
+changement de volume, et cela s'est traduit par le script <code>xbmc.sh</code> :</p>
+
+<pre><code>#!/bin/bash
+amixer -c 0 sset Master 100%
+xbmc
+amixer -c 0 sset Master 68%
+</code></pre>
+
+<p>Simple mais efficace, il pousse le volume
+à fond puis lance Xbmc. Ce dernier n'étant pas lancé en arrière plan, dès
+qu'il est quitté le volume est placé à 68%. Ce script est utilisé à la fois
+dans <code>~/.pekwm/start</code> et <code>~/.pekwm/keys</code>.</p>
+
+<h2>Firefox (à la loupe, sans la loupe)</h2>
+
+<p>J'ai abandonné <a href="http://www.tym-project.fr/blog/2011/05/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/" title="Un Linux mediacenter avec une loupe">mon système de loupe</a> pour quelque chose de plus simple :
+pousser à fond la taille des caractères à l'écran (<code>Preferences&gt;Content&gt;Fonts
+&amp; Colors&gt;Advances&gt;Maximum font size</code>). C'est moche mais pratique, l'avenir me
+dira si c'est réellement une bonne alternative. J'ai aussi modifié le
+<code>about:config</code> pour désactiver la restauration des onglets au lancement (en
+cas de crash ou non) :</p>
+
+<pre><code>browser.sessionstore.resume_from_crash;false
+browser.sessionstore.max_tabs_undo;0
+browser.sessionstore.max_windows_undo;0
+</code></pre>
+
+<h2>shutdown -s -t now</h2>
+
+<p>Si il est toujours possible d'autoriser la mise hors tension du système via
+des bidouilles avec <code>sudo</code> et <code>halt</code>, cela reste des bidouilles. La manière la
+plus simple est en fait d'utiliser <code>consolekit</code>, <code>policykit</code> et <code>dbus</code>... en
+effet : c'est prévu pour.<br/>
+Avant tout il faut modifier <code>~/.xinitrc</code> ainsi :</p>
+
+<pre><code>#exec pekwm
+exec ck-launch-session pekwm
+</code></pre>
+
+<p>Pour tester si vous avez les droits pour couper le système (par
+exemple), utilisez cette commande qui vous renverra <code>true</code> ou <code>false</code> :</p>
+
+<pre><code>dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.CanStop
+</code></pre>
+
+<p>La commande à utiliser
+pour éteindre la machine sera alors la suivante (une simple modification de la
+dernière directive) :</p>
+
+<pre><code>dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop
+</code></pre>
+
+<p>Si jamais vous n'avez pas les droits, ou êtes simplement curieux, la
+configuration se situe dans le fichier
+<code>/usr/share/polkit-1/actions/org.freedesktop.consolekit.policy</code>. Une commande
+est autorisée par la directive <code>&lt;allow_active&gt;yes&lt;/allow_active&gt;</code>, mais j'ai
+parfois dû utiliser <code>&lt;allow_any&gt;yes&lt;/allow_any&gt;</code></p>
+
+<h2>"Moi vivant, vous n'aurez jamais de pauses"</h2>
+
+<p>Par défaut le serveur X coupe l'écran au bout d'un temps donné pour économiser
+de l'énergie. Cela va sans dire que c'est insupportable pour un écran qui est
+censé être allumé en permanence avec la machine... Une petite configuration
+dans <code>/etc/X11/xorg.conf</code> et hop !</p>
+
+<pre><code>Section "ServerFlags"
+    Option "BlankTime" "0"
+    Option "StandbyTime" "0"
+    Option "SuspendTime" "0"
+    Option "OffTime" "0"
+EndSection
+</code></pre>
+
+<h2>Sources</h2>
+
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/PekWM" title="PekWM">PekWM</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Slim" title="Slim">Slim</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/ConsoleKit" title="ConsoleKit">ConsoleKit</a></li>
+<li><a href="http://www.shallowsky.com/linux/x-screen-blanking.html" title="X11 Scrren Blanking">Mise en veille de l'écran avec X11</a></li>
+<li><a href="http://vuedelaprovince.canalblog.com/" title="La citation &quot;Moi vivant ...&quot;">La citation "Moi vivant..."</a></li>
+</ul>
+
+
+<p>Bonne utilisation ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Un Linux mediacenter avec une loupe]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/"/>
+    <updated>2011-05-04T12:00:06+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon</id>
+    <content type="html"><![CDATA[<p>Un Linux avec Xbmc au milieu du salon c'est de plus
+en plus en commun, et même si je me trompe, c'est quand même super pratique !
+Mais c'est encore mieux quand cette machine peut aussi servir à consulter ses
+mails, utiliser Youtube... Problème : la résolution d'écran est trop elevée
+pour pouvoir lire à 2m de l'écran. C'est donc là qu'entre en jeu la loupe.</p>
+
+<!-- more -->
+
+
+<p>Gnome propose son outil, gnome-magnifier, tout un tas d'infos <a href="https://wiki.ubuntu.com/Accessibility/Reviews/gnome-mag">sur le Wiki
+d'Ubuntu</a> et <a href="http://man.cx/magnifier">et dans le man</a>.</p>
+
+<h2>De la problèmatique des doigts</h2>
+
+<p>Avoir une loupe c'est une chose, y accéder en est une autre. En effet, la
+problématique est toujours la même si il faut aller cliquer dans un petit menu
+ou sur une petit icône, sans parler de lancer une ligne de commande ! Allons-y
+gaiement avec un raccourci clavier donc... Avec Gnome (2.XX) rien de plus
+simple : <code>Système/Préférences/Raccourcis clavier</code>,la commande étant <code>magnifier
+-m -v</code>. L'option <code>-m</code> pour suivre les mouvements de la souris, <code>-v</code> pour une
+loupe verticale (sur la gauche de l'écran par défaut), eh lisez le <code>man</code> !</p>
+
+<h2>De la problématique du multi-doigt</h2>
+
+<p>Un raccourci pour ouvrir la loupe c'est pratique, mais comment faire pour
+fermer l'outil ? Un autre raccourci ? Non non non, un peu d'ingéniosité que
+diable ! C'est en fait un seul et même raccourci clavier qui va servir, en
+séquence, à :</p>
+
+<ol>
+<li>Lancer la loupe en "vertical"</li>
+<li>Basculer la loupe en "horizontal", pratique pour la lecture de long textes</li>
+<li>Fermer complètement l'application</li>
+</ol>
+
+
+<p>En terme de script (Bash, pour faire vite et bien), cela donne ceci de la
+manière suivante :
+{% codeblock lang:bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<p>function killmag {</p>
+
+<pre><code>kill -9 \ `ps aux | grep -v grep | grep magnifier | tr -s " " | cut -d " " -f 2`
+</code></pre>
+
+<p>}
+case \
+"<code>ps aux | grep -v grep | grep magnifier | \ tr -s " " | cut -d " " -f 12</code>"\
+in</p>
+
+<pre><code>"-v")
+    killmag &amp;&amp; magnifier -h -m
+    ;;
+"-h")
+    killmag
+    ;;
+"")
+    magnifier -v -m
+    ;;
+</code></pre>
+
+<p>esac
+{% endcodeblock %}
+On retrouve donc une fonction pour killer la loupe, car il faut la relancer
+pour changer d'orientation. Petit détail syntaxique : l'utilisation de <code>\</code>
+pour faire des retours à la ligne au milieu d'une commande, pratique pour se
+la raconter un peu sur un article de blog (ou faciliter la lecture, c'est
+selon).</p>
+
+<h2>Algo à gogo</h2>
+
+<p>D'un point de vue algorithmique, et par ordre de déclenchement du script :</p>
+
+<ol>
+<li>Par défaut la loupe n'est pas lancée, donc le résultat du <code>grep</code> dans le <code>case</code> est vide : on lance la loupe en mode vertical</li>
+<li>Un second passage va renvoyer "<code>-v</code>" dans le <code>case</code> : on kill la loupe et on la relance en horizontal</li>
+<li>Le passage suivant renvoit "<code>-h</code>", donc le <code>case</code> kill la loupe pour de bon</li>
+<li>Et ainsi fon fon fon...</li>
+</ol>
+
+
+<p>Bon zoom ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mon script de configuration iptables]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/04/06/iptables-et-lancement-automatique/"/>
+    <updated>2011-04-06T12:00:02+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/04/06/iptables-et-lancement-automatique</id>
+    <content type="html"><![CDATA[<p>Pour ceux qui ne connaitraient pas, iptables est une
+interface de gestion du module netfilter du noyau Linux. En termes clairs :
+c'est un pare-feu. Iptables est donc un ensemble de commandes permettant de
+créer des règles, je ne vais pas rentrer dans les détails, vous trouverez plus
+d'infos sur <a href="http://www.techrepublic.com/blog/10things/10-iptables-rules-to-help-secure-your-linux-box/539">cette page par exemple</a>. Dans cet article il sera question de
+comment je gère ma configuration de pare-feu à travers un script d'init.</p>
+
+<!-- more -->
+
+
+<h2>init.d, t'es initié ?</h2>
+
+<p>Le but de ce script est qu'il se lance au démarrage de mon poste, et en bonus
+que je puisse couper/relancer mon pare-feu à loisir : c'est là le rôle d'un
+script "init.d". Commençons donc par la fin, avec les différents arguments que
+peut prendre le script :
+{% codeblock lang:bash %}
+case $1 in</p>
+
+<pre><code>start)
+    start
+    ;;
+stop)
+    stop
+    ;;
+restart)
+    restart
+    ;;
+*)
+    echo "usage: iptables {start|stop|restart}"
+    exit 1
+    ;;
+</code></pre>
+
+<p>esac
+{% endcodeblock %}</p>
+
+<p>Logiquement on retrouve les
+fonction <code>start</code>, <code>stop</code> et <code>restart</code> avec une explication des arguments pour
+toute valeur en dehors de ce choix.</p>
+
+<h2>En fonction des fonctions...</h2>
+
+<p>la fonction <code>restart</code> est très simple :</p>
+
+<pre><code>function restart {
+    stop start
+}
+</code></pre>
+
+<p>la fonction <code>stop</code> est un peu plus complexe et est chargée de vider les règles
+iptable, de changer la politique par défaut et de restarter
+<code>[man]fail2ban[/man]</code> si besoin :
+{% codeblock lang:bash %}
+function stop {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -P INPUT ACCEPT
+    $IPTABLES -P FORWARD ACCEPT
+    $IPTABLES -P OUTPUT ACCEPT
+    $IPTABLES -F $IPTABLES -X
+done
+
+if [ -e /etc/init.d/fail2ban ]; then
+    /etc/init.d/fail2ban restart
+fi
+</code></pre>
+
+<p>}
+{% endcodeblock %}
+L'utilisation de <code>for IPTABLES in iptables ip6tables</code> permet de configurer à
+la fois pour ipv4 et ipv6.</p>
+
+<p>La fonction <code>start</code> utilise une variable <code>$TCP_PORTS</code> (qui contient les port
+TCP à ouvrir) définie ainsi :</p>
+
+<pre><code>TCP_PORTS="80 443"
+</code></pre>
+
+<p>Et la fonction en elle-même :
+{% codeblock lang:bash %}
+function start {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -F $IPTABLES -P INPUT DROP
+    $IPTABLES -P FORWARD DROP
+    $IPTABLES -P OUTPUT DROP
+
+    $IPTABLES -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+    for port in $TCP_PORTS;do
+        $IPTABLES -A INPUT -p tcp --dport $port -j ACCEPT
+    done
+
+    $IPTABLES -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+    $IPTABLES -A INPUT -i lo -j ACCEPT $IPTABLES -A OUTPUT -o lo -j ACCEPT
+    # ICMP (Ping)
+    #$IPTABLES -A INPUT -p icmp -j ACCEPT
+done
+</code></pre>
+
+<p>if [ -e /etc/init.d/fail2ban ];then</p>
+
+<pre><code>/etc/init.d/fail2ban restart
+</code></pre>
+
+<p>fi
+}
+{% endcodeblock %}</p>
+
+<h2>Configuration et installation</h2>
+
+<p>Pour placer le script dans <code>/etc/init.d/</code> deux solutions sont possibles :</p>
+
+<ul>
+<li>le copier dans le répertoire</li>
+<li>faire un lien symbolique avec <code>ln -s /emplacement/script/iptables /etc/init.d/iptables</code></li>
+</ul>
+
+
+<p>Si vous mettez ce script en place sur serveur sans accès physique, je vous
+conseille formetment de le tester avant de le mettre au démarrage de la
+machine...c'est trop bête de se faire enfermer dehors :)</p>
+
+<p>La mise en place du scritpt au démarrage peut se faire manuellement en mettant
+en place des liens symboliques dans <code>/etc/rc*.d/</code>, mais il est plus simple de
+passer par <code>update-rc.d</code> :</p>
+
+<pre><code>sudo update-rc.d iptables defaults
+update-rc.d: warning: /etc/init.d/iptables missing LSB information
+update-rc.d: see &lt;http://wiki.debian.org/LSBInitScripts&gt;
+</code></pre>
+
+<p>Suite aux erreurs du <code>LSB</code> j'ai ajouté cela au début du script :</p>
+
+<pre><code>### BEGIN INIT INFO
+# Provides: iptables
+# Required-Start: $local_fs $remote_fs $network $syslog
+# Required-Stop: $local_fs $remote_fs $network $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Set up iptables at boot time
+# Description: Enable service provided by iptables.
+### END INIT INFO
+</code></pre>
+
+<p>Voici donc le fichier dans son intégralité :
+{% codeblock lang:bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<h1>iptables-default</h1>
+
+<h1>www.tym-project.fr/blog</h1>
+
+<h1>tym@tym-project.fr</h1>
+
+<h3>BEGIN INIT INFO</h3>
+
+<h1>Provides:          iptables</h1>
+
+<h1>Required-Start:    $local_fs $remote_fs $network $syslog</h1>
+
+<h1>Required-Stop:     $local_fs $remote_fs $network $syslog</h1>
+
+<h1>Default-Start:     2 3 4 5</h1>
+
+<h1>Default-Stop:      0 1 6</h1>
+
+<h1>Short-Description: Set up iptables at boot time</h1>
+
+<h1>Description:       Enable service provided by iptables.</h1>
+
+<h3>END INIT INFO</h3>
+
+<p>PATH="/sbin"
+TCP_PORTS="80 443"
+function stop {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -P INPUT ACCEPT
+    $IPTABLES -P FORWARD ACCEPT
+    $IPTABLES -P OUTPUT ACCEPT
+    $IPTABLES -F
+    $IPTABLES -X
+done
+if [ -e /etc/init.d/fail2ban ]; then
+    /etc/init.d/fail2ban restart
+fi
+</code></pre>
+
+<p>}
+function start {</p>
+
+<pre><code>for IPTABLES in iptables ip6tables;do
+    $IPTABLES -F
+    $IPTABLES -P INPUT DROP
+    $IPTABLES -P FORWARD DROP
+    $IPTABLES -P OUTPUT DROP
+    $IPTABLES -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+for port in $TCP_PORTS;do
+    $IPTABLES -A INPUT -p tcp --dport $port -j ACCEPT
+done
+$IPTABLES -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+$IPTABLES -A INPUT -i lo -j ACCEPT
+$IPTABLES -A OUTPUT -o lo -j ACCEPT
+# ICMP (Ping)
+#$IPTABLES -A INPUT -p icmp -j ACCEPT
+done
+if [ -e /etc/init.d/fail2ban ];then
+    /etc/init.d/fail2ban restart
+fi
+</code></pre>
+
+<p>}
+function restart {</p>
+
+<pre><code>stop
+start
+</code></pre>
+
+<p>}
+case $1 in</p>
+
+<pre><code>start)
+start
+;;
+stop)
+stop
+;;
+restart)
+restart
+;;
+*)
+echo "usage: iptables {start|stop|restart}"
+exit 1
+;;
+</code></pre>
+
+<p>esac
+{% endcodeblock %}
+Bon firewalling ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Analyse d'une "arnaque" Facebook]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook/"/>
+    <updated>2011-03-07T19:16:09+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook</id>
+    <content type="html"><![CDATA[<p>J'utilise Facebook, avec parcimonie certes, mais
+je l'utilise quand même. On sait maintenant qu'il faut être très vigilant sur
+les réseaux sociaux, et cet article en est une preuve supplémentaire.</p>
+
+<!-- more -->
+
+
+<p>Il est
+question ici d'une page web que vous avez certainement croisé sur votre mur.
+Je met le lien pour information ( <a href="http://likeloverr.com/fun.php?id=12">ici</a>), mais NE L'OUVREZ PAS avant
+d'avoir lu ce qui suit. Une vidéo d'un petit chat, qui peut résister...</p>
+
+<p><em>Edit
+du 8 mars : Il semble que la page ait été modifiée depuis la publication de
+cet article, le lien vous amène maintenant vers un site où il est clairement
+indiqué qu'il faut cliquer sur "J'aime" pour voir la vidéo.</em></p>
+
+<h2>Un anti-robots comme on en fait plus</h2>
+
+<p>Si vous êtes un peu au fait des technologies récentes, il est souvent question
+de s'affranchir des <a href="http://upload.wikimedia.org/wikipedia/commons/6/69/Captcha.jpg">captchas</a> illisibles permettant d'éviter un traitement
+automatisé. Alors quand un site me propose un jeu de logique en guise de
+vérification, j'approuve. Erreur ! Voici la page que vous obtenez quand vous
+tentez de visionner la video en question dans cet article :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/selection_002.png" alt="selection_002" /></p>
+
+<p>Malin pin pin, ni une ni deux, je clique !</p>
+
+<h2>Toi aussi tu aime le javascript ?</h2>
+
+<p>L'arnaque en question dans cet article se situe dans le code source des
+boutons colorés :</p>
+
+<p>{% codeblock lang:html %}</p>
+
+<iframe id=f1 class=iframe src="http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/pages/Chat-Trop-Mignon-Qui-a-Du-Mal-�-Se-Reveiller/115156425228492&layout=button_count&show_faces=false&width=450&action=like&colorscheme=light&height=21" scrolling="no" frameborder="0"style="border:none; overflow:hidden; width:450px; height:21px;"allowTransparency="true"></iframe>
+
+
+<script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
+
+
+<p>&lt;fb:like id=f2 class=iframe href="http://likeloverr.com/fun.php?id=12" layout="button_count" show_faces="false" width="450">&lt;/fb:like>
+{% endcodeblock %}
+Traduction en clair : "Tu clique et tu like !". Eh oui, le fait de cliquer sur
+ces deux boutons vous a :</p>
+
+<ul>
+<li>Rendu "fan" de la page associée à la vidéo</li>
+<li>Fait "Liker" le lien</li>
+</ul>
+
+
+<h2>Cache ta joie !</h2>
+
+<p>Sur le papier c'est déjà un fonctionnement que je juge ignoble, mais en
+pratique c'est encore pire : une des vidéos virales de ce site propose un
+contenu particulièrement osé et, disons-le, pornographique. Je ne donnerai pas
+le lien ici, mais je suis prêt à parier qu'au moins un de vos amis s'est fait
+piéger et s'est donc retrouvé avec ce lien et cette page pas très glorieuse
+dans son profil. <em>Qui a dit licenciement ? ...</em></p>
+
+<h2>Je me suis fait(e) avoir, et après ?</h2>
+
+<p>Il vous suffit de ne plus "Aimer" ni la page ni le lien, et de croiser les
+doigts pour que pas grand monde ait aperçu votre profil...</p>
+
+<p>Soyez donc vigilants ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Adaptation de "sed" en PowerShell (Windows)]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/03/02/sed-en-powershell-et-redirection/"/>
+    <updated>2011-03-02T12:00:44+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/03/02/sed-en-powershell-et-redirection</id>
+    <content type="html"><![CDATA[<p>PowerShell est un langage de script développé par
+Microsoft, le <code>#!/bin/bash</code> de Windows en quelque sorte. Ce langage propose de
+très nombreuses fonctionnalités, et après un petit temps d'adaptation, devient
+assez simple à utiliser. Mais parfois ce n'est pas aussi évident, comme par
+exemple avec la mise en place de l'équivalent d'un <code>[man]sed[/man]</code>.</p>
+
+<!-- more -->
+
+
+<h2>La solution</h2>
+
+<p>Une rapide recherche m'a amené sur <a href="http://blogs.msdn.com/b/zainnab/archive/2007/07/09/grep-and-sed-with-powershell.aspx">cet article</a> qui propose cette solution
+:</p>
+
+<pre><code>cat input.txt | %{$_ -replace "old", "new"} &gt; output.txt
+</code></pre>
+
+<p>Une petite explication s'impose :</p>
+
+<ul>
+<li><code>cat</code> est en PowerShell un alias de la commande <code>Get-Content</code></li>
+<li><code>$_</code> représente le contenu sortant du pipe</li>
+<li><code>&gt;</code> est une classique redirection de la sortie standard</li>
+<li>les <code>{ }</code> délimitent les commandes à effectuer sur la sortie du pipe</li>
+<li>le <code>%</code> signifie "itérer sur la sortie du pipe"</li>
+</ul>
+
+
+<p>En apparence cela fonctionne très bien...en apparence seulement...</p>
+
+<h2>La bonne solution</h2>
+
+<p>J'ai appliqué la solution précédente sur un fichier Xml servant à la
+configuration d'une Webapp dans Tomcat. Dès l'instant où je plaçait ce fichier
+dans l'arborescence, j’obtenais une magnifique erreur 500. Après quelques
+tests il s'est avéré que c'est la redirection, <code>&gt;</code>, qui pose problème d'une
+manière ou d'une autre et qui rend le fichier lisible, mais en fait non... Au
+final j'ai testé cette combinaison, qui fonctionne correctement :</p>
+
+<pre><code>Get-Content input.txt | %{$_ -replace "old", "new"} | Set-Content output.txt
+</code></pre>
+
+<p>L'utilisation de <code>Set-Content</code> donne donc un
+fichier tout à fait viable.</p>
+
+<p>Bon PoSh ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

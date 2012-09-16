@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rockstar | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/rockstar/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA["C'était (vraiment) mieux avant !"]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/06/27/cetait-vraiment-mieux-avant/"/>
+    <updated>2009-06-27T14:19:17+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/06/27/cetait-vraiment-mieux-avant</id>
+    <content type="html"><![CDATA[<p>Je vous parlait hier de GTA 2, et bien vous pouvez vous le procurer
+gratuitement (et légalement) auprès de son éditeur <a href="http://www.rockstargames.com/classics/">ici</a>. Vous trouverez
+également GTA premier du nom et Wild Metal, je n'ai joué à aucun des deux et
+ne peut donc pas vous en dire plus ! Bon jeu ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

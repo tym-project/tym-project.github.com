@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: pwgen; mots de passe | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/pwgen-mots-de-passe/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mettre en place un coffre à mots de passe sous Linux]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/05/10/mettre-en-place-un-coffre-a-mots-de-passe-sous-linux/"/>
+    <updated>2009-05-10T12:21:18+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/05/10/mettre-en-place-un-coffre-a-mots-de-passe-sous-linux</id>
+    <content type="html"><![CDATA[<p>Le coffre à mot de passe part d'un principe simple : un mot de passe pour les
+protéger tous (et dans les ténèbres les lier* :-) ). Vous allez donc avoir une
+"boite" qui va contenir tous vos mots de passe (ou du moins les plus complexes
+à retenir) et qui sera protégée par un mot de passe principal. Je suis tombé
+par hasard sur <code>[man]pwsafe[/man]</code> et c'est donc lui que je vais présenter.</p>
+
+<!-- more -->
+
+
+<p>Commençons par l'installer :</p>
+
+<pre><code>pacman -Sy pwsafe
+</code></pre>
+
+<p>Je vais vous détailler comment créer un coffre, ajouter un
+enregistrement et utiliser ce dernier. Pour créer une base de mot de passe,
+rien de plus simple :</p>
+
+<pre><code>$ pwsafe --createdb
+Enter passphrase for /home/tym/.pwsafe.dat:
+</code></pre>
+
+<p>Vous devez donc choisir un mot de passe
+fort car il va protéger tous les autres. Aidez vous de <code>[man]pwgen[/man]</code>
+éventuellement (plus de détails <a href="http://www.tym-project.fr/blog/2009/05/generer-des-mots-de-passe-sous-linux/">ici</a>). Ajoutons maintenant un mot de passe
+dans la base :</p>
+
+<pre><code>$ pwsafe --add serveur_web
+Enter passphrase for /home/tym/.pwsafe.dat:
+group []: Servers
+username: admin
+password [return for random]:
+password again:
+notes: Mon serveur web über cool
+</code></pre>
+
+<p>Vous
+devez donc donner un nom à l'entrée, elle peut faire partie d'un groupe et
+vous pouvez précisez des éléments via les notes. Voici à qui ressemble une
+base avec quelques enregistrements :</p>
+
+<pre><code>$ pwsafe --list -l
+Enter passphrase for /home/tym/.pwsafe.dat:
+Perso.laptop - tym &gt; Mon portable
+Servers.serveur_sql - root &gt; Mon autre serveur de BDD.
+Servers.serveur_web -admin &gt; Mon serveur web über cool !
+</code></pre>
+
+<p>Nous allons maintenant utiliser le
+mot de passe du serveur web :</p>
+
+<pre><code>$ pwsafe -p serveur_web
+Going to copy password to X selection Enter passphrase for /home/tym/.pwsafe.dat:
+You are ready to paste the password for Servers.serveur_web from PRIMARY and CLIPBOARD
+Press any key when done
+</code></pre>
+
+<p>Et voila, le mot de passe est dans le presse papier, il ne reste plus qu'a le
+coller dans le champ d'authentification ! Vous pouvez bien entendu faire tout
+un tas de choses, tout est dans <code>man pwsafe</code>. Bonne protection ;-)</p>
+
+<p><em>*«Trois anneaux pour les Rois Elfes sous le ciel, Sept pour les Seigneurs
+Nains dans leurs demeures de pierre Neuf pour les Hommes mortels destinés au
+trépas Un pour le Seigneur ténébreux sur son sombre trône Dans le pays de
+Mordor où s'étendent les ombres Un Anneau pour les gouverner tous, Un Anneau
+pour les trouver Un Anneau pour les amener tous et dans les ténèbres les lier
+Au Pays de Mordor où s'étendent les ombres» — J. R. R. Tolkien, traduit par
+Francis Ledoux, Poème des anneaux, En-tête du Seigneur des anneaux</em></p>
+]]></content>
+  </entry>
+  
+</feed>

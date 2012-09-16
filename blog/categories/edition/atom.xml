@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: edition | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/edition/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SED : les astuces à connaître]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/02/16/sed-les-astuces-a-connaitre/"/>
+    <updated>2011-02-16T12:00:37+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/02/16/sed-les-astuces-a-connaitre</id>
+    <content type="html"><![CDATA[<p><code>[man]Sed[/man]</code> pour ceux qui ne connaîtrait pas
+encore, est un éditeur de texte en ligne de commande. Concrètement il va
+éditer un fichier (ou l'entrée standard, via un pipe) et le modifier vers la
+sortie standard. Rien de moins complexe ! Enfin c'est seulement la définition,
+car l'outil en lui même peut rapidement devenir très très très riche...<br/>
+J'ai
+donc compilé dans cet article un ensemble d'astuces à connaître pour bien
+utiliser <code>sed</code>.</p>
+
+<!-- more -->
+
+
+<p>Je l'utilise essentiellement pour faire des remplacement :</p>
+
+<pre><code>tym@tym-laptop:~$ cat quote.txt
+Remember, a Jedi can feel the Force flowing through him.
+tym@tym-laptop:~$ sed 's/Jedi/---DUDE WITH A LAMP IN A SOCKET---/g' quote.txt
+Remember, a ---DUDE WITH A LAMP IN A SOCKET--- can feel the Force flowing through him.
+</code></pre>
+
+<p>Voila pour l'exemple, cherchez bien... il-y-a une vanne
+cachée dans ce texte. Oh et bien entendu <code>sed</code> utilise des expressions
+régulières !</p>
+
+<h2>Mise en mémoire</h2>
+
+<p>Pour réutiliser l'expression que vous voulez modifier vous avez deux
+solutions.Avec "<code>&amp;</code>" qui représente l'ensemble de la chaîne trouvée :</p>
+
+<pre><code>tym@tym-laptop:~$ sed 's/Jedi/&amp; (A DUDE WITH A LAMP IN A SOCKET)/g' quote.txt
+Remember, a Jedi (A DUDE WITH A LAMP IN A SOCKET) can feel the Force flowing through him.
+</code></pre>
+
+<p>Avec des parenthèses,
+puis <code>\n</code> pour rappeler l'expression :</p>
+
+<pre><code>tym@tym-laptop:~$ sed 's/\(Je\)\(di\)/\1u\2 (ou Vendredi)/g' quote.txt
+Remember, a Jeudi (ou Vendredi) can feel the Force flowing through him.
+</code></pre>
+
+<p>Notez
+l'utilisation de "\" pour protéger les parenthèses, sans quoi elles seraient
+considérées comme faisant partie de la chaîne à rechercher.</p>
+
+<h2>Trop de slash...</h2>
+
+<p>L'exemple précédent contient un sacré nombre de "/" et de "\", ne rendant pas
+la lisibilité de l'expression aisée ! Soyez rassuré, vous avez le choix des
+délimiteurs :</p>
+
+<ul>
+<li>"_" : <code>sed 's_\(Je\)\(di\)_\1u\2 (ou Vendredi)_g' quote.txt</code></li>
+<li>":" : <code>sed 's:\(Je\)\(di\):\1u\2 (ou Vendredi):g' quote.txt</code></li>
+<li>"|" : <code>sed 's|\(Je\)\(di\)|\1u\2 (ou Vendredi)|g' quote.txt</code></li>
+</ul>
+
+
+<h2>Une bonne fois pour toute !</h2>
+
+<p>Par défaut <code>sed</code> donne le résultat de la commande dans la sortie standard, il
+est donc assez simple de créer un nouveau fichier contenant les modifications
+:</p>
+
+<pre><code>tym@tym-laptop:~$ sed 's/Jedi/DUDE WITH A LAMP IN A SOCKET/g' quote.txt &gt; quote_funny.txt
+</code></pre>
+
+<p>Mais pour réécrire dans le même fichier il faut utiliser l'option <code>-i</code>
+("interactive"), une redirection du type <code>sed .... quote.txt &gt; quote.txt</code> ne
+donnerait qu'un fichier vide :</p>
+
+<pre><code>sed -i 's/Jedi/---DUDE WITH A LAMP IN A SOCKET---/g' quote.txt
+</code></pre>
+
+<p>Bon matching ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,531 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Installation de ss5 sur une Debian 5 - ツ Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="ss5 est un service de proxy SOCKS très
+performant, développé par une seule personne je tiens à le souligner !
+J&#8217;ai eu à l&#8217;installer sur &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TymProject.github.com/tymproject/2011/02/09/install-ss5-debian-et-script-init/">
+  <link href="/tymproject/favicon.png" rel="icon">
+  <link href="/tymproject/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/tymproject/javascripts/modernizr-2.0.js"></script>
+  <script src="/tymproject/javascripts/ender.js"></script>
+  <script src="/tymproject/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="ツ Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/tymproject/">ツ Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TymProject.github.com/tymproject" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/tymproject/">Blog</a></li>
+  <li><a href="/tymproject/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Installation De Ss5 Sur Une Debian 5</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-09T12:00:48+00:00" pubdate data-updated="true">Feb 9<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="http://ss5.sourceforge.net/">ss5</a> est un service de proxy SOCKS très
+performant, développé par <a href="http://ss5.sourceforge.net/author.htm">une seule personne</a> je tiens à le souligner !
+J&#8217;ai eu à l&#8217;installer sur une Debian 5, et j&#8217;ai donc réalisé un petit script
+pour automatiser tout cela.</p>
+
+<!-- more -->
+
+
+<h2>On installe&#8230;</h2>
+
+<p>N&#8217;oubliez pas de préciser le numéro de version complet dans la variable <code>VER</code>
+:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'><span class="nv">VER</span><span class="o">=</span><span class="s2">&quot;3.8.4-1&quot;</span>
+</span><span class='line'><span class="nv">DIR</span><span class="o">=</span><span class="s2">&quot;/tmp/ss5_install&quot;</span>
+</span><span class='line'>apt-get update
+</span><span class='line'>apt-get -y install build-essential libpam0g-dev libpam-devperm libldap2-dev libssl-dev
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> ! <span class="o">[</span> -d <span class="s2">&quot;$DIR&quot;</span> <span class="o">]</span>;<span class="k">then </span>mkdir <span class="nv">$DIR</span> <span class="k">fi</span>
+</span><span class='line'><span class="nb">cd</span> <span class="nv">$DIR</span> wget
+</span><span class='line'>http://downloads.sourceforge.net/project/ss5/ss5/<span class="nv">$VER</span>/ss5-<span class="nv">$VER</span>.tar.gz
+</span><span class='line'>
+</span><span class='line'>tar xzf ss5-<span class="nv">$VER</span>.tar.gz
+</span><span class='line'>
+</span><span class='line'><span class="nv">VER</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$VER</span> | cut -d <span class="s2">&quot;-&quot;</span> -f 1<span class="sb">`</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">cd </span>ss5-<span class="nv">$VER</span>
+</span><span class='line'>
+</span><span class='line'>./configure --with-defaultport<span class="o">=</span>80 <span class="o">&amp;&amp;</span> make clean <span class="o">&amp;&amp;</span> make <span class="o">&amp;&amp;</span> make install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Une particularité du <code>.tar.gz</code> de <code>ss5</code> c&#8217;est de ne pas intégrer le
+numéro de sous-version (&#8220;-2&#8221; par exemple) dans le nom du dossier, ce qui
+oblige à cette pirouette dans le script :</p>
+
+<pre><code>VER=`echo $VER | cut -d "-" -f 1`
+</code></pre>
+
+<h2>&#8230;et on démarre !</h2>
+
+<p>J&#8217;ai aussi créé un script pour <code>init.d</code> (assez basique), basé sur
+<code>/etc/init.d/skeleton</code>. Il intègre quelques options comme le port par défaut
+ou le lancement en mode daemon (<code>DAEMON_ARGS="-t -u root -b 0.0.0.0:80"</code>) :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#! /bin/sh</span>
+</span><span class='line'><span class="c">### BEGIN INIT INFO</span>
+</span><span class='line'><span class="c"># Provides:          ss5</span>
+</span><span class='line'><span class="c"># Required-Start:    $remote_fs</span>
+</span><span class='line'><span class="c"># Required-Stop:     $remote_fs</span>
+</span><span class='line'><span class="c"># Default-Start:     2 3 4 5</span>
+</span><span class='line'><span class="c"># Default-Stop:      0 1 6</span>
+</span><span class='line'><span class="c"># Short-Description: Initscript for ss5</span>
+</span><span class='line'><span class="c"># Description:</span>
+</span><span class='line'><span class="c">### END INIT INFO</span>
+</span><span class='line'><span class="c"># PATH should only include /usr/* if it runs after the mountnfs.sh script</span>
+</span><span class='line'><span class="nv">PATH</span><span class="o">=</span>/bin/:/usr/bin:/sbin:/usr/sbin
+</span><span class='line'><span class="nv">DESC</span><span class="o">=</span><span class="s2">&quot;ss5 proxy server&quot;</span>
+</span><span class='line'><span class="nv">NAME</span><span class="o">=</span>ss5
+</span><span class='line'><span class="nv">DAEMON</span><span class="o">=</span>/usr/sbin/<span class="nv">$NAME</span>
+</span><span class='line'><span class="nv">DAEMON_ARGS</span><span class="o">=</span><span class="s2">&quot;-t -u root -b 0.0.0.0:80&quot;</span>
+</span><span class='line'><span class="nv">PIDFILE</span><span class="o">=</span>/var/run/<span class="nv">$NAME</span>.pid
+</span><span class='line'><span class="nv">SCRIPTNAME</span><span class="o">=</span>/etc/init.d/<span class="nv">$NAME</span>
+</span><span class='line'><span class="c"># Exit if the package is not installed</span>
+</span><span class='line'><span class="o">[</span> -x <span class="s2">&quot;$DAEMON&quot;</span> <span class="o">]</span> <span class="o">||</span> <span class="nb">exit </span>0
+</span><span class='line'><span class="c"># Load the VERBOSE setting and other rcS variables</span>
+</span><span class='line'>. /lib/init/vars.sh
+</span><span class='line'><span class="c"># Define LSB log_* functions.</span>
+</span><span class='line'><span class="c"># Depend on lsb-base (&gt;= 3.0-6) to ensure that this file is present.</span>
+</span><span class='line'>. /lib/lsb/init-functions
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># Function that starts the daemon/service</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'>do_start<span class="o">()</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>    <span class="c"># Return</span>
+</span><span class='line'>    <span class="c">#   0 if daemon has been started</span>
+</span><span class='line'>    <span class="c">#   1 if daemon was already running</span>
+</span><span class='line'>    <span class="c">#   2 if daemon could not be started</span>
+</span><span class='line'>    start-stop-daemon --start --quiet --pidfile <span class="nv">$PIDFILE</span> --exec <span class="nv">$DAEMON</span> --test &gt; /dev/null <span class="se">\</span>
+</span><span class='line'>        <span class="o">||</span> <span class="k">return </span>1
+</span><span class='line'>    start-stop-daemon --start --quiet --pidfile <span class="nv">$PIDFILE</span> --exec <span class="nv">$DAEMON</span> -- <span class="se">\</span>
+</span><span class='line'>        <span class="nv">$DAEMON_ARGS</span> <span class="se">\</span>
+</span><span class='line'>        <span class="o">||</span> <span class="k">return </span>2
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># Function that stops the daemon/service</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'>do_stop<span class="o">()</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>    <span class="c"># Return</span>
+</span><span class='line'>    <span class="c">#   0 if daemon has been stopped</span>
+</span><span class='line'>    <span class="c">#   1 if daemon was already stopped</span>
+</span><span class='line'>    <span class="c">#   2 if daemon could not be stopped</span>
+</span><span class='line'>    <span class="c">#   other if a failure occurred</span>
+</span><span class='line'>    start-stop-daemon --stop --quiet --retry<span class="o">=</span>TERM/30/KILL/5 --pidfile <span class="nv">$PIDFILE</span> --name <span class="nv">$NAME</span>
+</span><span class='line'>    <span class="nv">RETVAL</span><span class="o">=</span><span class="s2">&quot;$?&quot;</span>
+</span><span class='line'>    <span class="o">[</span> <span class="s2">&quot;$RETVAL&quot;</span> <span class="o">=</span> 2 <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="k">return </span>2
+</span><span class='line'>    <span class="c"># Wait for children to finish too if this is a daemon that forks</span>
+</span><span class='line'>    <span class="c"># and if the daemon is only ever run from this initscript.</span>
+</span><span class='line'>    <span class="c"># If the above conditions are not satisfied then add some other code</span>
+</span><span class='line'>    <span class="c"># that waits for the process to drop all resources that could be</span>
+</span><span class='line'>    <span class="c"># needed by services started subsequently.  A last resort is to</span>
+</span><span class='line'>    <span class="c"># sleep for some time.</span>
+</span><span class='line'>    start-stop-daemon --stop --quiet --oknodo --retry<span class="o">=</span>0/30/KILL/5 --exec <span class="nv">$DAEMON</span>
+</span><span class='line'>    <span class="o">[</span> <span class="s2">&quot;$?&quot;</span> <span class="o">=</span> 2 <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="k">return </span>2
+</span><span class='line'>    <span class="c"># Many daemons don&#39;t delete their pidfiles when they exit.</span>
+</span><span class='line'>    rm -f <span class="nv">$PIDFILE</span>
+</span><span class='line'>    <span class="k">return</span> <span class="s2">&quot;$RETVAL&quot;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="k">case</span> <span class="s2">&quot;$1&quot;</span> in
+</span><span class='line'>  start<span class="o">)</span>
+</span><span class='line'>    <span class="o">[</span> <span class="s2">&quot;$VERBOSE&quot;</span> !<span class="o">=</span> no <span class="o">]</span> <span class="o">&amp;&amp;</span> log_daemon_msg <span class="s2">&quot;Starting $DESC&quot;</span> <span class="s2">&quot;$NAME&quot;</span>
+</span><span class='line'>    do_start
+</span><span class='line'>    <span class="k">case</span> <span class="s2">&quot;$?&quot;</span> in
+</span><span class='line'>        0|1<span class="o">)</span> <span class="o">[</span> <span class="s2">&quot;$VERBOSE&quot;</span> !<span class="o">=</span> no <span class="o">]</span> <span class="o">&amp;&amp;</span> log_end_msg 0 ;;
+</span><span class='line'>        2<span class="o">)</span> <span class="o">[</span> <span class="s2">&quot;$VERBOSE&quot;</span> !<span class="o">=</span> no <span class="o">]</span> <span class="o">&amp;&amp;</span> log_end_msg 1 ;;
+</span><span class='line'>    <span class="k">esac</span>
+</span><span class='line'>    ;;
+</span><span class='line'>  stop<span class="o">)</span>
+</span><span class='line'>    <span class="o">[</span> <span class="s2">&quot;$VERBOSE&quot;</span> !<span class="o">=</span> no <span class="o">]</span> <span class="o">&amp;&amp;</span> log_daemon_msg <span class="s2">&quot;Stopping $DESC&quot;</span> <span class="s2">&quot;$NAME&quot;</span>
+</span><span class='line'>    do_stop
+</span><span class='line'>    <span class="k">case</span> <span class="s2">&quot;$?&quot;</span> in
+</span><span class='line'>        0|1<span class="o">)</span> <span class="o">[</span> <span class="s2">&quot;$VERBOSE&quot;</span> !<span class="o">=</span> no <span class="o">]</span> <span class="o">&amp;&amp;</span> log_end_msg 0 ;;
+</span><span class='line'>        2<span class="o">)</span> <span class="o">[</span> <span class="s2">&quot;$VERBOSE&quot;</span> !<span class="o">=</span> no <span class="o">]</span> <span class="o">&amp;&amp;</span> log_end_msg 1 ;;
+</span><span class='line'>    <span class="k">esac</span>
+</span><span class='line'>    ;;
+</span><span class='line'>  restart|force-reload<span class="o">)</span>
+</span><span class='line'>    log_daemon_msg <span class="s2">&quot;Restarting $DESC&quot;</span> <span class="s2">&quot;$NAME&quot;</span>
+</span><span class='line'>    do_stop
+</span><span class='line'>    <span class="k">case</span> <span class="s2">&quot;$?&quot;</span> in
+</span><span class='line'>      0|1<span class="o">)</span>
+</span><span class='line'>        do_start
+</span><span class='line'>        <span class="k">case</span> <span class="s2">&quot;$?&quot;</span> in
+</span><span class='line'>            0<span class="o">)</span> log_end_msg 0 ;;
+</span><span class='line'>            1<span class="o">)</span> log_end_msg 1 ;; <span class="c"># Old process is still running</span>
+</span><span class='line'>            *<span class="o">)</span> log_end_msg 1 ;; <span class="c"># Failed to start</span>
+</span><span class='line'>        <span class="k">esac</span>
+</span><span class='line'>        ;;
+</span><span class='line'>      *<span class="o">)</span>
+</span><span class='line'>        <span class="c"># Failed to stop</span>
+</span><span class='line'>        log_end_msg 1
+</span><span class='line'>        ;;
+</span><span class='line'>    <span class="k">esac</span>
+</span><span class='line'>    ;;
+</span><span class='line'>  *<span class="o">)</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="s2">&quot;Usage: $SCRIPTNAME {start|stop|restart|force-reload}&quot;</span> &gt;&amp;2
+</span><span class='line'>    <span class="nb">exit </span>3
+</span><span class='line'>    ;;
+</span><span class='line'><span class="k">esac</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Bonne installation ;-)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">tym</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-09T12:00:48+00:00" pubdate data-updated="true">Feb 9<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/tymproject/blog/categories/bash/'>Bash</a>, <a class='category' href='/tymproject/blog/categories/linux/'>Linux</a>, <a class='category' href='/tymproject/blog/categories/os/'>OS</a>, <a class='category' href='/tymproject/blog/categories/programmation-scripting/'>Programmation - Scripting</a>, <a class='category' href='/tymproject/blog/categories/debian/'>debian</a>, <a class='category' href='/tymproject/blog/categories/init-d/'>init.d</a>, <a class='category' href='/tymproject/blog/categories/socks/'>socks</a>, <a class='category' href='/tymproject/blog/categories/ss5/'>ss5</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://TymProject.github.com/tymproject/2011/02/09/install-ss5-debian-et-script-init/" data-via="" data-counturl="http://TymProject.github.com/tymproject/2011/02/09/install-ss5-debian-et-script-init/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tymproject/2011/02/02/gmail-pop-plus-rapide/" title="Previous Post: Gmail : raccourcir le délai de consultation des comptes externes en POP ">&laquo; Gmail : raccourcir le délai de consultation des comptes externes en POP </a>
+      
+      
+        <a class="basic-alignment right" href="/tymproject/2011/02/16/sed-les-astuces-a-connaitre/" title="Next Post: SED : les astuces à connaître">SED : les astuces à connaître &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/02/14/ameliorer-son-debit-internet/">Naviguer plus vite sur internet, améliorer son débit ? C'est possible !</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TymProject.github.com/tymproject/2011/02/09/install-ss5-debian-et-script-init/';
+        var disqus_url = 'http://TymProject.github.com/tymproject/2011/02/09/install-ss5-debian-et-script-init/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

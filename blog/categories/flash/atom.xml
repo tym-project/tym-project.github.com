@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: flash | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/flash/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[La musique adoucit les moeurs...]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/01/30/la-musique-adoucit-les-moeurs/"/>
+    <updated>2010-01-30T19:40:24+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/01/30/la-musique-adoucit-les-moeurs</id>
+    <content type="html"><![CDATA[<p>Je suis tombé tout à fait par hasard
+sur une très jolie application en flash. Elle ne sert à rien, elle ne code pas
+à votre place ni ne classe vos fichiers...par contre elle fait de la jolie
+musique ! Je peux passer des heures à faire des mélodie avec <a href="http://lab.andre-michelle.com/tonematrix">Tone Matrix</a>
+!</p>
+
+<p>Bonne composition ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Firefox : vérifier la validité des ses plugins]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/10/06/firefox-verifier-la-validite-des-ses-plugins/"/>
+    <updated>2009-10-06T08:53:33+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/10/06/firefox-verifier-la-validite-des-ses-plugins</id>
+    <content type="html"><![CDATA[<p>Flash, Java...tous ces plugins (et non extensions) peuvent parfois présenter
+des <a href="http://www.zdnet.fr/actualites/internet/0,39020774,39705979,00.htm">failles de sécurité</a>. Le site <a href="https://www-trunk.stage.mozilla.com/en-US/plugincheck/">Plug-In-Check</a> vous permet de
+vérifier, et éventuellement mettre à jour les fautifs ! Cela fonctionne
+uniquement avec Firefox bien entendu :) Pour ma part j'ai (un peu) de boulot :</p>
+
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-4/plugincheck.png"></p>
+
+<p>Bonne vérification ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Archlinux : pour ou contre ?]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/06/28/archlinux-pour-ou-contre/"/>
+    <updated>2009-06-28T14:21:17+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/06/28/archlinux-pour-ou-contre</id>
+    <content type="html"><![CDATA[<p>Je travaille sous Archlinux...et parfois j'ai envie de retourner sous Windows
+! <em>Pardonnez moi mon père car j'ai péché...</em></p>
+
+<p>Mais pourquoi ? Et bien voici les raisons principales :</p>
+
+<ul>
+<li>Le support de Silverlight 2 est inexistant (<a href="http://www.go-mono.com/moonlight-preview/">moonlight</a> est encore en développement)</li>
+<li>Le support de Shockwave est proche de 0 (j'en ai besoin pour une plateforme d'apprentissage)</li>
+<li>Le support de Flash est mauvais (<a href="http://www.microsoft.com/france/education/msitacademy/default.mspx">IT Academy</a> n'est pas compatible)</li>
+<li>VMWare me fait planter mon clavier</li>
+</ul>
+
+
+<p>Mais à part ces détails, je "kiffe" avec mon Linux ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

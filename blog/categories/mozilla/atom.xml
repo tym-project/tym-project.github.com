@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: mozilla | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/mozilla/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Firefox, enlever des extensions capricieuses]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/01/06/firefox-enlever-des-extensions-capricieuses/"/>
+    <updated>2010-01-06T19:36:11+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/01/06/firefox-enlever-des-extensions-capricieuses</id>
+    <content type="html"><![CDATA[<p>J'utilise le même
+profil Firefox depuis un certain temps (au moins un an), je suis aussi
+récemment passé sur la bêta de Firefox 3.6, ce qui a eu pour conséquences de
+mettre le bazar dans mes extensions.<br/>
+Concrètement je ne pouvait ni mettre à
+jour, ni désinstaller mes extensions. Ne voulant pas supprimer complètement
+mon profil, j'ai décidé de faire le ménage un peu plus en finesse...</p>
+
+<!-- more -->
+
+
+<p>Toutes
+les manipulations se font dans votre dossier de profil. Pour cette
+démonstration je vais partir du principe que c'est l'extension Weave que je
+veux désinstaller. Il vous faut supprimer le dossier de l'extension, pour le
+trouver vous pouvez regarder dans le fichier <code>extensions.ini</code>. Voici le
+contenu de mon fichier :</p>
+
+<pre><code>[ExtensionDirs]
+Extension0=D:\Users\Tym\Firefox\extensions\{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}
+Extension1=D:\Users\Tym\Firefox\extensions\bettergreader@ginatrapani.org
+Extension2=D:\Users\Tym\Firefox\extensions\{20a82645-c095-46ed-80e3-08825760534b}
+Extension3=D:\Users\Tym\Firefox\extensions\{340c2bbc-ce74-4362-90b5-7c26312808ef}
+Extension4=D:\Users\Tym\Firefox\extensions\foxmarks@kei.com
+Extension5=C:\Program Files\Mozilla Firefox 3.6 Beta4\extensions\{CAFEEFAC-0016-0000-0017-ABCDEFFEDCBA}
+Extension6=D:\Users\Tym\Firefox\extensions\{1280606b-2510-4fe0-97ef-9b5a22eafe41}
+[ThemeDirs]
+Extension0=C:\Program Files\Mozilla Firefox 3.6 Beta4\extensions\{972ce4c6-7e08-4474-a285-3208198ce6fd}
+</code></pre>
+
+<p>Comme vous pouvez
+le voir, les extensions ne sont pas forcément toutes nommées de manière
+explicite...il va donc falloir mener une petite enquête pour trouver le bon
+dossier. Pour cela je me rend dans le dossier de chaque extension, et je
+regarde le fichier <code>install.rfd</code>, je cherche alors le mot clé "weave". Après
+quelques essais infructueux j'ai trouvé le bon dossier, comme me l'indique
+<code>install.rfd</code> :</p>
+
+<pre><code>&lt;em:name&gt;Weave&lt;/em:name&gt;
+&lt;em:description&gt;Weave is the Mozilla Labs prototype for online services.&lt;/em:description&gt;
+&lt;em:creator&gt;Mozilla Labs Team&lt;/em:creator&gt;
+&lt;em:homepageURL&gt;http://labs.mozilla.com/projects/weave/&lt;/em:homepageURL&gt;
+</code></pre>
+
+<p>Il ne me reste donc qu'à supprimer ce dossier, et le tour est joué !</p>
+
+<p>Bonne suppression ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Thunderbird, le client mail qui me fait des surprises  !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/12/25/thunderbird-le-client-mail-qui-me-fait-des-surprises/"/>
+    <updated>2009-12-25T19:28:12+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/12/25/thunderbird-le-client-mail-qui-me-fait-des-surprises</id>
+    <content type="html"><![CDATA[<p>Je suis
+tombé tout à fait par hasard sur une fonctionnalité sympa de Thunderbird 3. En
+effet, quand je tape les mots clés <code>pièce jointe</code>, <code>joint</code>, <code>attaché</code> et
+autres, le logiciel me propose d'ajouter un pièce jointe au message ! Tout
+simple, mais fallait y penser !</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-4/thunderbird-pj.png %}</p>
+
+<p>Bonne découverte ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

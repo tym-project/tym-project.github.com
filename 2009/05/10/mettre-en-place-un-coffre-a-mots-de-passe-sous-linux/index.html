@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mettre en place un coffre à mots de passe sous Linux - ツ Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="Le coffre à mot de passe part d&#8217;un principe simple : un mot de passe pour les
+protéger tous (et dans les ténèbres les lier* :-) ). Vous allez &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TymProject.github.com/tymproject/2009/05/10/mettre-en-place-un-coffre-a-mots-de-passe-sous-linux/">
+  <link href="/tymproject/favicon.png" rel="icon">
+  <link href="/tymproject/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/tymproject/javascripts/modernizr-2.0.js"></script>
+  <script src="/tymproject/javascripts/ender.js"></script>
+  <script src="/tymproject/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="ツ Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/tymproject/">ツ Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TymProject.github.com/tymproject" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/tymproject/">Blog</a></li>
+  <li><a href="/tymproject/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Mettre en Place Un Coffre à Mots De Passe Sous Linux</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-10T12:21:18+00:00" pubdate data-updated="true">May 10<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Le coffre à mot de passe part d&#8217;un principe simple : un mot de passe pour les
+protéger tous (et dans les ténèbres les lier* :-) ). Vous allez donc avoir une
+&#8220;boite&#8221; qui va contenir tous vos mots de passe (ou du moins les plus complexes
+à retenir) et qui sera protégée par un mot de passe principal. Je suis tombé
+par hasard sur <code>[man]pwsafe[/man]</code> et c&#8217;est donc lui que je vais présenter.</p>
+
+<!-- more -->
+
+
+<p>Commençons par l&#8217;installer :</p>
+
+<pre><code>pacman -Sy pwsafe
+</code></pre>
+
+<p>Je vais vous détailler comment créer un coffre, ajouter un
+enregistrement et utiliser ce dernier. Pour créer une base de mot de passe,
+rien de plus simple :</p>
+
+<pre><code>$ pwsafe --createdb
+Enter passphrase for /home/tym/.pwsafe.dat:
+</code></pre>
+
+<p>Vous devez donc choisir un mot de passe
+fort car il va protéger tous les autres. Aidez vous de <code>[man]pwgen[/man]</code>
+éventuellement (plus de détails <a href="http://www.tym-project.fr/blog/2009/05/generer-des-mots-de-passe-sous-linux/">ici</a>). Ajoutons maintenant un mot de passe
+dans la base :</p>
+
+<pre><code>$ pwsafe --add serveur_web
+Enter passphrase for /home/tym/.pwsafe.dat:
+group []: Servers
+username: admin
+password [return for random]:
+password again:
+notes: Mon serveur web über cool
+</code></pre>
+
+<p>Vous
+devez donc donner un nom à l&#8217;entrée, elle peut faire partie d&#8217;un groupe et
+vous pouvez précisez des éléments via les notes. Voici à qui ressemble une
+base avec quelques enregistrements :</p>
+
+<pre><code>$ pwsafe --list -l
+Enter passphrase for /home/tym/.pwsafe.dat:
+Perso.laptop - tym &gt; Mon portable
+Servers.serveur_sql - root &gt; Mon autre serveur de BDD.
+Servers.serveur_web -admin &gt; Mon serveur web über cool !
+</code></pre>
+
+<p>Nous allons maintenant utiliser le
+mot de passe du serveur web :</p>
+
+<pre><code>$ pwsafe -p serveur_web
+Going to copy password to X selection Enter passphrase for /home/tym/.pwsafe.dat:
+You are ready to paste the password for Servers.serveur_web from PRIMARY and CLIPBOARD
+Press any key when done
+</code></pre>
+
+<p>Et voila, le mot de passe est dans le presse papier, il ne reste plus qu&#8217;a le
+coller dans le champ d&#8217;authentification ! Vous pouvez bien entendu faire tout
+un tas de choses, tout est dans <code>man pwsafe</code>. Bonne protection ;-)</p>
+
+<p><em>*«Trois anneaux pour les Rois Elfes sous le ciel, Sept pour les Seigneurs
+Nains dans leurs demeures de pierre Neuf pour les Hommes mortels destinés au
+trépas Un pour le Seigneur ténébreux sur son sombre trône Dans le pays de
+Mordor où s&#8217;étendent les ombres Un Anneau pour les gouverner tous, Un Anneau
+pour les trouver Un Anneau pour les amener tous et dans les ténèbres les lier
+Au Pays de Mordor où s&#8217;étendent les ombres» — J. R. R. Tolkien, traduit par
+Francis Ledoux, Poème des anneaux, En-tête du Seigneur des anneaux</em></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">tym</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-10T12:21:18+00:00" pubdate data-updated="true">May 10<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/tymproject/blog/categories/linux/'>Linux</a>, <a class='category' href='/tymproject/blog/categories/logiciels/'>Logiciels</a>, <a class='category' href='/tymproject/blog/categories/os/'>OS</a>, <a class='category' href='/tymproject/blog/categories/sécurité/'>Sécurité</a>, <a class='category' href='/tymproject/blog/categories/coffre-fort/'>coffre fort</a>, <a class='category' href='/tymproject/blog/categories/pwgen-mots-de-passe/'>pwgen; mots de passe</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://TymProject.github.com/tymproject/2009/05/10/mettre-en-place-un-coffre-a-mots-de-passe-sous-linux/" data-via="" data-counturl="http://TymProject.github.com/tymproject/2009/05/10/mettre-en-place-un-coffre-a-mots-de-passe-sous-linux/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tymproject/2009/05/09/generer-des-mots-de-passe-sous-linux/" title="Previous Post: Générer des mots de passe sous Linux">&laquo; Générer des mots de passe sous Linux</a>
+      
+      
+        <a class="basic-alignment right" href="/tymproject/2009/05/17/un-twitter-a-la-sauce-gpl/" title="Next Post: Un twitter à la sauce GPL">Un twitter à la sauce GPL &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/02/14/ameliorer-son-debit-internet/">Naviguer plus vite sur internet, améliorer son débit ? C'est possible !</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TymProject.github.com/tymproject/2009/05/10/mettre-en-place-un-coffre-a-mots-de-passe-sous-linux/';
+        var disqus_url = 'http://TymProject.github.com/tymproject/2009/05/10/mettre-en-place-un-coffre-a-mots-de-passe-sous-linux/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

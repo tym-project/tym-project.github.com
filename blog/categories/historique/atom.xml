@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: historique | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/historique/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[L'histoire d'internet, une très bonne vidéo]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/05/01/lhistoire-dinternet-une-tres-bonne-video/"/>
+    <updated>2010-05-01T01:25:33+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/05/01/lhistoire-dinternet-une-tres-bonne-video</id>
+    <content type="html"><![CDATA[<p>Je m'efface devant cette superbe et très instructive explication à propos de
+la création d'internet (<em>en anglais, pensez à activer les sous-titres si
+besoin !</em>) :</p>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/9hIQjrMHTv4" frameborder="0" allowfullscreen></iframe>
+
+
+<p>Eh oui, cocorico, y'à de la France à l'origine d'internet ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

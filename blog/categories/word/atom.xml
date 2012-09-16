@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Word | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/word/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Microsoft Office Word : Changer la structure d'un sommaire automatique]]></title>
+    <link href="http://TymProject.github.com/tymproject/2011/01/19/microsoft-office-word-sommaire-personnalise/"/>
+    <updated>2011-01-19T12:00:19+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2011/01/19/microsoft-office-word-sommaire-personnalise</id>
+    <content type="html"><![CDATA[<p>Un article un peu en dehors des sujets habituels,
+mais après tout c'est mon blog, non ? :) Si vous avez un minimum d'expérience
+avec Word vous utilisez certainement les styles et le sommaire automatique. Si
+ce n'est pas le cas, alors au travail, ce sont des fonctionnalités
+primordiales ! Toutefois je rencontre souvent le même problème : comment
+changer la structure de mon sommaire une fois créé, c'est à dire afficher le
+style "Titre" par exemple ?</p>
+
+<!-- more -->
+
+
+<h2>Avec style !</h2>
+
+<p>Pour l'exemple je travaille sur le document suivant :</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_017.png %}</p>
+
+<p>Je veux ici ajouter les styles "Titre" et
+"Sous-titre" à la structure du sommaire. Pour cela il faut faire un clic-droit
+sur le sommaire et choisir "Modification du champ..." :</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_012.png %}</p>
+
+<p>Dans la liste des champs il faut
+alors choisir "Sommaire", sachant que vous pouvez filtrer avec la liste
+déroulante au dessus, et cliquer sur le bouton "Table des matières" :</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_013.png %}</p>
+
+<h2>Customisation</h2>
+
+<p>Vous pouvez alors personnaliser la structure de la table des matières :</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_014.png %}
+{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_015.png %}</p>
+
+<p>Et voici le résultat :</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_016.png %}</p>
+
+<p>Hop hop, à votre souris ! ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

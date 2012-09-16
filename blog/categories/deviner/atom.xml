@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: deviner | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/deviner/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:50:38+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Choisir un mot de passe sécurisé et facile à retenir]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/09/08/methode-de-choix-de-mot-de-passe-efficace/"/>
+    <updated>2010-09-08T18:44:28+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/09/08/methode-de-choix-de-mot-de-passe-efficace</id>
+    <content type="html"><![CDATA[<p>Un mot de passe c'est important. A vrai dire
+c'est souvent votre premier rempart contre une attaque sur vos données
+personnelles. Mais avoir une bonne "hygiène de mots de passe" est souvent un
+casse tête virant à la paranoïa généralisée. Alors plutôt que de brûler tous
+vos biens et partir vivre dans les bois, je vais vous proposer ici quelques
+astuces pour vous sécuriser la vie !</p>
+
+<!-- more -->
+
+
+<h2>La définition d'un bon mot de passe</h2>
+
+<p>D'après <a href="http://edition.cnn.com/2010/TECH/innovation/08/20/super.passwords/index.html#fbid=OEN683j9hW8&amp;wom=false">une récente étude</a>, votre mot de passe doit avoir une longueur
+d'au moins <strong>12 caractères</strong>. Il doit contenir des <strong>lettres majuscules et
+minuscules</strong>, des <strong>chiffres</strong> et des <strong>caractères spéciaux</strong>. Évitez au
+maximum d'y intégrer des <strong>éléments propres à vous faciles à deviner</strong> : date
+de naissance, prénom des enfants ou du chien (ça vaut aussi pour les chats !),
+ville d'origine...à vrai dire tout ce qu'un inconnu pourrai apprendre sur vous
+avec un minimum de recherches (<em>vous avez dit Facebook ?</em>). N'utilisez <strong>pas
+non-plus de variation de votre identifiant</strong> : la combinaison "root/toor" est
+la première testée par le célèbre <a href="http://www.openwall.com/john/">John The Ripper</a>. L'utilisation du
+langage "l33t", c'est à dire de plus ou moins remplacer des lettres par des
+chiffres est aussi à proscrire. Inutile de penser que dessiner un motif au
+clavier est sécurisé : "aqwzsx"...grillé d'avance ! Au final beaucoup
+d'interdits, et un mot de passe que vous ne retiendrez certainement pas.</p>
+
+<h2>De la raison et de la complexité</h2>
+
+<p>Un mot de passe trop long et trop complexe ? Le post-it/clavier à coup sûr.
+Perdu. Trouver un mot de passe équilibré est tout un art, c'est aussi une
+affaire d'habitude. La clé réside dans le fait de pouvoir apprendre, sans pour
+autant compromettre. Pour cela j'ai une méthode toute simple : je change de
+mot de passe le vendredi soir. Ainsi j'ai <strong>tout le Week-end pour le
+retenir</strong>, en l'ayant si besoin noté sur un coin de feuille (dans mon
+appartement, pas au travail bien entendu). Attention, pas écrit dans un
+fichier texte, ni dans mon portefeuille mais bel et bien sur un bout de papier
+sur mon bureau personnel. Ce mémo restera là maximum une semaine avant de
+finir brulé, haché, décomposé...bref : détruit pour de bon.</p>
+
+<h2>Une affaire de "mnémotechnie"</h2>
+
+<p>Il est souvent complexe de trouver un bon mot de passe par soi-même : nous
+avons naturellement tendance à utiliser la même racine, le même
+principe...adieu hasard ! Heureusement de <a href="http://www.google.fr/#hl=fr&amp;source=hp&amp;q=password+generator+online&amp;aq=1&amp;aqi=g10&amp;aql=&amp;oq=password+ge&amp;gs_rfai=&amp;fp=c7f2b8020399a72c">très nombreux outils</a> existent
+pour faire le travail à notre place.</p>
+
+<h3>Pwgen dans ta face !</h3>
+
+<p>Avec les générateurs automatiques on retombe à nouveau sur un problème de
+mémorisation, sauf avec <code>pwgen</code>. C'est mon outil préféré car il génère des
+mots de passe "compréhensibles", qui ont une certaine "sonorité", un "rythme",
+bref : on peut les retenir plus facilement ! Il exite plusieurs
+implémentations de cet outil :</p>
+
+<ul>
+<li><a href="http://linux.die.net/man/1/pwgen">L'original</a>, la commande Linux</li>
+<li><a href="http://8-p.info/pwgen/">En javascript</a>, pratique mais sans caractères spéciaux</li>
+<li><a href="http://code.google.com/p/pwgen-php/">En Php</a>, à intégrer sur votre site web</li>
+<li><a href="http://pwgen-win.sourceforge.net/">En exécutable</a>, avec l'option "easytoread"</li>
+</ul>
+
+
+<h2>La théorie de l'évolution</h2>
+
+<p>Idéalement il faudrait changer de mot de passe le plus souvent possible. En
+réalité cela n'est pas aussi simple...reprendre à zéro un processus qui vous a
+déja pris une semaine ? Non, la vie est trop courte ! J'utilise la méthode
+dite du "double effet Kiss Cool" : le mot de passe en question est déjà assez
+complexe, mais je le connais bien.<br/>
+Régulièrement, mais pas trop souvent, je
+lui ajoute un ou plusieurs éléments :</p>
+
+<ol>
+<li>A#6!v</li>
+<li>A#6!vW</li>
+<li>A_f#6!vW</li>
+<li>A_f#6!v2W</li>
+<li>...</li>
+</ol>
+
+
+<p><em>Est-ce utile de préciser que ce n'est qu'un exemple ? Si vous avez bien
+suivi, ce mot de passe est d'ailleurs trop court.</em> Au final un mot de passe de
+plus en plus long, de plus en plus complexe et toujours aussi facile à retenir
+pour moi !</p>
+
+<h2>Conclusion</h2>
+
+<p>Trouver un mot de passe dits "forts" est une question de temps, d'habitude et
+de gymnastique de l'esprit. Et si vous avez une doute, vous pourrez toujours
+tester sa fiabilité avec par exemple : <a href="http://howsecureismypassword.net/">How Secure Is My Password?</a>.</p>
+
+<p>Bonne réflexion ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

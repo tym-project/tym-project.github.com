@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ssh | ツ Tym-Project]]></title>
+  <link href="http://TymProject.github.com/tymproject/blog/categories/ssh/atom.xml" rel="self"/>
+  <link href="http://TymProject.github.com/tymproject/"/>
+  <updated>2012-09-16T15:54:08+00:00</updated>
+  <id>http://TymProject.github.com/tymproject/</id>
+  <author>
+    <name><![CDATA[Tym]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mettre en place un tunnel-proxy SSH autonome]]></title>
+    <link href="http://TymProject.github.com/tymproject/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan/"/>
+    <updated>2010-03-19T13:00:43+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan</id>
+    <content type="html"><![CDATA[<p>Dans <a href="http://www.tym-project.fr/blog/2009/04/installer-un-serveur-ssh-destine-au-tunneling/">cet article</a> je
+vous expliquais comment mettre en place un serveur servant à faire du
+tunneling ssh. Mais quid de la partie client me direz vous ? Et bien c'est ce
+dont il est question ici...</p>
+
+<!-- more -->
+
+
+<p>Je vais donc vous présenter un script que
+j'utilise pour gérer un tunnel ssh permanent, en réutilisant les principes
+d'authentification sans mot de passe. La première chose à faire est donc de
+générer une paire de clés sur le client :</p>
+
+<pre><code>ssh-keygen -t rsa
+</code></pre>
+
+<p>Comme habituellement, on copie la clé publique par un
+quelconque moyen sur le serveur. Comme ici l'utilisateur <code>prox</code> ne possède pas
+de mot de passe, on va passer par un autre compte. Il est déconseillé
+d'utiliser le compte <code>root</code> directement, il faut donc passer par un user
+normal. Voici par exemple une suite de commandes à exécuter :</p>
+
+<pre><code>scp ~/.ssh/id_rsa.pub tym@server.chez-moi.com:~
+ssh -p 443 tym@server.chez-moi.com
+</code></pre>
+
+<p>Puis sur le serveur, où l'on
+passe en utilisateur <code>root</code> :</p>
+
+<pre><code>su - cat id_rsa.pub &gt;&gt; /home/tun1/.ssh/know_hosts &amp;&amp; rm id_rsa.pub
+</code></pre>
+
+<p>Le serveur est maintenant prêt à nous authentifier sans mot de passe, il est
+temps de se pencher sur le script client. La première fonction est celle qui
+crée le tunnel. En l'occurrence dynamiquement sur le port 8080 :</p>
+
+<p>{% codeblock lang:bash %}
+function ssh_to_server(){</p>
+
+<pre><code>/usr/bin/ssh -nN -D 8080 -p 443 tun1@server.chez-moi.com &amp;
+echo $! &gt; /var/run/ssh_prox_pid
+</code></pre>
+
+<p>}
+{% endcodeblock %}</p>
+
+<p>Ce qui est intéressant ici c'est l'utilisation des options <code>n</code> et <code>N</code>
+(<a href="http://www.delafond.org/traducmanfr/man/man1/ssh.1.html">source</a>) :</p>
+
+<pre><code>-N
+    N'exécute aucune commande distante. Utilisé pour les transferts de ports (seulement dans la version 2 du protocole). 
+-n
+    redirige l'entrée standard vers /dev/null (en fait, empêche la lecture depuis l'entrée standard). À utiliser lors d'une utilisation de ssh en arrière-plan. [...]
+</code></pre>
+
+<p>Donc l'utilisation de ces deux options en plus du "<code>&amp;</code>" (lancement dans un
+processus fils) permettent de lancer le tunnel en arrière plan.</p>
+
+<p>Afin que le script soit suffisamment robuste nous allons ajouter un peu plus
+de code. Tout d'abord une fonction pour vérifier la bonne connectivité à
+internet...inutile d'essayer d'ouvrir le tunnel pour rien :
+{% codeblock lang:bash %}
+function test_network(){</p>
+
+<pre><code>ping -c 2 clubic.com
+</code></pre>
+
+<p>}
+{% endcodeblock %}</p>
+
+<p>Ensuite une fonction pour tester si le tunnel est déjà lancé ou non :
+{% codeblock lang:bash %}
+function test_prox(){</p>
+
+<pre><code>ps aux | grep -v 'grep' | grep `cat /var/run/ssh_prox_pid`
+</code></pre>
+
+<p>}
+{% endcodeblock %}
+Ici
+"<code>[man]grep[/man] -v grep</code>" sert à ne pas afficher le processus du <code>grep</code>, et
+donc ne pas fausser le résultat (sinon il serait toujours positif, même sans
+tunnel en route).</p>
+
+<p>Et enfin le corps du script :
+{% codeblock lang:bash %}
+while :; do</p>
+
+<pre><code>#Si le tunnel n'est pas déjà lancé
+if ! test_prox ;then
+    #Alors on teste si le réseau est bien connecté
+    if test_network;then
+        #Si oui ou ouvre le tunnel ssh_to_server
+    else
+        #Si non le script "dors" 5 secondes
+        sleep 5
+    fi
+fi
+</code></pre>
+
+<p>done
+{% endcodeblock %}
+Il ne reste plus qu'a planifier le lancement du script au démarrage, en
+utilisant <code>[man]crontab[/man]</code> par exemple :</p>
+
+<pre><code># m h dom mon dow command @reboot /root/ssh_prox &amp;
+</code></pre>
+
+<p>Voici le code du script complet :
+{% codeblock lang:bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<p>function ssh_to_server(){</p>
+
+<pre><code>/usr/bin/ssh -nN -D 8080 -p 443 tun1@server.chez-moi.com &amp;
+echo $! &gt; /var/run/ssh_prox_pid
+</code></pre>
+
+<p>}</p>
+
+<p>function test_network(){</p>
+
+<pre><code>ping -c 2 clubic.com
+</code></pre>
+
+<p>}</p>
+
+<p>function test_prox(){</p>
+
+<pre><code>ps aux | grep -v "grep" | grep `cat /var/run/ssh_prox_pid`
+</code></pre>
+
+<p>}</p>
+
+<p>while :;do</p>
+
+<pre><code>if ! test_prox ;then
+    if test_network;then
+        ssh_to_server
+    else
+        sleep  5
+    fi
+fi
+</code></pre>
+
+<p>done
+{% endcodeblock %}
+Bon bash ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Socksifier une application sous Linux]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/27/socksifier-une-application-sous-linux-2/"/>
+    <updated>2009-04-27T21:17:05+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/27/socksifier-une-application-sous-linux-2</id>
+    <content type="html"><![CDATA[<p>Si vous avez suivi <a href="http://www.tym-project.fr/blog/2009/04/installer-un-serveur-ssh-destine-au-tunneling/">cet article</a>, vous savez faire des tunnels ssh sous
+Linux. Mais que faire quand vos applications n'intègrent pas la fonctionnalité
+de proxy Socks ?<br/>
+tsocks va bien vous simplifier la vie : c'est un
+"socksifieur", une application qui fait passer tout et n'importe quoi via un
+proxy Socks. Sous Archlinux, rien de plus simple ! Commencez par installer le
+package :</p>
+
+<pre><code># pacman -S tsocks
+</code></pre>
+
+<p>Le fichier de configuration se trouve dans <code>/etc/tsocks.conf</code> (il faut le créer
+la première fois) , éditez le et configurez le selon vos besoins. Voici mes
+paramètres pour un tunnel SSH sur le port 8080 :</p>
+
+<pre><code># Adresse du serveur
+server = 127.0.0.1
+# Port du serveur
+server_port = 8080
+# Type de sereur socks, ssh fait du 5
+server_type = 5
+</code></pre>
+
+<p>Ensuite pour
+socksifier une application (Pidgin dans l'exemple) :</p>
+
+<pre><code>tsocks pidgin
+</code></pre>
+
+<p>Bon socks ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Utiliser Putty avec l’authentification par clé rsa…“Server refused our key”]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/15/utiliser-putty-avec-le28099authentification-par-cle-rsae280a6e2809cserver-refused-our-keye2809d-2/"/>
+    <updated>2009-04-15T20:33:59+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/15/utiliser-putty-avec-le28099authentification-par-cle-rsae280a6e2809cserver-refused-our-keye2809d-2</id>
+    <content type="html"><![CDATA[<p>Il est un mystère avec <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">Putty</a> : à chaque fois que j’essaye de créer un
+couple clé publique/privée pour faire <a href="http://www.tym-project.fr/blog/2009/04/on-se-pingue-et-on-se-fait-un-tunnel-ssh-2/">ce genre de choses</a>, j’ai une
+magnifique erreur “Server refused our key”. J’ai tenté un tas de choses pour
+éviter ce souci, rien n’y fait !</p>
+
+<!-- more -->
+
+
+<p>Voici finalement la solution : Vous devez en
+fait générer le couple de clés sur une machine Linux, et pour se simplifier
+encore plus la vie, sur le serveur ssh.</p>
+
+<p>Loggez vous donc sous l’utilisateur
+cible (tym pour l’exemple) et générez un couple de clés. Pensez bien à leur
+donner un nom spécifique, vous risqueriez sinon d’écraser des clés existantes
+:</p>
+
+<pre><code>$ ssh-keygen -t rsa Generating public/private rsa keypair.
+    Enter file in which to save the key (/home/tym/.ssh/id_rsa): putty_key
+    Enter passphrase (empty for no passphrase):
+    Enter same passphrase again:
+    Your identification has been saved in putty_key.
+    Your public key has been saved in putty_key.pub.
+</code></pre>
+
+<p>Si il n’existe pas, créez le répertoire <code>~/.ssh</code> et donnez
+lui les droits adéquats :</p>
+
+<pre><code>mkdir ~/.ssh
+chmod 700 ~/.ssh
+</code></pre>
+
+<p>Ajoutez la clé publique dans la liste des clés
+autorisées :</p>
+
+<pre><code>cat putty_key.pub &gt; ~/.ssh/authorized_keys
+</code></pre>
+
+<p>et vérifiez les droits sur le fichier :</p>
+
+<pre><code>chmod 600 ~/.ssh/authorized_keys
+</code></pre>
+
+<p>A l’aide de WinSCP par exemple, copiez la clé privée sur votre machine Windows
+(une fois cela fait, supprimez bien les deux fichiers sur le serveur !).
+Utilisez alors <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuttyGen</a> pour convertir la clé privée au format
+PuttyPrivateKey (.ppk).</p>
+
+<p>Ouvrez le logiciel et cliquez sur “Import key” dans le menu “Conversions” :</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/putty1.png %}</p>
+
+<p>Choisissez alors la clé privée (putty_key dans l’exemple et validez), vous verrez alors votre
+clé à l’écran, vous pouvez cliquer sur “Save private key” pour la sauvegarder
+au format .ppk :</p>
+
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/putty2.png %}</p>
+
+<p>Votre clé est maintenant utilisable depuis Putty pour vous logger sur votre
+serveur Linux !</p>
+
+<p>Bonne conversion ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Putty Tray, THE utilitaire de SSH sous Windows !]]></title>
+    <link href="http://TymProject.github.com/tymproject/2009/04/09/putty-tray-the-utilitaire-de-ssh-sous-windows-2/"/>
+    <updated>2009-04-09T21:39:12+00:00</updated>
+    <id>http://TymProject.github.com/tymproject/2009/04/09/putty-tray-the-utilitaire-de-ssh-sous-windows-2</id>
+    <content type="html"><![CDATA[<p>J'utilise très souvent PuTTY pour faire des tunnels ssh (je vous en
+reparlerais bientôt) afin de sécuriser un minimum ma connexion.Inconvénient
+majeur : Putty ne se réduit pas en zone de notification, et j'ai donc toujours
+une fenêtre de terminal qui traîne dans ma barre des tâches. Pas vraiment
+pratique !</p>
+
+<p>J'ai trouvé un utilitaire très pratique : Putty Tray. C'est un clone de Putty
+(basé sur l'original et qui suit son développement, donc toujours à jour !)
+avec de nombreuses améliorations qui permettent surtout de réduire votre
+terminal en zone de notification. Putty Tray importe automatiquement vos
+configurations depuis Putty...un must !</p>
+
+<p><a href="http://haanstra.eu/putty/">C'est ici</a>, et c'est à télécharger d'urgence !</p>
+
+<p>Bon ssh ;-)</p>
+]]></content>
+  </entry>
+  
+</feed>

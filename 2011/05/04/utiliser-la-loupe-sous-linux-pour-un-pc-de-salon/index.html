@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Un Linux mediacenter avec une loupe - ツ Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="Un Linux avec Xbmc au milieu du salon c&#8217;est de plus
+en plus en commun, et même si je me trompe, c&#8217;est quand même super pratique !
+Mais c &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TymProject.github.com/tymproject/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/">
+  <link href="/tymproject/favicon.png" rel="icon">
+  <link href="/tymproject/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/tymproject/javascripts/modernizr-2.0.js"></script>
+  <script src="/tymproject/javascripts/ender.js"></script>
+  <script src="/tymproject/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="ツ Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/tymproject/">ツ Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TymProject.github.com/tymproject" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/tymproject/">Blog</a></li>
+  <li><a href="/tymproject/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Un Linux Mediacenter Avec Une Loupe</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-04T12:00:06+00:00" pubdate data-updated="true">May 4<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Un Linux avec Xbmc au milieu du salon c&#8217;est de plus
+en plus en commun, et même si je me trompe, c&#8217;est quand même super pratique !
+Mais c&#8217;est encore mieux quand cette machine peut aussi servir à consulter ses
+mails, utiliser Youtube&#8230; Problème : la résolution d&#8217;écran est trop elevée
+pour pouvoir lire à 2m de l&#8217;écran. C&#8217;est donc là qu&#8217;entre en jeu la loupe.</p>
+
+<!-- more -->
+
+
+<p>Gnome propose son outil, gnome-magnifier, tout un tas d&#8217;infos <a href="https://wiki.ubuntu.com/Accessibility/Reviews/gnome-mag">sur le Wiki
+d&#8217;Ubuntu</a> et <a href="http://man.cx/magnifier">et dans le man</a>.</p>
+
+<h2>De la problèmatique des doigts</h2>
+
+<p>Avoir une loupe c&#8217;est une chose, y accéder en est une autre. En effet, la
+problématique est toujours la même si il faut aller cliquer dans un petit menu
+ou sur une petit icône, sans parler de lancer une ligne de commande ! Allons-y
+gaiement avec un raccourci clavier donc&#8230; Avec Gnome (2.XX) rien de plus
+simple : <code>Système/Préférences/Raccourcis clavier</code>,la commande étant <code>magnifier
+-m -v</code>. L&#8217;option <code>-m</code> pour suivre les mouvements de la souris, <code>-v</code> pour une
+loupe verticale (sur la gauche de l&#8217;écran par défaut), eh lisez le <code>man</code> !</p>
+
+<h2>De la problématique du multi-doigt</h2>
+
+<p>Un raccourci pour ouvrir la loupe c&#8217;est pratique, mais comment faire pour
+fermer l&#8217;outil ? Un autre raccourci ? Non non non, un peu d&#8217;ingéniosité que
+diable ! C&#8217;est en fait un seul et même raccourci clavier qui va servir, en
+séquence, à :</p>
+
+<ol>
+<li>Lancer la loupe en &#8220;vertical&#8221;</li>
+<li>Basculer la loupe en &#8220;horizontal&#8221;, pratique pour la lecture de long textes</li>
+<li>Fermer complètement l&#8217;application</li>
+</ol>
+
+
+<p>En terme de script (Bash, pour faire vite et bien), cela donne ceci de la
+manière suivante :</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'><span class="k">function </span>killmag <span class="o">{</span>
+</span><span class='line'>    <span class="nb">kill</span> -9 <span class="se">\ </span><span class="sb">`</span>ps aux | grep -v grep | grep magnifier | tr -s <span class="s2">&quot; &quot;</span> | cut -d <span class="s2">&quot; &quot;</span> -f 2<span class="sb">`</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="k">case</span> <span class="se">\</span>
+</span><span class='line'><span class="s2">&quot;`ps aux | grep -v grep | grep magnifier | \ tr -s &quot;</span> <span class="s2">&quot; | cut -d &quot;</span> <span class="s2">&quot; -f 12`&quot;</span><span class="se">\</span>
+</span><span class='line'>in
+</span><span class='line'>    <span class="s2">&quot;-v&quot;</span><span class="o">)</span>
+</span><span class='line'>        killmag <span class="o">&amp;&amp;</span> magnifier -h -m
+</span><span class='line'>        ;;
+</span><span class='line'>    <span class="s2">&quot;-h&quot;</span><span class="o">)</span>
+</span><span class='line'>        killmag
+</span><span class='line'>        ;;
+</span><span class='line'>    <span class="s2">&quot;&quot;</span><span class="o">)</span>
+</span><span class='line'>        magnifier -v -m
+</span><span class='line'>        ;;
+</span><span class='line'><span class="k">esac</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>On retrouve donc une fonction pour killer la loupe, car il faut la relancer
+pour changer d&#8217;orientation. Petit détail syntaxique : l&#8217;utilisation de <code>\</code>
+pour faire des retours à la ligne au milieu d&#8217;une commande, pratique pour se
+la raconter un peu sur un article de blog (ou faciliter la lecture, c&#8217;est
+selon).</p>
+
+<h2>Algo à gogo</h2>
+
+<p>D&#8217;un point de vue algorithmique, et par ordre de déclenchement du script :</p>
+
+<ol>
+<li>Par défaut la loupe n&#8217;est pas lancée, donc le résultat du <code>grep</code> dans le <code>case</code> est vide : on lance la loupe en mode vertical</li>
+<li>Un second passage va renvoyer &#8221;<code>-v</code>&#8221; dans le <code>case</code> : on kill la loupe et on la relance en horizontal</li>
+<li>Le passage suivant renvoit &#8221;<code>-h</code>&#8221;, donc le <code>case</code> kill la loupe pour de bon</li>
+<li>Et ainsi fon fon fon&#8230;</li>
+</ol>
+
+
+<p>Bon zoom ;-)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">tym</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-04T12:00:06+00:00" pubdate data-updated="true">May 4<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/tymproject/blog/categories/bash/'>Bash</a>, <a class='category' href='/tymproject/blog/categories/linux/'>Linux</a>, <a class='category' href='/tymproject/blog/categories/os/'>OS</a>, <a class='category' href='/tymproject/blog/categories/programmation-scripting/'>Programmation - Scripting</a>, <a class='category' href='/tymproject/blog/categories/ergonomie/'>ergonomie</a>, <a class='category' href='/tymproject/blog/categories/loupe/'>loupe</a>, <a class='category' href='/tymproject/blog/categories/magnifier/'>magnifier</a>, <a class='category' href='/tymproject/blog/categories/raccourci/'>raccourci</a>, <a class='category' href='/tymproject/blog/categories/zoom/'>zoom</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://TymProject.github.com/tymproject/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/" data-via="" data-counturl="http://TymProject.github.com/tymproject/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tymproject/2011/05/02/merci-google-sans-toi-je-ne-suis-rien/" title="Previous Post: Merci Google, sans toi je ne suis rien !">&laquo; Merci Google, sans toi je ne suis rien !</a>
+      
+      
+        <a class="basic-alignment right" href="/tymproject/2011/07/15/test-kindle-long-et-retour-experience/" title="Next Post: Moi, mon Kindle et moi">Moi, mon Kindle et moi &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/02/14/ameliorer-son-debit-internet/">Naviguer plus vite sur internet, améliorer son débit ? C'est possible !</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TymProject.github.com/tymproject/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/';
+        var disqus_url = 'http://TymProject.github.com/tymproject/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

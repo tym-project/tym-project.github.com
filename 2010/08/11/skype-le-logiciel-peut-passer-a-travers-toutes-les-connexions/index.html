@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Skype : le logiciel passe-partout - ツ Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="&#8220;Vous ne passerez pas !&#8221;, voila ce que pourrai
+dire un pare-feu à ce bon vieux logiciel de VoIP&#8230;oui&#8230;mais pas forcément !
+J&# &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TymProject.github.com/tymproject/2010/08/11/skype-le-logiciel-peut-passer-a-travers-toutes-les-connexions/">
+  <link href="/tymproject/favicon.png" rel="icon">
+  <link href="/tymproject/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/tymproject/javascripts/modernizr-2.0.js"></script>
+  <script src="/tymproject/javascripts/ender.js"></script>
+  <script src="/tymproject/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="ツ Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/tymproject/">ツ Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TymProject.github.com/tymproject" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/tymproject/">Blog</a></li>
+  <li><a href="/tymproject/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Skype : Le Logiciel Passe-partout</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-11T15:42:00+00:00" pubdate data-updated="true">Aug 11<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>&#8220;Vous ne passerez pas !&#8221;, voila ce que pourrai
+dire un pare-feu à ce bon vieux logiciel de VoIP&#8230;oui&#8230;mais pas forcément !<br/>
+J&#8217;ai décidé de tester l&#8217;étendue de cette adaptabilité, pour cela j&#8217;ai utilisé
+Comodo Firewall pour plus ou moins limiter les accès sur ma machine. Comodo a
+aussi une fonctionnalité de monitoring, pratique pour voir les connexions
+ouvertes sur la machine (l&#8217;équivalent d&#8217;un netstat un peu plus &#8220;glamour&#8221;).</p>
+
+<!-- more -->
+
+
+<h2>Aucune connexion internet</h2>
+
+<p>Mais tout d&#8217;abord voici l&#8217;état des connexions lorsque Skype est lancé mais non
+connecté :<br/>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-3/not-connected.png" alt="not-connected" /></p>
+
+<p>J&#8217;ai été assez surpris de voir qu&#8217;il écoute sur
+différents ports, y compris <code>Tcp 80</code> et <code>Tcp 443</code>&#8230;voyons voir ce que peuvent
+nous dire les tests.</p>
+
+<h2>A travers une connexion &#8220;ouverte&#8221;</h2>
+
+<p>On note que Skype à une tendance à ouvrir des connexions sortantes sur un
+nombre important de ports :<br/>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-3/open.png"></p>
+
+<h2>Pour une connexion &#8220;Web&#8221; seulement</h2>
+
+<p>Si je bloque tous les ports sortants, sauf <code>Tcp 80</code> et <code>Tcp 443</code>, voyons ce
+qu&#8217;il se passe :<br/>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-3/80-443.png"></p>
+
+<p>Skype réussit à se connecter, et utilise bel et bien les deux seuls ports
+ouverts pour cela.</p>
+
+<h2>Tcp 80 seulement</h2>
+
+<p>Si je laisse seulement le port <code>Tcp 80</code>&#8230;Skype s&#8217;en sort encore :<br/>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-3/80.png"></p>
+
+<h2>Tcp 443 seulement</h2>
+
+<p>Il en est de même si seulement le port <code>Tcp 443</code> est ouvert, Skype se connecte
+correctement :<br/>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-3/443.png"></p>
+
+<h2>Et sans DNS ?</h2>
+
+<p>Je n&#8217;ai pas eu l&#8217;occasion de faire des captures de ce test, mais le résultat
+est le suivant : Skype est capable d&#8217;établir une connexion en l&#8217;absence de DNS
+valides.</p>
+
+<h2>Conclusion ?</h2>
+
+<p>Skype est donc capable de s&#8217;adapter à la pire des situations offrant un
+minimum de connectivité, je pense notamment aux accès &#8220;gratuit&#8221; via machin-
+box, hot-spots ou autres connexions d&#8217;hôtels.</p>
+
+<h2>Mais pourquoi écouter en local</h2>
+
+<p>Après quelques tests, je me suis rendu compte que si un de mes contacts est
+dans le même réseau lcoal que moi, Skype se connecte directement. Ainsi il ne
+fait pas un aller/retour via internet si ce n&#8217;est pas nécessaire. Malin Pin
+Pin ! Il me semble que Windows Live Messenger fait la même chose, à confirmer.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">tym</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-11T15:42:00+00:00" pubdate data-updated="true">Aug 11<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/tymproject/blog/categories/linux/'>Linux</a>, <a class='category' href='/tymproject/blog/categories/logiciels/'>Logiciels</a>, <a class='category' href='/tymproject/blog/categories/os/'>OS</a>, <a class='category' href='/tymproject/blog/categories/réseau/'>Réseau</a>, <a class='category' href='/tymproject/blog/categories/windows/'>Windows</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://TymProject.github.com/tymproject/2010/08/11/skype-le-logiciel-peut-passer-a-travers-toutes-les-connexions/" data-via="" data-counturl="http://TymProject.github.com/tymproject/2010/08/11/skype-le-logiciel-peut-passer-a-travers-toutes-les-connexions/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tymproject/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab/" title="Previous Post: Automatiser la création ou l'édition d'un crontab">&laquo; Automatiser la création ou l'édition d'un crontab</a>
+      
+      
+        <a class="basic-alignment right" href="/tymproject/2010/08/25/mail-avec-gmail-dans-un-script/" title="Next Post: Envoyer un e-mail via Gmail en ligne de commande">Envoyer un e-mail via Gmail en ligne de commande &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tymproject/2012/02/14/ameliorer-son-debit-internet/">Naviguer plus vite sur internet, améliorer son débit ? C'est possible !</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TymProject.github.com/tymproject/2010/08/11/skype-le-logiciel-peut-passer-a-travers-toutes-les-connexions/';
+        var disqus_url = 'http://TymProject.github.com/tymproject/2010/08/11/skype-le-logiciel-peut-passer-a-travers-toutes-les-connexions/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
