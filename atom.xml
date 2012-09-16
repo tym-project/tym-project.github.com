@@ -4,7 +4,7 @@
   <title><![CDATA[Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-09-16T16:59:04+00:00</updated>
+  <updated>2012-09-16T17:03:21+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -86,15 +86,17 @@ Après quelques recherches, flash, recherches, une solution : démarrer en recov
 
 <p>Je vous épargne les incontournables comme Numerama, PC Inpact ou encore Gizmodo pour me concentrer sur ceux plus confidentiels ou moins connus (à mon sens) en France.</p>
 
-<p>Voici donc une sélection de mes flux favoris <!-- more --> :<br/>
-* Sécurité</p>
-
-<pre><code>* [F-Secure](http://www.f-secure.com/weblog/)
-* [Krebs On Security](http://krebsonsecurity.com/) - Des articles passionants, qui explorent des sujets en détails
-* [Sucuri](http://blog.sucuri.net)
-</code></pre>
+<p>Voici donc une sélection de mes flux favoris <!-- more --> :</p>
 
 <ul>
+<li><p>Sécurité</p>
+
+<ul>
+<li><a href="http://www.f-secure.com/weblog/">F-Secure</a></li>
+<li><a href="http://krebsonsecurity.com/">Krebs On Security</a> - Des articles passionants, qui explorent des sujets en détails</li>
+<li><a href="http://blog.sucuri.net">Sucuri</a></li>
+</ul>
+</li>
 <li><p>Life Hacking (bidouilles au quotidien)</p>
 
 <ul>
