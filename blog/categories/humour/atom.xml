@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: humour | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/humour/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/humour/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Merci Google, sans toi je ne suis rien !]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/05/02/merci-google-sans-toi-je-ne-suis-rien/"/>
+    <link href="http://tym-project.github.com/2011/05/02/merci-google-sans-toi-je-ne-suis-rien/"/>
     <updated>2011-05-02T23:26:52+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/05/02/merci-google-sans-toi-je-ne-suis-rien</id>
+    <id>http://tym-project.github.com/2011/05/02/merci-google-sans-toi-je-ne-suis-rien</id>
     <content type="html"><![CDATA[<p>Un petit post sans intérêt, mais je voulais vous
 montrer un mail qui m'a bien fait marrer. Cela vient de Google pour m'annoncer
 la migration de Google Apps sur un de mes domaines...(car oui, je fais <a href="http://www.tym-project.fr/blog/2009/03/associer-google-apps-gmail-gdocs-gcalendar-gtalk-a-son-domaine/">ce que

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: lien | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/lien/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/lien/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Aparté : "Y'a pas un nouveau Lost à regarder sur notre abonnement VOD payant et légal ?"]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/05/01/aparte-ya-pas-un-nouveau-lost-a-regarder-sur-notre-abonnement-vod-payant-et-legal-2/"/>
+    <link href="http://tym-project.github.com/2009/05/01/aparte-ya-pas-un-nouveau-lost-a-regarder-sur-notre-abonnement-vod-payant-et-legal-2/"/>
     <updated>2009-05-01T21:26:22+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/05/01/aparte-ya-pas-un-nouveau-lost-a-regarder-sur-notre-abonnement-vod-payant-et-legal-2</id>
+    <id>http://tym-project.github.com/2009/05/01/aparte-ya-pas-un-nouveau-lost-a-regarder-sur-notre-abonnement-vod-payant-et-legal-2</id>
     <content type="html"><![CDATA[<p>"- Je sais pas, vas faire un tour sur le <a href="http://www.pogdesign.co.uk/cat/">Calendar for TV</a>. En plus tu peux
 enregistrer tes paramètres pour ne voir que les dates des séries qui
 t'intéressent ! - Ah ouais, top moumoute ça ! Je peux même trouver des idées

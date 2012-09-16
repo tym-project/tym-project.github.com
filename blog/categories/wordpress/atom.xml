@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Wordpress | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/wordpress/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/wordpress/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par jour (ou presque)]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar/"/>
+    <link href="http://tym-project.github.com/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar/"/>
     <updated>2011-08-31T19:39:34+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar</id>
+    <id>http://tym-project.github.com/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar</id>
     <content type="html"><![CDATA[<p>Ayant tout un tas de liens que je garde depuis (très) longtemps à droite ou à
 gauche, j'ai décidé de les diffuser ici 5 par 5 quand bon me semblera ! A
 l'avenir j'essaierai peut-être de les regrouper par catégories...</p>

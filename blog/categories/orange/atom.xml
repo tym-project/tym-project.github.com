@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: orange | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/orange/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/orange/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Non mais de qui les oranges se moquent-elles ?]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/08/16/non-mais-de-qui-les-oranges-se-moquent-elles/"/>
+    <link href="http://tym-project.github.com/2009/08/16/non-mais-de-qui-les-oranges-se-moquent-elles/"/>
     <updated>2009-08-16T14:29:19+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/08/16/non-mais-de-qui-les-oranges-se-moquent-elles</id>
+    <id>http://tym-project.github.com/2009/08/16/non-mais-de-qui-les-oranges-se-moquent-elles</id>
     <content type="html"><![CDATA[<p>Après avoir halluciné sur les prix des forfaits ailleurs que
 dans la douce France, voici que <a href="http://www.pcinpact.com/actu/news/52485-orange-augmente-5-euros-abonnements.htm">PC Inpact en rajoute une couche</a> !</p>
 
@@ -31,9 +31,9 @@ limite...</p>
   
   <entry>
     <title type="html"><![CDATA[Je vais déménager...car mon mobile me coûte trop cher !]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/08/12/je-vais-demenager-car-mon-mobile-me-coute-trop-cher/"/>
+    <link href="http://tym-project.github.com/2009/08/12/je-vais-demenager-car-mon-mobile-me-coute-trop-cher/"/>
     <updated>2009-08-12T14:25:10+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/08/12/je-vais-demenager-car-mon-mobile-me-coute-trop-cher</id>
+    <id>http://tym-project.github.com/2009/08/12/je-vais-demenager-car-mon-mobile-me-coute-trop-cher</id>
     <content type="html"><![CDATA[<p>Suite à la lecture de <a href="http://eco.rue89.com/2009/08/11/pourquoi-le-mobile-coute-t-il-plus-cher-en-france">cet article</a>, je me suis rendu
 compte que nos 3 opérateurs adorés nous prennent vraiment pour des pigeons !</p>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: indenti.ca | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/indenti-ca/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/indenti-ca/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Un twitter à la sauce GPL]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/05/17/un-twitter-a-la-sauce-gpl/"/>
+    <link href="http://tym-project.github.com/2009/05/17/un-twitter-a-la-sauce-gpl/"/>
     <updated>2009-05-17T12:33:37+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/05/17/un-twitter-a-la-sauce-gpl</id>
+    <id>http://tym-project.github.com/2009/05/17/un-twitter-a-la-sauce-gpl</id>
     <content type="html"><![CDATA[<p>GPL pour General Public Licence, twitter...pour twitter. Si vous ne connaissez
 pas <a href="http://twitter.com/">Twitter</a>, la nouvelle mode du Web 2.0, c'est un sytème de "micro
 blogging". Vous pouvez diffuser sur votre page des messages, de 140 caractères

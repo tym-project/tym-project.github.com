@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: ttl | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/ttl/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/ttl/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Pathping : le ping mutant en traceroute !]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/09/21/pathping-le-ping-mutant-en-traceroute/"/>
+    <link href="http://tym-project.github.com/2009/09/21/pathping-le-ping-mutant-en-traceroute/"/>
     <updated>2009-09-21T08:07:44+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/09/21/pathping-le-ping-mutant-en-traceroute</id>
+    <id>http://tym-project.github.com/2009/09/21/pathping-le-ping-mutant-en-traceroute</id>
     <content type="html"><![CDATA[<p>Pour rappel l'outil <code>[man]traceroute[/man]</code>
 permet de voir le chemin suivit par un message sur le réseau. C'est donc une
 commande très pratique pour diagnostiquer et résoudre des problèmes de
@@ -45,9 +45,9 @@ détecter d'éventuels points de congestion dans le réseau !</p>
   
   <entry>
     <title type="html"><![CDATA[Définition express : le TTL]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/03/30/definition-express-le-ttl-2/"/>
+    <link href="http://tym-project.github.com/2009/03/30/definition-express-le-ttl-2/"/>
     <updated>2009-03-30T15:05:38+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/03/30/definition-express-le-ttl-2</id>
+    <id>http://tym-project.github.com/2009/03/30/definition-express-le-ttl-2</id>
     <content type="html"><![CDATA[<p>TTL signifie Time To Live (temps à vivre). Si le TTL d'un paquet arrive à
 expiration, il est détruit : cela pour éviter des paquets tournent à l'infini
 dans les "tuyaux".</p>

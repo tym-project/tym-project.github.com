@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: free | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/free/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/free/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,15 +15,15 @@
   
   <entry>
     <title type="html"><![CDATA[Free mobile est déja en place !]]></title>
-    <link href="http://TymProject.github.com/tymproject/2010/06/22/free-mobile-est-deja-en-place/"/>
+    <link href="http://tym-project.github.com/2010/06/22/free-mobile-est-deja-en-place/"/>
     <updated>2010-06-22T12:00:45+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2010/06/22/free-mobile-est-deja-en-place</id>
+    <id>http://tym-project.github.com/2010/06/22/free-mobile-est-deja-en-place</id>
     <content type="html"><![CDATA[<p>C'est en tout cas ce que m'annoncent mes
 statistiques Google Analytics : J'ai reçu une visite le 6 juin sur ce blog
 depuis un iPad (oui oui !) utilisant l'opérateur "free sas". Preuve à l'appui
 :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/free1_0.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/free1_0.png"></p>
 
 <p>Je ne sais pas
 trop quoi en penser ;-)</p>
@@ -32,9 +32,9 @@ trop quoi en penser ;-)</p>
   
   <entry>
     <title type="html"><![CDATA[Augmenter son débit avec free : le test complet]]></title>
-    <link href="http://TymProject.github.com/tymproject/2010/06/16/augmenter-son-debit-avec-free-le-test-complet/"/>
+    <link href="http://tym-project.github.com/2010/06/16/augmenter-son-debit-avec-free-le-test-complet/"/>
     <updated>2010-06-16T14:46:56+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2010/06/16/augmenter-son-debit-avec-free-le-test-complet</id>
+    <id>http://tym-project.github.com/2010/06/16/augmenter-son-debit-avec-free-le-test-complet</id>
     <content type="html"><![CDATA[<p>Cela fait maintenant quelques mois que je vous
 avais expliqué <a href="http://www.tym-project.fr/blog/2009/07/augmenter-son-debit-avec-free/">comment "augmenter votre débit"</a> si vous possédez une
 freebox. J'ai pris mon courage à deux mains, et surtout un peu de temps pour
@@ -50,7 +50,7 @@ utilisé un PC seul sur le réseau, en utilisant un câble ethernet (le Wifi
 aurai induit des variables supplémentaires). Concernant ma ligne, une image
 vaut mieux qu'un long discours :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/ligne.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/ligne.png"></p>
 
 <p>Le protocole de tests que j'ai suivit est le suivant :</p>
 
@@ -91,7 +91,7 @@ assez stable.</p>
 
 <h3>Un ping sans failles</h3>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/normal-ping.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/normal-ping.png"></p>
 
 <p>Aucune perte de
 données vers clubic, avec une latence habituelle (de 20 à 30 ms).</p>
@@ -110,7 +110,7 @@ rien d'étonnant ici, ce n'est pas le but de ce mode.</p>
 
 <h3>Ping, plus rapide que l'éclair</h3>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/fastpath-ping.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/fastpath-ping.png"></p>
 
 <p>C'est bel et bien
 pour le ping que le mode Fastpath est fait. De 5 à 15 ms, c'est clairement
@@ -148,7 +148,7 @@ de tous, au prix de deux décrochés pendant le test.</p>
 
 <h3>Et c'est fiable en plus !</h3>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/patate-ping.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/patate-ping.png"></p>
 
 <h2>Mode Sérénité</h2>
 
@@ -174,7 +174,7 @@ de ce test, avec en plus trois décrochés (quid de la prétendue fiabilité ?).
 
 <h3>Un ping dans la norme</h3>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/serenite-ping.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/serenite-ping.png"></p>
 
 <p>Rien à signaler
 du coté du ping : pas de pertes et latence normale.</p>
@@ -199,9 +199,9 @@ un peu trop "optimiste" :</p>
   
   <entry>
     <title type="html"><![CDATA[Augmenter son débit avec Free]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/07/28/augmenter-son-debit-avec-free/"/>
+    <link href="http://tym-project.github.com/2009/07/28/augmenter-son-debit-avec-free/"/>
     <updated>2009-07-28T09:31:40+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/07/28/augmenter-son-debit-avec-free</id>
+    <id>http://tym-project.github.com/2009/07/28/augmenter-son-debit-avec-free</id>
     <content type="html"><![CDATA[<p>Il est possible d'augmenter sensiblement votre débit (entre 100 ko/s et 300
 ko/s) si vous possédez une Freebox et que votre ligne est de bonne qualité
 (pas trop loin du DSLAM par exemple).</p>
@@ -244,9 +244,9 @@ qui saute quelques images, mais rien de vraiment gênant !</p>
   
   <entry>
     <title type="html"><![CDATA[Il a free...et puis voila !]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/07/24/il-a-free-et-puis-voila/"/>
+    <link href="http://tym-project.github.com/2009/07/24/il-a-free-et-puis-voila/"/>
     <updated>2009-07-24T09:01:03+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/07/24/il-a-free-et-puis-voila</id>
+    <id>http://tym-project.github.com/2009/07/24/il-a-free-et-puis-voila</id>
     <content type="html"><![CDATA[<p>Ayé, j’ai (enfin) ma propre connexion internet ! Bien entendu j’ai choisit
 free car j’aime les innovations qu’ils essayent d’apporter à leur service.
 Après une petite semaine d’utilisation voici un petit retour d’expérience.

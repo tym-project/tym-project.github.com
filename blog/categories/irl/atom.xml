@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: IRL | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/irl/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/irl/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Un sapin de nöel en carton... littéralement.]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/12/11/un-sapin-de-noel-en-carton-dot-dot-dot-litteralement/"/>
+    <link href="http://tym-project.github.com/2011/12/11/un-sapin-de-noel-en-carton-dot-dot-dot-litteralement/"/>
     <updated>2011-12-11T20:46:00+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/12/11/un-sapin-de-noel-en-carton-dot-dot-dot-litteralement</id>
+    <id>http://tym-project.github.com/2011/12/11/un-sapin-de-noel-en-carton-dot-dot-dot-litteralement</id>
     <content type="html"><![CDATA[<p>Le 24 décembre approche à grands pas, et avec les différentes préparations traditionnelles. Et quoi de mieux qu'un beau sapin pour décorer la pièce ? Un "sapin" qui sort de l'ordinaire !</p>
 
 <!-- more -->

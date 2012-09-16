@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: sed | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/sed/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/sed/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Adaptation de "sed" en PowerShell (Windows)]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/03/02/sed-en-powershell-et-redirection/"/>
+    <link href="http://tym-project.github.com/2011/03/02/sed-en-powershell-et-redirection/"/>
     <updated>2011-03-02T12:00:44+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/03/02/sed-en-powershell-et-redirection</id>
+    <id>http://tym-project.github.com/2011/03/02/sed-en-powershell-et-redirection</id>
     <content type="html"><![CDATA[<p>PowerShell est un langage de script développé par
 Microsoft, le <code>#!/bin/bash</code> de Windows en quelque sorte. Ce langage propose de
 très nombreuses fonctionnalités, et après un petit temps d'adaptation, devient
@@ -69,9 +69,9 @@ fichier tout à fait viable.</p>
   
   <entry>
     <title type="html"><![CDATA[Automatiser la création ou l'édition d'un crontab]]></title>
-    <link href="http://TymProject.github.com/tymproject/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab/"/>
+    <link href="http://tym-project.github.com/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab/"/>
     <updated>2010-08-04T12:00:34+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab</id>
+    <id>http://tym-project.github.com/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab</id>
     <content type="html"><![CDATA[<p>Crontab est un outil extrêmement pratique
 servant à planifier l'exécution des tâches/commandes. Habituellement il se
 gère via la commande <code>[man]crontab[/man]</code> : <code>crontab -e</code> pour éditer, <code>crontab
@@ -96,21 +96,35 @@ répertoire <code>/var/spool/cron/crontabs</code> :</p>
 via un script. Il va donc falloir que je crée le fichier
 <code>/var/spool/cron/crontabs/tym</code>, oui mais que faire si il existe déjà ? On va
 se compliquer un peu la vie, mais vous allez comprendre pourquoi :
-{% codeblock lang:bash %}</p>
-
-<h1>!/bin/bash</h1>
-
-<p>CRONTAB="/var/spool/cron/crontabs/tym"</p>
-
-<p>if ! [ -e $CRONTAB ];then</p>
-
-<pre><code>touch $CRONTAB
-chown tym:crontab $CRONTAB
-chmod 600 $CRONTAB
-</code></pre>
-
-<p>fi
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;CRONTAB<span class="o">=</span><span class="s2">&quot;/var/spool/cron/crontabs/tym&quot;</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;if ! <span class="o">[</span> -e <span class="nv">$CRONTAB</span> <span class="o">]</span>;<span class="k">then</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;touch <span class="nv">$CRONTAB</span>
+</span><span class='line'>chown tym:crontab <span class="nv">$CRONTAB</span>
+</span><span class='line'>chmod 600 <span class="nv">$CRONTAB</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;fi
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Comme vous pouvez le voir, on modifie les droits sur
 le fichier que lorsqu'il faut créer. Pour ajouter une tâche, rien de plus
@@ -126,17 +140,27 @@ car ici pas de vérifications via la commande <code>crontab</code> !</p>
 
 <p>Je veux modifier la ligne que je viens de créer dans le crontab de "tym", en
 faisant plutôt exécuter <code>/home/tym/scripts/mon_second_script</code> :
-{% codeblock lang: bash %}</p>
-
-<h1>!/bin/bash</h1>
-
-<p>CRONTAB="/var/spool/cron/crontabs/tym"</p>
-
-<p>OLD="\/home\/tym\/scripts\/mon_script"
-NEW="\/home\/tym\/scripts\/mon_second_script"</p>
-
-<p>sed "s/$OLD/$NEW/" $CRONTAB > /tmp/buffer &amp;&amp; cat /tmp/buffer > $CRONTAB
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>lang: bash </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>!/bin/bash&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>CRONTAB="/var/spool/cron/crontabs/tym"&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>OLD="\/home\/tym\/scripts\/mon_script"
+</span><span class='line'>NEW="\/home\/tym\/scripts\/mon_second_script"&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>sed "s/$OLD/$NEW/" $CRONTAB > /tmp/buffer &amp;&amp; cat /tmp/buffer > $CRONTAB</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Et hop, l'affaire est pliée ! Notez l'utilisation des "\/" pour protéger les
 "/" dans le sed.</p>
@@ -147,9 +171,9 @@ NEW="\/home\/tym\/scripts\/mon_second_script"</p>
   
   <entry>
     <title type="html"><![CDATA[SED, trucs et astuces pour le remplacement et la mise en mémoire d'expressions]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions/"/>
+    <link href="http://tym-project.github.com/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions/"/>
     <updated>2009-08-21T22:57:08+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions</id>
+    <id>http://tym-project.github.com/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions</id>
     <content type="html"><![CDATA[<p><code>[man]sed[/man]</code> est un éditeur de texte en
 ligne de commande. Il vous permet donc de modifier un fichier par une suite de
 directives, sans utiliser de logiciels comme <code>[man]vim[/man]</code> ou

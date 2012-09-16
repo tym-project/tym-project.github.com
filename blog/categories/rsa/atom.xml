@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: rsa | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/rsa/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/rsa/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Utiliser Putty avec l’authentification par clé rsa…“Server refused our key”]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/04/15/utiliser-putty-avec-le28099authentification-par-cle-rsae280a6e2809cserver-refused-our-keye2809d-2/"/>
+    <link href="http://tym-project.github.com/2009/04/15/utiliser-putty-avec-le28099authentification-par-cle-rsae280a6e2809cserver-refused-our-keye2809d-2/"/>
     <updated>2009-04-15T20:33:59+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/04/15/utiliser-putty-avec-le28099authentification-par-cle-rsae280a6e2809cserver-refused-our-keye2809d-2</id>
+    <id>http://tym-project.github.com/2009/04/15/utiliser-putty-avec-le28099authentification-par-cle-rsae280a6e2809cserver-refused-our-keye2809d-2</id>
     <content type="html"><![CDATA[<p>Il est un mystère avec <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">Putty</a> : à chaque fois que j’essaye de créer un
 couple clé publique/privée pour faire <a href="http://www.tym-project.fr/blog/2009/04/on-se-pingue-et-on-se-fait-un-tunnel-ssh-2/">ce genre de choses</a>, j’ai une
 magnifique erreur “Server refused our key”. J’ai tenté un tas de choses pour
@@ -68,13 +68,13 @@ PuttyPrivateKey (.ppk).</p>
 
 <p>Ouvrez le logiciel et cliquez sur “Import key” dans le menu “Conversions” :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/putty1.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/putty1.png"></p>
 
 <p>Choisissez alors la clé privée (putty_key dans l’exemple et validez), vous verrez alors votre
 clé à l’écran, vous pouvez cliquer sur “Save private key” pour la sauvegarder
 au format .ppk :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/putty2.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/putty2.png"></p>
 
 <p>Votre clé est maintenant utilisable depuis Putty pour vous logger sur votre
 serveur Linux !</p>

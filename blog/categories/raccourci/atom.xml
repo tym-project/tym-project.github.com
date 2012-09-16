@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: raccourci | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/raccourci/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/raccourci/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Un Linux mediacenter avec une loupe]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/"/>
+    <link href="http://tym-project.github.com/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/"/>
     <updated>2011-05-04T12:00:06+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon</id>
+    <id>http://tym-project.github.com/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon</id>
     <content type="html"><![CDATA[<p>Un Linux avec Xbmc au milieu du salon c'est de plus
 en plus en commun, et même si je me trompe, c'est quand même super pratique !
 Mais c'est encore mieux quand cette machine peut aussi servir à consulter ses
@@ -56,33 +56,59 @@ séquence, à :</p>
 
 <p>En terme de script (Bash, pour faire vite et bien), cela donne ceci de la
 manière suivante :
-{% codeblock lang:bash %}</p>
-
-<h1>!/bin/bash</h1>
-
-<p>function killmag {</p>
-
-<pre><code>kill -9 \ `ps aux | grep -v grep | grep magnifier | tr -s " " | cut -d " " -f 2`
-</code></pre>
-
-<p>}
-case \
-"<code>ps aux | grep -v grep | grep magnifier | \ tr -s " " | cut -d " " -f 12</code>"\
-in</p>
-
-<pre><code>"-v")
-    killmag &amp;&amp; magnifier -h -m
-    ;;
-"-h")
-    killmag
-    ;;
-"")
-    magnifier -v -m
-    ;;
-</code></pre>
-
-<p>esac
-{% endcodeblock %}
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;function killmag <span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;kill -9 <span class="se">\ </span><span class="sb">`</span>ps aux | grep -v grep | grep magnifier | tr -s <span class="s2">&quot; &quot;</span> | cut -d <span class="s2">&quot; &quot;</span> -f 2<span class="sb">`</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">}</span>
+</span><span class='line'><span class="k">case</span> <span class="se">\</span>
+</span><span class='line'><span class="s2">&quot;&lt;code&gt;ps aux | grep -v grep | grep magnifier | \ tr -s &quot;</span> <span class="s2">&quot; | cut -d &quot;</span> <span class="s2">&quot; -f 12&lt;/code&gt;&quot;</span><span class="se">\</span>
+</span><span class='line'>in&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;<span class="s2">&quot;-v&quot;</span><span class="o">)</span>
+</span><span class='line'>    killmag &amp;amp;&amp;amp; magnifier -h -m
+</span><span class='line'>    ;;
+</span><span class='line'><span class="s2">&quot;-h&quot;</span><span class="o">)</span>
+</span><span class='line'>    killmag
+</span><span class='line'>    ;;
+</span><span class='line'><span class="s2">&quot;&quot;</span><span class="o">)</span>
+</span><span class='line'>    magnifier -v -m
+</span><span class='line'>    ;;
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;esac
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 On retrouve donc une fonction pour killer la loupe, car il faut la relancer
 pour changer d'orientation. Petit détail syntaxique : l'utilisation de <code>\</code>
 pour faire des retours à la ligne au milieu d'une commande, pratique pour se

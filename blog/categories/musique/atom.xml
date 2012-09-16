@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Musique | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/musique/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/musique/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[La musique adoucit les moeurs...]]></title>
-    <link href="http://TymProject.github.com/tymproject/2010/01/30/la-musique-adoucit-les-moeurs/"/>
+    <link href="http://tym-project.github.com/2010/01/30/la-musique-adoucit-les-moeurs/"/>
     <updated>2010-01-30T19:40:24+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2010/01/30/la-musique-adoucit-les-moeurs</id>
+    <id>http://tym-project.github.com/2010/01/30/la-musique-adoucit-les-moeurs</id>
     <content type="html"><![CDATA[<p>Je suis tombé tout à fait par hasard
 sur une très jolie application en flash. Elle ne sert à rien, elle ne code pas
 à votre place ni ne classe vos fichiers...par contre elle fait de la jolie

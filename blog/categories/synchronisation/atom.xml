@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: synchronisation | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/synchronisation/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/synchronisation/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Dropbox : l'outil de sauvegarde ultime]]></title>
-    <link href="http://TymProject.github.com/tymproject/2010/10/20/dropbox-loutil-de-sauvegarde-ultime/"/>
+    <link href="http://tym-project.github.com/2010/10/20/dropbox-loutil-de-sauvegarde-ultime/"/>
     <updated>2010-10-20T11:54:58+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2010/10/20/dropbox-loutil-de-sauvegarde-ultime</id>
+    <id>http://tym-project.github.com/2010/10/20/dropbox-loutil-de-sauvegarde-ultime</id>
     <content type="html"><![CDATA[<p><a href="http://www.dropbox.com/referrals/NTEyMjU5NzMzOQ">Dropbox</a> est un outil qui devient de plus
 en plus populaire. Pour ceux qui ne connaîtrait pas, c'est un espace de
 stockage en ligne associé à un logiciel qui permet de synchroniser plusieurs

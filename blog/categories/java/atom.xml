@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Java | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/java/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Choisir un mot de passe sécurisé et facile à retenir]]></title>
-    <link href="http://TymProject.github.com/tymproject/2010/09/08/methode-de-choix-de-mot-de-passe-efficace/"/>
+    <link href="http://tym-project.github.com/2010/09/08/methode-de-choix-de-mot-de-passe-efficace/"/>
     <updated>2010-09-08T18:44:28+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2010/09/08/methode-de-choix-de-mot-de-passe-efficace</id>
+    <id>http://tym-project.github.com/2010/09/08/methode-de-choix-de-mot-de-passe-efficace</id>
     <content type="html"><![CDATA[<p>Un mot de passe c'est important. A vrai dire
 c'est souvent votre premier rempart contre une attaque sur vos données
 personnelles. Mais avoir une bonne "hygiène de mots de passe" est souvent un
@@ -116,38 +116,38 @@ tester sa fiabilité avec par exemple : <a href="http://howsecureismypassword.ne
   
   <entry>
     <title type="html"><![CDATA[Régler le problème de ports avec Netbeans 6.8/Glassfish 3 sous Windows 7]]></title>
-    <link href="http://TymProject.github.com/tymproject/2010/05/05/regler-le-probleme-de-ports-avec-netbeans-6-8glassfish-3-sous-windows-7/"/>
+    <link href="http://tym-project.github.com/2010/05/05/regler-le-probleme-de-ports-avec-netbeans-6-8glassfish-3-sous-windows-7/"/>
     <updated>2010-05-05T13:00:04+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2010/05/05/regler-le-probleme-de-ports-avec-netbeans-6-8glassfish-3-sous-windows-7</id>
+    <id>http://tym-project.github.com/2010/05/05/regler-le-probleme-de-ports-avec-netbeans-6-8glassfish-3-sous-windows-7</id>
     <content type="html"><![CDATA[<p>Dans le cadre de mes cours, j'ai été amené à utiliser Netbeans et le
 serveur d'application Glassfish...ce qui m'a causé quelques soucis avec mon
 Windows Seven.<br/>
 En effet, la politique de sécurité (par défaut je précise) de
 mon Windows faisait bugger l'attribution de port de Glassfish :<br/>
-{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/nb-gf1.png %}</p>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/nb-gf1.png"></p>
 
 <p>Ce ne sont bien entendu pas
 les bon ports...et pour cause :<br/>
-{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/nb-gf2.png %}</p>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/nb-gf2.png"></p>
 
 <p>Netbeans ne peut pas accéder à la configuration (fichier <code>domain.xml</code>), il
 crée donc une configuration "aléatoire" dans un autre dossier. Pour résoudre
 cela il faut d'abord supprimer le domaine (serveur Glassfish) mal configuré.
 Dans l'onglet "Services", supprimez le serveur actuel :<br/>
-{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/nb-gf3.png %}</p>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/nb-gf3.png"></p>
 
 <p>Vous pouvez fermer Netbeans et modifier les droits
 du répertoire de Glassfish (<code>C:\Program Files\sges-v3</code>). Il est conseillé (on
 est jamais trop prudents) de limiter l'accès à votre utilisateur ou à limite
 au groupe <code>Users</code> :<br/>
-{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/17-02-2010-15-44-12.png %}</p>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/17-02-2010-15-44-12.png"></p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/17-02-2010-15-45-20.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/17-02-2010-15-45-20.png"></p>
 
 <p>Ceci
 fait, relancez Netbeans et appréciez le changement, les ports utilisés sont
 maintenant les bons :<br/>
-{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/nb-gf4.png %}</p>
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/nb-gf4.png"></p>
 
 <p>Bon debug ;-)</p>
 ]]></content>
@@ -155,15 +155,15 @@ maintenant les bons :<br/>
   
   <entry>
     <title type="html"><![CDATA[Firefox : vérifier la validité des ses plugins]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/10/06/firefox-verifier-la-validite-des-ses-plugins/"/>
+    <link href="http://tym-project.github.com/2009/10/06/firefox-verifier-la-validite-des-ses-plugins/"/>
     <updated>2009-10-06T08:53:33+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/10/06/firefox-verifier-la-validite-des-ses-plugins</id>
+    <id>http://tym-project.github.com/2009/10/06/firefox-verifier-la-validite-des-ses-plugins</id>
     <content type="html"><![CDATA[<p>Flash, Java...tous ces plugins (et non extensions) peuvent parfois présenter
 des <a href="http://www.zdnet.fr/actualites/internet/0,39020774,39705979,00.htm">failles de sécurité</a>. Le site <a href="https://www-trunk.stage.mozilla.com/en-US/plugincheck/">Plug-In-Check</a> vous permet de
 vérifier, et éventuellement mettre à jour les fautifs ! Cela fonctionne
 uniquement avec Firefox bien entendu :) Pour ma part j'ai (un peu) de boulot :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-4/plugincheck.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-4/plugincheck.png"></p>
 
 <p>Bonne vérification ;-)</p>
 ]]></content>
@@ -171,9 +171,9 @@ uniquement avec Firefox bien entendu :) Pour ma part j'ai (un peu) de boulot :</
   
   <entry>
     <title type="html"><![CDATA[Insérer des images et les ajouter au .jar (Java)]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/04/16/inserer-des-images-et-les-ajouter-au-jar-java/"/>
+    <link href="http://tym-project.github.com/2009/04/16/inserer-des-images-et-les-ajouter-au-jar-java/"/>
     <updated>2009-04-16T12:30:15+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/04/16/inserer-des-images-et-les-ajouter-au-jar-java</id>
+    <id>http://tym-project.github.com/2009/04/16/inserer-des-images-et-les-ajouter-au-jar-java</id>
     <content type="html"><![CDATA[<p>Pour ajouter des images à votre application vous avez différentes solutions,
 mais attention, toutes ne fonctionnent pas correctement ! Voici donc comment
 procéder pour avoir un programme fonctionnel une fois compilé...</p>
@@ -227,9 +227,9 @@ partie d'un package.</p>
   
   <entry>
     <title type="html"><![CDATA[Signer une application Java]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/04/03/signer-une-application-java-2/"/>
+    <link href="http://tym-project.github.com/2009/04/03/signer-une-application-java-2/"/>
     <updated>2009-04-03T15:41:24+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/04/03/signer-une-application-java-2</id>
+    <id>http://tym-project.github.com/2009/04/03/signer-une-application-java-2</id>
     <content type="html"><![CDATA[<p>Pourquoi est-ce important de signer (avec un certificat) une application Java
 ? Prenons un exemple concret : laisseriez vous entrer une personne non
 certifiée dans votre appartement pour qu'elle fouille vos placards ? Non je

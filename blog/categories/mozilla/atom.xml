@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: mozilla | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/mozilla/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/mozilla/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Firefox, enlever des extensions capricieuses]]></title>
-    <link href="http://TymProject.github.com/tymproject/2010/01/06/firefox-enlever-des-extensions-capricieuses/"/>
+    <link href="http://tym-project.github.com/2010/01/06/firefox-enlever-des-extensions-capricieuses/"/>
     <updated>2010-01-06T19:36:11+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2010/01/06/firefox-enlever-des-extensions-capricieuses</id>
+    <id>http://tym-project.github.com/2010/01/06/firefox-enlever-des-extensions-capricieuses</id>
     <content type="html"><![CDATA[<p>J'utilise le même
 profil Firefox depuis un certain temps (au moins un an), je suis aussi
 récemment passé sur la bêta de Firefox 3.6, ce qui a eu pour conséquences de
@@ -70,16 +70,16 @@ quelques essais infructueux j'ai trouvé le bon dossier, comme me l'indique
   
   <entry>
     <title type="html"><![CDATA[Thunderbird, le client mail qui me fait des surprises  !]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/12/25/thunderbird-le-client-mail-qui-me-fait-des-surprises/"/>
+    <link href="http://tym-project.github.com/2009/12/25/thunderbird-le-client-mail-qui-me-fait-des-surprises/"/>
     <updated>2009-12-25T19:28:12+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/12/25/thunderbird-le-client-mail-qui-me-fait-des-surprises</id>
+    <id>http://tym-project.github.com/2009/12/25/thunderbird-le-client-mail-qui-me-fait-des-surprises</id>
     <content type="html"><![CDATA[<p>Je suis
 tombé tout à fait par hasard sur une fonctionnalité sympa de Thunderbird 3. En
 effet, quand je tape les mots clés <code>pièce jointe</code>, <code>joint</code>, <code>attaché</code> et
 autres, le logiciel me propose d'ajouter un pièce jointe au message ! Tout
 simple, mais fallait y penser !</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-4/thunderbird-pj.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-4/thunderbird-pj.png"></p>
 
 <p>Bonne découverte ;-)</p>
 ]]></content>

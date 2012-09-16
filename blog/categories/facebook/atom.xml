@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: facebook | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/facebook/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/facebook/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Analyse d'une "arnaque" Facebook]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook/"/>
+    <link href="http://tym-project.github.com/2011/03/07/manipulation-par-facebook/"/>
     <updated>2011-03-07T19:16:09+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook</id>
+    <id>http://tym-project.github.com/2011/03/07/manipulation-par-facebook</id>
     <content type="html"><![CDATA[<p>J'utilise Facebook, avec parcimonie certes, mais
 je l'utilise quand même. On sait maintenant qu'il faut être très vigilant sur
 les réseaux sociaux, et cet article en est une preuve supplémentaire.</p>
@@ -52,16 +52,25 @@ tentez de visionner la video en question dans cet article :</p>
 <p>L'arnaque en question dans cet article se situe dans le code source des
 boutons colorés :</p>
 
-<p>{% codeblock lang:html %}</p>
-
-<iframe id=f1 class=iframe src="http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/pages/Chat-Trop-Mignon-Qui-a-Du-Mal-�-Se-Reveiller/115156425228492&layout=button_count&show_faces=false&width=450&action=like&colorscheme=light&height=21" scrolling="no" frameborder="0"style="border:none; overflow:hidden; width:450px; height:21px;"allowTransparency="true"></iframe>
-
-
-<script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
-
-
-<p>&lt;fb:like id=f2 class=iframe href="http://likeloverr.com/fun.php?id=12" layout="button_count" show_faces="false" width="450">&lt;/fb:like>
-{% endcodeblock %}
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;iframe</span> <span class="na">id=</span><span class="s">f1</span> <span class="na">class=</span><span class="s">iframe</span> <span class="na">src=</span><span class="s">&quot;http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/pages/Chat-Trop-Mignon-Qui-a-Du-Mal-�-Se-Reveiller/115156425228492&amp;layout=button_count&amp;show_faces=false&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=21&quot;</span> <span class="na">scrolling=</span><span class="s">&quot;no&quot;</span> <span class="na">frameborder=</span><span class="s">&quot;0&quot;</span><span class="na">style=</span><span class="s">&quot;border:none; overflow:hidden; width:450px; height:21px;&quot;</span><span class="na">allowTransparency=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://connect.facebook.net/fr_FR/all.js#xfbml=1&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span><span class="ni">&amp;lt;</span>fb:like id=f2 class=iframe href=&quot;http://likeloverr.com/fun.php?id=12&quot; layout=&quot;button_count&quot; show_faces=&quot;false&quot; width=&quot;450&quot;&gt;<span class="ni">&amp;lt;</span>/fb:like&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 Traduction en clair : "Tu clique et tu like !". Eh oui, le fait de cliquer sur
 ces deux boutons vous a :</p>
 

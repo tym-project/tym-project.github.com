@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: edition | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/edition/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/edition/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SED : les astuces à connaître]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/02/16/sed-les-astuces-a-connaitre/"/>
+    <link href="http://tym-project.github.com/2011/02/16/sed-les-astuces-a-connaitre/"/>
     <updated>2011-02-16T12:00:37+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/02/16/sed-les-astuces-a-connaitre</id>
+    <id>http://tym-project.github.com/2011/02/16/sed-les-astuces-a-connaitre</id>
     <content type="html"><![CDATA[<p><code>[man]Sed[/man]</code> pour ceux qui ne connaîtrait pas
 encore, est un éditeur de texte en ligne de commande. Concrètement il va
 éditer un fichier (ou l'entrée standard, via un pipe) et le modifier vers la

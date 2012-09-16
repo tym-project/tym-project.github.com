@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: site | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/site/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/site/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[La musique adoucit les moeurs...]]></title>
-    <link href="http://TymProject.github.com/tymproject/2010/01/30/la-musique-adoucit-les-moeurs/"/>
+    <link href="http://tym-project.github.com/2010/01/30/la-musique-adoucit-les-moeurs/"/>
     <updated>2010-01-30T19:40:24+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2010/01/30/la-musique-adoucit-les-moeurs</id>
+    <id>http://tym-project.github.com/2010/01/30/la-musique-adoucit-les-moeurs</id>
     <content type="html"><![CDATA[<p>Je suis tombé tout à fait par hasard
 sur une très jolie application en flash. Elle ne sert à rien, elle ne code pas
 à votre place ni ne classe vos fichiers...par contre elle fait de la jolie
@@ -30,9 +30,9 @@ musique ! Je peux passer des heures à faire des mélodie avec <a href="http://l
   
   <entry>
     <title type="html"><![CDATA[Aparté : "Y'a pas un nouveau Lost à regarder sur notre abonnement VOD payant et légal ?"]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/05/01/aparte-ya-pas-un-nouveau-lost-a-regarder-sur-notre-abonnement-vod-payant-et-legal-2/"/>
+    <link href="http://tym-project.github.com/2009/05/01/aparte-ya-pas-un-nouveau-lost-a-regarder-sur-notre-abonnement-vod-payant-et-legal-2/"/>
     <updated>2009-05-01T21:26:22+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/05/01/aparte-ya-pas-un-nouveau-lost-a-regarder-sur-notre-abonnement-vod-payant-et-legal-2</id>
+    <id>http://tym-project.github.com/2009/05/01/aparte-ya-pas-un-nouveau-lost-a-regarder-sur-notre-abonnement-vod-payant-et-legal-2</id>
     <content type="html"><![CDATA[<p>"- Je sais pas, vas faire un tour sur le <a href="http://www.pogdesign.co.uk/cat/">Calendar for TV</a>. En plus tu peux
 enregistrer tes paramètres pour ne voir que les dates des séries qui
 t'intéressent ! - Ah ouais, top moumoute ça ! Je peux même trouver des idées
@@ -44,9 +44,9 @@ si j'ai épuisé mon stock."</p>
   
   <entry>
     <title type="html"><![CDATA[Je fé parfois des fotes de conjugézon...]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/04/17/je-fe-parfois-des-fotes-de-conjugezon/"/>
+    <link href="http://tym-project.github.com/2009/04/17/je-fe-parfois-des-fotes-de-conjugezon/"/>
     <updated>2009-04-17T20:55:50+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/04/17/je-fe-parfois-des-fotes-de-conjugezon</id>
+    <id>http://tym-project.github.com/2009/04/17/je-fe-parfois-des-fotes-de-conjugezon</id>
     <content type="html"><![CDATA[<p>Et pour les corriger j’utilise <a href="http://www.leconjugueur.com/">Le Conjugueur</a> ! Un outil très pratique
 pour connaître toutes les déclinaisons d’un verbe en cherchant l’infinitif.</p>
 ]]></content>
@@ -54,9 +54,9 @@ pour connaître toutes les déclinaisons d’un verbe en cherchant l’infinitif
   
   <entry>
     <title type="html"><![CDATA[Site de commandes bien utiles pour Linux]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/04/12/site-de-commandes-bien-utiles-pour-linux-2/"/>
+    <link href="http://tym-project.github.com/2009/04/12/site-de-commandes-bien-utiles-pour-linux-2/"/>
     <updated>2009-04-12T20:32:26+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/04/12/site-de-commandes-bien-utiles-pour-linux-2</id>
+    <id>http://tym-project.github.com/2009/04/12/site-de-commandes-bien-utiles-pour-linux-2</id>
     <content type="html"><![CDATA[<p><a href="http://www.commandlinefu.com">Command Line Fu</a> est un site sur lequel des utilisateurs donnent des
 lignes de commandes ou scripts qui vous aideront peut-être un jour. Pour ma
 part ce site me permet aussi d’apprendre de nouvelles commandes.</p>

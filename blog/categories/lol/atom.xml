@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Lol | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/lol/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/lol/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Merci Google, sans toi je ne suis rien !]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/05/02/merci-google-sans-toi-je-ne-suis-rien/"/>
+    <link href="http://tym-project.github.com/2011/05/02/merci-google-sans-toi-je-ne-suis-rien/"/>
     <updated>2011-05-02T23:26:52+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/05/02/merci-google-sans-toi-je-ne-suis-rien</id>
+    <id>http://tym-project.github.com/2011/05/02/merci-google-sans-toi-je-ne-suis-rien</id>
     <content type="html"><![CDATA[<p>Un petit post sans intérêt, mais je voulais vous
 montrer un mail qui m'a bien fait marrer. Cela vient de Google pour m'annoncer
 la migration de Google Apps sur un de mes domaines...(car oui, je fais <a href="http://www.tym-project.fr/blog/2009/03/associer-google-apps-gmail-gdocs-gcalendar-gtalk-a-son-domaine/">ce que
@@ -90,9 +90,9 @@ n'est pas loin car le paradoxe...</p>
   
   <entry>
     <title type="html"><![CDATA["On nous ment !"...]]></title>
-    <link href="http://TymProject.github.com/tymproject/2010/03/03/on-nous-ment/"/>
+    <link href="http://tym-project.github.com/2010/03/03/on-nous-ment/"/>
     <updated>2010-03-03T22:10:27+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2010/03/03/on-nous-ment</id>
+    <id>http://tym-project.github.com/2010/03/03/on-nous-ment</id>
     <content type="html"><![CDATA[<p>Si si...je vous assure ! Mais comme une image vaut
 mieux qu'un long discours :</p>
 
@@ -104,9 +104,9 @@ mieux qu'un long discours :</p>
   
   <entry>
     <title type="html"><![CDATA["On nous ment !"...]]></title>
-    <link href="http://TymProject.github.com/tymproject/2010/03/03/on-nous-ment/"/>
+    <link href="http://tym-project.github.com/2010/03/03/on-nous-ment/"/>
     <updated>2010-03-03T22:10:27+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2010/03/03/on-nous-ment</id>
+    <id>http://tym-project.github.com/2010/03/03/on-nous-ment</id>
     <content type="html"><![CDATA[<p>Si si...je vous assure ! Mais comme une image vaut
 mieux qu'un long discours :</p>
 
@@ -118,9 +118,9 @@ mieux qu'un long discours :</p>
   
   <entry>
     <title type="html"><![CDATA[Non mais de qui les oranges se moquent-elles ?]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/08/16/non-mais-de-qui-les-oranges-se-moquent-elles/"/>
+    <link href="http://tym-project.github.com/2009/08/16/non-mais-de-qui-les-oranges-se-moquent-elles/"/>
     <updated>2009-08-16T14:29:19+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/08/16/non-mais-de-qui-les-oranges-se-moquent-elles</id>
+    <id>http://tym-project.github.com/2009/08/16/non-mais-de-qui-les-oranges-se-moquent-elles</id>
     <content type="html"><![CDATA[<p>Après avoir halluciné sur les prix des forfaits ailleurs que
 dans la douce France, voici que <a href="http://www.pcinpact.com/actu/news/52485-orange-augmente-5-euros-abonnements.htm">PC Inpact en rajoute une couche</a> !</p>
 
@@ -134,9 +134,9 @@ limite...</p>
   
   <entry>
     <title type="html"><![CDATA[Je vais déménager...car mon mobile me coûte trop cher !]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/08/12/je-vais-demenager-car-mon-mobile-me-coute-trop-cher/"/>
+    <link href="http://tym-project.github.com/2009/08/12/je-vais-demenager-car-mon-mobile-me-coute-trop-cher/"/>
     <updated>2009-08-12T14:25:10+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/08/12/je-vais-demenager-car-mon-mobile-me-coute-trop-cher</id>
+    <id>http://tym-project.github.com/2009/08/12/je-vais-demenager-car-mon-mobile-me-coute-trop-cher</id>
     <content type="html"><![CDATA[<p>Suite à la lecture de <a href="http://eco.rue89.com/2009/08/11/pourquoi-le-mobile-coute-t-il-plus-cher-en-france">cet article</a>, je me suis rendu
 compte que nos 3 opérateurs adorés nous prennent vraiment pour des pigeons !</p>
 

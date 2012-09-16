@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: hadopi | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/hadopi/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/hadopi/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Tu veux un cookie ?]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/07/30/tu-veux-un-cookie/"/>
+    <link href="http://tym-project.github.com/2009/07/30/tu-veux-un-cookie/"/>
     <updated>2009-07-30T13:53:29+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/07/30/tu-veux-un-cookie</id>
+    <id>http://tym-project.github.com/2009/07/30/tu-veux-un-cookie</id>
     <content type="html"><![CDATA[<p>J'aime les cookies, mais ceux aux pépites de chocolat, pas ceux fourrés aux
 données personnelles !</p>
 
@@ -37,9 +37,9 @@ Rollers venant de PriceMinister...olécons !</p>
   
   <entry>
     <title type="html"><![CDATA[Et si Hadopi avait existé pendant ma jeunesse ?]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/05/04/et-si-hadopi-avait-existe-pendant-ma-jeunesse-2/"/>
+    <link href="http://tym-project.github.com/2009/05/04/et-si-hadopi-avait-existe-pendant-ma-jeunesse-2/"/>
     <updated>2009-05-04T21:32:57+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/05/04/et-si-hadopi-avait-existe-pendant-ma-jeunesse-2</id>
+    <id>http://tym-project.github.com/2009/05/04/et-si-hadopi-avait-existe-pendant-ma-jeunesse-2</id>
     <content type="html"><![CDATA[<p>Il faut revenir presque 10 ans en arrière, j'étais alors en colonie...et c'est
 là que j'ai écouté pour la première fois une chanson de Tryo ("L'hymne de nos
 campagnes"). Le séjour finit, on m'envoya une cassette de cette album. Une

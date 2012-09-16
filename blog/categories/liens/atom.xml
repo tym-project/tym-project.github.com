@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: liens | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/liens/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <title><![CDATA[Category: Liens | ツ Tym-Project]]></title>
+  <link href="http://tym-project.github.com/blog/categories/liens/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -14,25 +14,40 @@
 
   
   <entry>
-    <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par jour (ou presque)]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar/"/>
-    <updated>2011-08-31T19:39:34+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar</id>
-    <content type="html"><![CDATA[<p>Ayant tout un tas de liens que je garde depuis (très) longtemps à droite ou à
-gauche, j'ai décidé de les diffuser ici 5 par 5 quand bon me semblera ! A
-l'avenir j'essaierai peut-être de les regrouper par catégories...</p>
+    <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par mois de Janvier]]></title>
+    <link href="http://tym-project.github.com/2012/01/28/en-janvier-click-ce-qu-il-te-plait/"/>
+    <updated>2012-01-28T17:29:00+00:00</updated>
+    <id>http://tym-project.github.com/2012/01/28/en-janvier-click-ce-qu-il-te-plait</id>
+    <content type="html"><![CDATA[<p>Eh, bonne année ! Pour commencer 2012 en beautée, des liens et encore des liens :)</p>
 
 <ol>
-<li><a href="http://www.techiemania.com/5-awesome-free-tools-to-help-you-choose-your-website-color-scheme.html">Tools To Help You Choose Your Website Color Scheme</a></li>
-<li><a href="http://packetlife.net/blog/2011/may/9/using-layers-visio/">Using Layers in Visio</a></li>
-<li><a href="http://www.doitwithwordpress.com/rundown-wordpress-theme-files-what-they-do/">A Rundown of WordPress Theme Files and What They All Do</a></li>
-<li><a href="http://linuxfr.org/news/sadms-int%C3%A9grer-des-stations-gnulinux-%C3%A0-active-directory">SADMS : Intégrer des stations GNU/Linux à Active Directory</a></li>
-<li><a href="http://vpourchet.wordpress.com/2011/02/13/ghettovcb-sh-le-vcenter-backup-du-pauvre/">Ghettovcb.sh : Le VCenter Backup du pauvre !</a></li>
+<li><a href="http://www.0boxer.com/">Limiter le bazar dans sa boite Gmail... en jouant !</a></li>
+<li><a href="www.reddit.com/r/linux/comments/mi80x/give_me_that_one_command_you_wish_you_knew_years/">Une mine de commandes pas connues sur Linux</a></li>
+<li><a href="http://lifehacker.com/5845627/store-pot-covers-inside-your-cabinet-doors-with-a-few-inexpensive-hooks">Pas bête l'idée pour stocker les couvercles dans la cuisine (oui, dans la vrai vie !)</a></li>
+<li><a href="http://httpstat.us/">Un outil pour le dev : une API qui sort des codes Http. Très pratique pour débugger</a></li>
+<li><a href="http://sharingmyip.com/">Trouver les sites sur le même hébergement mutualisé ? Facile !</a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par mois de Décembre]]></title>
+    <link href="http://tym-project.github.com/2011/12/20/liens-de-noel-et-autres-bonnes-idees/"/>
+    <updated>2011-12-20T18:03:00+00:00</updated>
+    <id>http://tym-project.github.com/2011/12/20/liens-de-noel-et-autres-bonnes-idees</id>
+    <content type="html"><![CDATA[<p>Hop, c'est le retour de l'article fourre-tout, ici dans son édition de noël.</p>
+
+<ol>
+<li><a href="http://www.geekologie.com/2011/12/warp-me-awake-stat-the-mario-pipe-coffee.php" title="Mug Mario">Un mug Mario original</a></li>
+<li><a href="http://lifehacker.com/5865321/hang-nearly-anything-on-your-wall-with-sugru-and-lego-bricks%20%22Legos%20pratiques">La bonne idée du mois : Legos-accroche-tout</a></li>
+<li><a href="http://jeromechoain.wordpress.com/2011/11/30/les-peuples-dabord-version-longue-lgw-brassens/" title="JCFrog - Les peuples d'abord">JCFrog et sa nouvelle rengaine... tellement vrai !</a></li>
+<li><a href="https://buy.louisck.net/" title="Louis CK pour 5$">Louis CK, un comique que j'adore, vend son dernier live 5$. Pas cher la minute de rire en streaming ou en ddl :)</a></li>
+<li><a href="http://msreport.free.fr/" title="Exchange et autres">Un peu de technique avec un blog sur Exchange et d'autres technos Microsoft</a></li>
 </ol>
 
 
-<p>Oui, il-y-à pas mal de contenu en anglais...eh c'est l'Interweb ici, il faut
-s'y faire ;-)</p>
+<p>Joyeuses fêtes ;-)</p>
 ]]></content>
   </entry>
   

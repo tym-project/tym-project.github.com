@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: e-ink | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/e-ink/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/e-ink/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Moi, mon Kindle et moi]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/07/15/test-kindle-long-et-retour-experience/"/>
+    <link href="http://tym-project.github.com/2011/07/15/test-kindle-long-et-retour-experience/"/>
     <updated>2011-07-15T17:50:12+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/07/15/test-kindle-long-et-retour-experience</id>
+    <id>http://tym-project.github.com/2011/07/15/test-kindle-long-et-retour-experience</id>
     <content type="html"><![CDATA[<p>Je suis l'heureux possesseur d'un Amazon Kindle
 depuis 8 mois environ, et je vais donc décrire ici l'utilisation que j'en fait
 ainsi que ce que je trouve bien...et moins bien.</p>

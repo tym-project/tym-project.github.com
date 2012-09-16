@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: signal | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/signal/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/signal/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[M6 et W9 résistent à tout !]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/06/29/m6-et-w9-resistent-a-tout/"/>
+    <link href="http://tym-project.github.com/2009/06/29/m6-et-w9-resistent-a-tout/"/>
     <updated>2009-06-29T14:23:37+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/06/29/m6-et-w9-resistent-a-tout</id>
+    <id>http://tym-project.github.com/2009/06/29/m6-et-w9-resistent-a-tout</id>
     <content type="html"><![CDATA[<p>J'ai emménagé dans une nouveau studio et je dois donc régler à nouveau ma TNT
 (et c'est une histoire passionnante !)...oui mais non ! En effet, Bordeaux
 c'est bô, c'est chô et rigolô mais la TNT ben elle est pas dans la prise du

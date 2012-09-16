@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Autres | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/autres/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/autres/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Analyse d'une "arnaque" Facebook]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook/"/>
+    <link href="http://tym-project.github.com/2011/03/07/manipulation-par-facebook/"/>
     <updated>2011-03-07T19:16:09+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook</id>
+    <id>http://tym-project.github.com/2011/03/07/manipulation-par-facebook</id>
     <content type="html"><![CDATA[<p>J'utilise Facebook, avec parcimonie certes, mais
 je l'utilise quand même. On sait maintenant qu'il faut être très vigilant sur
 les réseaux sociaux, et cet article en est une preuve supplémentaire.</p>
@@ -52,16 +52,25 @@ tentez de visionner la video en question dans cet article :</p>
 <p>L'arnaque en question dans cet article se situe dans le code source des
 boutons colorés :</p>
 
-<p>{% codeblock lang:html %}</p>
-
-<iframe id=f1 class=iframe src="http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/pages/Chat-Trop-Mignon-Qui-a-Du-Mal-�-Se-Reveiller/115156425228492&layout=button_count&show_faces=false&width=450&action=like&colorscheme=light&height=21" scrolling="no" frameborder="0"style="border:none; overflow:hidden; width:450px; height:21px;"allowTransparency="true"></iframe>
-
-
-<script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
-
-
-<p>&lt;fb:like id=f2 class=iframe href="http://likeloverr.com/fun.php?id=12" layout="button_count" show_faces="false" width="450">&lt;/fb:like>
-{% endcodeblock %}
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;iframe</span> <span class="na">id=</span><span class="s">f1</span> <span class="na">class=</span><span class="s">iframe</span> <span class="na">src=</span><span class="s">&quot;http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/pages/Chat-Trop-Mignon-Qui-a-Du-Mal-�-Se-Reveiller/115156425228492&amp;layout=button_count&amp;show_faces=false&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=21&quot;</span> <span class="na">scrolling=</span><span class="s">&quot;no&quot;</span> <span class="na">frameborder=</span><span class="s">&quot;0&quot;</span><span class="na">style=</span><span class="s">&quot;border:none; overflow:hidden; width:450px; height:21px;&quot;</span><span class="na">allowTransparency=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://connect.facebook.net/fr_FR/all.js#xfbml=1&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span><span class="ni">&amp;lt;</span>fb:like id=f2 class=iframe href=&quot;http://likeloverr.com/fun.php?id=12&quot; layout=&quot;button_count&quot; show_faces=&quot;false&quot; width=&quot;450&quot;&gt;<span class="ni">&amp;lt;</span>/fb:like&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 Traduction en clair : "Tu clique et tu like !". Eh oui, le fait de cliquer sur
 ces deux boutons vous a :</p>
 
@@ -91,9 +100,9 @@ doigts pour que pas grand monde ait aperçu votre profil...</p>
   
   <entry>
     <title type="html"><![CDATA[Adaptation de "sed" en PowerShell (Windows)]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/03/02/sed-en-powershell-et-redirection/"/>
+    <link href="http://tym-project.github.com/2011/03/02/sed-en-powershell-et-redirection/"/>
     <updated>2011-03-02T12:00:44+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/03/02/sed-en-powershell-et-redirection</id>
+    <id>http://tym-project.github.com/2011/03/02/sed-en-powershell-et-redirection</id>
     <content type="html"><![CDATA[<p>PowerShell est un langage de script développé par
 Microsoft, le <code>#!/bin/bash</code> de Windows en quelque sorte. Ce langage propose de
 très nombreuses fonctionnalités, et après un petit temps d'adaptation, devient
@@ -145,9 +154,9 @@ fichier tout à fait viable.</p>
   
   <entry>
     <title type="html"><![CDATA[SED : les astuces à connaître]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/02/16/sed-les-astuces-a-connaitre/"/>
+    <link href="http://tym-project.github.com/2011/02/16/sed-les-astuces-a-connaitre/"/>
     <updated>2011-02-16T12:00:37+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/02/16/sed-les-astuces-a-connaitre</id>
+    <id>http://tym-project.github.com/2011/02/16/sed-les-astuces-a-connaitre</id>
     <content type="html"><![CDATA[<p><code>[man]Sed[/man]</code> pour ceux qui ne connaîtrait pas
 encore, est un éditeur de texte en ligne de commande. Concrètement il va
 éditer un fichier (ou l'entrée standard, via un pipe) et le modifier vers la
@@ -227,9 +236,9 @@ donnerait qu'un fichier vide :</p>
   
   <entry>
     <title type="html"><![CDATA[Gmail : raccourcir le délai de consultation des comptes externes en POP ]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/02/02/gmail-pop-plus-rapide/"/>
+    <link href="http://tym-project.github.com/2011/02/02/gmail-pop-plus-rapide/"/>
     <updated>2011-02-02T12:00:19+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/02/02/gmail-pop-plus-rapide</id>
+    <id>http://tym-project.github.com/2011/02/02/gmail-pop-plus-rapide</id>
     <content type="html"><![CDATA[<p>Dans un article précédent j'expliquais en quoi
 Gmail peut très bien devenir votre unique client de messagerie. J'expliquais
 toutefois un petit défaut : la consultation des comptes externes en POP.
@@ -259,29 +268,51 @@ consultation en permanence.</p>
 
 <p>J'ai préféré utiliser un script bash, avec un <code>[man]cron[/man]</code>, et
 <code>[man]esmtp[/man]</code> comme je <a href="http://www.tym-project.fr/blog/2010/08/mail-avec-gmail-dans-un-script/">l'ai présenté ici</a> :
-{% codeblock lang:bash %}</p>
-
-<h1>!/bin/bash</h1>
-
-<h1>file gmail_motivator.sh</h1>
-
-<p>MAIL=/tmp/gmail_motivator_mail</p>
-
-<h1>Entête du message echo</h1>
-
-<p>"To: mon_autre@compte.pop3.com Subject: Gmail
-Motivator! From: foobar@gmail.com " > $MAIL</p>
-
-<h1>Corps du message</h1>
-
-<p>echo "Get fubar motivated, you lazy ass!" >> $MAIL</p>
-
-<h1>Envoi du message</h1>
-
-<p>esmtp -tv &lt; $MAIL</p>
-
-<p>rm $MAIL
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;file gmail_motivator.sh&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;MAIL<span class="o">=</span>/tmp/gmail_motivator_mail&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Entête du message <span class="nb">echo</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="s2">&quot;To: mon_autre@compte.pop3.com Subject: Gmail</span>
+</span><span class='line'><span class="s2">Motivator! From: foobar@gmail.com &quot;</span> &gt; <span class="nv">$MAIL</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Corps du message&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;echo <span class="s2">&quot;Get fubar motivated, you lazy ass!&quot;</span> &gt;&gt; <span class="nv">$MAIL</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Envoi du message&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;esmtp -tv &amp;lt; <span class="nv">$MAIL</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;rm <span class="nv">$MAIL</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Et le <code>cron</code> qui s'exécute toutes les 10 minutes :</p>
 
@@ -300,7 +331,7 @@ reçoit rien (jusqu'à 60 minutes).</p>
 <p>Il ne reste plus qu'à créer une règle dans votre Gmail pour supprimer dès leur
 arrivée les messages de motivation :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/selection_011.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/selection_011.png"></p>
 
 <p>Bonne accélération ;-)</p>
 ]]></content>
@@ -308,9 +339,9 @@ arrivée les messages de motivation :</p>
   
   <entry>
     <title type="html"><![CDATA[Créer une simple extension Wordpress]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/01/26/plugin-wordpress-modification-de-texte/"/>
+    <link href="http://tym-project.github.com/2011/01/26/plugin-wordpress-modification-de-texte/"/>
     <updated>2011-01-26T21:07:15+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/01/26/plugin-wordpress-modification-de-texte</id>
+    <id>http://tym-project.github.com/2011/01/26/plugin-wordpress-modification-de-texte</id>
     <content type="html"><![CDATA[<p>Si vous administrez un blog Wordpress, vous
 savez certainement qu'il existe un nombre très important d'extensions
 (plugins). De la plus simple à la plus complexe, vous trouverez de tout...mais
@@ -329,10 +360,11 @@ mise en forme définie dans la balise <code>div</code>, mais j'aurai très bien 
 donner une classe CSS à cette dernière et l'intégrer dans le thème !
 L'extension étant (très) succincte, elle tient dans un seul fichier, voici
 comment il se décompose avec tout d'abord l'en-tête :
-{% codeblock lang:php %}
-&lt;?php /<em> Plugin Name: Legend Er Plugin URI: http://www.tym-project.fr/blog Description: An automatic legend generator Version: 1.0
-Author: Tym Author URI: http://www.tym-project.fr/blog License: CC </em>/
-{% endcodeblock %}
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php /&lt;em&gt; Plugin Name: Legend Er Plugin URI: http://www.tym-project.fr/blog Description: An automatic legend generator Version: 1.0</span>
+</span><span class='line'><span class="x">Author: Tym Author URI: http://www.tym-project.fr/blog License: CC &lt;/em&gt;/</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 Bien qu'elle soit en commentaire, elle est en fait lue par Wordpress pour
 afficher les informations dans la page de plugins. Les champs parlent d'eux-
 mêmes ! Comme mon plugin est intégré dans l'article manuellement (je ne veux
@@ -346,20 +378,31 @@ besoin de le fermer car il ne s'applique pas sur du texte existant :</p>
 </code></pre>
 
 <p>Ensuite la fonction qui crée la légende en elle-même :
-{% codeblock lang:php %}
-function legender ($atts) {</p>
-
-<pre><code>$ln=$atts['ln'];
-if ($ln == "en"){
-    return '&lt;div style="text-align: center;"&gt;&lt;em&gt;(Click to zoom in)&lt;/em&gt;&lt;/div&gt;';
-}
-if ($ln == "fr"){
-    return '&lt;div style="text-align: center;"&gt;&lt;em&gt;(Cliquez pour agrandir)&lt;/em&gt;&lt;/div&gt;';
-}
-</code></pre>
-
-<p>} ?>
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">function legender ($atts) {&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;$ln=$atts[&#39;ln&#39;];</span>
+</span><span class='line'><span class="x">if ($ln == &quot;en&quot;){</span>
+</span><span class='line'><span class="x">    return &#39;&amp;lt;div style=&quot;text-align: center;&quot;&amp;gt;&amp;lt;em&amp;gt;(Click to zoom in)&amp;lt;/em&amp;gt;&amp;lt;/div&amp;gt;&#39;;</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">if ($ln == &quot;fr&quot;){</span>
+</span><span class='line'><span class="x">    return &#39;&amp;lt;div style=&quot;text-align: center;&quot;&amp;gt;&amp;lt;em&amp;gt;(Cliquez pour agrandir)&amp;lt;/em&amp;gt;&amp;lt;/div&amp;gt;&#39;;</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;} ?&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Elle prend donc un paramètre : <code>ln</code>, soit la langue ("fr" ou "en") stockée
 dans un tableau clé/valeur. Je vous parlais de petits pièges, en voilà un :
@@ -367,23 +410,37 @@ dans un tableau clé/valeur. Je vous parlais de petits pièges, en voilà un :
 !</p>
 
 <p>Voici donc le code complet de l'extension :
-{% codeblock lang:php %}
-&lt;?php /<em> Plugin Name: Legend Er Plugin URI: http://www.tym-project.fr/blog Description: An automatic legend generator Version: 1.0
-Author: Tym Author URI: http://www.tym-project.fr/blog License: CC </em>/
-add_shortcode('legend', 'legender');</p>
-
-<p>function legender ($atts) {</p>
-
-<pre><code>$ln=$atts['ln']; if ($ln == "en"){
-    return '&lt;div style="text-align: center;"&gt;&lt;em&gt;(Click to zoom in)&lt;/em&gt;&lt;/div&gt;';
-}
-if ($ln =="fr"){
-    return '&lt;div style="text-align: center;"&gt;&lt;em&gt;(Cliquez pour agrandir)&lt;/em&gt;&lt;/div&gt;';
-}
-</code></pre>
-
-<p>} ?>
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php /&lt;em&gt; Plugin Name: Legend Er Plugin URI: http://www.tym-project.fr/blog Description: An automatic legend generator Version: 1.0</span>
+</span><span class='line'><span class="x">Author: Tym Author URI: http://www.tym-project.fr/blog License: CC &lt;/em&gt;/</span>
+</span><span class='line'><span class="x">add_shortcode(&#39;legend&#39;, &#39;legender&#39;);&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;function legender ($atts) {&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;$ln=$atts[&#39;ln&#39;]; if ($ln == &quot;en&quot;){</span>
+</span><span class='line'><span class="x">    return &#39;&amp;lt;div style=&quot;text-align: center;&quot;&amp;gt;&amp;lt;em&amp;gt;(Click to zoom in)&amp;lt;/em&amp;gt;&amp;lt;/div&amp;gt;&#39;;</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">if ($ln ==&quot;fr&quot;){</span>
+</span><span class='line'><span class="x">    return &#39;&amp;lt;div style=&quot;text-align: center;&quot;&amp;gt;&amp;lt;em&amp;gt;(Cliquez pour agrandir)&amp;lt;/em&amp;gt;&amp;lt;/div&amp;gt;&#39;;</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;} ?&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>libre à vous de l'utiliser, modifier...</p>
 

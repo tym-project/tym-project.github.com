@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Android | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/android/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Android : perte du signal 3g après activation du GPS]]></title>
-    <link href="http://TymProject.github.com/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/"/>
+    <link href="http://tym-project.github.com/2012/03/24/android-perte-signal-3g-avec-gps/"/>
     <updated>2012-03-24T19:04:00+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2012/03/24/android-perte-signal-3g-avec-gps</id>
+    <id>http://tym-project.github.com/2012/03/24/android-perte-signal-3g-avec-gps</id>
     <content type="html"><![CDATA[<p>Android c'est super, Google Navigation encore plus. Sauf quand ça plante. Surtout en voiture, paumé au milieu de la cambrouse...<br/>
 Oh j'ai la solution, mais laissez moi vous raconter...</p>
 

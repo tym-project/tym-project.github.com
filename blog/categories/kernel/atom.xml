@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: kernel | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/kernel/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/kernel/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ubuntu : réparer les drivers Nvidia pour un nouveau noyau]]></title>
-    <link href="http://TymProject.github.com/tymproject/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu/"/>
+    <link href="http://tym-project.github.com/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu/"/>
     <updated>2010-11-10T15:48:15+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu</id>
+    <id>http://tym-project.github.com/2010/11/10/drivers-nvidia-apres-update-noyau-ubuntu</id>
     <content type="html"><![CDATA[<p>J'utilise de plus en plus Ubuntu, en particulier
 sur mon media-center (avec Xbmc). Mais je recontre très souvent le même
 problème : quand je met à jour mon noyau (via apt), je suis sûr à 100% de voir

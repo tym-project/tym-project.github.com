@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Unreal | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/unreal/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/unreal/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Un peu de divertissement "qui fait du bien par où ça passe" !]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/04/18/un-peu-de-divertissement-qui-fait-du-bien-par-ou-ca-passe-2/"/>
+    <link href="http://tym-project.github.com/2009/04/18/un-peu-de-divertissement-qui-fait-du-bien-par-ou-ca-passe-2/"/>
     <updated>2009-04-18T21:04:36+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/04/18/un-peu-de-divertissement-qui-fait-du-bien-par-ou-ca-passe-2</id>
+    <id>http://tym-project.github.com/2009/04/18/un-peu-de-divertissement-qui-fait-du-bien-par-ou-ca-passe-2</id>
     <content type="html"><![CDATA[<p>Voici un projet que je trouve vraiment bien : Defend Unreal Territories ! Mais
 rien de mieux qu'une présentation par l'équipe elle même : _ "Tout d'abord,
 DUT, qu'est-ce que c'est ?_</p>

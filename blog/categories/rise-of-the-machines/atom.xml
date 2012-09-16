@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: rise of the machines | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/rise-of-the-machines/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/rise-of-the-machines/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Xbmc : supprimer automatiquement les fichiers lus (Linux)]]></title>
-    <link href="http://TymProject.github.com/tymproject/2010/10/26/xbmc-suppression-automatique/"/>
+    <link href="http://tym-project.github.com/2010/10/26/xbmc-suppression-automatique/"/>
     <updated>2010-10-26T12:55:29+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2010/10/26/xbmc-suppression-automatique</id>
+    <id>http://tym-project.github.com/2010/10/26/xbmc-suppression-automatique</id>
     <content type="html"><![CDATA[<p><a href="http://xbmc.org/">Xbmc</a> est un très bon média center, à mon
 sens le meilleur. Parmi ses nombreuses fonctionnalités on trouve une
 médiathèque avec une certaine particularité : elle peut cacher les fichiers

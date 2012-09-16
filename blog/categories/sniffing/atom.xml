@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: sniffing | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/sniffing/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/sniffing/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ecouter une conversation MSN sur le réseau (Windows)]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/08/17/ecouter-une-conversation-msn-sur-le-reseau-windows/"/>
+    <link href="http://tym-project.github.com/2009/08/17/ecouter-une-conversation-msn-sur-le-reseau-windows/"/>
     <updated>2009-08-17T22:52:50+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/08/17/ecouter-une-conversation-msn-sur-le-reseau-windows</id>
+    <id>http://tym-project.github.com/2009/08/17/ecouter-une-conversation-msn-sur-le-reseau-windows</id>
     <content type="html"><![CDATA[<p>Oui, c'est possible ! Et pas très difficile...
 A la base je voulais faire un bel article, avec des captures et tout et tout.
 Mais comme on est au mois d'aout et qu'il fait chaud...ben j'ai la flemme !

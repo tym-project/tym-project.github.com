@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: sans les mains | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/sans-les-mains/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/sans-les-mains/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ma nouvelle configuration Media Center sous Linux]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/08/21/xbmc-et-archlinux-pour-un-media-center/"/>
+    <link href="http://tym-project.github.com/2011/08/21/xbmc-et-archlinux-pour-un-media-center/"/>
     <updated>2011-08-21T12:00:02+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/08/21/xbmc-et-archlinux-pour-un-media-center</id>
+    <id>http://tym-project.github.com/2011/08/21/xbmc-et-archlinux-pour-un-media-center</id>
     <content type="html"><![CDATA[<p>J'avais déjà évoqué dans un précédent article que
 je possède un Media center sous Linux. Suite à une petite bidouille
 malheureuse, il s'est retrouvé complètement planté. J'ai donc décidé de tout

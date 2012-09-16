@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: scripting | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/scripting/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/scripting/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Automatiser la création ou l'édition d'un crontab]]></title>
-    <link href="http://TymProject.github.com/tymproject/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab/"/>
+    <link href="http://tym-project.github.com/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab/"/>
     <updated>2010-08-04T12:00:34+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab</id>
+    <id>http://tym-project.github.com/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab</id>
     <content type="html"><![CDATA[<p>Crontab est un outil extrêmement pratique
 servant à planifier l'exécution des tâches/commandes. Habituellement il se
 gère via la commande <code>[man]crontab[/man]</code> : <code>crontab -e</code> pour éditer, <code>crontab

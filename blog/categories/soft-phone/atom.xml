@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: soft phone | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/soft-phone/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/soft-phone/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Je t'aime...moi non plus !]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/08/05/je-taime-moi-non-plus/"/>
+    <link href="http://tym-project.github.com/2009/08/05/je-taime-moi-non-plus/"/>
     <updated>2009-08-05T13:55:18+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/08/05/je-taime-moi-non-plus</id>
+    <id>http://tym-project.github.com/2009/08/05/je-taime-moi-non-plus</id>
     <content type="html"><![CDATA[<p>Je me suis récemment mis à Skype pour communiquer avec le monde extérieur. En
 effet j'ai de moins en moins l'envie de passer des heures à tapoter : vive la
 vidéo-conférence ! Ne connaissant pas grand chose à cet univers, je me suis

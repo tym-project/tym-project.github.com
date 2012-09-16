@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: ligne de commande | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/ligne-de-commande/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/ligne-de-commande/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Créer et graver des images ISO en ligne de commande (Linux)]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/05/04/creer-et-graver-des-images-iso-en-ligne-de-commande-linux-2/"/>
+    <link href="http://tym-project.github.com/2009/05/04/creer-et-graver-des-images-iso-en-ligne-de-commande-linux-2/"/>
     <updated>2009-05-04T21:33:45+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/05/04/creer-et-graver-des-images-iso-en-ligne-de-commande-linux-2</id>
+    <id>http://tym-project.github.com/2009/05/04/creer-et-graver-des-images-iso-en-ligne-de-commande-linux-2</id>
     <content type="html"><![CDATA[<p>Ce que j'aime dans mon Linux c'est la CLI (Command Line Interface) car c'est
 rapide et pratique ! Il est même possible de créer des images iso sans
 interface graphique. Vous pouvez aussi bien entendu graver ces mêmes iso en

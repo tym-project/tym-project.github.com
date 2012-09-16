@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: hell a nzb | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/hell-a-nzb/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/hell-a-nzb/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Un client Newsgroup pour Linux : "Hell, A NZB!"]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/04/30/un-client-newsgroup-pour-linux-hell-a-nzb-2/"/>
+    <link href="http://tym-project.github.com/2009/04/30/un-client-newsgroup-pour-linux-hell-a-nzb-2/"/>
     <updated>2009-04-30T21:21:20+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/04/30/un-client-newsgroup-pour-linux-hell-a-nzb-2</id>
+    <id>http://tym-project.github.com/2009/04/30/un-client-newsgroup-pour-linux-hell-a-nzb-2</id>
     <content type="html"><![CDATA[<p>Suite à mon fulgurant, mais durable, passage sous Linux, je cherche un
 équivalent à mes applications Windows. Un exemple parmi d'autres : un client
 Newsgroup. Mon choix s'est porté sur Hellanzb. Voici donc comment le mettre en

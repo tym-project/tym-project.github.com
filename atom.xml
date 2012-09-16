@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard]]></title>
-    <link href="http://TymProject.github.com/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/"/>
+    <link href="http://tym-project.github.com/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/"/>
     <updated>2012-08-16T23:02:00+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard</id>
+    <id>http://tym-project.github.com/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard</id>
     <content type="html"><![CDATA[<p>Je suis l&#8217;heureux propriétaire d&#8217;un HTC One S, et même si la ROM Sense d&#8217;origine est très stable et plutôt agréable à utiliser, je n&#8217;ai pas pu résister à l&#8217;appel de CM9 !</p>
 
 <!-- more -->
@@ -77,9 +77,9 @@ Après quelques recherches, flash, recherches, une solution : démarrer en recov
   
   <entry>
     <title type="html"><![CDATA[Flux RSS : idées de lecture et méthodes de gestion]]></title>
-    <link href="http://TymProject.github.com/tymproject/2012/07/15/sources-et-organisation-de-flux-rss/"/>
+    <link href="http://tym-project.github.com/2012/07/15/sources-et-organisation-de-flux-rss/"/>
     <updated>2012-07-15T15:07:00+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2012/07/15/sources-et-organisation-de-flux-rss</id>
+    <id>http://tym-project.github.com/2012/07/15/sources-et-organisation-de-flux-rss</id>
     <content type="html"><![CDATA[<p>De temps en temps un article ou un tweet annoncent la fin du flux RSS&#8230; mais l&#8217;ancètre fait de la résistance ! Heureusement d&#8217;ailleurs, car personellement je ne peux pas rester collé à Twitter ou autre réseau social, plein de bonnes choses, mais très prolifique et encombré par du bruit inutile.</p>
 
 <h2>Balance tes sources !</h2>
@@ -141,9 +141,9 @@ Moins simple mais toujours faisable avec d&#8217;autres sites comme Le Journal d
   
   <entry>
     <title type="html"><![CDATA[Android : perte du signal 3g après activation du GPS]]></title>
-    <link href="http://TymProject.github.com/tymproject/2012/03/24/android-perte-signal-3g-avec-gps/"/>
+    <link href="http://tym-project.github.com/2012/03/24/android-perte-signal-3g-avec-gps/"/>
     <updated>2012-03-24T19:04:00+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2012/03/24/android-perte-signal-3g-avec-gps</id>
+    <id>http://tym-project.github.com/2012/03/24/android-perte-signal-3g-avec-gps</id>
     <content type="html"><![CDATA[<p>Android c&#8217;est super, Google Navigation encore plus. Sauf quand ça plante. Surtout en voiture, paumé au milieu de la cambrouse&#8230;<br/>
 Oh j&#8217;ai la solution, mais laissez moi vous raconter&#8230;</p>
 
@@ -186,9 +186,9 @@ Recherche recherche&#8230; ah ! Eureka ! APN c&#8217;est en fait &#8220;Access P
   
   <entry>
     <title type="html"><![CDATA[Un Gmail, une ligne de commande...]]></title>
-    <link href="http://TymProject.github.com/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/"/>
+    <link href="http://tym-project.github.com/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/"/>
     <updated>2012-03-16T22:21:00+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis</id>
+    <id>http://tym-project.github.com/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis</id>
     <content type="html"><![CDATA[<p>&#8230; et c&#8217;est le retour du mail en ligne de commande ! Du Python qui fonctionne mieux que le précédent qui, pour une raison inconnue, n&#8217;envoyait plus mes chers messages plein de bits (oh oh!).</p>
 
 <p>Trève de bons mots :</p>
@@ -270,9 +270,9 @@ Recherche recherche&#8230; ah ! Eureka ! APN c&#8217;est en fait &#8220;Access P
   
   <entry>
     <title type="html"><![CDATA[Naviguer plus vite sur internet, améliorer son débit ? C'est possible !]]></title>
-    <link href="http://TymProject.github.com/tymproject/2012/02/14/ameliorer-son-debit-internet/"/>
+    <link href="http://tym-project.github.com/2012/02/14/ameliorer-son-debit-internet/"/>
     <updated>2012-02-14T21:11:00+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2012/02/14/ameliorer-son-debit-internet</id>
+    <id>http://tym-project.github.com/2012/02/14/ameliorer-son-debit-internet</id>
     <content type="html"><![CDATA[<p>Avoir un débit rapide pour accéder à internet c&#8217;est important, et cela varie fonction de différents facteurs comme votre fournisseur d&#8217;accès ou la qualité de votre Wifi&#8230; oui c&#8217;est en effet un sujet assez vaste !<br/>
 Un moyen assez simple d&#8217;accélérer le temps d&#8217;accès aux site que vous visitez avec votre brouteur préféré c&#8217;est le DNS.</p>
 
@@ -380,9 +380,9 @@ sys 0m0.012s
   
   <entry>
     <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par mois de Janvier]]></title>
-    <link href="http://TymProject.github.com/tymproject/2012/01/28/en-janvier-click-ce-qu-il-te-plait/"/>
+    <link href="http://tym-project.github.com/2012/01/28/en-janvier-click-ce-qu-il-te-plait/"/>
     <updated>2012-01-28T17:29:00+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2012/01/28/en-janvier-click-ce-qu-il-te-plait</id>
+    <id>http://tym-project.github.com/2012/01/28/en-janvier-click-ce-qu-il-te-plait</id>
     <content type="html"><![CDATA[<p>Eh, bonne année ! Pour commencer 2012 en beautée, des liens et encore des liens :)</p>
 
 <ol>
@@ -398,9 +398,9 @@ sys 0m0.012s
   
   <entry>
     <title type="html"><![CDATA[J'ai testé la batterie de secours USB MiPOW Power Tube 2200]]></title>
-    <link href="http://TymProject.github.com/tymproject/2012/01/14/batterie-de-secours-usb-mipow-powertube/"/>
+    <link href="http://tym-project.github.com/2012/01/14/batterie-de-secours-usb-mipow-powertube/"/>
     <updated>2012-01-14T13:26:00+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2012/01/14/batterie-de-secours-usb-mipow-powertube</id>
+    <id>http://tym-project.github.com/2012/01/14/batterie-de-secours-usb-mipow-powertube</id>
     <content type="html"><![CDATA[<p>Ayant fait l&#8217;acquisition d&#8217;un HTC Desire d&#8217;occasion il-y-a quelques mois, outre la liberté qu&#8217;il m&#8217;apporte, c&#8217;est un éternel combat contre la batterie à plat ! Je suis assez souvent en déplacement, je n&#8217;ai donc pas toujours l&#8217;occasion de bancher mon mobile&#8230; et c&#8217;est sans compter sur le désert électrique dans les wagons SNCF :)<br/>
 Je me suis donc mis en quête d&#8217;une solution pour recharger mon téléphone &#8220;sur la route&#8221;, et je crois bien avoir trouvé !</p>
 
@@ -443,9 +443,9 @@ Il faut bien avouer que 5 heures en moyenne c&#8217;est long&#8230; vaut mieux p
   
   <entry>
     <title type="html"><![CDATA[Cadeau : Un mois d'abonnement à Nolife Online]]></title>
-    <link href="http://TymProject.github.com/tymproject/2012/01/01/cadeau-un-mois-dabonnement-a-nolife-online/"/>
+    <link href="http://tym-project.github.com/2012/01/01/cadeau-un-mois-dabonnement-a-nolife-online/"/>
     <updated>2012-01-01T21:39:00+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2012/01/01/cadeau-un-mois-dabonnement-a-nolife-online</id>
+    <id>http://tym-project.github.com/2012/01/01/cadeau-un-mois-dabonnement-a-nolife-online</id>
     <content type="html"><![CDATA[<p>Allez hop, on commence 2012 en beautée avec un cadeau ! Oui, un truc que je vous donne contre&#8230; rien. Un cadeau quoi.<br/>
 Il est donc question de 30 jours d&#8217;abonnement au service <a href="http://nolife-tv.com">Nolife Online</a>, le service de télévision de rattrapage des geeks ! Si vous ne connaissez pas cette  chaîne de TV voici un exemple : <a href="http://online.nolife-tv.com/index.php?id=15771">Chez Marcus - Prince of Persia</a></p>
 
@@ -457,9 +457,9 @@ Il est donc question de 30 jours d&#8217;abonnement au service <a href="http://n
   
   <entry>
     <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par mois de Décembre]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/12/20/liens-de-noel-et-autres-bonnes-idees/"/>
+    <link href="http://tym-project.github.com/2011/12/20/liens-de-noel-et-autres-bonnes-idees/"/>
     <updated>2011-12-20T18:03:00+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/12/20/liens-de-noel-et-autres-bonnes-idees</id>
+    <id>http://tym-project.github.com/2011/12/20/liens-de-noel-et-autres-bonnes-idees</id>
     <content type="html"><![CDATA[<p>Hop, c&#8217;est le retour de l&#8217;article fourre-tout, ici dans son édition de noël.</p>
 
 <ol>
@@ -477,9 +477,9 @@ Il est donc question de 30 jours d&#8217;abonnement au service <a href="http://n
   
   <entry>
     <title type="html"><![CDATA[Un sapin de nöel en carton... littéralement.]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/12/11/un-sapin-de-noel-en-carton-dot-dot-dot-litteralement/"/>
+    <link href="http://tym-project.github.com/2011/12/11/un-sapin-de-noel-en-carton-dot-dot-dot-litteralement/"/>
     <updated>2011-12-11T20:46:00+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/12/11/un-sapin-de-noel-en-carton-dot-dot-dot-litteralement</id>
+    <id>http://tym-project.github.com/2011/12/11/un-sapin-de-noel-en-carton-dot-dot-dot-litteralement</id>
     <content type="html"><![CDATA[<p>Le 24 décembre approche à grands pas, et avec les différentes préparations traditionnelles. Et quoi de mieux qu&#8217;un beau sapin pour décorer la pièce ? Un &#8220;sapin&#8221; qui sort de l&#8217;ordinaire !</p>
 
 <!-- more -->
@@ -523,9 +523,9 @@ A l&#8217;occasion des fêtes de fin d&#8217;année Orika a aussi conçu un sapi
   
   <entry>
     <title type="html"><![CDATA[2012... ou presque !]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/12/09/2012-ou-presque/"/>
+    <link href="http://tym-project.github.com/2011/12/09/2012-ou-presque/"/>
     <updated>2011-12-09T22:30:00+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/12/09/2012-ou-presque</id>
+    <id>http://tym-project.github.com/2011/12/09/2012-ou-presque</id>
     <content type="html"><![CDATA[<p>La nouvelle année est souvent l&#8217;occasion de choisir des résolutions pour les 12 mois qui approchent. Pour Tym-Project cela veut sourtout dire une nouvelle plateforme, ou plutôt un nouveau &#8220;CMS&#8221; : <a href="http://octopress.org" title="Octopress">Octopress</a>, j&#8217;aurai certainement l&#8217;occasion d&#8217;en reparler par la suite !</p>
 
 <p>Ce changement va aussi impliquer une migration de tout le contenu existant depuis Wordpress&#8230; et ça ne vas pas être de la tarte ! Je pense donc laisser les deux blogs actifs pendant un certain temps :-)</p>
@@ -536,9 +536,9 @@ A l&#8217;occasion des fêtes de fin d&#8217;année Orika a aussi conçu un sapi
   
   <entry>
     <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par jour (ou presque)]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar/"/>
+    <link href="http://tym-project.github.com/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar/"/>
     <updated>2011-08-31T19:39:34+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar</id>
+    <id>http://tym-project.github.com/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar</id>
     <content type="html"><![CDATA[<p>Ayant tout un tas de liens que je garde depuis (très) longtemps à droite ou à
 gauche, j&#8217;ai décidé de les diffuser ici 5 par 5 quand bon me semblera ! A
 l&#8217;avenir j&#8217;essaierai peut-être de les regrouper par catégories&#8230;</p>
@@ -559,9 +559,9 @@ s&#8217;y faire ;-)</p>
   
   <entry>
     <title type="html"><![CDATA[Ma nouvelle configuration Media Center sous Linux]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/08/21/xbmc-et-archlinux-pour-un-media-center/"/>
+    <link href="http://tym-project.github.com/2011/08/21/xbmc-et-archlinux-pour-un-media-center/"/>
     <updated>2011-08-21T12:00:02+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/08/21/xbmc-et-archlinux-pour-un-media-center</id>
+    <id>http://tym-project.github.com/2011/08/21/xbmc-et-archlinux-pour-un-media-center</id>
     <content type="html"><![CDATA[<p>J&#8217;avais déjà évoqué dans un précédent article que
 je possède un Media center sous Linux. Suite à une petite bidouille
 malheureuse, il s&#8217;est retrouvé complètement planté. J&#8217;ai donc décidé de tout
@@ -747,9 +747,9 @@ EndSection
   
   <entry>
     <title type="html"><![CDATA[Moi, mon Kindle et moi]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/07/15/test-kindle-long-et-retour-experience/"/>
+    <link href="http://tym-project.github.com/2011/07/15/test-kindle-long-et-retour-experience/"/>
     <updated>2011-07-15T17:50:12+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/07/15/test-kindle-long-et-retour-experience</id>
+    <id>http://tym-project.github.com/2011/07/15/test-kindle-long-et-retour-experience</id>
     <content type="html"><![CDATA[<p>Je suis l&#8217;heureux possesseur d&#8217;un Amazon Kindle
 depuis 8 mois environ, et je vais donc décrire ici l&#8217;utilisation que j&#8217;en fait
 ainsi que ce que je trouve bien&#8230;et moins bien.</p>
@@ -882,9 +882,9 @@ cela comme une limitation (surtout pour le support !)</p>
   
   <entry>
     <title type="html"><![CDATA[Un Linux mediacenter avec une loupe]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/"/>
+    <link href="http://tym-project.github.com/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/"/>
     <updated>2011-05-04T12:00:06+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon</id>
+    <id>http://tym-project.github.com/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon</id>
     <content type="html"><![CDATA[<p>Un Linux avec Xbmc au milieu du salon c&#8217;est de plus
 en plus en commun, et même si je me trompe, c&#8217;est quand même super pratique !
 Mais c&#8217;est encore mieux quand cette machine peut aussi servir à consulter ses
@@ -985,9 +985,9 @@ selon).</p>
   
   <entry>
     <title type="html"><![CDATA[Merci Google, sans toi je ne suis rien !]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/05/02/merci-google-sans-toi-je-ne-suis-rien/"/>
+    <link href="http://tym-project.github.com/2011/05/02/merci-google-sans-toi-je-ne-suis-rien/"/>
     <updated>2011-05-02T23:26:52+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/05/02/merci-google-sans-toi-je-ne-suis-rien</id>
+    <id>http://tym-project.github.com/2011/05/02/merci-google-sans-toi-je-ne-suis-rien</id>
     <content type="html"><![CDATA[<p>Un petit post sans intérêt, mais je voulais vous
 montrer un mail qui m&#8217;a bien fait marrer. Cela vient de Google pour m&#8217;annoncer
 la migration de Google Apps sur un de mes domaines&#8230;(car oui, je fais <a href="http://www.tym-project.fr/blog/2009/03/associer-google-apps-gmail-gdocs-gcalendar-gtalk-a-son-domaine/">ce que
@@ -1060,9 +1060,9 @@ n&#8217;est pas loin car le paradoxe&#8230;</p>
   
   <entry>
     <title type="html"><![CDATA[Mon script de configuration iptables]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/04/06/iptables-et-lancement-automatique/"/>
+    <link href="http://tym-project.github.com/2011/04/06/iptables-et-lancement-automatique/"/>
     <updated>2011-04-06T12:00:02+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/04/06/iptables-et-lancement-automatique</id>
+    <id>http://tym-project.github.com/2011/04/06/iptables-et-lancement-automatique</id>
     <content type="html"><![CDATA[<p>Pour ceux qui ne connaitraient pas, iptables est une
 interface de gestion du module netfilter du noyau Linux. En termes clairs :
 c&#8217;est un pare-feu. Iptables est donc un ensemble de commandes permettant de
@@ -1390,9 +1390,9 @@ update-rc.d: see &lt;http://wiki.debian.org/LSBInitScripts&gt;
   
   <entry>
     <title type="html"><![CDATA[Edito du 31 Mars]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/03/31/edito-du-31-mars/"/>
+    <link href="http://tym-project.github.com/2011/03/31/edito-du-31-mars/"/>
     <updated>2011-03-31T22:16:10+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/03/31/edito-du-31-mars</id>
+    <id>http://tym-project.github.com/2011/03/31/edito-du-31-mars</id>
     <content type="html"><![CDATA[<p>Hop hop, un billet en deux deux (font quatre&#8230;) pour vous indiquer que :</p>
 
 <ul>
@@ -1409,9 +1409,9 @@ update-rc.d: see &lt;http://wiki.debian.org/LSBInitScripts&gt;
   
   <entry>
     <title type="html"><![CDATA[Ubuntu 64 bits : résoudre les problèmes avec Flash]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/03/16/flash-ubuntu-10-10-x86_64/"/>
+    <link href="http://tym-project.github.com/2011/03/16/flash-ubuntu-10-10-x86_64/"/>
     <updated>2011-03-16T12:00:23+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/03/16/flash-ubuntu-10-10-x86_64</id>
+    <id>http://tym-project.github.com/2011/03/16/flash-ubuntu-10-10-x86_64</id>
     <content type="html"><![CDATA[<p>J&#8217;utilise Ubuntu 10.10 depuis quelque temps, et
 ayant 4 Go de RAM j&#8217;utilise la version 64 bits. Bien que cela me chagrine un
 peu, j&#8217;utilise aussi beaucoup Flash pour regarder des vidéos&#8230;malheureusement
@@ -1463,9 +1463,9 @@ mais assez sympa en fait) : <a href="http://www.dailymotion.com/video/xft12d_sno
   
   <entry>
     <title type="html"><![CDATA[Analyse d'une "arnaque" Facebook]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook/"/>
+    <link href="http://tym-project.github.com/2011/03/07/manipulation-par-facebook/"/>
     <updated>2011-03-07T19:16:09+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/03/07/manipulation-par-facebook</id>
+    <id>http://tym-project.github.com/2011/03/07/manipulation-par-facebook</id>
     <content type="html"><![CDATA[<p>J&#8217;utilise Facebook, avec parcimonie certes, mais
 je l&#8217;utilise quand même. On sait maintenant qu&#8217;il faut être très vigilant sur
 les réseaux sociaux, et cet article en est une preuve supplémentaire.</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: cli | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/cli/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/cli/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SED, trucs et astuces pour le remplacement et la mise en mémoire d'expressions]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions/"/>
+    <link href="http://tym-project.github.com/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions/"/>
     <updated>2009-08-21T22:57:08+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions</id>
+    <id>http://tym-project.github.com/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions</id>
     <content type="html"><![CDATA[<p><code>[man]sed[/man]</code> est un éditeur de texte en
 ligne de commande. Il vous permet donc de modifier un fichier par une suite de
 directives, sans utiliser de logiciels comme <code>[man]vim[/man]</code> ou
@@ -85,9 +85,9 @@ caractère un nombre indéfini de fois) :</p>
   
   <entry>
     <title type="html"><![CDATA[Lire un mot de passe dans un script (Linux)]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/05/25/lire-un-mot-de-passe-dans-un-script-linux/"/>
+    <link href="http://tym-project.github.com/2009/05/25/lire-un-mot-de-passe-dans-un-script-linux/"/>
     <updated>2009-05-25T12:50:49+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/05/25/lire-un-mot-de-passe-dans-un-script-linux</id>
+    <id>http://tym-project.github.com/2009/05/25/lire-un-mot-de-passe-dans-un-script-linux</id>
     <content type="html"><![CDATA[<p>Pour lire une entrée au clavier en bash (ou sh, ou autres) on utilise la
 commande <code>read</code>. Par exemple :</p>
 
@@ -126,9 +126,9 @@ en tout cas en aveugle...)</p>
   
   <entry>
     <title type="html"><![CDATA[Bien débuter en administration de matériels Cisco]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/03/29/bien-debuter-en-administration-de-materiels-cisco-2/"/>
+    <link href="http://tym-project.github.com/2009/03/29/bien-debuter-en-administration-de-materiels-cisco-2/"/>
     <updated>2009-03-29T14:35:23+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/03/29/bien-debuter-en-administration-de-materiels-cisco-2</id>
+    <id>http://tym-project.github.com/2009/03/29/bien-debuter-en-administration-de-materiels-cisco-2</id>
     <content type="html"><![CDATA[<p>A mon sens le meilleur moyen d'administrer un matériel Cisco c'est la CLI : la
 ligne de commande (Command Line Interface). Il existe quelques astuces pour se
 simplifier la vie. Mais tout d'abord quelques petits rappels :</p>

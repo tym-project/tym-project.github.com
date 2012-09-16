@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: css | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/css/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/css/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,27 +15,36 @@
   
   <entry>
     <title type="html"><![CDATA[Wordpress : ne plus avoir de texte qui déborde avec la balise "pre"]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/11/17/wordpress-ne-plus-avoir-de-texte-qui-deborde-avec-la-balise-pre/"/>
+    <link href="http://tym-project.github.com/2009/11/17/wordpress-ne-plus-avoir-de-texte-qui-deborde-avec-la-balise-pre/"/>
     <updated>2009-11-17T12:35:53+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/11/17/wordpress-ne-plus-avoir-de-texte-qui-deborde-avec-la-balise-pre</id>
+    <id>http://tym-project.github.com/2009/11/17/wordpress-ne-plus-avoir-de-texte-qui-deborde-avec-la-balise-pre</id>
     <content type="html"><![CDATA[<p>J'utilise énormément la balise <code>pre</code>, qui
 permet d'afficher du code (scripts...) de manière lisible et surtout détachée
 du texte. Mais cette méthode à un inconvénient majeur : si la ligne est trop
 longue elle va tout simplement dépasser du "cadre", et aller baver sur le menu
 de droite par exemple. Il existe une petite astuce en CSS pour résoudre ce
 problème, attention les yeux... Vous devez utiliser le code suivant :
-{% codeblock lang:css %}
-white-space: pre-wrap;
-/<em> css-3 </em>/
-white-space: -moz-pre-wrap !important;
-/<em> Mozilla, since 1999 </em>/
-white-space: -pre-wrap;
-/<em> Opera 4-6 </em>/
-white-space: -o-pre-wrap;
-/<em> Opera 7 </em>/
-word-wrap: break-word;
-/<em> Internet Explorer 5.5+ </em>/
-{% endcodeblock %}
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">white-space</span><span class="o">:</span> <span class="nt">pre-wrap</span><span class="o">;</span>
+</span><span class='line'><span class="o">/&lt;</span><span class="nt">em</span><span class="o">&gt;</span> <span class="nt">css-3</span> <span class="o">&lt;/</span><span class="nt">em</span><span class="o">&gt;/</span>
+</span><span class='line'><span class="nt">white-space</span><span class="o">:</span> <span class="nt">-moz-pre-wrap</span> <span class="o">!</span><span class="nt">important</span><span class="o">;</span>
+</span><span class='line'><span class="o">/&lt;</span><span class="nt">em</span><span class="o">&gt;</span> <span class="nt">Mozilla</span><span class="o">,</span> <span class="nt">since</span> <span class="nt">1999</span> <span class="o">&lt;/</span><span class="nt">em</span><span class="o">&gt;/</span>
+</span><span class='line'><span class="nt">white-space</span><span class="o">:</span> <span class="nt">-pre-wrap</span><span class="o">;</span>
+</span><span class='line'><span class="o">/&lt;</span><span class="nt">em</span><span class="o">&gt;</span> <span class="nt">Opera</span> <span class="nt">4-6</span> <span class="o">&lt;/</span><span class="nt">em</span><span class="o">&gt;/</span>
+</span><span class='line'><span class="nt">white-space</span><span class="o">:</span> <span class="nt">-o-pre-wrap</span><span class="o">;</span>
+</span><span class='line'><span class="o">/&lt;</span><span class="nt">em</span><span class="o">&gt;</span> <span class="nt">Opera</span> <span class="nt">7</span> <span class="o">&lt;/</span><span class="nt">em</span><span class="o">&gt;/</span>
+</span><span class='line'><span class="nt">word-wrap</span><span class="o">:</span> <span class="nt">break-word</span><span class="o">;</span>
+</span><span class='line'><span class="o">/&lt;</span><span class="nt">em</span><span class="o">&gt;</span> <span class="nt">Internet</span> <span class="nt">Explorer</span> <span class="nt">5</span><span class="nc">.5</span><span class="o">+</span> <span class="o">&lt;/</span><span class="nt">em</span><span class="o">&gt;/</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 Après modification, au lieu de ça :</p>
 
 <pre><code>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et molestie sapien. Aliquam vel felis in massa bibendum iaculis sit amet nec tortor. 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: phonétique | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/phonétique/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:50:38+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/phonétique/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Générer des mots de passe sous Linux]]></title>
-    <link href="http://TymProject.github.com/tymproject/2009/05/09/generer-des-mots-de-passe-sous-linux/"/>
+    <link href="http://tym-project.github.com/2009/05/09/generer-des-mots-de-passe-sous-linux/"/>
     <updated>2009-05-09T12:17:51+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2009/05/09/generer-des-mots-de-passe-sous-linux</id>
+    <id>http://tym-project.github.com/2009/05/09/generer-des-mots-de-passe-sous-linux</id>
     <content type="html"><![CDATA[<p>Un seul mot : <code>[man]pwgen[/man]</code> ! Ce que j'apprécie particulièrement avec cet
 outil c'est qu'il permet de générer des mots de passe faciles à retenir. En
 effet, par défaut les mots de passe ont un "sens" quand on les prononce. Par

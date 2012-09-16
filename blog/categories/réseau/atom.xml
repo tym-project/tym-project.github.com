@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Réseau | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/réseau/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/réseau/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Naviguer plus vite sur internet, améliorer son débit ? C'est possible !]]></title>
-    <link href="http://TymProject.github.com/tymproject/2012/02/14/ameliorer-son-debit-internet/"/>
+    <link href="http://tym-project.github.com/2012/02/14/ameliorer-son-debit-internet/"/>
     <updated>2012-02-14T21:11:00+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2012/02/14/ameliorer-son-debit-internet</id>
+    <id>http://tym-project.github.com/2012/02/14/ameliorer-son-debit-internet</id>
     <content type="html"><![CDATA[<p>Avoir un débit rapide pour accéder à internet c'est important, et cela varie fonction de différents facteurs comme votre fournisseur d'accès ou la qualité de votre Wifi... oui c'est en effet un sujet assez vaste !<br/>
 Un moyen assez simple d'accélérer le temps d'accès aux site que vous visitez avec votre brouteur préféré c'est le DNS.</p>
 
@@ -125,9 +125,9 @@ sys 0m0.012s
   
   <entry>
     <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par jour (ou presque)]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar/"/>
+    <link href="http://tym-project.github.com/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar/"/>
     <updated>2011-08-31T19:39:34+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar</id>
+    <id>http://tym-project.github.com/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar</id>
     <content type="html"><![CDATA[<p>Ayant tout un tas de liens que je garde depuis (très) longtemps à droite ou à
 gauche, j'ai décidé de les diffuser ici 5 par 5 quand bon me semblera ! A
 l'avenir j'essaierai peut-être de les regrouper par catégories...</p>
@@ -148,9 +148,9 @@ s'y faire ;-)</p>
   
   <entry>
     <title type="html"><![CDATA[Mon script de configuration iptables]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/04/06/iptables-et-lancement-automatique/"/>
+    <link href="http://tym-project.github.com/2011/04/06/iptables-et-lancement-automatique/"/>
     <updated>2011-04-06T12:00:02+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/04/06/iptables-et-lancement-automatique</id>
+    <id>http://tym-project.github.com/2011/04/06/iptables-et-lancement-automatique</id>
     <content type="html"><![CDATA[<p>Pour ceux qui ne connaitraient pas, iptables est une
 interface de gestion du module netfilter du noyau Linux. En termes clairs :
 c'est un pare-feu. Iptables est donc un ensemble de commandes permettant de
@@ -167,26 +167,43 @@ comment je gère ma configuration de pare-feu à travers un script d'init.</p>
 que je puisse couper/relancer mon pare-feu à loisir : c'est là le rôle d'un
 script "init.d". Commençons donc par la fin, avec les différents arguments que
 peut prendre le script :
-{% codeblock lang:bash %}
-case $1 in</p>
-
-<pre><code>start)
-    start
-    ;;
-stop)
-    stop
-    ;;
-restart)
-    restart
-    ;;
-*)
-    echo "usage: iptables {start|stop|restart}"
-    exit 1
-    ;;
-</code></pre>
-
-<p>esac
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">case</span> <span class="nv">$1</span> in&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;start<span class="o">)</span>
+</span><span class='line'>    start
+</span><span class='line'>    ;;
+</span><span class='line'>stop<span class="o">)</span>
+</span><span class='line'>    stop
+</span><span class='line'>    ;;
+</span><span class='line'>restart<span class="o">)</span>
+</span><span class='line'>    restart
+</span><span class='line'>    ;;
+</span><span class='line'>*<span class="o">)</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="s2">&quot;usage: iptables {start|stop|restart}&quot;</span>
+</span><span class='line'>    <span class="nb">exit </span>1
+</span><span class='line'>    ;;
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;esac
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Logiquement on retrouve les
 fonction <code>start</code>, <code>stop</code> et <code>restart</code> avec une explication des arguments pour
@@ -204,23 +221,37 @@ toute valeur en dehors de ce choix.</p>
 <p>la fonction <code>stop</code> est un peu plus complexe et est chargée de vider les règles
 iptable, de changer la politique par défaut et de restarter
 <code>[man]fail2ban[/man]</code> si besoin :
-{% codeblock lang:bash %}
-function stop {</p>
-
-<pre><code>for IPTABLES in iptables ip6tables;do
-    $IPTABLES -P INPUT ACCEPT
-    $IPTABLES -P FORWARD ACCEPT
-    $IPTABLES -P OUTPUT ACCEPT
-    $IPTABLES -F $IPTABLES -X
-done
-
-if [ -e /etc/init.d/fail2ban ]; then
-    /etc/init.d/fail2ban restart
-fi
-</code></pre>
-
-<p>}
-{% endcodeblock %}
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">function </span>stop <span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;for IPTABLES in iptables ip6tables;do
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P INPUT ACCEPT
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P FORWARD ACCEPT
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P OUTPUT ACCEPT
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -F <span class="nv">$IPTABLES</span> -X
+</span><span class='line'><span class="k">done</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="o">[</span> -e /etc/init.d/fail2ban <span class="o">]</span>; <span class="k">then</span>
+</span><span class='line'>    /etc/init.d/fail2ban restart
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 L'utilisation de <code>for IPTABLES in iptables ip6tables</code> permet de configurer à
 la fois pour ipv4 et ipv6.</p>
 
@@ -231,34 +262,59 @@ TCP à ouvrir) définie ainsi :</p>
 </code></pre>
 
 <p>Et la fonction en elle-même :
-{% codeblock lang:bash %}
-function start {</p>
-
-<pre><code>for IPTABLES in iptables ip6tables;do
-    $IPTABLES -F $IPTABLES -P INPUT DROP
-    $IPTABLES -P FORWARD DROP
-    $IPTABLES -P OUTPUT DROP
-
-    $IPTABLES -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
-    for port in $TCP_PORTS;do
-        $IPTABLES -A INPUT -p tcp --dport $port -j ACCEPT
-    done
-
-    $IPTABLES -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
-    $IPTABLES -A INPUT -i lo -j ACCEPT $IPTABLES -A OUTPUT -o lo -j ACCEPT
-    # ICMP (Ping)
-    #$IPTABLES -A INPUT -p icmp -j ACCEPT
-done
-</code></pre>
-
-<p>if [ -e /etc/init.d/fail2ban ];then</p>
-
-<pre><code>/etc/init.d/fail2ban restart
-</code></pre>
-
-<p>fi
-}
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">function </span>start <span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;for IPTABLES in iptables ip6tables;do
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -F <span class="nv">$IPTABLES</span> -P INPUT DROP
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P FORWARD DROP
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P OUTPUT DROP
+</span><span class='line'>
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+</span><span class='line'>    <span class="k">for </span>port in <span class="nv">$TCP_PORTS</span>;<span class="k">do</span>
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -A INPUT -p tcp --dport <span class="nv">$port</span> -j ACCEPT
+</span><span class='line'>    <span class="k">done</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -A INPUT -i lo -j ACCEPT <span class="nv">$IPTABLES</span> -A OUTPUT -o lo -j ACCEPT
+</span><span class='line'>    <span class="c"># ICMP (Ping)</span>
+</span><span class='line'>    <span class="c">#$IPTABLES -A INPUT -p icmp -j ACCEPT</span>
+</span><span class='line'><span class="k">done</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;if <span class="o">[</span> -e /etc/init.d/fail2ban <span class="o">]</span>;<span class="k">then</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;/etc/init.d/fail2ban restart
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;fi
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>Configuration et installation</h2>
 
@@ -297,109 +353,202 @@ update-rc.d: see &lt;http://wiki.debian.org/LSBInitScripts&gt;
 </code></pre>
 
 <p>Voici donc le fichier dans son intégralité :
-{% codeblock lang:bash %}</p>
-
-<h1>!/bin/bash</h1>
-
-<h1>iptables-default</h1>
-
-<h1>www.tym-project.fr/blog</h1>
-
-<h1>tym@tym-project.fr</h1>
-
-<h3>BEGIN INIT INFO</h3>
-
-<h1>Provides:          iptables</h1>
-
-<h1>Required-Start:    $local_fs $remote_fs $network $syslog</h1>
-
-<h1>Required-Stop:     $local_fs $remote_fs $network $syslog</h1>
-
-<h1>Default-Start:     2 3 4 5</h1>
-
-<h1>Default-Stop:      0 1 6</h1>
-
-<h1>Short-Description: Set up iptables at boot time</h1>
-
-<h1>Description:       Enable service provided by iptables.</h1>
-
-<h3>END INIT INFO</h3>
-
-<p>PATH="/sbin"
-TCP_PORTS="80 443"
-function stop {</p>
-
-<pre><code>for IPTABLES in iptables ip6tables;do
-    $IPTABLES -P INPUT ACCEPT
-    $IPTABLES -P FORWARD ACCEPT
-    $IPTABLES -P OUTPUT ACCEPT
-    $IPTABLES -F
-    $IPTABLES -X
-done
-if [ -e /etc/init.d/fail2ban ]; then
-    /etc/init.d/fail2ban restart
-fi
-</code></pre>
-
-<p>}
-function start {</p>
-
-<pre><code>for IPTABLES in iptables ip6tables;do
-    $IPTABLES -F
-    $IPTABLES -P INPUT DROP
-    $IPTABLES -P FORWARD DROP
-    $IPTABLES -P OUTPUT DROP
-    $IPTABLES -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
-for port in $TCP_PORTS;do
-    $IPTABLES -A INPUT -p tcp --dport $port -j ACCEPT
-done
-$IPTABLES -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
-$IPTABLES -A INPUT -i lo -j ACCEPT
-$IPTABLES -A OUTPUT -o lo -j ACCEPT
-# ICMP (Ping)
-#$IPTABLES -A INPUT -p icmp -j ACCEPT
-done
-if [ -e /etc/init.d/fail2ban ];then
-    /etc/init.d/fail2ban restart
-fi
-</code></pre>
-
-<p>}
-function restart {</p>
-
-<pre><code>stop
-start
-</code></pre>
-
-<p>}
-case $1 in</p>
-
-<pre><code>start)
-start
-;;
-stop)
-stop
-;;
-restart)
-restart
-;;
-*)
-echo "usage: iptables {start|stop|restart}"
-exit 1
-;;
-</code></pre>
-
-<p>esac
-{% endcodeblock %}
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;iptables-default&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;www.tym-project.fr/blog&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;tym@tym-project.fr&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h3&gt;BEGIN INIT INFO&lt;/h3&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Provides:          iptables&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Required-Start:    <span class="nv">$local_fs</span> <span class="nv">$remote_fs</span> <span class="nv">$network</span> <span class="nv">$syslog</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Required-Stop:     <span class="nv">$local_fs</span> <span class="nv">$remote_fs</span> <span class="nv">$network</span> <span class="nv">$syslog</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Default-Start:     2 3 4 5&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Default-Stop:      0 1 6&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Short-Description: Set up iptables at boot <span class="nb">time</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Description:       Enable service provided by iptables.&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h3&gt;END INIT INFO&lt;/h3&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;PATH<span class="o">=</span><span class="s2">&quot;/sbin&quot;</span>
+</span><span class='line'><span class="nv">TCP_PORTS</span><span class="o">=</span><span class="s2">&quot;80 443&quot;</span>
+</span><span class='line'><span class="k">function </span>stop <span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;for IPTABLES in iptables ip6tables;do
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P INPUT ACCEPT
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P FORWARD ACCEPT
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P OUTPUT ACCEPT
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -F
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -X
+</span><span class='line'><span class="k">done</span>
+</span><span class='line'><span class="k">if</span> <span class="o">[</span> -e /etc/init.d/fail2ban <span class="o">]</span>; <span class="k">then</span>
+</span><span class='line'>    /etc/init.d/fail2ban restart
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">}</span>
+</span><span class='line'><span class="k">function </span>start <span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;for IPTABLES in iptables ip6tables;do
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -F
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P INPUT DROP
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P FORWARD DROP
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P OUTPUT DROP
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+</span><span class='line'><span class="k">for </span>port in <span class="nv">$TCP_PORTS</span>;<span class="k">do</span>
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -A INPUT -p tcp --dport <span class="nv">$port</span> -j ACCEPT
+</span><span class='line'><span class="k">done</span>
+</span><span class='line'><span class="nv">$IPTABLES</span> -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+</span><span class='line'><span class="nv">$IPTABLES</span> -A INPUT -i lo -j ACCEPT
+</span><span class='line'><span class="nv">$IPTABLES</span> -A OUTPUT -o lo -j ACCEPT
+</span><span class='line'><span class="c"># ICMP (Ping)</span>
+</span><span class='line'><span class="c">#$IPTABLES -A INPUT -p icmp -j ACCEPT</span>
+</span><span class='line'><span class="k">done</span>
+</span><span class='line'><span class="k">if</span> <span class="o">[</span> -e /etc/init.d/fail2ban <span class="o">]</span>;<span class="k">then</span>
+</span><span class='line'>    /etc/init.d/fail2ban restart
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">}</span>
+</span><span class='line'><span class="k">function </span>restart <span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;stop
+</span><span class='line'>start
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">}</span>
+</span><span class='line'><span class="k">case</span> <span class="nv">$1</span> in&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;start<span class="o">)</span>
+</span><span class='line'>start
+</span><span class='line'>;;
+</span><span class='line'>stop<span class="o">)</span>
+</span><span class='line'>stop
+</span><span class='line'>;;
+</span><span class='line'>restart<span class="o">)</span>
+</span><span class='line'>restart
+</span><span class='line'>;;
+</span><span class='line'>*<span class="o">)</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;usage: iptables {start|stop|restart}&quot;</span>
+</span><span class='line'><span class="nb">exit </span>1
+</span><span class='line'>;;
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;esac
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 Bon firewalling ;-)</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Ubuntu : Permuter et renommer des cartes réseau]]></title>
-    <link href="http://TymProject.github.com/tymproject/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware/"/>
+    <link href="http://tym-project.github.com/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware/"/>
     <updated>2011-02-23T12:00:00+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware</id>
+    <id>http://tym-project.github.com/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware</id>
     <content type="html"><![CDATA[<p>Après la mise en place d'une VM Ubuntu avec
 Vmware, et surtout suite à sa copie je me suis rendu compte que je n'avais
 plus de réseau...ou du moins <code>eth0</code> n'était pas configurée. Après un
@@ -481,9 +630,9 @@ wifi0  Link encap:Ethernet  HWaddr 00:21:6a:67:e1:88
   
   <entry>
     <title type="html"><![CDATA[Une adresse DNS instantanée, avec ipq.co]]></title>
-    <link href="http://TymProject.github.com/tymproject/2010/10/13/dns-ultra-rapide-et-gratuit/"/>
+    <link href="http://tym-project.github.com/2010/10/13/dns-ultra-rapide-et-gratuit/"/>
     <updated>2010-10-13T14:06:41+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2010/10/13/dns-ultra-rapide-et-gratuit</id>
+    <id>http://tym-project.github.com/2010/10/13/dns-ultra-rapide-et-gratuit</id>
     <content type="html"><![CDATA[<p>Les adresses Ip c'est bien, les Ipv6 c'est
 mieux, et la mémoire des chiffres c'est le top ! Plus sérieusement, il est
 parfois très pratique de pouvoir se créer une adresse DNS
@@ -499,11 +648,11 @@ rapide (jusqu'a 72h, réplication oblige) il faudrait une solution alternative.<
 
 <p><strong><a href="http://ipq.co">IP Quick</a></strong> est LA réponse à cette problématique ! Connectez-vous, entrez une Ip (v4), le nom est optionnel :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/28-09-2010-20-34-35.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/28-09-2010-20-34-35.png"></p>
 
 <p>Et magie, en 10s c'est opérationnel (<em>je n'ai pas choisit le nom...</em>) :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/2010-4/28-09-2010-20-36-33.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/2010-4/28-09-2010-20-36-33.png"></p>
 
 <h2>Oui, mais...</h2>
 

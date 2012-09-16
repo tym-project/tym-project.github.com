@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Windows vs. Apple | ツ Tym-Project]]></title>
-  <link href="http://TymProject.github.com/tymproject/blog/categories/windows-vs-apple/atom.xml" rel="self"/>
-  <link href="http://TymProject.github.com/tymproject/"/>
-  <updated>2012-09-16T15:54:08+00:00</updated>
-  <id>http://TymProject.github.com/tymproject/</id>
+  <link href="http://tym-project.github.com/blog/categories/windows-vs-apple/atom.xml" rel="self"/>
+  <link href="http://tym-project.github.com/"/>
+  <updated>2012-09-16T16:16:48+00:00</updated>
+  <id>http://tym-project.github.com/</id>
   <author>
     <name><![CDATA[Tym]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA["On nous ment !"...]]></title>
-    <link href="http://TymProject.github.com/tymproject/2010/03/03/on-nous-ment/"/>
+    <link href="http://tym-project.github.com/2010/03/03/on-nous-ment/"/>
     <updated>2010-03-03T22:10:27+00:00</updated>
-    <id>http://TymProject.github.com/tymproject/2010/03/03/on-nous-ment</id>
+    <id>http://tym-project.github.com/2010/03/03/on-nous-ment</id>
     <content type="html"><![CDATA[<p>Si si...je vous assure ! Mais comme une image vaut
 mieux qu'un long discours :</p>
 
