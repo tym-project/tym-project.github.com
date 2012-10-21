@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Icy Box IB-351 et Linux - Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="Il-y-a un quelques années, disons 5 ou 6 ans, basculer un ordinateur personnel sous Linux signifait d&#8217;abord vérifier la compatibilité du &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.tym-project.fr/2012/10/21/icy-box-ib-351-et-linux/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.tym-project.fr" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Icy Box IB-351 Et Linux</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-21T18:59:00+00:00" pubdate data-updated="true">Oct 21<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Il-y-a un quelques années, disons 5 ou 6 ans, basculer un ordinateur personnel sous Linux signifait d&#8217;abord vérifier la compatibilité du matériel. Cela est toujours vrai aujourd&#8217;hui, en témoigne <a href="" title="http://www.linux-drivers.org/">Linux-Drivers.org</a>, mais de manière générale ce n&#8217;est plus un passage obligé.</p>
+
+<p>De manière générale.</p>
+
+<p>Dans le but de mettre en place un NAS sur un Raspberry Pi flambant neuf, j&#8217;ai fait l&#8217;acquisition d&#8217;un boitier Sata USB 3 <a href="" title="http://www.ldlc.com/fiche/PB00116759.html">Icy Box IB-351StU3-B</a>. Ni une ni deux je branche la chose sur le premier port USB disponible&#8230; et&#8230; <code>mount /dev/sda1 /tmp/test</code>&#8230; et rien. Un beau plantage du système.</p>
+
+<!-- more -->
+
+
+<h2>Le pourquoi de la non chose</h2>
+
+<p>Pourquoi un simple périphérique de stockage n&#8217;est pas reconnu par ma machine ? Avant de creuser un peu plus, je teste rapidement le boitier sur Windows 7 : pas de problème, le disque et son boitier sont correctement reconnus.</p>
+
+<p>De retour sur Linux, je regarde ce qui se passe du coté de <code>dmesg</code> :</p>
+
+<pre><code>[ 3434.890820] usb 1-1.3: new high-speed USB device number 4 using dwc_otg
+[ 3434.998764] usb 1-1.3: New USB device found, idVendor=1234, idProduct=5678
+[ 3434.998799] usb 1-1.3: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[ 3434.998820] usb 1-1.3: Product: VLI Product String
+[ 3434.998836] usb 1-1.3: Manufacturer: VLI manufacture String
+[ 3434.998852] usb 1-1.3: SerialNumber: 0000000000006122
+[ 3435.007870] scsi0 : usb-storage 1-1.3:1.0
+[ 3439.167410] scsi 0:0:0:0: Direct-Access     WDC WD25 00BEKT-75PVM     01.0 PQ: 0 ANSI: 2
+[ 3439.173974] sd 0:0:0:0: [sda] 488397165 512-byte logical blocks: (250 GB/232 GiB)
+[ 3439.175587] sd 0:0:0:0: [sda] Write Protect is off
+[ 3439.175626] sd 0:0:0:0: [sda] Mode Sense: 00 06 00 00
+[ 3439.177209] sd 0:0:0:0: [sda] No Caching mode page present
+[ 3439.177243] sd 0:0:0:0: [sda] Assuming drive cache: write through
+[ 3439.186049] sd 0:0:0:0: [sda] No Caching mode page present
+[ 3439.186085] sd 0:0:0:0: [sda] Assuming drive cache: write through
+[ 3439.199966]  sda: sda1
+[ 3439.200029] sda: p1 size 488395120 extends beyond EOD, enabling native capacity
+[ 3439.206799] sd 0:0:0:0: [sda] No Caching mode page present
+[ 3439.206836] sd 0:0:0:0: [sda] Assuming drive cache: write through
+[ 3439.209317]  sda: sda1
+[ 3439.209375] sda: p1 size 488395120 extends beyond EOD, truncated
+[ 3439.220922] sd 0:0:0:0: [sda] No Caching mode page present
+[ 3439.220959] sd 0:0:0:0: [sda] Assuming drive cache: write through
+[ 3439.220981] sd 0:0:0:0: [sda] Attached SCSI disk
+[ 3440.467258] sd 0:0:0:0: [sda]  Result: hostbyte=0x00 driverbyte=0x08
+[ 3440.467301] sd 0:0:0:0: [sda]  Sense Key : 0x5 [current] 
+[ 3440.467327] sd 0:0:0:0: [sda]  ASC=0x24 ASCQ=0x0
+[ 3440.467349] sd 0:0:0:0: [sda] CDB: cdb[0]=0x28: 28 00 00 00 00 38 00 00 08 00 00 00
+[ 3440.467411] end_request: I/O error, dev sda, sector 56
+[ 3440.467434] Buffer I/O error on device sda, logical block 56
+[ 3440.467458] Buffer I/O error on device sda, logical block 57
+[ 3440.467476] Buffer I/O error on device sda, logical block 58
+[ 3440.467494] Buffer I/O error on device sda, logical block 59
+[ 3440.467511] Buffer I/O error on device sda, logical block 60
+[ 3440.467528] Buffer I/O error on device sda, logical block 61
+[ 3440.467545] Buffer I/O error on device sda, logical block 62
+[ 3440.467562] Buffer I/O error on device sda, logical block 63
+</code></pre>
+
+<p>Le mot clé ici est <code>SCSI</code>, en effet ce boitier permet un changement de disque-dur à chaud (c&#8217;est à dire sans arrêt/relance), ce n&#8217;est donc pas un simple périphérique USB comme je l&#8217;imaginais.
+Pour confirmer le problème, je teste un <code>hpparm /dev/sda1</code> :</p>
+
+<pre><code>/dev/sda1:
+ HDIO_DRIVE_CMD(identify) failed: Invalid argument
+ readonly      =  0 (off)
+ readahead     = 256 (on)
+</code></pre>
+
+<p>Pour comparer, la même commande sur un disque fonctionnel :</p>
+
+<pre><code>/dev/sda2:
+ multcount     =  8 (on)
+ IO_support    =  1 (32-bit)
+ readonly      =  0 (off)
+ readahead     = 256 (on)
+ geometry      = 30401/255/63, sectors = 204800, start = 2048
+</code></pre>
+
+<h2>Retour à l&#8217;envoyeur ou geekage intense ?</h2>
+
+<p>Coup de chance pour ce post, LDLC ne propose pas de politique d&#8217;échange ou remboursement, et comme le disque n&#8217;est pas explicitement compatible Linux point de salut auprès du SAV. Il faut donc que je trouve une solution.</p>
+
+<p>Après quelques recherches, je trouve <a href="" title="http://ubuntuforums.org/showthread.php?t=1866432">cet article</a> qui semble correspondre à mon problème, et renvoit vers cet <a href="" title="http://marc.info/?l=linux-usb&amp;m=131946676027988&amp;w=2">obscure publication</a>.</p>
+
+<p>En regardant de plus près, il s&#8217;avère que le boitier se présente comme un appareil de classe <code>SFF-8020i</code> (visible avec un <code>lsusb -v</code>) :</p>
+
+<pre><code>bInterfaceSubClass      2 SFF-8020i, MMC-2 (ATAPI)
+</code></pre>
+
+<p><a href="" title="www.bswd.com/sff8020i.pdf">Une recherche Google</a> me permet de trouver une Datasheet, qui a pour titre &#8220;ATA Packet Interface for CD-ROMs&#8221;. Hu hum. CD-ROM ? Effectivement, cela doit être un moyen simplifié de permetre le hot-swap sur un disque-dur (car on peut changer le média dans un lecteur CD-ROM sans reboot).<br/>
+Un peu plus loin dans la doc on peut lire &#8220;Support for command packets of at least 12 bytes in length.&#8221;, je n&#8217;ai pas trouvé cela par hasard, c&#8217;est écrit dans l&#8217;article mentionné plus haut (&#8220;This kicks-in code to force all commands to 12-byte, as (I think) required by 8020i&#8221;). Bien qu&#8217;il soit question de 12 octets minimum pour les commandes envoyées au périphérique, les développeurs du noyau Linux ont probablement interprété cela comme une limite à ne pas dépasser.</p>
+
+<p>Quelqu&#8217;un qui doit connaître le noyau comme sa poche a trouvé <a href="" title="http://marc.info/?l=linux-usb&amp;m=131947421908909&amp;w=2">la solution </a>, il faut modifier le noyau pour qu&#8217;il ne force plus les instructions à une longeur de 12 octets. La publication n&#8217;est plus trop à jour, sur un noyau 3.6.2 il faut éditer le fichier <code>linux-3.6.2/drivers/usb/storage/protocol.c</code> et le modifier ainsi :</p>
+
+<pre><code>/* Ligne 66, on commente */
+/*for (; srb-&gt;cmd_len &lt; 12; srb-&gt;cmd_len++)
+*       srb-&gt;cmnd[srb-&gt;cmd_len] = 0;
+*/
+
+/* Ligne 90, on commente */
+/* srb-&gt;cmd_len = 12; */
+</code></pre>
+
+<p>On recompile le noyau, et hop tout fonctionne, le disque est reconnu sans erreurs.</p>
+
+<p>Alors pour de vrai, j&#8217;ai un peu triché, je n&#8217;ai pas encore compilé de noyau pour un Rapsberry Pi car cela un implique une compilation croisée (compiler du code pour un processeur ARM sur un processeur x86). Mais promis, j&#8217;ai testé et approuvé sur le Archlinux installé sur mon laptop et je me lancerain bientôt dans la cross-compilation pour le Rapsberry Pi :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tym</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-21T18:59:00+00:00" pubdate data-updated="true">Oct 21<span>st</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.tym-project.fr/2012/10/21/icy-box-ib-351-et-linux/" data-via="" data-counturl="http://blog.tym-project.fr/2012/10/21/icy-box-ib-351-et-linux/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/" title="Previous Post: CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard">&laquo; CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2012/10/21/icy-box-ib-351-et-linux/">Icy Box IB-351 et Linux</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande...</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.tym-project.fr/2012/10/21/icy-box-ib-351-et-linux/';
+        var disqus_url = 'http://blog.tym-project.fr/2012/10/21/icy-box-ib-351-et-linux/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

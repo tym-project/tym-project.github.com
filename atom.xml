@@ -4,7 +4,7 @@
   <title><![CDATA[Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-09-16T17:03:21+00:00</updated>
+  <updated>2012-10-21T20:13:43+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -12,6 +12,115 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Icy Box IB-351 et Linux]]></title>
+    <link href="http://blog.tym-project.fr/2012/10/21/icy-box-ib-351-et-linux/"/>
+    <updated>2012-10-21T18:59:00+00:00</updated>
+    <id>http://blog.tym-project.fr/2012/10/21/icy-box-ib-351-et-linux</id>
+    <content type="html"><![CDATA[<p>Il-y-a un quelques années, disons 5 ou 6 ans, basculer un ordinateur personnel sous Linux signifait d&#8217;abord vérifier la compatibilité du matériel. Cela est toujours vrai aujourd&#8217;hui, en témoigne <a href="" title="http://www.linux-drivers.org/">Linux-Drivers.org</a>, mais de manière générale ce n&#8217;est plus un passage obligé.</p>
+
+<p>De manière générale.</p>
+
+<p>Dans le but de mettre en place un NAS sur un Raspberry Pi flambant neuf, j&#8217;ai fait l&#8217;acquisition d&#8217;un boitier Sata USB 3 <a href="" title="http://www.ldlc.com/fiche/PB00116759.html">Icy Box IB-351StU3-B</a>. Ni une ni deux je branche la chose sur le premier port USB disponible&#8230; et&#8230; <code>mount /dev/sda1 /tmp/test</code>&#8230; et rien. Un beau plantage du système.</p>
+
+<!-- more -->
+
+
+<h2>Le pourquoi de la non chose</h2>
+
+<p>Pourquoi un simple périphérique de stockage n&#8217;est pas reconnu par ma machine ? Avant de creuser un peu plus, je teste rapidement le boitier sur Windows 7 : pas de problème, le disque et son boitier sont correctement reconnus.</p>
+
+<p>De retour sur Linux, je regarde ce qui se passe du coté de <code>dmesg</code> :</p>
+
+<pre><code>[ 3434.890820] usb 1-1.3: new high-speed USB device number 4 using dwc_otg
+[ 3434.998764] usb 1-1.3: New USB device found, idVendor=1234, idProduct=5678
+[ 3434.998799] usb 1-1.3: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[ 3434.998820] usb 1-1.3: Product: VLI Product String
+[ 3434.998836] usb 1-1.3: Manufacturer: VLI manufacture String
+[ 3434.998852] usb 1-1.3: SerialNumber: 0000000000006122
+[ 3435.007870] scsi0 : usb-storage 1-1.3:1.0
+[ 3439.167410] scsi 0:0:0:0: Direct-Access     WDC WD25 00BEKT-75PVM     01.0 PQ: 0 ANSI: 2
+[ 3439.173974] sd 0:0:0:0: [sda] 488397165 512-byte logical blocks: (250 GB/232 GiB)
+[ 3439.175587] sd 0:0:0:0: [sda] Write Protect is off
+[ 3439.175626] sd 0:0:0:0: [sda] Mode Sense: 00 06 00 00
+[ 3439.177209] sd 0:0:0:0: [sda] No Caching mode page present
+[ 3439.177243] sd 0:0:0:0: [sda] Assuming drive cache: write through
+[ 3439.186049] sd 0:0:0:0: [sda] No Caching mode page present
+[ 3439.186085] sd 0:0:0:0: [sda] Assuming drive cache: write through
+[ 3439.199966]  sda: sda1
+[ 3439.200029] sda: p1 size 488395120 extends beyond EOD, enabling native capacity
+[ 3439.206799] sd 0:0:0:0: [sda] No Caching mode page present
+[ 3439.206836] sd 0:0:0:0: [sda] Assuming drive cache: write through
+[ 3439.209317]  sda: sda1
+[ 3439.209375] sda: p1 size 488395120 extends beyond EOD, truncated
+[ 3439.220922] sd 0:0:0:0: [sda] No Caching mode page present
+[ 3439.220959] sd 0:0:0:0: [sda] Assuming drive cache: write through
+[ 3439.220981] sd 0:0:0:0: [sda] Attached SCSI disk
+[ 3440.467258] sd 0:0:0:0: [sda]  Result: hostbyte=0x00 driverbyte=0x08
+[ 3440.467301] sd 0:0:0:0: [sda]  Sense Key : 0x5 [current] 
+[ 3440.467327] sd 0:0:0:0: [sda]  ASC=0x24 ASCQ=0x0
+[ 3440.467349] sd 0:0:0:0: [sda] CDB: cdb[0]=0x28: 28 00 00 00 00 38 00 00 08 00 00 00
+[ 3440.467411] end_request: I/O error, dev sda, sector 56
+[ 3440.467434] Buffer I/O error on device sda, logical block 56
+[ 3440.467458] Buffer I/O error on device sda, logical block 57
+[ 3440.467476] Buffer I/O error on device sda, logical block 58
+[ 3440.467494] Buffer I/O error on device sda, logical block 59
+[ 3440.467511] Buffer I/O error on device sda, logical block 60
+[ 3440.467528] Buffer I/O error on device sda, logical block 61
+[ 3440.467545] Buffer I/O error on device sda, logical block 62
+[ 3440.467562] Buffer I/O error on device sda, logical block 63
+</code></pre>
+
+<p>Le mot clé ici est <code>SCSI</code>, en effet ce boitier permet un changement de disque-dur à chaud (c&#8217;est à dire sans arrêt/relance), ce n&#8217;est donc pas un simple périphérique USB comme je l&#8217;imaginais.
+Pour confirmer le problème, je teste un <code>hpparm /dev/sda1</code> :</p>
+
+<pre><code>/dev/sda1:
+ HDIO_DRIVE_CMD(identify) failed: Invalid argument
+ readonly      =  0 (off)
+ readahead     = 256 (on)
+</code></pre>
+
+<p>Pour comparer, la même commande sur un disque fonctionnel :</p>
+
+<pre><code>/dev/sda2:
+ multcount     =  8 (on)
+ IO_support    =  1 (32-bit)
+ readonly      =  0 (off)
+ readahead     = 256 (on)
+ geometry      = 30401/255/63, sectors = 204800, start = 2048
+</code></pre>
+
+<h2>Retour à l&#8217;envoyeur ou geekage intense ?</h2>
+
+<p>Coup de chance pour ce post, LDLC ne propose pas de politique d&#8217;échange ou remboursement, et comme le disque n&#8217;est pas explicitement compatible Linux point de salut auprès du SAV. Il faut donc que je trouve une solution.</p>
+
+<p>Après quelques recherches, je trouve <a href="" title="http://ubuntuforums.org/showthread.php?t=1866432">cet article</a> qui semble correspondre à mon problème, et renvoit vers cet <a href="" title="http://marc.info/?l=linux-usb&amp;m=131946676027988&amp;w=2">obscure publication</a>.</p>
+
+<p>En regardant de plus près, il s&#8217;avère que le boitier se présente comme un appareil de classe <code>SFF-8020i</code> (visible avec un <code>lsusb -v</code>) :</p>
+
+<pre><code>bInterfaceSubClass      2 SFF-8020i, MMC-2 (ATAPI)
+</code></pre>
+
+<p><a href="" title="www.bswd.com/sff8020i.pdf">Une recherche Google</a> me permet de trouver une Datasheet, qui a pour titre &#8220;ATA Packet Interface for CD-ROMs&#8221;. Hu hum. CD-ROM ? Effectivement, cela doit être un moyen simplifié de permetre le hot-swap sur un disque-dur (car on peut changer le média dans un lecteur CD-ROM sans reboot).<br/>
+Un peu plus loin dans la doc on peut lire &#8220;Support for command packets of at least 12 bytes in length.&#8221;, je n&#8217;ai pas trouvé cela par hasard, c&#8217;est écrit dans l&#8217;article mentionné plus haut (&#8220;This kicks-in code to force all commands to 12-byte, as (I think) required by 8020i&#8221;). Bien qu&#8217;il soit question de 12 octets minimum pour les commandes envoyées au périphérique, les développeurs du noyau Linux ont probablement interprété cela comme une limite à ne pas dépasser.</p>
+
+<p>Quelqu&#8217;un qui doit connaître le noyau comme sa poche a trouvé <a href="" title="http://marc.info/?l=linux-usb&amp;m=131947421908909&amp;w=2">la solution </a>, il faut modifier le noyau pour qu&#8217;il ne force plus les instructions à une longeur de 12 octets. La publication n&#8217;est plus trop à jour, sur un noyau 3.6.2 il faut éditer le fichier <code>linux-3.6.2/drivers/usb/storage/protocol.c</code> et le modifier ainsi :</p>
+
+<pre><code>/* Ligne 66, on commente */
+/*for (; srb-&gt;cmd_len &lt; 12; srb-&gt;cmd_len++)
+*       srb-&gt;cmnd[srb-&gt;cmd_len] = 0;
+*/
+
+/* Ligne 90, on commente */
+/* srb-&gt;cmd_len = 12; */
+</code></pre>
+
+<p>On recompile le noyau, et hop tout fonctionne, le disque est reconnu sans erreurs.</p>
+
+<p>Alors pour de vrai, j&#8217;ai un peu triché, je n&#8217;ai pas encore compilé de noyau pour un Rapsberry Pi car cela un implique une compilation croisée (compiler du code pour un processeur ARM sur un processeur x86). Mais promis, j&#8217;ai testé et approuvé sur le Archlinux installé sur mon laptop et je me lancerain bientôt dans la cross-compilation pour le Rapsberry Pi :)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard]]></title>
@@ -1460,81 +1569,6 @@ installer le plugin Flash 64 bits :</p>
 mais assez sympa en fait) : <a href="http://www.dailymotion.com/video/xft12d_snowboard-kyle-miller-2009-2010_sport">Snowboard: Kyle Miller - 2009-2010 </a></p>
 
 <p>Bon Flashs ;-)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Analyse d'une "arnaque" Facebook]]></title>
-    <link href="http://blog.tym-project.fr/2011/03/07/manipulation-par-facebook/"/>
-    <updated>2011-03-07T19:16:09+00:00</updated>
-    <id>http://blog.tym-project.fr/2011/03/07/manipulation-par-facebook</id>
-    <content type="html"><![CDATA[<p>J&#8217;utilise Facebook, avec parcimonie certes, mais
-je l&#8217;utilise quand même. On sait maintenant qu&#8217;il faut être très vigilant sur
-les réseaux sociaux, et cet article en est une preuve supplémentaire.</p>
-
-<!-- more -->
-
-
-<p>Il est
-question ici d&#8217;une page web que vous avez certainement croisé sur votre mur.
-Je met le lien pour information ( <a href="http://likeloverr.com/fun.php?id=12">ici</a>), mais NE L&#8217;OUVREZ PAS avant
-d&#8217;avoir lu ce qui suit. Une vidéo d&#8217;un petit chat, qui peut résister&#8230;</p>
-
-<p><em>Edit
-du 8 mars : Il semble que la page ait été modifiée depuis la publication de
-cet article, le lien vous amène maintenant vers un site où il est clairement
-indiqué qu&#8217;il faut cliquer sur &#8220;J&#8217;aime&#8221; pour voir la vidéo.</em></p>
-
-<h2>Un anti-robots comme on en fait plus</h2>
-
-<p>Si vous êtes un peu au fait des technologies récentes, il est souvent question
-de s&#8217;affranchir des <a href="http://upload.wikimedia.org/wikipedia/commons/6/69/Captcha.jpg">captchas</a> illisibles permettant d&#8217;éviter un traitement
-automatisé. Alors quand un site me propose un jeu de logique en guise de
-vérification, j&#8217;approuve. Erreur ! Voici la page que vous obtenez quand vous
-tentez de visionner la video en question dans cet article :</p>
-
-<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/selection_002.png" alt="selection_002" /></p>
-
-<p>Malin pin pin, ni une ni deux, je clique !</p>
-
-<h2>Toi aussi tu aime le javascript ?</h2>
-
-<p>L&#8217;arnaque en question dans cet article se situe dans le code source des
-boutons colorés :</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;iframe</span> <span class="na">id=</span><span class="s">f1</span> <span class="na">class=</span><span class="s">iframe</span> <span class="na">src=</span><span class="s">&quot;http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/pages/Chat-Trop-Mignon-Qui-a-Du-Mal-�-Se-Reveiller/115156425228492&amp;layout=button_count&amp;show_faces=false&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=21&quot;</span> <span class="na">scrolling=</span><span class="s">&quot;no&quot;</span> <span class="na">frameborder=</span><span class="s">&quot;0&quot;</span><span class="na">style=</span><span class="s">&quot;border:none; overflow:hidden; width:450px; height:21px;&quot;</span><span class="na">allowTransparency=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/iframe&gt;</span>
-</span><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://connect.facebook.net/fr_FR/all.js#xfbml=1&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'><span class="nt">&lt;fb:like</span> <span class="na">id=</span><span class="s">f2</span> <span class="na">class=</span><span class="s">iframe</span> <span class="na">href=</span><span class="s">&quot;http://likeloverr.com/fun.php?id=12&quot;</span> <span class="na">layout=</span><span class="s">&quot;button_count&quot;</span> <span class="na">show_faces=</span><span class="s">&quot;false&quot;</span> <span class="na">width=</span><span class="s">&quot;450&quot;</span><span class="nt">&gt;&lt;/fb:like&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Traduction en clair : &#8220;Tu clique et tu like !&#8221;. Eh oui, le fait de cliquer sur
-ces deux boutons vous a :</p>
-
-<ul>
-<li>Rendu &#8220;fan&#8221; de la page associée à la vidéo</li>
-<li>Fait &#8220;Liker&#8221; le lien</li>
-</ul>
-
-
-<h2>Cache ta joie !</h2>
-
-<p>Sur le papier c&#8217;est déjà un fonctionnement que je juge ignoble, mais en
-pratique c&#8217;est encore pire : une des vidéos virales de ce site propose un
-contenu particulièrement osé et, disons-le, pornographique. Je ne donnerai pas
-le lien ici, mais je suis prêt à parier qu&#8217;au moins un de vos amis s&#8217;est fait
-piéger et s&#8217;est donc retrouvé avec ce lien et cette page pas très glorieuse
-dans son profil. <em>Qui a dit licenciement ? &#8230;</em></p>
-
-<h2>Je me suis fait(e) avoir, et après ?</h2>
-
-<p>Il vous suffit de ne plus &#8220;Aimer&#8221; ni la page ni le lien, et de croiser les
-doigts pour que pas grand monde ait aperçu votre profil&#8230;</p>
-
-<p>Soyez donc vigilants ;-)</p>
 ]]></content>
   </entry>
   

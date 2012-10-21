@@ -9,8 +9,8 @@
   <meta name="author" content="Tym">
 
   
-  <meta name="description" content="Vous vous souvenez de l&#8217;article sur comment associer son domaine à Google Apps
-(ici) ? Et bien même les meilleurs s&#8217;en servent &hellip;">
+  <meta name="description" content="Pourquoi est-ce important de signer (avec un certificat) une application Java
+? Prenons un exemple concret : laisseriez vous entrer une personne non &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,86 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/04/03/signer-une-application-java-2/">Signer Une Application Java</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-03T15:41:24+00:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pourquoi est-ce important de signer (avec un certificat) une application Java
+? Prenons un exemple concret : laisseriez vous entrer une personne non
+certifiée dans votre appartement pour qu&#8217;elle fouille vos placards ? Non je
+l&#8217;espère, par contre un policier avec un mandat&#8230; là oui (je ne vous le
+souhaite pas :)).<br/>
+Pour les applications c&#8217;est la même chose : votre applet ne
+pourra pas accéder à des fichiers sensibles si il n&#8217;est pas signé.</p>
+
+<p>Pour ce tutoriel nous allons signer un lecteur Ogg : Cortado. Cet applet est
+destiné à être placé sur un serveur web pour diffuser une web-tv par exemple.
+Dans l&#8217;exemple il doit se connecter à un serveur Icecast et il doit donc être
+signé pour avoir le droit de lire le flux.</p>
+
+<p>Vous devez tout d&#8217;abord installer le JDK, disponible<a href="http://java.sun.com/javase/downloads/index.jsp"> ici</a>.</p>
+
+<p><em>Je vais vous présenter les manipulations sous Windows, mais elles sont
+identiques sous Linux ou Mac.</em></p>
+
+<p>Placez vous dans le dossier du JDK, dans le répertoire des binaires :</p>
+
+<pre><code>cd "C:\Program Files\Java\jdk1.6.0_12\bin"
+</code></pre>
+
+<p>Nous allons
+tout d&#8217;abord créer un certificat. Pour cela utilisez <code>keytool</code>, notre
+certificat sera valide 1 an (365 jours) et aura pour alias (un nom pour le
+réutiliser lors d&#8217;une signature) &#8220;myCertif&#8221;. On précise aussi le mot de passe
+du <code>keystore</code> (le coffre qui contient les clés) :</p>
+
+<pre><code>C:\Program Files\Java\jdk1.6.0_12\bin &gt; keytool.exe -genkey -alias myCertif -validity 365 -storepass adadad
+</code></pre>
+
+<p>Vous devez alors donner différentes
+informations comme le nom de l&#8217;entreprise, etc&#8230;Attention car ces valeurs
+pourront être visibles des utilisateurs ! Vous devrez confirmez les
+informations puis donner un mot de passe à la clé. Votre certificat est crée,
+signons donc notre application avec <code>jarsigner</code> :</p>
+
+<pre><code>C:\Program Files\Java\jdk1.6.0_12\bin &gt; jarsigner.exe -storepass adadad C:\cortado-ovt-stripped-0.2.2.jar myCertif
+</code></pre>
+
+<p>Jarsigner n&#8217;est pas très
+bavard, mais si rien n&#8217;est précisé alors tout s&#8217;est bien passé !</p>
+
+<p>Bonnes signatures ;-)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -519,50 +599,6 @@ de casse-tête !</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/03/27/cetait-mieux-avant/">C&#8217;était Mieux Avant !</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-03-27T09:55:14+00:00" pubdate data-updated="true">Mar 27<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Vous cherchez l&#8217;ancienne version de votre
-logiciel préféré parce que la nouvelle n&#8217;est pas à votre goût ? Pas toujours
-évident de trouver votre bonheur !</p>
-
-<p>Le site <a href="http://www.oldversion.com/">OldVersion.com</a> vous permet de trouver ce que vous cherchez.
-<a href="http://www.filehippo.com/">FileHippo.com</a> donne aussi un historique des versions des logiciels qu&#8217;ils
-proposent.</p>
-
-<p>Bon téléchargements ;-)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/14/">&larr; Older</a>
@@ -580,6 +616,10 @@ proposent.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2012/10/21/icy-box-ib-351-et-linux/">Icy Box IB-351 et Linux</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S&#8230; entre boot loop et sd-cauchemard</a>
       </li>
     
@@ -593,10 +633,6 @@ proposent.</p>
     
       <li class="post">
         <a href="/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande&#8230;</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/02/14/ameliorer-son-debit-internet/">Naviguer plus vite sur internet, améliorer son débit ? C&#8217;est possible !</a>
       </li>
     
   </ul>

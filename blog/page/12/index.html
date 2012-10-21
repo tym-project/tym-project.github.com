@@ -9,8 +9,8 @@
   <meta name="author" content="Tym">
 
   
-  <meta name="description" content="Pour ajouter des images à votre application vous avez différentes solutions,
-mais attention, toutes ne fonctionnent pas correctement ! Voici donc &hellip;">
+  <meta name="description" content="Suite à cet article, j’ai jugé bon de vous expliquer comment mettre en
+place un serveur ssh sécurisé qui sera destiné seulement à faire du tunneling &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,52 @@ mais attention, toutes ne fonctionnent pas correctement ! Voici donc &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/04/16/installer-un-serveur-ssh-destine-au-tunneling-2/">Installer Un Serveur SSH Destiné Au Tunneling</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-16T20:42:23+00:00" pubdate data-updated="true">Apr 16<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Suite à <a href="http://www.tym-project.fr/blog/2009/04/on-se-pingue-et-on-se-fait-un-tunnel-ssh-2/">cet article</a>, j’ai jugé bon de vous expliquer comment mettre en
+place un serveur ssh sécurisé qui sera destiné seulement à faire du tunneling.
+La configuration va être plus poussée que pour un serveur classique car vous
+aurez en permanence un terminal ouvert sur le serveur, ce qui augmente donc
+les risques que quelqu’un prenne la main sur votre serveur.Notre serveur sera
+une Debian 5.0.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/04/16/installer-un-serveur-ssh-destine-au-tunneling-2/">Lire la suite &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -548,86 +594,6 @@ tout un réseau sans vous arracher les cheveux !</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/04/03/signer-une-application-java-2/">Signer Une Application Java</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-04-03T15:41:24+00:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Pourquoi est-ce important de signer (avec un certificat) une application Java
-? Prenons un exemple concret : laisseriez vous entrer une personne non
-certifiée dans votre appartement pour qu&#8217;elle fouille vos placards ? Non je
-l&#8217;espère, par contre un policier avec un mandat&#8230; là oui (je ne vous le
-souhaite pas :)).<br/>
-Pour les applications c&#8217;est la même chose : votre applet ne
-pourra pas accéder à des fichiers sensibles si il n&#8217;est pas signé.</p>
-
-<p>Pour ce tutoriel nous allons signer un lecteur Ogg : Cortado. Cet applet est
-destiné à être placé sur un serveur web pour diffuser une web-tv par exemple.
-Dans l&#8217;exemple il doit se connecter à un serveur Icecast et il doit donc être
-signé pour avoir le droit de lire le flux.</p>
-
-<p>Vous devez tout d&#8217;abord installer le JDK, disponible<a href="http://java.sun.com/javase/downloads/index.jsp"> ici</a>.</p>
-
-<p><em>Je vais vous présenter les manipulations sous Windows, mais elles sont
-identiques sous Linux ou Mac.</em></p>
-
-<p>Placez vous dans le dossier du JDK, dans le répertoire des binaires :</p>
-
-<pre><code>cd "C:\Program Files\Java\jdk1.6.0_12\bin"
-</code></pre>
-
-<p>Nous allons
-tout d&#8217;abord créer un certificat. Pour cela utilisez <code>keytool</code>, notre
-certificat sera valide 1 an (365 jours) et aura pour alias (un nom pour le
-réutiliser lors d&#8217;une signature) &#8220;myCertif&#8221;. On précise aussi le mot de passe
-du <code>keystore</code> (le coffre qui contient les clés) :</p>
-
-<pre><code>C:\Program Files\Java\jdk1.6.0_12\bin &gt; keytool.exe -genkey -alias myCertif -validity 365 -storepass adadad
-</code></pre>
-
-<p>Vous devez alors donner différentes
-informations comme le nom de l&#8217;entreprise, etc&#8230;Attention car ces valeurs
-pourront être visibles des utilisateurs ! Vous devrez confirmez les
-informations puis donner un mot de passe à la clé. Votre certificat est crée,
-signons donc notre application avec <code>jarsigner</code> :</p>
-
-<pre><code>C:\Program Files\Java\jdk1.6.0_12\bin &gt; jarsigner.exe -storepass adadad C:\cortado-ovt-stripped-0.2.2.jar myCertif
-</code></pre>
-
-<p>Jarsigner n&#8217;est pas très
-bavard, mais si rien n&#8217;est précisé alors tout s&#8217;est bien passé !</p>
-
-<p>Bonnes signatures ;-)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -645,6 +611,10 @@ bavard, mais si rien n&#8217;est précisé alors tout s&#8217;est bien passé !<
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2012/10/21/icy-box-ib-351-et-linux/">Icy Box IB-351 et Linux</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S&#8230; entre boot loop et sd-cauchemard</a>
       </li>
     
@@ -658,10 +628,6 @@ bavard, mais si rien n&#8217;est précisé alors tout s&#8217;est bien passé !<
     
       <li class="post">
         <a href="/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande&#8230;</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/02/14/ameliorer-son-debit-internet/">Naviguer plus vite sur internet, améliorer son débit ? C&#8217;est possible !</a>
       </li>
     
   </ul>
