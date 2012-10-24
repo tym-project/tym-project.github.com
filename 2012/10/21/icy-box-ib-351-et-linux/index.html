@@ -102,11 +102,11 @@
   </header>
 
 
-<div class="entry-content"><p>Il-y-a un quelques années, disons 5 ou 6 ans, basculer un ordinateur personnel sous Linux signifait d&#8217;abord vérifier la compatibilité du matériel. Cela est toujours vrai aujourd&#8217;hui, en témoigne <a href="" title="http://www.linux-drivers.org/">Linux-Drivers.org</a>, mais de manière générale ce n&#8217;est plus un passage obligé.</p>
+<div class="entry-content"><p>Il-y-a un quelques années, disons 5 ou 6 ans, basculer un ordinateur personnel sous Linux signifait d&#8217;abord vérifier la compatibilité du matériel. Cela est toujours vrai aujourd&#8217;hui, en témoigne <a href="http://www.linux-drivers.org/">Linux-Drivers.org</a>, mais de manière générale ce n&#8217;est plus un passage obligé.</p>
 
 <p>De manière générale.</p>
 
-<p>Dans le but de mettre en place un NAS sur un Raspberry Pi flambant neuf, j&#8217;ai fait l&#8217;acquisition d&#8217;un boitier Sata USB 3 <a href="" title="http://www.ldlc.com/fiche/PB00116759.html">Icy Box IB-351StU3-B</a>. Ni une ni deux je branche la chose sur le premier port USB disponible&#8230; et&#8230; <code>mount /dev/sda1 /tmp/test</code>&#8230; et rien. Un beau plantage du système.</p>
+<p>Dans le but de mettre en place un NAS sur un Raspberry Pi flambant neuf, j&#8217;ai fait l&#8217;acquisition d&#8217;un boitier Sata USB 3 <a href="http://www.ldlc.com/fiche/PB00116759.html">Icy Box IB-351StU3-B</a>. Ni une ni deux je branche la chose sur le premier port USB disponible&#8230; et&#8230; <code>mount /dev/sda1 /tmp/test</code>&#8230; et rien. Un beau plantage du système.</p>
 
 <!-- more -->
 
@@ -179,17 +179,17 @@ Pour confirmer le problème, je teste un <code>hpparm /dev/sda1</code> :</p>
 
 <p>Coup de chance pour ce post, LDLC ne propose pas de politique d&#8217;échange ou remboursement, et comme le disque n&#8217;est pas explicitement compatible Linux point de salut auprès du SAV. Il faut donc que je trouve une solution.</p>
 
-<p>Après quelques recherches, je trouve <a href="" title="http://ubuntuforums.org/showthread.php?t=1866432">cet article</a> qui semble correspondre à mon problème, et renvoit vers cet <a href="" title="http://marc.info/?l=linux-usb&amp;m=131946676027988&amp;w=2">obscure publication</a>.</p>
+<p>Après quelques recherches, je trouve <a href="http://ubuntuforums.org/showthread.php?t=1866432">cet article</a> qui semble correspondre à mon problème, et renvoit vers cet <a href="http://marc.info/?l=linux-usb&amp;m=131946676027988&amp;w=2">obscure publication</a>.</p>
 
 <p>En regardant de plus près, il s&#8217;avère que le boitier se présente comme un appareil de classe <code>SFF-8020i</code> (visible avec un <code>lsusb -v</code>) :</p>
 
 <pre><code>bInterfaceSubClass      2 SFF-8020i, MMC-2 (ATAPI)
 </code></pre>
 
-<p><a href="" title="www.bswd.com/sff8020i.pdf">Une recherche Google</a> me permet de trouver une Datasheet, qui a pour titre &#8220;ATA Packet Interface for CD-ROMs&#8221;. Hu hum. CD-ROM ? Effectivement, cela doit être un moyen simplifié de permetre le hot-swap sur un disque-dur (car on peut changer le média dans un lecteur CD-ROM sans reboot).<br/>
+<p><a href="www.bswd.com/sff8020i.pdf">Une recherche Google</a> me permet de trouver une Datasheet, qui a pour titre &#8220;ATA Packet Interface for CD-ROMs&#8221;. Hu hum. CD-ROM ? Effectivement, cela doit être un moyen simplifié de permetre le hot-swap sur un disque-dur (car on peut changer le média dans un lecteur CD-ROM sans reboot).<br/>
 Un peu plus loin dans la doc on peut lire &#8220;Support for command packets of at least 12 bytes in length.&#8221;, je n&#8217;ai pas trouvé cela par hasard, c&#8217;est écrit dans l&#8217;article mentionné plus haut (&#8220;This kicks-in code to force all commands to 12-byte, as (I think) required by 8020i&#8221;). Bien qu&#8217;il soit question de 12 octets minimum pour les commandes envoyées au périphérique, les développeurs du noyau Linux ont probablement interprété cela comme une limite à ne pas dépasser.</p>
 
-<p>Quelqu&#8217;un qui doit connaître le noyau comme sa poche a trouvé <a href="" title="http://marc.info/?l=linux-usb&amp;m=131947421908909&amp;w=2">la solution </a>, il faut modifier le noyau pour qu&#8217;il ne force plus les instructions à une longeur de 12 octets. La publication n&#8217;est plus trop à jour, sur un noyau 3.6.2 il faut éditer le fichier <code>linux-3.6.2/drivers/usb/storage/protocol.c</code> et le modifier ainsi :</p>
+<p>Quelqu&#8217;un qui doit connaître le noyau comme sa poche a trouvé <a href="http://marc.info/?l=linux-usb&amp;m=131947421908909&amp;w=2">la solution </a>, il faut modifier le noyau pour qu&#8217;il ne force plus les instructions à une longeur de 12 octets. La publication n&#8217;est plus trop à jour, sur un noyau 3.6.2 il faut éditer le fichier <code>linux-3.6.2/drivers/usb/storage/protocol.c</code> et le modifier ainsi :</p>
 
 <pre><code>/* Ligne 66, on commente */
 /*for (; srb-&gt;cmd_len &lt; 12; srb-&gt;cmd_len++)
