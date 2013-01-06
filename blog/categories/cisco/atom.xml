@@ -4,7 +4,7 @@
   <title><![CDATA[Category: cisco | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/cisco/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-10-24T21:11:02+00:00</updated>
+  <updated>2013-01-06T15:40:00+01:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[La bible du réseau / ABC du réseau pour les débutants]]></title>
     <link href="http://blog.tym-project.fr/2009/04/17/la-bible-du-reseau-abc-du-reseau-pour-les-debutants-2/"/>
-    <updated>2009-04-17T20:52:00+00:00</updated>
+    <updated>2009-04-17T20:52:00+02:00</updated>
     <id>http://blog.tym-project.fr/2009/04/17/la-bible-du-reseau-abc-du-reseau-pour-les-debutants-2</id>
     <content type="html"><![CDATA[<p>Je suis étudiant à SUPINFO, et dans le cadre de mon cursus je peux passer des
 certifications Cisco pour pas cher…gratuit en fait. (Aparté : ce sont en fait
@@ -40,7 +40,7 @@ tenter le coup !</p>
   <entry>
     <title type="html"><![CDATA[Bien débuter en administration de matériels Cisco]]></title>
     <link href="http://blog.tym-project.fr/2009/03/29/bien-debuter-en-administration-de-materiels-cisco-2/"/>
-    <updated>2009-03-29T14:35:23+00:00</updated>
+    <updated>2009-03-29T14:35:23+02:00</updated>
     <id>http://blog.tym-project.fr/2009/03/29/bien-debuter-en-administration-de-materiels-cisco-2</id>
     <content type="html"><![CDATA[<p>A mon sens le meilleur moyen d'administrer un matériel Cisco c'est la CLI : la
 ligne de commande (Command Line Interface). Il existe quelques astuces pour se

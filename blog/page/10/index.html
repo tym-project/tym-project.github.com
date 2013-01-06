@@ -9,8 +9,8 @@
   <meta name="author" content="Tym">
 
   
-  <meta name="description" content="Sous Linux il est très pratique de monter une image iso (pas besoin de daemon
-tools &amp; Co.) : sudo mount -o loop -t iso9660 Ubuntu-9.04.iso /media &hellip;">
+  <meta name="description" content="Pour lire une entrée au clavier en bash (ou sh, ou autres) on utilise la
+commande read. Par exemple : read -p "Login : " LOGIN echo " Your login is $ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,74 @@ tools &amp; Co.) : sudo mount -o loop -t iso9660 Ubuntu-9.04.iso /media &hellip;
       
   <header>
     
+      <h1 class="entry-title"><a href="/2009/05/25/lire-un-mot-de-passe-dans-un-script-linux/">Lire Un Mot De Passe Dans Un Script (Linux)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-25T12:50:49+02:00" pubdate data-updated="true">May 25<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pour lire une entrée au clavier en bash (ou sh, ou autres) on utilise la
+commande <code>read</code>. Par exemple :</p>
+
+<pre><code>read -p "Login : " LOGIN echo " Your login is $LOGIN"
+</code></pre>
+
+<p>va donner :</p>
+
+<pre><code>Login : fooi
+Your login is foo
+</code></pre>
+
+<p>Mais comment faire quand on veut lire une entrée représentant un mot de
+passe&#8230;pas très &#8220;secure&#8221; qu&#8217;elle s&#8217;affiche à l&#8217;écran ! Il vous suffit en fait
+de désactiver l&#8217;affichage des caractères tapés à l&#8217;écran avec <code>stty echo off</code>
+(<code>stty -echo</code> en raccourci) :</p>
+
+<pre><code>stty -echo
+read -p "Login : " LOGIN
+stty echo
+echo " Your login is $LOGIN"
+</code></pre>
+
+<p>va donner :</p>
+
+<pre><code>Login :
+Your login is bar
+</code></pre>
+
+<p>Pensez bien à faire un <code>stty echo</code>, sinon plus de clavier dans la console (ou
+en tout cas en aveugle&#8230;)</p>
+
+<p>Bon scripting ;-)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2009/05/22/convertir-une-image-bin-cue-en-iso-linux/">Convertir Une Image .bin/.cue en .iso (Linux)</a></h1>
     
     
@@ -99,7 +167,7 @@ tools &amp; Co.) : sudo mount -o loop -t iso9660 Ubuntu-9.04.iso /media &hellip;
   
 
 
-<time datetime="2009-05-22T12:48:29+00:00" pubdate data-updated="true">May 22<span>nd</span>, 2009</time>
+<time datetime="2009-05-22T12:48:29+02:00" pubdate data-updated="true">May 22<span>nd</span>, 2009</time>
         
       </p>
     
@@ -152,7 +220,7 @@ de plus simple pour l&#8217;utiliser :</p>
   
 
 
-<time datetime="2009-05-19T12:45:36+00:00" pubdate data-updated="true">May 19<span>th</span>, 2009</time>
+<time datetime="2009-05-19T12:45:36+02:00" pubdate data-updated="true">May 19<span>th</span>, 2009</time>
         
       </p>
     
@@ -204,7 +272,7 @@ de passe pendant le temps où votre session est active&#8230;</p>
   
 
 
-<time datetime="2009-05-18T12:40:54+00:00" pubdate data-updated="true">May 18<span>th</span>, 2009</time>
+<time datetime="2009-05-18T12:40:54+02:00" pubdate data-updated="true">May 18<span>th</span>, 2009</time>
         
       </p>
     
@@ -254,7 +322,7 @@ voulais savoir si mon start1g possède la fonctionnalité &#8220;curl&#8221;.</p
   
 
 
-<time datetime="2009-05-17T12:33:37+00:00" pubdate data-updated="true">May 17<span>th</span>, 2009</time>
+<time datetime="2009-05-17T12:33:37+02:00" pubdate data-updated="true">May 17<span>th</span>, 2009</time>
         
       </p>
     
@@ -314,7 +382,7 @@ suivre <a href="http://identi.ca/thomasdesor">ma vie tout à fait passionnante i
   
 
 
-<time datetime="2009-05-10T12:21:18+00:00" pubdate data-updated="true">May 10<span>th</span>, 2009</time>
+<time datetime="2009-05-10T12:21:18+02:00" pubdate data-updated="true">May 10<span>th</span>, 2009</time>
         
       </p>
     
@@ -359,7 +427,7 @@ par hasard sur <code>[man]pwsafe[/man]</code> et c&#8217;est donc lui que je vai
   
 
 
-<time datetime="2009-05-09T12:17:51+00:00" pubdate data-updated="true">May 9<span>th</span>, 2009</time>
+<time datetime="2009-05-09T12:17:51+02:00" pubdate data-updated="true">May 9<span>th</span>, 2009</time>
         
       </p>
     
@@ -406,7 +474,7 @@ plus long, plus complexes&#8230;</p>
   
 
 
-<time datetime="2009-05-07T12:12:08+00:00" pubdate data-updated="true">May 7<span>th</span>, 2009</time>
+<time datetime="2009-05-07T12:12:08+02:00" pubdate data-updated="true">May 7<span>th</span>, 2009</time>
         
       </p>
     
@@ -470,7 +538,7 @@ secondes et générer aussi une miniature de 80% de la taille de la capture :</p
   
 
 
-<time datetime="2009-05-04T21:33:45+00:00" pubdate data-updated="true">May 4<span>th</span>, 2009</time>
+<time datetime="2009-05-04T21:33:45+02:00" pubdate data-updated="true">May 4<span>th</span>, 2009</time>
         
       </p>
     
@@ -532,7 +600,7 @@ plus léger&#8230;</p>
   
 
 
-<time datetime="2009-05-04T21:32:57+00:00" pubdate data-updated="true">May 4<span>th</span>, 2009</time>
+<time datetime="2009-05-04T21:32:57+02:00" pubdate data-updated="true">May 4<span>th</span>, 2009</time>
         
       </p>
     
@@ -562,57 +630,6 @@ Internet&#8221; n&#8217;aide pas à cet ouverture. Voila un bien bel avenir qui 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/05/02/tester-le-niveau-de-securite-de-son-serveurclient-de-messagerie-2/">Tester Le Niveau De Sécurité De Son Serveur/client De Messagerie</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-05-02T21:27:49+00:00" pubdate data-updated="true">May 2<span>nd</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>&#8220;Il était une fois un stagiaire qui travaillait comme technicien réseau dans
-une PME. Un beau jour il envoya un e-mail via son adresse professionnelle.
-Quelle ne fût pas sa surprise de recevoir une réponse dans le style : YOUR IP
-IS BAAAD, IT SENDS SPAM! SPAM IS EVIL, SO YOUR IP IS BLACKLISTED.&#8221;</p>
-
-<p>Et oui&#8230;un serveur de messagerie ça se sécurise sinon ça devient un relai de
-Spam ! Au boulot !</p>
-
-<p>Une fois le travail consciencieusement effectué, allez faire un tour sur <a href="http://www.pagasa.net/test-smtp/">ce
-site </a>pour vérifier que tout est OK. Ce test n&#8217;est pas infaillible ni
-totalement complet mais ça peut dépanner !</p>
-
-<p>Vous pouvez aussi vérifier le niveau de sécurité de votre client de messagerie
-avec <a href="http://www.gfi.com/emailsecuritytest/">ce test</a> (plutôt orienté Windows et Outlook).</p>
-
-<p>Bonne sécurisation ;-)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/11/">&larr; Older</a>
@@ -630,6 +647,10 @@ avec <a href="http://www.gfi.com/emailsecuritytest/">ce test</a> (plutôt orient
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/06/android-et-linux-piloter-une-machine-a-distance/">Gérer l&#8217;allumage et la mise hors tension d&#8217;une machine Linux via un smartphone Android</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/21/icy-box-ib-351-et-linux/">Icy Box IB-351 et Linux</a>
       </li>
     
@@ -643,10 +664,6 @@ avec <a href="http://www.gfi.com/emailsecuritytest/">ce test</a> (plutôt orient
     
       <li class="post">
         <a href="/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/">Un Gmail, une ligne de commande&#8230;</a>
       </li>
     
   </ul>
@@ -663,7 +680,7 @@ avec <a href="http://www.gfi.com/emailsecuritytest/">ce test</a> (plutôt orient
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Tym -
+  Copyright &copy; 2013 - Tym -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

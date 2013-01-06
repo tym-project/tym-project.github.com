@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programmation - Scripting | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/programmation-scripting/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-10-24T21:11:02+00:00</updated>
+  <updated>2013-01-06T15:40:00+01:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Ma nouvelle configuration Media Center sous Linux]]></title>
     <link href="http://blog.tym-project.fr/2011/08/21/xbmc-et-archlinux-pour-un-media-center/"/>
-    <updated>2011-08-21T12:00:02+00:00</updated>
+    <updated>2011-08-21T12:00:02+02:00</updated>
     <id>http://blog.tym-project.fr/2011/08/21/xbmc-et-archlinux-pour-un-media-center</id>
     <content type="html"><![CDATA[<p>J'avais déjà évoqué dans un précédent article que
 je possède un Media center sous Linux. Suite à une petite bidouille
@@ -204,7 +204,7 @@ EndSection
   <entry>
     <title type="html"><![CDATA[Un Linux mediacenter avec une loupe]]></title>
     <link href="http://blog.tym-project.fr/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/"/>
-    <updated>2011-05-04T12:00:06+00:00</updated>
+    <updated>2011-05-04T12:00:06+02:00</updated>
     <id>http://blog.tym-project.fr/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon</id>
     <content type="html"><![CDATA[<p>Un Linux avec Xbmc au milieu du salon c'est de plus
 en plus en commun, et même si je me trompe, c'est quand même super pratique !
@@ -322,7 +322,7 @@ selon).</p>
   <entry>
     <title type="html"><![CDATA[Mon script de configuration iptables]]></title>
     <link href="http://blog.tym-project.fr/2011/04/06/iptables-et-lancement-automatique/"/>
-    <updated>2011-04-06T12:00:02+00:00</updated>
+    <updated>2011-04-06T12:00:02+02:00</updated>
     <id>http://blog.tym-project.fr/2011/04/06/iptables-et-lancement-automatique</id>
     <content type="html"><![CDATA[<p>Pour ceux qui ne connaitraient pas, iptables est une
 interface de gestion du module netfilter du noyau Linux. En termes clairs :
@@ -720,7 +720,7 @@ Bon firewalling ;-)</p>
   <entry>
     <title type="html"><![CDATA[Analyse d'une "arnaque" Facebook]]></title>
     <link href="http://blog.tym-project.fr/2011/03/07/manipulation-par-facebook/"/>
-    <updated>2011-03-07T19:16:09+00:00</updated>
+    <updated>2011-03-07T19:16:09+01:00</updated>
     <id>http://blog.tym-project.fr/2011/03/07/manipulation-par-facebook</id>
     <content type="html"><![CDATA[<p>J'utilise Facebook, avec parcimonie certes, mais
 je l'utilise quand même. On sait maintenant qu'il faut être très vigilant sur
@@ -805,7 +805,7 @@ doigts pour que pas grand monde ait aperçu votre profil...</p>
   <entry>
     <title type="html"><![CDATA[Adaptation de "sed" en PowerShell (Windows)]]></title>
     <link href="http://blog.tym-project.fr/2011/03/02/sed-en-powershell-et-redirection/"/>
-    <updated>2011-03-02T12:00:44+00:00</updated>
+    <updated>2011-03-02T12:00:44+01:00</updated>
     <id>http://blog.tym-project.fr/2011/03/02/sed-en-powershell-et-redirection</id>
     <content type="html"><![CDATA[<p>PowerShell est un langage de script développé par
 Microsoft, le <code>#!/bin/bash</code> de Windows en quelque sorte. Ce langage propose de

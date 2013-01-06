@@ -4,7 +4,7 @@
   <title><![CDATA[Category: udev | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/udev/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-10-24T21:11:02+00:00</updated>
+  <updated>2013-01-06T15:40:00+01:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Ubuntu : Permuter et renommer des cartes réseau]]></title>
     <link href="http://blog.tym-project.fr/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware/"/>
-    <updated>2011-02-23T12:00:00+00:00</updated>
+    <updated>2011-02-23T12:00:00+01:00</updated>
     <id>http://blog.tym-project.fr/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware</id>
     <content type="html"><![CDATA[<p>Après la mise en place d'une VM Ubuntu avec
 Vmware, et surtout suite à sa copie je me suis rendu compte que je n'avais

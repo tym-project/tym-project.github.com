@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mot de passe | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/mot-de-passe/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-10-24T21:11:02+00:00</updated>
+  <updated>2013-01-06T15:40:00+01:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Choisir un mot de passe sécurisé et facile à retenir]]></title>
     <link href="http://blog.tym-project.fr/2010/09/08/methode-de-choix-de-mot-de-passe-efficace/"/>
-    <updated>2010-09-08T18:44:28+00:00</updated>
+    <updated>2010-09-08T18:44:28+02:00</updated>
     <id>http://blog.tym-project.fr/2010/09/08/methode-de-choix-de-mot-de-passe-efficace</id>
     <content type="html"><![CDATA[<p>Un mot de passe c'est important. A vrai dire
 c'est souvent votre premier rempart contre une attaque sur vos données
@@ -117,7 +117,7 @@ tester sa fiabilité avec par exemple : <a href="http://howsecureismypassword.ne
   <entry>
     <title type="html"><![CDATA[Scripter la création d'un mot de passe utilisateur (Linux)]]></title>
     <link href="http://blog.tym-project.fr/2009/08/23/scripter-la-creation-dun-mot-de-passe-utilisateur-linux/"/>
-    <updated>2009-08-23T23:14:34+00:00</updated>
+    <updated>2009-08-23T23:14:34+02:00</updated>
     <id>http://blog.tym-project.fr/2009/08/23/scripter-la-creation-dun-mot-de-passe-utilisateur-linux</id>
     <content type="html"><![CDATA[<p>Parce-que je réinstalle souvent mon
 Archlinux, j'ai créé une série de scripts pour me simplifier la vie. Dans ce
@@ -163,7 +163,7 @@ créer votre utilisateur par exemple :</p>
   <entry>
     <title type="html"><![CDATA[Lire un mot de passe dans un script (Linux)]]></title>
     <link href="http://blog.tym-project.fr/2009/05/25/lire-un-mot-de-passe-dans-un-script-linux/"/>
-    <updated>2009-05-25T12:50:49+00:00</updated>
+    <updated>2009-05-25T12:50:49+02:00</updated>
     <id>http://blog.tym-project.fr/2009/05/25/lire-un-mot-de-passe-dans-un-script-linux</id>
     <content type="html"><![CDATA[<p>Pour lire une entrée au clavier en bash (ou sh, ou autres) on utilise la
 commande <code>read</code>. Par exemple :</p>
@@ -204,7 +204,7 @@ en tout cas en aveugle...)</p>
   <entry>
     <title type="html"><![CDATA[Générer des mots de passe sous Linux]]></title>
     <link href="http://blog.tym-project.fr/2009/05/09/generer-des-mots-de-passe-sous-linux/"/>
-    <updated>2009-05-09T12:17:51+00:00</updated>
+    <updated>2009-05-09T12:17:51+02:00</updated>
     <id>http://blog.tym-project.fr/2009/05/09/generer-des-mots-de-passe-sous-linux</id>
     <content type="html"><![CDATA[<p>Un seul mot : <code>[man]pwgen[/man]</code> ! Ce que j'apprécie particulièrement avec cet
 outil c'est qu'il permet de générer des mots de passe faciles à retenir. En
@@ -224,7 +224,7 @@ plus long, plus complexes...</p>
   <entry>
     <title type="html"><![CDATA["Ouh pinaize, je trouve plus le mot de passe par défaut"]]></title>
     <link href="http://blog.tym-project.fr/2009/04/25/ouh-pinaize-je-trouve-plus-le-mot-de-passe-par-defaut/"/>
-    <updated>2009-04-25T21:16:00+00:00</updated>
+    <updated>2009-04-25T21:16:00+02:00</updated>
     <id>http://blog.tym-project.fr/2009/04/25/ouh-pinaize-je-trouve-plus-le-mot-de-passe-par-defaut</id>
     <content type="html"><![CDATA[<p>Effectivement, c’est fâcheux ! Allez hop, un petit tour sur <a href="http://artofhacking.com/etc/passwd.htm">Art Of
 Hacking</a> où vous trouverez une liste assez importante de mots de passe par

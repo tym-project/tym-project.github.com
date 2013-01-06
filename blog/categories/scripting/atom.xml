@@ -4,7 +4,7 @@
   <title><![CDATA[Category: scripting | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/scripting/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-10-24T21:11:02+00:00</updated>
+  <updated>2013-01-06T15:40:00+01:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Automatiser la création ou l'édition d'un crontab]]></title>
     <link href="http://blog.tym-project.fr/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab/"/>
-    <updated>2010-08-04T12:00:34+00:00</updated>
+    <updated>2010-08-04T12:00:34+02:00</updated>
     <id>http://blog.tym-project.fr/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab</id>
     <content type="html"><![CDATA[<p>Crontab est un outil extrêmement pratique
 servant à planifier l'exécution des tâches/commandes. Habituellement il se

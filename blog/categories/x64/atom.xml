@@ -4,7 +4,7 @@
   <title><![CDATA[Category: x64 | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/x64/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-10-24T21:11:02+00:00</updated>
+  <updated>2013-01-06T15:40:00+01:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Installer Google Gears sous Linux 64 bits]]></title>
     <link href="http://blog.tym-project.fr/2009/06/10/installer-google-gears-sous-linux-64-bits/"/>
-    <updated>2009-06-10T14:03:14+00:00</updated>
+    <updated>2009-06-10T14:03:14+02:00</updated>
     <id>http://blog.tym-project.fr/2009/06/10/installer-google-gears-sous-linux-64-bits</id>
     <content type="html"><![CDATA[<p>Le 32 bits c'est bien, le 64 bits c'est mieux ! Oui mais parfois (souvent ?)
 les applications ne sont pas gérées sur une architecture 64 bits. C'est par

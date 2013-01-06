@@ -4,7 +4,7 @@
   <title><![CDATA[Category: timeout | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/timeout/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-10-24T21:11:02+00:00</updated>
+  <updated>2013-01-06T15:40:00+01:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Pathping : le ping mutant en traceroute !]]></title>
     <link href="http://blog.tym-project.fr/2009/09/21/pathping-le-ping-mutant-en-traceroute/"/>
-    <updated>2009-09-21T08:07:44+00:00</updated>
+    <updated>2009-09-21T08:07:44+02:00</updated>
     <id>http://blog.tym-project.fr/2009/09/21/pathping-le-ping-mutant-en-traceroute</id>
     <content type="html"><![CDATA[<p>Pour rappel l'outil <code>[man]traceroute[/man]</code>
 permet de voir le chemin suivit par un message sur le réseau. C'est donc une

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Swing | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/swing/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-10-24T21:11:02+00:00</updated>
+  <updated>2013-01-06T15:40:00+01:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Effet de Fade-in/Fade-out (fondu) en Java]]></title>
     <link href="http://blog.tym-project.fr/2009/03/24/effet-de-fade-infade-out-fondu-en-java/"/>
-    <updated>2009-03-24T23:32:04+00:00</updated>
+    <updated>2009-03-24T23:32:04+01:00</updated>
     <id>http://blog.tym-project.fr/2009/03/24/effet-de-fade-infade-out-fondu-en-java</id>
     <content type="html"><![CDATA[<p>Le Fondu c'est hype, c'est un fait ! Cela dit comment faire ce genre de choses
 en Java/Swing ?</p>

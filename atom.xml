@@ -4,7 +4,7 @@
   <title><![CDATA[Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-10-24T21:11:02+00:00</updated>
+  <updated>2013-01-06T15:40:00+01:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -14,9 +14,103 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Gérer l'allumage et la mise hors tension d'une machine Linux via un smartphone Android]]></title>
+    <link href="http://blog.tym-project.fr/2013/01/06/android-et-linux-piloter-une-machine-a-distance/"/>
+    <updated>2013-01-06T14:33:00+01:00</updated>
+    <id>http://blog.tym-project.fr/2013/01/06/android-et-linux-piloter-une-machine-a-distance</id>
+    <content type="html"><![CDATA[<p>Si vous ne le saviez pas, et bien sachez que ma machine &#8220;perso&#8221; tourne sous Linux (ArchLinux), et que mon smartphone fonctionne sous Android. On est content, non ? <br/>
+Continuons dans cette voie, avec une photo de mon bureau :<br/>
+<img src="https://s3-eu-west-1.amazonaws.com/pics.tym-project.fr/2013-1/IMG_20130106_142700.jpg"></p>
+
+<p>De mieux en mieux, non ? Vous avez certainement remarqué que l&#8217;écran de mon portable est fermé, recouvert de figurines et de poussière&#8230;<br/>
+Et donc ? Et donc je ne peux pas l&#8217;allumer via le bouton habituel&#8230; car cela m&#8217;oblige à virer les figurines, soulever l&#8217;écran, le refermer avant qu&#8217;il ne devienne l&#8217;écran principal&#8230; bla bla bla&#8230; j&#8217;ai dû trouver un moyer de gérer l&#8217;alimentation de cette machine à distance. Oh, et je vais vous en parler dans cet article du coup !</p>
+
+<!--more -->
+
+
+<h2>Allumer une machine sans les mains, le WOL.</h2>
+
+<p>J&#8217;utilise en fait mon smartphone pour déclencher la mise sous tension de mon ordinateur, à l&#8217;aide d&#8217;un protocolo relativement connu : le <code>Wake On Lan </code>. Cet outil permet tout simplement d&#8217;allumer une machine à travers le réseau, mais sous deux conditions : la cible doit être réliée au réseau via un câble Ethernet et la carte réseau doit supporter le protocole <code>WOL</code>.<br/>
+Sous Linux, vous pouvez vérifier assez simplement si votre carte Ethernet est compatible WOL avec <code>ethtool</code> (il faudra probablement allez bidouiller dans votre BIOS au préalable) :</p>
+
+<pre><code>[tym@tym-laptop ~]$ sudo ethtool eth0
+Settings for eth0:
+Supported ports: [ TP ]
+Supported link modes:   10baseT/Half 10baseT/Full 
+                        100baseT/Half 100baseT/Full 
+                        1000baseT/Full 
+Supported pause frame use: No
+Supports auto-negotiation: Yes
+Advertised link modes:  10baseT/Half 10baseT/Full 
+                        100baseT/Half 100baseT/Full 
+                        1000baseT/Full 
+Advertised pause frame use: No
+Advertised auto-negotiation: Yes
+Speed: 100Mb/s
+Duplex: Full
+Port: Twisted Pair
+PHYAD: 2
+Transceiver: internal
+Auto-negotiation: on
+MDI-X: on
+Supports Wake-on: pumbg
+Wake-on: g
+Current message level: 0x00000007 (7)
+               drv probe link
+Link detected: yes
+</code></pre>
+
+<p>Ce qui nous inéteresse ici c&#8217;est <code>Supports Wake-on: pumbg</code>, qui signifie que la carte supporte le réveil par (<code>man ethtool</code>) :</p>
+
+<pre><code>p   Wake on PHY activity
+u   Wake on unicast messages
+m   Wake on multicast messages
+b   Wake on broadcast messages
+g   Wake on MagicPacket™
+</code></pre>
+
+<p>Le <code>g</code>, soit &#8220;MagicPacket&#8221; est l&#8217;option qui nous intéresse ! Si <code>Wake-on</code> ne contient pas <code>g</code>, vous pouvez utiliser <code>ethtool -s eth0 wol g</code> pour l&#8217;activer&#8230; à probablement mettre dans un script systemd ou initd pour garder l&#8217;option au reboot.</p>
+
+<p>Pour allumer ma machine en WOL depuis Android j&#8217;utilise <a href="https://play.google.com/store/apps/details?id=com.benfinnigan.wol">cette application</a> car elle permet de générer des Widgets sur le bureau, mais aussi de sauvegarder la configuration via la synchronisation Google&#8230; très pratique car configurer une machine cible requiert de saisir son adresse MAC.</p>
+
+<h2>Eteindre une machine sans les mains, la bidouille.</h2>
+
+<p>Il existe des applications sur le Play Store pour éteindre votre machine à distance, dans la plupart des cas à travers un client installé sur la cible&#8230; je n&#8217;ai pas trouvé mon bonheur et donc je me suis lancé dans un bidouille !</p>
+
+<p>Le principe est le suivant : un serveur web est installé sur mon Linux, en appelant une URL spécifique depuis le smartphone on va déclencher un script qui va arrêter la machine. Simple, non ?</p>
+
+<p>Je vous passe les détails sur l&#8217;installation du serveur Web&#8230; Google est ton ami (enfin il vaut mieux pour toi&#8230;), mais voici plutôt la page qui déclenche l&#8217;arrêt de la machine (en PHP) :</p>
+
+<pre><code>&lt;?php
+echo 'Shutting down...';
+file_put_contents('/srv/http/poweroff.now', 'poweroff');
+?&gt;
+</code></pre>
+
+<p>Oui, c&#8217;est tout ! Cette page a pour seul rôle la création d&#8217;un fichier </code>poweroff.now</code> dans le dossier </code>/srv/http</code>.<br/>
+La suite du traitement se trouve dans un script bash exécuté par <code>crontab</code> :</p>
+
+<pre><code>*/1 *   *   *   *   /home/tym/scripts/remote_poweroff.sh
+</code></pre>
+
+<p><code>poweroff.sh</code> se lance donc toute les minutes, et voici ce qu&#8217;il fait :</p>
+
+<pre><code>#!/bin/bash
+ACTION=/srv/http/poweroff.now
+if [ -e "$ACTION" ]; then
+rm $ACTION
+/sbin/poweroff
+fi
+</code></pre>
+
+<p>Ce script vérifie l&#8217;existence du fichier créé par la page web, le supprime le cas échéant et arrête la machine. Il est bien entendu possible d&#8217;améliorer le fonctionnement en proposant d&#8217;autre action comme le reboot ou autre, il suffirait de faire évoluer la page Web et le script de traitement&#8230;</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Icy Box IB-351 et Linux]]></title>
     <link href="http://blog.tym-project.fr/2012/10/21/icy-box-ib-351-et-linux/"/>
-    <updated>2012-10-21T18:59:00+00:00</updated>
+    <updated>2012-10-21T18:59:00+02:00</updated>
     <id>http://blog.tym-project.fr/2012/10/21/icy-box-ib-351-et-linux</id>
     <content type="html"><![CDATA[<p>Il-y-a un quelques années, disons 5 ou 6 ans, basculer un ordinateur personnel sous Linux signifait d&#8217;abord vérifier la compatibilité du matériel. Cela est toujours vrai aujourd&#8217;hui, en témoigne <a href="http://www.linux-drivers.org/">Linux-Drivers.org</a>, mais de manière générale ce n&#8217;est plus un passage obligé.</p>
 
@@ -125,7 +219,7 @@ Un peu plus loin dans la doc on peut lire &#8220;Support for command packets of 
   <entry>
     <title type="html"><![CDATA[CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard]]></title>
     <link href="http://blog.tym-project.fr/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/"/>
-    <updated>2012-08-16T23:02:00+00:00</updated>
+    <updated>2012-08-16T23:02:00+02:00</updated>
     <id>http://blog.tym-project.fr/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard</id>
     <content type="html"><![CDATA[<p>Je suis l&#8217;heureux propriétaire d&#8217;un HTC One S, et même si la ROM Sense d&#8217;origine est très stable et plutôt agréable à utiliser, je n&#8217;ai pas pu résister à l&#8217;appel de CM9 !</p>
 
@@ -187,7 +281,7 @@ Après quelques recherches, flash, recherches, une solution : démarrer en recov
   <entry>
     <title type="html"><![CDATA[Flux RSS : idées de lecture et méthodes de gestion]]></title>
     <link href="http://blog.tym-project.fr/2012/07/15/sources-et-organisation-de-flux-rss/"/>
-    <updated>2012-07-15T15:07:00+00:00</updated>
+    <updated>2012-07-15T15:07:00+02:00</updated>
     <id>http://blog.tym-project.fr/2012/07/15/sources-et-organisation-de-flux-rss</id>
     <content type="html"><![CDATA[<p>De temps en temps un article ou un tweet annoncent la fin du flux RSS&#8230; mais l&#8217;ancètre fait de la résistance ! Heureusement d&#8217;ailleurs, car personellement je ne peux pas rester collé à Twitter ou autre réseau social, plein de bonnes choses, mais très prolifique et encombré par du bruit inutile.</p>
 
@@ -253,7 +347,7 @@ Moins simple mais toujours faisable avec d&#8217;autres sites comme Le Journal d
   <entry>
     <title type="html"><![CDATA[Android : perte du signal 3g après activation du GPS]]></title>
     <link href="http://blog.tym-project.fr/2012/03/24/android-perte-signal-3g-avec-gps/"/>
-    <updated>2012-03-24T19:04:00+00:00</updated>
+    <updated>2012-03-24T19:04:00+01:00</updated>
     <id>http://blog.tym-project.fr/2012/03/24/android-perte-signal-3g-avec-gps</id>
     <content type="html"><![CDATA[<p>Android c&#8217;est super, Google Navigation encore plus. Sauf quand ça plante. Surtout en voiture, paumé au milieu de la cambrouse&#8230;<br/>
 Oh j&#8217;ai la solution, mais laissez moi vous raconter&#8230;</p>
@@ -298,7 +392,7 @@ Recherche recherche&#8230; ah ! Eureka ! APN c&#8217;est en fait &#8220;Access P
   <entry>
     <title type="html"><![CDATA[Un Gmail, une ligne de commande...]]></title>
     <link href="http://blog.tym-project.fr/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis/"/>
-    <updated>2012-03-16T22:21:00+00:00</updated>
+    <updated>2012-03-16T22:21:00+01:00</updated>
     <id>http://blog.tym-project.fr/2012/03/16/mail-avec-gmail-en-ligne-de-commande-bis</id>
     <content type="html"><![CDATA[<p>&#8230; et c&#8217;est le retour du mail en ligne de commande ! Du Python qui fonctionne mieux que le précédent qui, pour une raison inconnue, n&#8217;envoyait plus mes chers messages plein de bits (oh oh!).</p>
 
@@ -382,7 +476,7 @@ Recherche recherche&#8230; ah ! Eureka ! APN c&#8217;est en fait &#8220;Access P
   <entry>
     <title type="html"><![CDATA[Naviguer plus vite sur internet, améliorer son débit ? C'est possible !]]></title>
     <link href="http://blog.tym-project.fr/2012/02/14/ameliorer-son-debit-internet/"/>
-    <updated>2012-02-14T21:11:00+00:00</updated>
+    <updated>2012-02-14T21:11:00+01:00</updated>
     <id>http://blog.tym-project.fr/2012/02/14/ameliorer-son-debit-internet</id>
     <content type="html"><![CDATA[<p>Avoir un débit rapide pour accéder à internet c&#8217;est important, et cela varie fonction de différents facteurs comme votre fournisseur d&#8217;accès ou la qualité de votre Wifi&#8230; oui c&#8217;est en effet un sujet assez vaste !<br/>
 Un moyen assez simple d&#8217;accélérer le temps d&#8217;accès aux site que vous visitez avec votre brouteur préféré c&#8217;est le DNS.</p>
@@ -492,7 +586,7 @@ sys 0m0.012s
   <entry>
     <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par mois de Janvier]]></title>
     <link href="http://blog.tym-project.fr/2012/01/28/en-janvier-click-ce-qu-il-te-plait/"/>
-    <updated>2012-01-28T17:29:00+00:00</updated>
+    <updated>2012-01-28T17:29:00+01:00</updated>
     <id>http://blog.tym-project.fr/2012/01/28/en-janvier-click-ce-qu-il-te-plait</id>
     <content type="html"><![CDATA[<p>Eh, bonne année ! Pour commencer 2012 en beautée, des liens et encore des liens :)</p>
 
@@ -510,7 +604,7 @@ sys 0m0.012s
   <entry>
     <title type="html"><![CDATA[J'ai testé la batterie de secours USB MiPOW Power Tube 2200]]></title>
     <link href="http://blog.tym-project.fr/2012/01/14/batterie-de-secours-usb-mipow-powertube/"/>
-    <updated>2012-01-14T13:26:00+00:00</updated>
+    <updated>2012-01-14T13:26:00+01:00</updated>
     <id>http://blog.tym-project.fr/2012/01/14/batterie-de-secours-usb-mipow-powertube</id>
     <content type="html"><![CDATA[<p>Ayant fait l&#8217;acquisition d&#8217;un HTC Desire d&#8217;occasion il-y-a quelques mois, outre la liberté qu&#8217;il m&#8217;apporte, c&#8217;est un éternel combat contre la batterie à plat ! Je suis assez souvent en déplacement, je n&#8217;ai donc pas toujours l&#8217;occasion de bancher mon mobile&#8230; et c&#8217;est sans compter sur le désert électrique dans les wagons SNCF :)<br/>
 Je me suis donc mis en quête d&#8217;une solution pour recharger mon téléphone &#8220;sur la route&#8221;, et je crois bien avoir trouvé !</p>
@@ -555,7 +649,7 @@ Il faut bien avouer que 5 heures en moyenne c&#8217;est long&#8230; vaut mieux p
   <entry>
     <title type="html"><![CDATA[Cadeau : Un mois d'abonnement à Nolife Online]]></title>
     <link href="http://blog.tym-project.fr/2012/01/01/cadeau-un-mois-dabonnement-a-nolife-online/"/>
-    <updated>2012-01-01T21:39:00+00:00</updated>
+    <updated>2012-01-01T21:39:00+01:00</updated>
     <id>http://blog.tym-project.fr/2012/01/01/cadeau-un-mois-dabonnement-a-nolife-online</id>
     <content type="html"><![CDATA[<p>Allez hop, on commence 2012 en beautée avec un cadeau ! Oui, un truc que je vous donne contre&#8230; rien. Un cadeau quoi.<br/>
 Il est donc question de 30 jours d&#8217;abonnement au service <a href="http://nolife-tv.com">Nolife Online</a>, le service de télévision de rattrapage des geeks ! Si vous ne connaissez pas cette  chaîne de TV voici un exemple : <a href="http://online.nolife-tv.com/index.php?id=15771">Chez Marcus - Prince of Persia</a></p>
@@ -569,7 +663,7 @@ Il est donc question de 30 jours d&#8217;abonnement au service <a href="http://n
   <entry>
     <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par mois de Décembre]]></title>
     <link href="http://blog.tym-project.fr/2011/12/20/liens-de-noel-et-autres-bonnes-idees/"/>
-    <updated>2011-12-20T18:03:00+00:00</updated>
+    <updated>2011-12-20T18:03:00+01:00</updated>
     <id>http://blog.tym-project.fr/2011/12/20/liens-de-noel-et-autres-bonnes-idees</id>
     <content type="html"><![CDATA[<p>Hop, c&#8217;est le retour de l&#8217;article fourre-tout, ici dans son édition de noël.</p>
 
@@ -589,7 +683,7 @@ Il est donc question de 30 jours d&#8217;abonnement au service <a href="http://n
   <entry>
     <title type="html"><![CDATA[Un sapin de nöel en carton... littéralement.]]></title>
     <link href="http://blog.tym-project.fr/2011/12/11/un-sapin-de-noel-en-carton-dot-dot-dot-litteralement/"/>
-    <updated>2011-12-11T20:46:00+00:00</updated>
+    <updated>2011-12-11T20:46:00+01:00</updated>
     <id>http://blog.tym-project.fr/2011/12/11/un-sapin-de-noel-en-carton-dot-dot-dot-litteralement</id>
     <content type="html"><![CDATA[<p>Le 24 décembre approche à grands pas, et avec les différentes préparations traditionnelles. Et quoi de mieux qu&#8217;un beau sapin pour décorer la pièce ? Un &#8220;sapin&#8221; qui sort de l&#8217;ordinaire !</p>
 
@@ -635,7 +729,7 @@ A l&#8217;occasion des fêtes de fin d&#8217;année Orika a aussi conçu un sapi
   <entry>
     <title type="html"><![CDATA[2012... ou presque !]]></title>
     <link href="http://blog.tym-project.fr/2011/12/09/2012-ou-presque/"/>
-    <updated>2011-12-09T22:30:00+00:00</updated>
+    <updated>2011-12-09T22:30:00+01:00</updated>
     <id>http://blog.tym-project.fr/2011/12/09/2012-ou-presque</id>
     <content type="html"><![CDATA[<p>La nouvelle année est souvent l&#8217;occasion de choisir des résolutions pour les 12 mois qui approchent. Pour Tym-Project cela veut sourtout dire une nouvelle plateforme, ou plutôt un nouveau &#8220;CMS&#8221; : <a href="http://octopress.org" title="Octopress">Octopress</a>, j&#8217;aurai certainement l&#8217;occasion d&#8217;en reparler par la suite !</p>
 
@@ -648,7 +742,7 @@ A l&#8217;occasion des fêtes de fin d&#8217;année Orika a aussi conçu un sapi
   <entry>
     <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par jour (ou presque)]]></title>
     <link href="http://blog.tym-project.fr/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar/"/>
-    <updated>2011-08-31T19:39:34+00:00</updated>
+    <updated>2011-08-31T19:39:34+02:00</updated>
     <id>http://blog.tym-project.fr/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar</id>
     <content type="html"><![CDATA[<p>Ayant tout un tas de liens que je garde depuis (très) longtemps à droite ou à
 gauche, j&#8217;ai décidé de les diffuser ici 5 par 5 quand bon me semblera ! A
@@ -671,7 +765,7 @@ s&#8217;y faire ;-)</p>
   <entry>
     <title type="html"><![CDATA[Ma nouvelle configuration Media Center sous Linux]]></title>
     <link href="http://blog.tym-project.fr/2011/08/21/xbmc-et-archlinux-pour-un-media-center/"/>
-    <updated>2011-08-21T12:00:02+00:00</updated>
+    <updated>2011-08-21T12:00:02+02:00</updated>
     <id>http://blog.tym-project.fr/2011/08/21/xbmc-et-archlinux-pour-un-media-center</id>
     <content type="html"><![CDATA[<p>J&#8217;avais déjà évoqué dans un précédent article que
 je possède un Media center sous Linux. Suite à une petite bidouille
@@ -859,7 +953,7 @@ EndSection
   <entry>
     <title type="html"><![CDATA[Moi, mon Kindle et moi]]></title>
     <link href="http://blog.tym-project.fr/2011/07/15/test-kindle-long-et-retour-experience/"/>
-    <updated>2011-07-15T17:50:12+00:00</updated>
+    <updated>2011-07-15T17:50:12+02:00</updated>
     <id>http://blog.tym-project.fr/2011/07/15/test-kindle-long-et-retour-experience</id>
     <content type="html"><![CDATA[<p>Je suis l&#8217;heureux possesseur d&#8217;un Amazon Kindle
 depuis 8 mois environ, et je vais donc décrire ici l&#8217;utilisation que j&#8217;en fait
@@ -994,7 +1088,7 @@ cela comme une limitation (surtout pour le support !)</p>
   <entry>
     <title type="html"><![CDATA[Un Linux mediacenter avec une loupe]]></title>
     <link href="http://blog.tym-project.fr/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/"/>
-    <updated>2011-05-04T12:00:06+00:00</updated>
+    <updated>2011-05-04T12:00:06+02:00</updated>
     <id>http://blog.tym-project.fr/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon</id>
     <content type="html"><![CDATA[<p>Un Linux avec Xbmc au milieu du salon c&#8217;est de plus
 en plus en commun, et même si je me trompe, c&#8217;est quand même super pratique !
@@ -1097,7 +1191,7 @@ selon).</p>
   <entry>
     <title type="html"><![CDATA[Merci Google, sans toi je ne suis rien !]]></title>
     <link href="http://blog.tym-project.fr/2011/05/02/merci-google-sans-toi-je-ne-suis-rien/"/>
-    <updated>2011-05-02T23:26:52+00:00</updated>
+    <updated>2011-05-02T23:26:52+02:00</updated>
     <id>http://blog.tym-project.fr/2011/05/02/merci-google-sans-toi-je-ne-suis-rien</id>
     <content type="html"><![CDATA[<p>Un petit post sans intérêt, mais je voulais vous
 montrer un mail qui m&#8217;a bien fait marrer. Cela vient de Google pour m&#8217;annoncer
@@ -1172,7 +1266,7 @@ n&#8217;est pas loin car le paradoxe&#8230;</p>
   <entry>
     <title type="html"><![CDATA[Mon script de configuration iptables]]></title>
     <link href="http://blog.tym-project.fr/2011/04/06/iptables-et-lancement-automatique/"/>
-    <updated>2011-04-06T12:00:02+00:00</updated>
+    <updated>2011-04-06T12:00:02+02:00</updated>
     <id>http://blog.tym-project.fr/2011/04/06/iptables-et-lancement-automatique</id>
     <content type="html"><![CDATA[<p>Pour ceux qui ne connaitraient pas, iptables est une
 interface de gestion du module netfilter du noyau Linux. En termes clairs :
@@ -1502,7 +1596,7 @@ update-rc.d: see &lt;http://wiki.debian.org/LSBInitScripts&gt;
   <entry>
     <title type="html"><![CDATA[Edito du 31 Mars]]></title>
     <link href="http://blog.tym-project.fr/2011/03/31/edito-du-31-mars/"/>
-    <updated>2011-03-31T22:16:10+00:00</updated>
+    <updated>2011-03-31T22:16:10+02:00</updated>
     <id>http://blog.tym-project.fr/2011/03/31/edito-du-31-mars</id>
     <content type="html"><![CDATA[<p>Hop hop, un billet en deux deux (font quatre&#8230;) pour vous indiquer que :</p>
 
@@ -1515,60 +1609,6 @@ update-rc.d: see &lt;http://wiki.debian.org/LSBInitScripts&gt;
 
 
 <p>A la semaine prochaine donc ;-)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ubuntu 64 bits : résoudre les problèmes avec Flash]]></title>
-    <link href="http://blog.tym-project.fr/2011/03/16/flash-ubuntu-10-10-x86_64/"/>
-    <updated>2011-03-16T12:00:23+00:00</updated>
-    <id>http://blog.tym-project.fr/2011/03/16/flash-ubuntu-10-10-x86_64</id>
-    <content type="html"><![CDATA[<p>J&#8217;utilise Ubuntu 10.10 depuis quelque temps, et
-ayant 4 Go de RAM j&#8217;utilise la version 64 bits. Bien que cela me chagrine un
-peu, j&#8217;utilise aussi beaucoup Flash pour regarder des vidéos&#8230;malheureusement
-tout cela est assez instable et moche. Mais un passage éclair sous Debian
-Squeeze m&#8217;a prouvé que Flash peut en fait être très stable sous Linux, me
-voila dont partit en quête du plugin parfait&#8230;</p>
-
-<!-- more -->
-
-
-<h2>Le coeur du problème</h2>
-
-<p>Plus qu&#8217;une image vaut bien plus que des mots dans ce cas :
-<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/selection_007.png"></p>
-
-<p>Remarquez comment les indicateurs
-de temps se retrouvent remplacés par des gros carrés noirs&#8230;je vous laisse
-imaginer la catastrophe quand il s&#8217;agit d&#8217;un jeu ! Maintes et maintes
-recherches m&#8217;ont finalement ammené à explorer une piste : le fait que mon
-Ubuntu soit en 64bits et surtout que Flash ne supportait cette architecture
-que en version expérimentale&#8230;</p>
-
-<h2>La solution au problème</h2>
-
-<p>Je suis finalement tombé sur la page salvatrice dans l&#8217;aide d&#8217;ubuntu :
-<a href="https://help.ubuntu.com/community/RestrictedFormats/Flash#Ubuntu%209.10%20%28Karmic%20Koala%29%20and%20later">RestrictedFormatsFlash </a> En bref il faut tout d&#8217;abord désinstaller Flash
-32 bits :</p>
-
-<pre><code>sudo apt-get remove --purge flashplugin* &amp;&amp; sudo apt-get autoremove
-</code></pre>
-
-<p>Puis ajouter le dépot <code>ppa</code> et
-installer le plugin Flash 64 bits :</p>
-
-<pre><code>sudo add-apt-repository ppa:sevenmachines/flash &amp;&amp; sudo apt-get update &amp;&amp; sudo apt-get install flashplugin64-installer
-</code></pre>
-
-<h2>Tadaaa !!</h2>
-
-<p>Le résultat est sans appel, tout fonctionne !
-<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/selection_008.png"></p>
-
-<p>Pour info le lien vers la video que j&#8217;utilise en exemple (choisie au hasard
-mais assez sympa en fait) : <a href="http://www.dailymotion.com/video/xft12d_snowboard-kyle-miller-2009-2010_sport">Snowboard: Kyle Miller - 2009-2010 </a></p>
-
-<p>Bon Flashs ;-)</p>
 ]]></content>
   </entry>
   

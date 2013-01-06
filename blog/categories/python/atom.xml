@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-10-24T21:11:02+00:00</updated>
+  <updated>2013-01-06T15:40:00+01:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Xbmc : un script pour déclencher la mise à jour de la librairie]]></title>
     <link href="http://blog.tym-project.fr/2011/01/12/xbmc-un-script-pour-declencher-la-mise-a-jour-de-la-librairie/"/>
-    <updated>2011-01-12T12:00:16+00:00</updated>
+    <updated>2011-01-12T12:00:16+01:00</updated>
     <id>http://blog.tym-project.fr/2011/01/12/xbmc-un-script-pour-declencher-la-mise-a-jour-de-la-librairie</id>
     <content type="html"><![CDATA[<p>Xbmc possède des scrapers très puissants, ce qui
 permet d'avoir une librairie enrichie d'images et autre bonus venant du web.
@@ -102,7 +102,7 @@ suffit d'appeler ce script depuis un <code>crontab</code>, ou pourquoi pas depui
   <entry>
     <title type="html"><![CDATA[Envoyer un e-mail via Gmail en ligne de commande]]></title>
     <link href="http://blog.tym-project.fr/2010/08/25/mail-avec-gmail-dans-un-script/"/>
-    <updated>2010-08-25T11:59:21+00:00</updated>
+    <updated>2010-08-25T11:59:21+02:00</updated>
     <id>http://blog.tym-project.fr/2010/08/25/mail-avec-gmail-dans-un-script</id>
     <content type="html"><![CDATA[<p>Gmail, on le sait tous, est un outil très
 répandu. Souvent même dans le monde de l'entreprise avec Google Apps. Pourquoi

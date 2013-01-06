@@ -4,7 +4,7 @@
   <title><![CDATA[Category: putty tray | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/putty-tray/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-10-24T21:11:02+00:00</updated>
+  <updated>2013-01-06T15:40:00+01:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Utiliser Putty avec l’authentification par clé rsa…“Server refused our key”]]></title>
     <link href="http://blog.tym-project.fr/2009/04/15/utiliser-putty-avec-le28099authentification-par-cle-rsae280a6e2809cserver-refused-our-keye2809d-2/"/>
-    <updated>2009-04-15T20:33:59+00:00</updated>
+    <updated>2009-04-15T20:33:59+02:00</updated>
     <id>http://blog.tym-project.fr/2009/04/15/utiliser-putty-avec-le28099authentification-par-cle-rsae280a6e2809cserver-refused-our-keye2809d-2</id>
     <content type="html"><![CDATA[<p>Il est un mystère avec <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">Putty</a> : à chaque fois que j’essaye de créer un
 couple clé publique/privée pour faire <a href="http://www.tym-project.fr/blog/2009/04/on-se-pingue-et-on-se-fait-un-tunnel-ssh-2/">ce genre de choses</a>, j’ai une

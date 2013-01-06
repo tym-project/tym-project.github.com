@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Réseau | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/réseau/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-10-24T21:11:02+00:00</updated>
+  <updated>2013-01-06T15:40:00+01:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Naviguer plus vite sur internet, améliorer son débit ? C'est possible !]]></title>
     <link href="http://blog.tym-project.fr/2012/02/14/ameliorer-son-debit-internet/"/>
-    <updated>2012-02-14T21:11:00+00:00</updated>
+    <updated>2012-02-14T21:11:00+01:00</updated>
     <id>http://blog.tym-project.fr/2012/02/14/ameliorer-son-debit-internet</id>
     <content type="html"><![CDATA[<p>Avoir un débit rapide pour accéder à internet c'est important, et cela varie fonction de différents facteurs comme votre fournisseur d'accès ou la qualité de votre Wifi... oui c'est en effet un sujet assez vaste !<br/>
 Un moyen assez simple d'accélérer le temps d'accès aux site que vous visitez avec votre brouteur préféré c'est le DNS.</p>
@@ -126,7 +126,7 @@ sys 0m0.012s
   <entry>
     <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par jour (ou presque)]]></title>
     <link href="http://blog.tym-project.fr/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar/"/>
-    <updated>2011-08-31T19:39:34+00:00</updated>
+    <updated>2011-08-31T19:39:34+02:00</updated>
     <id>http://blog.tym-project.fr/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar</id>
     <content type="html"><![CDATA[<p>Ayant tout un tas de liens que je garde depuis (très) longtemps à droite ou à
 gauche, j'ai décidé de les diffuser ici 5 par 5 quand bon me semblera ! A
@@ -149,7 +149,7 @@ s'y faire ;-)</p>
   <entry>
     <title type="html"><![CDATA[Mon script de configuration iptables]]></title>
     <link href="http://blog.tym-project.fr/2011/04/06/iptables-et-lancement-automatique/"/>
-    <updated>2011-04-06T12:00:02+00:00</updated>
+    <updated>2011-04-06T12:00:02+02:00</updated>
     <id>http://blog.tym-project.fr/2011/04/06/iptables-et-lancement-automatique</id>
     <content type="html"><![CDATA[<p>Pour ceux qui ne connaitraient pas, iptables est une
 interface de gestion du module netfilter du noyau Linux. En termes clairs :
@@ -547,7 +547,7 @@ Bon firewalling ;-)</p>
   <entry>
     <title type="html"><![CDATA[Ubuntu : Permuter et renommer des cartes réseau]]></title>
     <link href="http://blog.tym-project.fr/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware/"/>
-    <updated>2011-02-23T12:00:00+00:00</updated>
+    <updated>2011-02-23T12:00:00+01:00</updated>
     <id>http://blog.tym-project.fr/2011/02/23/ubuntu-permuter-renommer-cartes-reseau-pour-vmware</id>
     <content type="html"><![CDATA[<p>Après la mise en place d'une VM Ubuntu avec
 Vmware, et surtout suite à sa copie je me suis rendu compte que je n'avais
@@ -631,7 +631,7 @@ wifi0  Link encap:Ethernet  HWaddr 00:21:6a:67:e1:88
   <entry>
     <title type="html"><![CDATA[Une adresse DNS instantanée, avec ipq.co]]></title>
     <link href="http://blog.tym-project.fr/2010/10/13/dns-ultra-rapide-et-gratuit/"/>
-    <updated>2010-10-13T14:06:41+00:00</updated>
+    <updated>2010-10-13T14:06:41+02:00</updated>
     <id>http://blog.tym-project.fr/2010/10/13/dns-ultra-rapide-et-gratuit</id>
     <content type="html"><![CDATA[<p>Les adresses Ip c'est bien, les Ipv6 c'est
 mieux, et la mémoire des chiffres c'est le top ! Plus sérieusement, il est

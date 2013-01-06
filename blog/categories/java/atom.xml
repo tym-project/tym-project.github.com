@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-10-24T21:11:02+00:00</updated>
+  <updated>2013-01-06T15:40:00+01:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Choisir un mot de passe sécurisé et facile à retenir]]></title>
     <link href="http://blog.tym-project.fr/2010/09/08/methode-de-choix-de-mot-de-passe-efficace/"/>
-    <updated>2010-09-08T18:44:28+00:00</updated>
+    <updated>2010-09-08T18:44:28+02:00</updated>
     <id>http://blog.tym-project.fr/2010/09/08/methode-de-choix-de-mot-de-passe-efficace</id>
     <content type="html"><![CDATA[<p>Un mot de passe c'est important. A vrai dire
 c'est souvent votre premier rempart contre une attaque sur vos données
@@ -117,7 +117,7 @@ tester sa fiabilité avec par exemple : <a href="http://howsecureismypassword.ne
   <entry>
     <title type="html"><![CDATA[Régler le problème de ports avec Netbeans 6.8/Glassfish 3 sous Windows 7]]></title>
     <link href="http://blog.tym-project.fr/2010/05/05/regler-le-probleme-de-ports-avec-netbeans-6-8glassfish-3-sous-windows-7/"/>
-    <updated>2010-05-05T13:00:04+00:00</updated>
+    <updated>2010-05-05T13:00:04+02:00</updated>
     <id>http://blog.tym-project.fr/2010/05/05/regler-le-probleme-de-ports-avec-netbeans-6-8glassfish-3-sous-windows-7</id>
     <content type="html"><![CDATA[<p>Dans le cadre de mes cours, j'ai été amené à utiliser Netbeans et le
 serveur d'application Glassfish...ce qui m'a causé quelques soucis avec mon
@@ -156,7 +156,7 @@ maintenant les bons :<br/>
   <entry>
     <title type="html"><![CDATA[Firefox : vérifier la validité des ses plugins]]></title>
     <link href="http://blog.tym-project.fr/2009/10/06/firefox-verifier-la-validite-des-ses-plugins/"/>
-    <updated>2009-10-06T08:53:33+00:00</updated>
+    <updated>2009-10-06T08:53:33+02:00</updated>
     <id>http://blog.tym-project.fr/2009/10/06/firefox-verifier-la-validite-des-ses-plugins</id>
     <content type="html"><![CDATA[<p>Flash, Java...tous ces plugins (et non extensions) peuvent parfois présenter
 des <a href="http://www.zdnet.fr/actualites/internet/0,39020774,39705979,00.htm">failles de sécurité</a>. Le site <a href="https://www-trunk.stage.mozilla.com/en-US/plugincheck/">Plug-In-Check</a> vous permet de
@@ -172,7 +172,7 @@ uniquement avec Firefox bien entendu :) Pour ma part j'ai (un peu) de boulot :</
   <entry>
     <title type="html"><![CDATA[Insérer des images et les ajouter au .jar (Java)]]></title>
     <link href="http://blog.tym-project.fr/2009/04/16/inserer-des-images-et-les-ajouter-au-jar-java/"/>
-    <updated>2009-04-16T12:30:15+00:00</updated>
+    <updated>2009-04-16T12:30:15+02:00</updated>
     <id>http://blog.tym-project.fr/2009/04/16/inserer-des-images-et-les-ajouter-au-jar-java</id>
     <content type="html"><![CDATA[<p>Pour ajouter des images à votre application vous avez différentes solutions,
 mais attention, toutes ne fonctionnent pas correctement ! Voici donc comment
@@ -228,7 +228,7 @@ partie d'un package.</p>
   <entry>
     <title type="html"><![CDATA[Signer une application Java]]></title>
     <link href="http://blog.tym-project.fr/2009/04/03/signer-une-application-java-2/"/>
-    <updated>2009-04-03T15:41:24+00:00</updated>
+    <updated>2009-04-03T15:41:24+02:00</updated>
     <id>http://blog.tym-project.fr/2009/04/03/signer-une-application-java-2</id>
     <content type="html"><![CDATA[<p>Pourquoi est-ce important de signer (avec un certificat) une application Java
 ? Prenons un exemple concret : laisseriez vous entrer une personne non

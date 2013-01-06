@@ -4,7 +4,7 @@
   <title><![CDATA[Category: sed | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/sed/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-10-24T21:11:02+00:00</updated>
+  <updated>2013-01-06T15:40:00+01:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Adaptation de "sed" en PowerShell (Windows)]]></title>
     <link href="http://blog.tym-project.fr/2011/03/02/sed-en-powershell-et-redirection/"/>
-    <updated>2011-03-02T12:00:44+00:00</updated>
+    <updated>2011-03-02T12:00:44+01:00</updated>
     <id>http://blog.tym-project.fr/2011/03/02/sed-en-powershell-et-redirection</id>
     <content type="html"><![CDATA[<p>PowerShell est un langage de script développé par
 Microsoft, le <code>#!/bin/bash</code> de Windows en quelque sorte. Ce langage propose de
@@ -70,7 +70,7 @@ fichier tout à fait viable.</p>
   <entry>
     <title type="html"><![CDATA[Automatiser la création ou l'édition d'un crontab]]></title>
     <link href="http://blog.tym-project.fr/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab/"/>
-    <updated>2010-08-04T12:00:34+00:00</updated>
+    <updated>2010-08-04T12:00:34+02:00</updated>
     <id>http://blog.tym-project.fr/2010/08/04/scripter-la-creation-ou-ledition-dun-crontab</id>
     <content type="html"><![CDATA[<p>Crontab est un outil extrêmement pratique
 servant à planifier l'exécution des tâches/commandes. Habituellement il se
@@ -172,7 +172,7 @@ faisant plutôt exécuter <code>/home/tym/scripts/mon_second_script</code> :
   <entry>
     <title type="html"><![CDATA[SED, trucs et astuces pour le remplacement et la mise en mémoire d'expressions]]></title>
     <link href="http://blog.tym-project.fr/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions/"/>
-    <updated>2009-08-21T22:57:08+00:00</updated>
+    <updated>2009-08-21T22:57:08+02:00</updated>
     <id>http://blog.tym-project.fr/2009/08/21/sed-trucs-et-astuces-pour-le-remplacement-et-la-mise-en-memoire-dexpressions</id>
     <content type="html"><![CDATA[<p><code>[man]sed[/man]</code> est un éditeur de texte en
 ligne de commande. Il vous permet donc de modifier un fichier par une suite de

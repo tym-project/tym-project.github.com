@@ -4,7 +4,7 @@
   <title><![CDATA[Category: powershell | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/powershell/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-10-24T21:11:02+00:00</updated>
+  <updated>2013-01-06T15:40:00+01:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Adaptation de "sed" en PowerShell (Windows)]]></title>
     <link href="http://blog.tym-project.fr/2011/03/02/sed-en-powershell-et-redirection/"/>
-    <updated>2011-03-02T12:00:44+00:00</updated>
+    <updated>2011-03-02T12:00:44+01:00</updated>
     <id>http://blog.tym-project.fr/2011/03/02/sed-en-powershell-et-redirection</id>
     <content type="html"><![CDATA[<p>PowerShell est un langage de script développé par
 Microsoft, le <code>#!/bin/bash</code> de Windows en quelque sorte. Ce langage propose de

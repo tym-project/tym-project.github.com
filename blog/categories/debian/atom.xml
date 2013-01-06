@@ -4,7 +4,7 @@
   <title><![CDATA[Category: debian | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/debian/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-10-24T21:11:02+00:00</updated>
+  <updated>2013-01-06T15:40:00+01:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Installation de ss5 sur une Debian 5]]></title>
     <link href="http://blog.tym-project.fr/2011/02/09/install-ss5-debian-et-script-init/"/>
-    <updated>2011-02-09T12:00:48+00:00</updated>
+    <updated>2011-02-09T12:00:48+01:00</updated>
     <id>http://blog.tym-project.fr/2011/02/09/install-ss5-debian-et-script-init</id>
     <content type="html"><![CDATA[<p><a href="http://ss5.sourceforge.net/">ss5</a> est un service de proxy SOCKS très
 performant, développé par <a href="http://ss5.sourceforge.net/author.htm">une seule personne</a> je tiens à le souligner !

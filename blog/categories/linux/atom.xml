@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2012-10-24T21:11:02+00:00</updated>
+  <updated>2013-01-06T15:40:00+01:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par jour (ou presque)]]></title>
     <link href="http://blog.tym-project.fr/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar/"/>
-    <updated>2011-08-31T19:39:34+00:00</updated>
+    <updated>2011-08-31T19:39:34+02:00</updated>
     <id>http://blog.tym-project.fr/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar</id>
     <content type="html"><![CDATA[<p>Ayant tout un tas de liens que je garde depuis (très) longtemps à droite ou à
 gauche, j'ai décidé de les diffuser ici 5 par 5 quand bon me semblera ! A
@@ -39,7 +39,7 @@ s'y faire ;-)</p>
   <entry>
     <title type="html"><![CDATA[Ma nouvelle configuration Media Center sous Linux]]></title>
     <link href="http://blog.tym-project.fr/2011/08/21/xbmc-et-archlinux-pour-un-media-center/"/>
-    <updated>2011-08-21T12:00:02+00:00</updated>
+    <updated>2011-08-21T12:00:02+02:00</updated>
     <id>http://blog.tym-project.fr/2011/08/21/xbmc-et-archlinux-pour-un-media-center</id>
     <content type="html"><![CDATA[<p>J'avais déjà évoqué dans un précédent article que
 je possède un Media center sous Linux. Suite à une petite bidouille
@@ -227,7 +227,7 @@ EndSection
   <entry>
     <title type="html"><![CDATA[Un Linux mediacenter avec une loupe]]></title>
     <link href="http://blog.tym-project.fr/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon/"/>
-    <updated>2011-05-04T12:00:06+00:00</updated>
+    <updated>2011-05-04T12:00:06+02:00</updated>
     <id>http://blog.tym-project.fr/2011/05/04/utiliser-la-loupe-sous-linux-pour-un-pc-de-salon</id>
     <content type="html"><![CDATA[<p>Un Linux avec Xbmc au milieu du salon c'est de plus
 en plus en commun, et même si je me trompe, c'est quand même super pratique !
@@ -345,7 +345,7 @@ selon).</p>
   <entry>
     <title type="html"><![CDATA[Mon script de configuration iptables]]></title>
     <link href="http://blog.tym-project.fr/2011/04/06/iptables-et-lancement-automatique/"/>
-    <updated>2011-04-06T12:00:02+00:00</updated>
+    <updated>2011-04-06T12:00:02+02:00</updated>
     <id>http://blog.tym-project.fr/2011/04/06/iptables-et-lancement-automatique</id>
     <content type="html"><![CDATA[<p>Pour ceux qui ne connaitraient pas, iptables est une
 interface de gestion du module netfilter du noyau Linux. En termes clairs :
@@ -743,7 +743,7 @@ Bon firewalling ;-)</p>
   <entry>
     <title type="html"><![CDATA[Ubuntu 64 bits : résoudre les problèmes avec Flash]]></title>
     <link href="http://blog.tym-project.fr/2011/03/16/flash-ubuntu-10-10-x86_64/"/>
-    <updated>2011-03-16T12:00:23+00:00</updated>
+    <updated>2011-03-16T12:00:23+01:00</updated>
     <id>http://blog.tym-project.fr/2011/03/16/flash-ubuntu-10-10-x86_64</id>
     <content type="html"><![CDATA[<p>J'utilise Ubuntu 10.10 depuis quelque temps, et
 ayant 4 Go de RAM j'utilise la version 64 bits. Bien que cela me chagrine un

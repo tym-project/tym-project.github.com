@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Gérer l'allumage et la mise hors tension d'une machine Linux via un smartphone Android - Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="Si vous ne le saviez pas, et bien sachez que ma machine &#8220;perso&#8221; tourne sous Linux (ArchLinux), et que mon smartphone fonctionne sous &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.tym-project.fr/2013/01/06/android-et-linux-piloter-une-machine-a-distance/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.tym-project.fr" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Gérer L'allumage Et La Mise Hors Tension D'une Machine Linux via Un Smartphone Android</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-06T14:33:00+01:00" pubdate data-updated="true">Jan 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Si vous ne le saviez pas, et bien sachez que ma machine &#8220;perso&#8221; tourne sous Linux (ArchLinux), et que mon smartphone fonctionne sous Android. On est content, non ? <br/>
+Continuons dans cette voie, avec une photo de mon bureau :<br/>
+<img src="https://s3-eu-west-1.amazonaws.com/pics.tym-project.fr/2013-1/IMG_20130106_142700.jpg"></p>
+
+<p>De mieux en mieux, non ? Vous avez certainement remarqué que l&#8217;écran de mon portable est fermé, recouvert de figurines et de poussière&#8230;<br/>
+Et donc ? Et donc je ne peux pas l&#8217;allumer via le bouton habituel&#8230; car cela m&#8217;oblige à virer les figurines, soulever l&#8217;écran, le refermer avant qu&#8217;il ne devienne l&#8217;écran principal&#8230; bla bla bla&#8230; j&#8217;ai dû trouver un moyer de gérer l&#8217;alimentation de cette machine à distance. Oh, et je vais vous en parler dans cet article du coup !</p>
+
+<!--more -->
+
+
+<h2>Allumer une machine sans les mains, le WOL.</h2>
+
+<p>J&#8217;utilise en fait mon smartphone pour déclencher la mise sous tension de mon ordinateur, à l&#8217;aide d&#8217;un protocolo relativement connu : le <code>Wake On Lan </code>. Cet outil permet tout simplement d&#8217;allumer une machine à travers le réseau, mais sous deux conditions : la cible doit être réliée au réseau via un câble Ethernet et la carte réseau doit supporter le protocole <code>WOL</code>.<br/>
+Sous Linux, vous pouvez vérifier assez simplement si votre carte Ethernet est compatible WOL avec <code>ethtool</code> (il faudra probablement allez bidouiller dans votre BIOS au préalable) :</p>
+
+<pre><code>[tym@tym-laptop ~]$ sudo ethtool eth0
+Settings for eth0:
+Supported ports: [ TP ]
+Supported link modes:   10baseT/Half 10baseT/Full 
+                        100baseT/Half 100baseT/Full 
+                        1000baseT/Full 
+Supported pause frame use: No
+Supports auto-negotiation: Yes
+Advertised link modes:  10baseT/Half 10baseT/Full 
+                        100baseT/Half 100baseT/Full 
+                        1000baseT/Full 
+Advertised pause frame use: No
+Advertised auto-negotiation: Yes
+Speed: 100Mb/s
+Duplex: Full
+Port: Twisted Pair
+PHYAD: 2
+Transceiver: internal
+Auto-negotiation: on
+MDI-X: on
+Supports Wake-on: pumbg
+Wake-on: g
+Current message level: 0x00000007 (7)
+               drv probe link
+Link detected: yes
+</code></pre>
+
+<p>Ce qui nous inéteresse ici c&#8217;est <code>Supports Wake-on: pumbg</code>, qui signifie que la carte supporte le réveil par (<code>man ethtool</code>) :</p>
+
+<pre><code>p   Wake on PHY activity
+u   Wake on unicast messages
+m   Wake on multicast messages
+b   Wake on broadcast messages
+g   Wake on MagicPacket™
+</code></pre>
+
+<p>Le <code>g</code>, soit &#8220;MagicPacket&#8221; est l&#8217;option qui nous intéresse ! Si <code>Wake-on</code> ne contient pas <code>g</code>, vous pouvez utiliser <code>ethtool -s eth0 wol g</code> pour l&#8217;activer&#8230; à probablement mettre dans un script systemd ou initd pour garder l&#8217;option au reboot.</p>
+
+<p>Pour allumer ma machine en WOL depuis Android j&#8217;utilise <a href="https://play.google.com/store/apps/details?id=com.benfinnigan.wol">cette application</a> car elle permet de générer des Widgets sur le bureau, mais aussi de sauvegarder la configuration via la synchronisation Google&#8230; très pratique car configurer une machine cible requiert de saisir son adresse MAC.</p>
+
+<h2>Eteindre une machine sans les mains, la bidouille.</h2>
+
+<p>Il existe des applications sur le Play Store pour éteindre votre machine à distance, dans la plupart des cas à travers un client installé sur la cible&#8230; je n&#8217;ai pas trouvé mon bonheur et donc je me suis lancé dans un bidouille !</p>
+
+<p>Le principe est le suivant : un serveur web est installé sur mon Linux, en appelant une URL spécifique depuis le smartphone on va déclencher un script qui va arrêter la machine. Simple, non ?</p>
+
+<p>Je vous passe les détails sur l&#8217;installation du serveur Web&#8230; Google est ton ami (enfin il vaut mieux pour toi&#8230;), mais voici plutôt la page qui déclenche l&#8217;arrêt de la machine (en PHP) :</p>
+
+<pre><code>&lt;?php
+echo 'Shutting down...';
+file_put_contents('/srv/http/poweroff.now', 'poweroff');
+?&gt;
+</code></pre>
+
+<p>Oui, c&#8217;est tout ! Cette page a pour seul rôle la création d&#8217;un fichier </code>poweroff.now</code> dans le dossier </code>/srv/http</code>.<br/>
+La suite du traitement se trouve dans un script bash exécuté par <code>crontab</code> :</p>
+
+<pre><code>*/1 *   *   *   *   /home/tym/scripts/remote_poweroff.sh
+</code></pre>
+
+<p><code>poweroff.sh</code> se lance donc toute les minutes, et voici ce qu&#8217;il fait :</p>
+
+<pre><code>#!/bin/bash
+ACTION=/srv/http/poweroff.now
+if [ -e "$ACTION" ]; then
+rm $ACTION
+/sbin/poweroff
+fi
+</code></pre>
+
+<p>Ce script vérifie l&#8217;existence du fichier créé par la page web, le supprime le cas échéant et arrête la machine. Il est bien entendu possible d&#8217;améliorer le fonctionnement en proposant d&#8217;autre action comme le reboot ou autre, il suffirait de faire évoluer la page Web et le script de traitement&#8230;</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tym</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-06T14:33:00+01:00" pubdate data-updated="true">Jan 6<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.tym-project.fr/2013/01/06/android-et-linux-piloter-une-machine-a-distance/" data-via="" data-counturl="http://blog.tym-project.fr/2013/01/06/android-et-linux-piloter-une-machine-a-distance/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2012/10/21/icy-box-ib-351-et-linux/" title="Previous Post: Icy Box IB-351 et Linux">&laquo; Icy Box IB-351 et Linux</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/01/06/android-et-linux-piloter-une-machine-a-distance/">Gérer l'allumage et la mise hors tension d'une machine Linux via un smartphone Android</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/21/icy-box-ib-351-et-linux/">Icy Box IB-351 et Linux</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S... entre boot loop et sd-cauchemard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.tym-project.fr/2013/01/06/android-et-linux-piloter-une-machine-a-distance/';
+        var disqus_url = 'http://blog.tym-project.fr/2013/01/06/android-et-linux-piloter-une-machine-a-distance/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
