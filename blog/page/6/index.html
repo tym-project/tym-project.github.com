@@ -9,9 +9,9 @@
   <meta name="author" content="Tym">
 
   
-  <meta name="description" content="J&#8217;utilise le même
-profil Firefox depuis un certain temps (au moins un an), je suis aussi
-récemment passé sur la bêta de Firefox 3.6, ce qui a &hellip;">
+  <meta name="description" content="Je suis tombé tout à fait par hasard
+sur une très jolie application en flash. Elle ne sert à rien, elle ne code pas
+à votre place ni ne classe vos &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,48 @@ récemment passé sur la bêta de Firefox 3.6, ce qui a &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/01/30/la-musique-adoucit-les-moeurs/">La Musique Adoucit Les Moeurs&#8230;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-30T19:40:24+01:00" pubdate data-updated="true">Jan 30<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Je suis tombé tout à fait par hasard
+sur une très jolie application en flash. Elle ne sert à rien, elle ne code pas
+à votre place ni ne classe vos fichiers&#8230;par contre elle fait de la jolie
+musique ! Je peux passer des heures à faire des mélodie avec <a href="http://lab.andre-michelle.com/tonematrix">Tone Matrix</a>
+!</p>
+
+<p>Bonne composition ;-)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -576,79 +618,6 @@ un tutoriel ici ou là !</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/08/27/utiliser-la-derniere-version-de-makepasswd-sous-archlinux/">Utiliser La Dernière Version De &#8220;Makepasswd&#8221; Sous Archlinux</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-08-27T13:04:06+02:00" pubdate data-updated="true">Aug 27<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Dans cet article j&#8217;utilise <code>[man]makepasswd[/man]</code>. Mais j&#8217;ai fait
-ces manipulations sous Debian. Avec Archlinux cela se complique un peu car la
-version de <code>makepasswd</code> n&#8217;est pas identique à celle de Debian : elle ne gère
-pas le cryptage md5. Il va donc falloir faire une petite manipulation de
-derrière les fagots !</p>
-
-<p>Cela se résume en fait à utiliser le binaire de Debian sur notre Arch. Comme
-il n&#8217;existe pas &#8220;out of the box&#8221;, il va falloir patcher les sources. Les
-fichiers nécessaires sont <a href="http://packages.debian.org/lenny/makepasswd">ici</a>. Il vous faut récupérer
-<code>makepasswd_1.10.orig.tar.gz</code> et <code>makepasswd_1.10-3.diff.gz</code> :</p>
-
-<pre><code>wget http://ftp.de.debian.org/debian/pool/main/m/makepasswd/makepasswd_1.10.orig.tar.gz
-wget http://ftp.de.debian.org/debian/pool/main/m/makepasswd/makepasswd_1.10-3.diff.gz
-</code></pre>
-
-<p>Il faut extraire les
-sources :</p>
-
-<pre><code>tar xzvf makepasswd_1.10.orig.tar.gz
-</code></pre>
-
-<p>puis le patch :</p>
-
-<pre><code>gunzip makepasswd_1.10-3.diff.gz
-</code></pre>
-
-<p>et enfin patcher le
-binaire de <code>makepasswd</code></p>
-
-<pre><code>patch makepasswd_1.10/makepasswd makepasswd_1.10-3.diff
-</code></pre>
-
-<p>Vous pouvez
-maintenant utiliser <code>makepasswd</code> avec l&#8217;option <code>--crypt-md5</code>, si vous avez
-installé une version antérieure il vous suffit de copier le binaire à la place
-des fichiers obsolètes.</p>
-
-<p>Bon patching ;-)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -666,6 +635,10 @@ des fichiers obsolètes.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/04/26/acronis-boot-cd-par-le-reseau/">Installer un serveur PXE sur un ReadyNAS Ultra 2</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/06/android-et-linux-piloter-une-machine-a-distance/">Gérer l&#8217;allumage et la mise hors tension d&#8217;une machine Linux via un smartphone Android</a>
       </li>
     
@@ -679,10 +652,6 @@ des fichiers obsolètes.</p>
     
       <li class="post">
         <a href="/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/03/24/android-perte-signal-3g-avec-gps/">Android : perte du signal 3g après activation du GPS</a>
       </li>
     
   </ul>

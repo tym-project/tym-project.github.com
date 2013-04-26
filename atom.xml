@@ -4,7 +4,7 @@
   <title><![CDATA[Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2013-04-21T20:04:20+02:00</updated>
+  <updated>2013-04-26T22:08:19+02:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -12,6 +12,111 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Installer un serveur PXE sur un ReadyNAS Ultra 2]]></title>
+    <link href="http://blog.tym-project.fr/2013/04/26/acronis-boot-cd-par-le-reseau/"/>
+    <updated>2013-04-26T14:11:00+02:00</updated>
+    <id>http://blog.tym-project.fr/2013/04/26/acronis-boot-cd-par-le-reseau</id>
+    <content type="html"><![CDATA[<p><em>Hey ! Non, ce blog n&#8217;est pas mort !</em></p>
+
+<p>J&#8217;ai fait l&#8217;acquisition depuis quelques semaine d&#8217;un NAS Netgear ReadyNAS Ultra 2&#8230; qui depuis n&#8217;existe plus vraiment depuis car remplacé par la série ReadyNAS 10X. Bref.</p>
+
+<p>Ce petit joujou n&#8217;est rien d&#8217;autre qu&#8217;une petite machine avec du Debian dedans, une vieille Debian Etch, qui date un peu mais qui reste fonctionelle. Voulant utiliser mon NAS comme serveur de sauvegarde je me suis mis en tête de bidouiller pour pouvoir booter un CD de sauvegarde Acronis via le réseau.</p>
+
+<p>Eh beurk, Acronis me direz-vous, et un bon vieux Rsync des familles alors ?! Je n&#8217;ai pas trop le choix si je veux pouvoir sauvegarder mon PC pro, car c&#8217;est le seul outil supporté oficiellement par le service informatique de ma boite&#8230;</p>
+
+<p>Dans le monde Linux, boot via le réseau se traduit par <a href="http://fr.wikipedia.org/wiki/Preboot_Execution_Environment">PXE</a>. Pour résumer, une machine compatible pourra lors du démarrage faire une connection au réseau filaire et booter sur une image stockée sur le réseau.</p>
+
+<!-- more -->
+
+
+<h2>Etape 1 : Les mains dans le terminal</h2>
+
+<p>Première étape avant toute bidouille sur le NAS, c&#8217;est la sauvegarde&#8230; mettez vos données de coté, on sais jamais !<br/>
+Ceci étant fait, il va falloir faire du <code>apt-get</code> pour arriver à nos fins, et donc activer l&#8217;accès SSH sur votre NAS. Utilisez tout simplement <a href="http://www.readynas.com/?p=4203">cet add-on</a>, puis un reboot plus tard vous voila dans votre terminal préféré.<br/>
+Attention, vous êtes sur un système Debian certes, mais très largement customisé et optimisé par Netgear. On reste donc très prudent sur ce qu&#8217;on installe !</p>
+
+<p>Pour se mettre en jambes :</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+apt-get install vim
+</code></pre>
+
+<h2>Etape 2 : dnsmasq, le serveur PXE (mais pas que)</h2>
+
+<p>Qui dit PXE dit serveur DHCP qui va donner les infos&#8230; exit donc le bon vieux truc par défaut de la box et à nous la solution maison !</p>
+
+<p>J&#8217;ai choisi d&#8217;installer <a href="http://fr.wikipedia.org/wiki/Dnsmasq">dnsmasq</a> car c&#8217;est un outil très léger, très simple d&#8217;utilisation et surtout bien documenté sur la toile. Son installation est en théorie très simple (<code>apt-get install dnsmasq</code>), mais dans notre cas cela ne suffira pas.<br/>
+Notre Debian étant un peu ancienne, la version présente dans le repository n&#8217;est pas assez récente et ne propose pas les fonctionnalités PXE voulues&#8230;</p>
+
+<p>On va donc tricher en utilisant les paquets d&#8217;une version Debian plus récente. Une chance que dnsmasq ne soit pas trop contraignant en termes de prérequis, car cela nous évite de changer le système en profondeur.</p>
+
+<p>On récupère donc les packages et on les installe, dans cet ordre strict :</p>
+
+<pre><code>wget http://ftp.us.debian.org/debian/pool/main/libi/libidn/libidn11_1.15-2_i386.deb
+dpkg -i libidn11_1.15-2_i386.deb
+
+wget http://ftp.us.debian.org/debian/pool/main/d/dnsmasq/dnsmasq-base_2.55-2+b1_i386.deb
+dpkg -i dnsmasq-base_2.55-2+b1_i386.deb
+
+wget http://ftp.us.debian.org/debian/pool/main/d/dnsmasq/dnsmasq_2.55-2_all.deb
+dpkg -i dnsmasq_2.55-2_all.deb
+</code></pre>
+
+<p>La configuration est alors assez simple, éditez <code>/etc/dnsmasq.conf</code> et pensez-bien à couper le DHCP de votre box ou autre :</p>
+
+<pre><code>interface=eth0
+bind-interfaces
+
+# Quelques options DHCP : le range, la passerelle, le DNS, une ip statique
+dhcp-range=192.168.1.50,192.168.1.80,1h
+dhcp-option=3,192.168.1.254
+dhcp-option=6,192.168.1.101
+dhcp-host=00:24:e8:bb:2f:41,192.168.1.10,tym-laptop
+
+# La partie TFTP
+enable-tftp
+tftp-root=/opt/pxe
+dhcp-boot=pxelinux.0
+</code></pre>
+
+<p>On a donc maintenant un serveur DHCP, un serveur DNS (par défaut les demandes sont renvoyées aux DNS dans <code>/etc/resolv.conf</code> et dnsmasq utilise <code>/etc/hosts</code> pour la &#8220;zone&#8221; locale) et surtout un serveur PXE.</p>
+
+<h2>Etape 3 : &#8220;On s&#8217;pingue et on s&#8217;fait un boot ?&#8221;</h2>
+
+<p>On va maintenant mettre en place le contenu du serveur PXE : <code>/opt/pxe</code> dans la config précédente.
+Tout d&#8217;abord les <a href="https://www.kernel.org/pub/linux/utils/boot/syslinux/3.xx/syslinux-3.51.zip">binaires PXE</a> :</p>
+
+<ul>
+<li><code>pxelinux.0</code> à prendre la racine de l&#8217;archive</li>
+<li><code>memdisk</code> à trouver dans le dossier memdisk de l&#8217;archive</li>
+</ul>
+
+
+<p>On place les deux fichiers dans <code>/opt/pxe</code> avec l&#8217;image iso de votre choix&#8230; aux hasard le CD bootable Acronis.<br/>
+On crée un <strong>répertoire</strong> <code>pxelinux.cfg</code> avec dedans un fichier <code>default</code> contenant :</p>
+
+<pre><code>DEFAULT acronis
+LABEL acronis
+  KERNEL memdisk
+    APPEND initrd=acronis.iso iso raw
+</code></pre>
+
+<p>Et hop, tout ce petit monde vous permettra de booter votre iso favorite via le réseau :</p>
+
+<pre><code>nas:/opt/pxe# ls -R
+.:
+acronis.iso  memdisk  pxelinux.0  pxelinux.cfg
+
+./pxelinux.cfg:
+default
+</code></pre>
+
+<p>Bon boot ;-)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Gérer l'allumage et la mise hors tension d'une machine Linux via un smartphone Android]]></title>
@@ -1590,25 +1695,6 @@ update-rc.d: see &lt;http://wiki.debian.org/LSBInitScripts&gt;
 
 
 <p>Bon firewalling ;-)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Edito du 31 Mars]]></title>
-    <link href="http://blog.tym-project.fr/2011/03/31/edito-du-31-mars/"/>
-    <updated>2011-03-31T22:16:10+02:00</updated>
-    <id>http://blog.tym-project.fr/2011/03/31/edito-du-31-mars</id>
-    <content type="html"><![CDATA[<p>Hop hop, un billet en deux deux (font quatre&#8230;) pour vous indiquer que :</p>
-
-<ul>
-<li>Je vais bien</li>
-<li>J&#8217;ai terminé mes tout derniers exams à SUPINFO (avant la soutenance de mémoire)</li>
-<li>J&#8217;arrive au bout de mon déménagement</li>
-<li>J&#8217;aurai bientôt une vraie connexion internet !</li>
-</ul>
-
-
-<p>A la semaine prochaine donc ;-)</p>
 ]]></content>
   </entry>
   
