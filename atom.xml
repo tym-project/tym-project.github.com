@@ -4,7 +4,7 @@
   <title><![CDATA[Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2013-10-05T19:41:58+02:00</updated>
+  <updated>2013-10-05T19:49:44+02:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -92,7 +92,7 @@ sat 08:00
 
 <p><img src="https://s3-eu-west-1.amazonaws.com/pics.tym-project.fr/2013-4/S%C3%A9lection_gdoc.png"></p>
 
-<p>Je vous passe les détails sur la mise en forme automatique ou les listes de choix, mais le principe générale est que je travaille sur des plages de 30 minutes du Lundi au Dimanche.</p>
+<p>Je vous passe les détails sur la mise en forme automatique ou les listes de choix, mais le principe général est que je travaille sur des plages de 30 minutes du Lundi au Dimanche.</p>
 
 <p>Pour consulter ce document dans un script j&#8217;ai décidé d&#8217;utiliser Python, surtout pour la présence d&#8217;une librairie bien pratique : <a href="https://github.com/burnash/gspread">gspread</a>. Bien pratique surtout pour sa simplicité&#8230; car l&#8217;API Google est une vrai catastrophe en terme d&#8217;ergonomie.</p>
 
