@@ -9,8 +9,8 @@
   <meta name="author" content="Tym">
 
   
-  <meta name="description" content="Il faut revenir presque 10 ans en arrière, j&#8217;étais alors en colonie&#8230;et c&#8217;est
-là que j&#8217;ai écouté pour la première fois une &hellip;">
+  <meta name="description" content="Ce que j&#8217;aime dans mon Linux c&#8217;est la CLI (Command Line Interface) car c&#8217;est
+rapide et pratique ! Il est même possible de créer des &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,68 @@ là que j&#8217;ai écouté pour la première fois une &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/05/04/creer-et-graver-des-images-iso-en-ligne-de-commande-linux-2/">Créer Et Graver Des Images ISO en Ligne De Commande (Linux)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-04T21:33:45+02:00" pubdate data-updated="true">May 4<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ce que j&#8217;aime dans mon Linux c&#8217;est la CLI (Command Line Interface) car c&#8217;est
+rapide et pratique ! Il est même possible de créer des images iso sans
+interface graphique. Vous pouvez aussi bien entendu graver ces mêmes iso en
+ligne de commande. Et c&#8217;est pour moi la seule utilité de mon graveur ! Voici
+donc comment procéder.</p>
+
+<p>Tout d&#8217;abord la création de l&#8217;image. Nous allons utiliser <code>[man]dd[/man]</code>, un
+utilitaire de gestion des disques (en très gros, plus d&#8217;informations <a href="http://fr.wikipedia.org/wiki/Dd_(Unix)">ici</a>)
+:</p>
+
+<pre><code>$ dd if=/dev/sr0 of=image.iso
+</code></pre>
+
+<p>Et
+voila ! Qui a dit que c&#8217;était complexe ? Avec <code>if=</code> on définit le périphérique
+d&#8217;entrée, <code>of=</code> la sortie.</p>
+
+<p>Pour graver cette image nous allons utiliser <code>[man]wodim[/man]</code> (dans le
+package <code>cdrkit</code> dans Archlinux). Attention les yeux :</p>
+
+<pre><code># wodim image.iso
+</code></pre>
+
+<p>J&#8217;ai pas encore trouvé plus simple et
+plus léger&#8230;</p>
+
+<p>Bonne gravure ;-)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -503,71 +565,6 @@ pour installer des pilotes récents par exemple !</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/04/18/un-peu-de-divertissement-qui-fait-du-bien-par-ou-ca-passe-2/">Un Peu De Divertissement &#8220;Qui Fait Du Bien Par Où ça Passe&#8221; !</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-04-18T21:04:36+02:00" pubdate data-updated="true">Apr 18<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Voici un projet que je trouve vraiment bien : Defend Unreal Territories ! Mais
-rien de mieux qu&#8217;une présentation par l&#8217;équipe elle même : _ &#8220;Tout d&#8217;abord,
-DUT, qu&#8217;est-ce que c&#8217;est ?_</p>
-
-<p><em>Defend Unreal Territories est un nouveau gametype pour Unreal Tournament 3.
-Le concept s&#8217;inspire des Tower Defense comme on peut les voir dans Warcraft.
-Le but est d&#8217;empêcher les hordes de monstres d&#8217;atteindre un objectif donné.
-Dans un premier temps, l&#8217;équipe des joueurs luttera donc à pieds, avec des
-armes conventionnelles. Puis les joueurs pourront débloquer des bonus (de
-nouvelles capacités, des objets etc.) grâce aux points accumulés à chaque fois
-qu&#8217;un monstre est tué. Grâce aux nouvelles capacités, les joueurs pourront
-être plus rapides, avoir plus de vie, faire plus de dégâts, etc. Nous
-prévoyons aussi de les épauler par des tourelles automatiques.</em></p>
-
-<p><em>Quand est-ce que ce sera fini ?</em></p>
-
-<p><em>Tout dépend de l&#8217;avancement de nos travaux&#8230; Nous distribuerons sans doute
-une première version du mod le 15 mai 2009 Pour le moment, c&#8217;est presque
-jouable. Mais pas franchement intéressant, il nous manque encore plein de
-fonctionnalités. Patience !</em></p>
-
-<p><em>Qui êtes-vous ?</em></p>
-
-<p>_ Une équipe de plusieurs personnes à SUPINFO, l&#8217;école supérieur
-d&#8217;informatique. Nous avons décidé, avec l&#8217;aval de l&#8217;administration, d&#8217;intégrer
-ce projet dans notre cursus._</p>
-
-<p><em>Le site web du mod est <a href="http://www.defend-ut.com/">www.defend-ut.com</a>&#8221;</em></p>
-
-<p>Bon jeu ;-)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -585,6 +582,10 @@ ce projet dans notre cursus._</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/10/05/planifier-allumage-nas-readynas/">Planifier librement l&#8217;allumage et l&#8217;éteignage d&#8217;un nas Readynas Ultra 2</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/04/26/acronis-boot-cd-par-le-reseau/">Installer un serveur PXE sur un ReadyNAS Ultra 2</a>
       </li>
     
@@ -598,10 +599,6 @@ ce projet dans notre cursus._</p>
     
       <li class="post">
         <a href="/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S&#8230; entre boot loop et sd-cauchemard</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
       </li>
     
   </ul>

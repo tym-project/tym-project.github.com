@@ -9,8 +9,8 @@
   <meta name="author" content="Tym">
 
   
-  <meta name="description" content="J&#8217;ai pendant très longtemps utilisé Outlook pour gérer mes e-mails et mon
-calendrier. Mais un sombre jour de mars (le même jour où j&#8217;ai &hellip;">
+  <meta name="description" content="J&#8217;utilise très souvent PuTTY pour faire des tunnels ssh (je vous en
+reparlerais bientôt) afin de sécuriser un minimum ma connexion.Inconvénient &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,56 @@ calendrier. Mais un sombre jour de mars (le même jour où j&#8217;ai &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/04/09/putty-tray-the-utilitaire-de-ssh-sous-windows-2/">Putty Tray, the Utilitaire De SSH Sous Windows !</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-09T21:39:12+02:00" pubdate data-updated="true">Apr 9<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>J&#8217;utilise très souvent PuTTY pour faire des tunnels ssh (je vous en
+reparlerais bientôt) afin de sécuriser un minimum ma connexion.Inconvénient
+majeur : Putty ne se réduit pas en zone de notification, et j&#8217;ai donc toujours
+une fenêtre de terminal qui traîne dans ma barre des tâches. Pas vraiment
+pratique !</p>
+
+<p>J&#8217;ai trouvé un utilitaire très pratique : Putty Tray. C&#8217;est un clone de Putty
+(basé sur l&#8217;original et qui suit son développement, donc toujours à jour !)
+avec de nombreuses améliorations qui permettent surtout de réduire votre
+terminal en zone de notification. Putty Tray importe automatiquement vos
+configurations depuis Putty&#8230;un must !</p>
+
+<p><a href="http://haanstra.eu/putty/">C&#8217;est ici</a>, et c&#8217;est à télécharger d&#8217;urgence !</p>
+
+<p>Bon ssh ;-)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -564,75 +614,6 @@ dans les &#8220;tuyaux&#8221;.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/03/29/bien-debuter-en-administration-de-materiels-cisco-2/">Bien Débuter en Administration De Matériels Cisco</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-03-29T14:35:23+02:00" pubdate data-updated="true">Mar 29<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A mon sens le meilleur moyen d&#8217;administrer un matériel Cisco c&#8217;est la CLI : la
-ligne de commande (Command Line Interface). Il existe quelques astuces pour se
-simplifier la vie. Mais tout d&#8217;abord quelques petits rappels :</p>
-
-<ul>
-<li>La CLI d&#8217;un Cisco est accessible par deux moyens principaux, le port série et le réseau</li>
-<li>La CLI comporte deux modes : normal et privilégié (l&#8217;équivalent de &#8220;root&#8221; sous Linux)</li>
-<li>Le mode privilégié se divise en deux : normal et configure</li>
-</ul>
-
-
-<p>Et maintenant les petits trucs qui aident bien, utilisables quel que soit le
-mode de connexion au routeur :</p>
-
-<ul>
-<li>En CLI tout s&#8217;abrège : <code>enable</code> devient <code>en</code>, <code>show</code> devient <code>sh</code>, <code>fastethernet0/0</code> se raccourci en <code>fa0/0</code>&#8230;</li>
-<li>Certaines commandes comme <code>show</code> (<code>sh</code>) ou <code>write</code> (<code>wr</code>) ne se font que en mode normal dans enable (donc pas en <code>configure terminal</code>, <code>conf t</code> si vous avez suivi). Pour palier à ça sans quitter le <code>conf t</code>, précédez votre commande de <code>do</code> : <code>do wr</code>, <code>do sh ip int br</code> (<code>show ip interfaces brief</code>, oui oui c&#8217;est mieux en abrégé !)</li>
-<li>Imaginez que vous êtes au fin fond du <code>conf t</code> (dans les méandres des sous interfaces par exemple) et que vous devez aller dans le mode normal (sachant que <code>do</code> fait souvent l&#8217;affaire, mais passons !) : un petit <code>end</code> vous remontera directement en mode <code>conf t</code>. Si par contre vous voulez remonter d&#8217;un niveau seulement : <code>exit</code></li>
-</ul>
-
-
-<p>Selon le mode de connexion que vous utilisez, vous allez pouvoir plus
-(connexion par le réseau) ou moins (connexion série) vous simplifier la vie.
-En mode console série : pas d&#8217;autres alternatives que HyperTerminal (ou
-consorts)&#8230;argh ! En mode réseau (ethernet par exemple) utilisez Putty (ou
-autre, mais Putty c&#8217;est à mon sens le top du top de la moumoute sous Windows
-!) avec l&#8217;autcomplétion et l&#8217;historique des commandes passées. Toutefois il
-existe une astuce commune au deux modes de connexion : <code>?</code>. Grâce au <code>?</code>,
-votre élément actif va vous dire quoi mettre après : <code>show ?</code> vous proposera,
-parmi d&#8217;autres, <code>ip</code> ou <code>running configuration</code>. Cela est valable partout et
-vous dira par exemple quel type de masque (CIDR ou classique) mettre dans la
-définition d&#8217;une route, etc</p>
-
-<p>Bonnes configurations ;-)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/14/">&larr; Older</a>
@@ -650,6 +631,10 @@ définition d&#8217;une route, etc</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/10/05/planifier-allumage-nas-readynas/">Planifier librement l&#8217;allumage et l&#8217;éteignage d&#8217;un nas Readynas Ultra 2</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/04/26/acronis-boot-cd-par-le-reseau/">Installer un serveur PXE sur un ReadyNAS Ultra 2</a>
       </li>
     
@@ -663,10 +648,6 @@ définition d&#8217;une route, etc</p>
     
       <li class="post">
         <a href="/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S&#8230; entre boot loop et sd-cauchemard</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/07/15/sources-et-organisation-de-flux-rss/">Flux RSS : idées de lecture et méthodes de gestion</a>
       </li>
     
   </ul>
