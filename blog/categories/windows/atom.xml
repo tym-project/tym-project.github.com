@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Windows | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/windows/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2013-10-05T19:49:44+02:00</updated>
+  <updated>2014-06-22T16:21:03+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[On vous recommande 5 clics et nouveaux onglets par jour (ou presque)]]></title>
     <link href="http://blog.tym-project.fr/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar/"/>
-    <updated>2011-08-31T19:39:34+02:00</updated>
+    <updated>2011-08-31T19:39:34+00:00</updated>
     <id>http://blog.tym-project.fr/2011/08/31/liens-utiles-pour-visio-wordpress-et-vmwar</id>
     <content type="html"><![CDATA[<p>Ayant tout un tas de liens que je garde depuis (très) longtemps à droite ou à
 gauche, j'ai décidé de les diffuser ici 5 par 5 quand bon me semblera ! A
@@ -39,7 +39,7 @@ s'y faire ;-)</p>
   <entry>
     <title type="html"><![CDATA[Adaptation de "sed" en PowerShell (Windows)]]></title>
     <link href="http://blog.tym-project.fr/2011/03/02/sed-en-powershell-et-redirection/"/>
-    <updated>2011-03-02T12:00:44+01:00</updated>
+    <updated>2011-03-02T12:00:44+00:00</updated>
     <id>http://blog.tym-project.fr/2011/03/02/sed-en-powershell-et-redirection</id>
     <content type="html"><![CDATA[<p>PowerShell est un langage de script développé par
 Microsoft, le <code>#!/bin/bash</code> de Windows en quelque sorte. Ce langage propose de
@@ -93,7 +93,7 @@ fichier tout à fait viable.</p>
   <entry>
     <title type="html"><![CDATA[Microsoft Office Word : Changer la structure d'un sommaire automatique]]></title>
     <link href="http://blog.tym-project.fr/2011/01/19/microsoft-office-word-sommaire-personnalise/"/>
-    <updated>2011-01-19T12:00:19+01:00</updated>
+    <updated>2011-01-19T12:00:19+00:00</updated>
     <id>http://blog.tym-project.fr/2011/01/19/microsoft-office-word-sommaire-personnalise</id>
     <content type="html"><![CDATA[<p>Un article un peu en dehors des sujets habituels,
 mais après tout c'est mon blog, non ? :) Si vous avez un minimum d'expérience
@@ -110,30 +110,30 @@ style "Titre" par exemple ?</p>
 
 <p>Pour l'exemple je travaille sur le document suivant :</p>
 
-<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_017.png"></p>
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_017.png %}</p>
 
 <p>Je veux ici ajouter les styles "Titre" et
 "Sous-titre" à la structure du sommaire. Pour cela il faut faire un clic-droit
 sur le sommaire et choisir "Modification du champ..." :</p>
 
-<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_012.png"></p>
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_012.png %}</p>
 
 <p>Dans la liste des champs il faut
 alors choisir "Sommaire", sachant que vous pouvez filtrer avec la liste
 déroulante au dessus, et cliquer sur le bouton "Table des matières" :</p>
 
-<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_013.png"></p>
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_013.png %}</p>
 
 <h2>Customisation</h2>
 
 <p>Vous pouvez alors personnaliser la structure de la table des matières :</p>
 
-<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_014.png">
-<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_015.png"></p>
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_014.png %}
+{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_015.png %}</p>
 
 <p>Et voici le résultat :</p>
 
-<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_016.png"></p>
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_016.png %}</p>
 
 <p>Hop hop, à votre souris ! ;-)</p>
 ]]></content>
@@ -142,7 +142,7 @@ déroulante au dessus, et cliquer sur le bouton "Table des matières" :</p>
   <entry>
     <title type="html"><![CDATA[Dropbox : l'outil de sauvegarde ultime]]></title>
     <link href="http://blog.tym-project.fr/2010/10/20/dropbox-loutil-de-sauvegarde-ultime/"/>
-    <updated>2010-10-20T11:54:58+02:00</updated>
+    <updated>2010-10-20T11:54:58+00:00</updated>
     <id>http://blog.tym-project.fr/2010/10/20/dropbox-loutil-de-sauvegarde-ultime</id>
     <content type="html"><![CDATA[<p><a href="http://www.dropbox.com/referrals/NTEyMjU5NzMzOQ">Dropbox</a> est un outil qui devient de plus
 en plus populaire. Pour ceux qui ne connaîtrait pas, c'est un espace de
@@ -222,7 +222,7 @@ ayant synchronisé mon profil avec Dropbox depuis Windows.</p>
   <entry>
     <title type="html"><![CDATA[Une adresse DNS instantanée, avec ipq.co]]></title>
     <link href="http://blog.tym-project.fr/2010/10/13/dns-ultra-rapide-et-gratuit/"/>
-    <updated>2010-10-13T14:06:41+02:00</updated>
+    <updated>2010-10-13T14:06:41+00:00</updated>
     <id>http://blog.tym-project.fr/2010/10/13/dns-ultra-rapide-et-gratuit</id>
     <content type="html"><![CDATA[<p>Les adresses Ip c'est bien, les Ipv6 c'est
 mieux, et la mémoire des chiffres c'est le top ! Plus sérieusement, il est
@@ -239,11 +239,11 @@ rapide (jusqu'a 72h, réplication oblige) il faudrait une solution alternative.<
 
 <p><strong><a href="http://ipq.co">IP Quick</a></strong> est LA réponse à cette problématique ! Connectez-vous, entrez une Ip (v4), le nom est optionnel :</p>
 
-<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/28-09-2010-20-34-35.png"></p>
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/28-09-2010-20-34-35.png %}</p>
 
 <p>Et magie, en 10s c'est opérationnel (<em>je n'ai pas choisit le nom...</em>) :</p>
 
-<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/2010-4/28-09-2010-20-36-33.png"></p>
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/2010-4/28-09-2010-20-36-33.png %}</p>
 
 <h2>Oui, mais...</h2>
 

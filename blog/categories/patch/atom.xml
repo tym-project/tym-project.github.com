@@ -4,7 +4,7 @@
   <title><![CDATA[Category: patch | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/patch/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2013-10-05T19:49:44+02:00</updated>
+  <updated>2014-06-22T16:21:03+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Installer Vmware Server 2 sur un Kimsufi 250 (Ovh)]]></title>
     <link href="http://blog.tym-project.fr/2010/06/30/installer-vmware-server-2-sur-un-kimsufi-250-ovh/"/>
-    <updated>2010-06-30T12:05:49+02:00</updated>
+    <updated>2010-06-30T12:05:49+00:00</updated>
     <id>http://blog.tym-project.fr/2010/06/30/installer-vmware-server-2-sur-un-kimsufi-250-ovh</id>
     <content type="html"><![CDATA[<p>J'ai très récemment eu à installer Vmware Server
 version 2 sur un serveur dédié Kimsufi de Ovh. Plus précisément sur une
@@ -50,51 +50,38 @@ télécharger la configuration Ovh correspondante :</p>
 
 <p>Et me voila partit dans une recompilation "classique" (sans utiliser de <code>.deb</code>
 par exemple) :
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> /usr/src&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;tar xvf /root/linux-2.6.33.5.tar.bz2&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;je crée un lien symbolique pour respecter les règles de compilation d<span class="err">&#39;</span>un noyau&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;ln -s linux-2.6.33.5/ linux
-</span><span class='line'><span class="nb">cd </span>linux&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;un peu de nettoyage...&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;make clean &amp;amp;&amp;amp; make mrproper&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;cp /root/2.6-config-xxxx-std-ipv4-64 ./.config
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+{% codeblock lang:bash %}
+cd /usr/src</p>
+
+<p>tar xvf /root/linux-2.6.33.5.tar.bz2</p>
+
+<h1>je crée un lien symbolique pour respecter les règles de compilation d'un noyau</h1>
+
+<p>ln -s linux-2.6.33.5/ linux
+cd linux</p>
+
+<h1>un peu de nettoyage...</h1>
+
+<p>make clean &amp;&amp; make mrproper</p>
+
+<p>cp /root/2.6-config-xxxx-std-ipv4-64 ./.config
+{% endcodeblock %}</p>
 
 <p>Un <code>make menuconfig</code> me permet d'accéder au menu de configuration du noyau :</p>
 
-<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/16-06-2010-14-04-52.png"></p>
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/16-06-2010-14-04-52.png %}</p>
 
 <p>La première chose
 à faire est de modifier le nom de votre noyau</p>
 
-<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/16-06-2010-14-06-18.png">
-<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/16-06-2010-14-06-40.png"></p>
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/16-06-2010-14-06-18.png %}
+{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/16-06-2010-14-06-40.png %}</p>
 
 <p>Très important, activez la gestion des modules avec les
 options suivantes :</p>
 
-<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/16-06-2010-14-07-07.png">
-<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/16-06-2010-14-07-57.png"></p>
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/16-06-2010-14-07-07.png %}
+{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-2/16-06-2010-14-07-57.png %}</p>
 
 <p>Vous
 pouvez bien entendu apporter des modifications supplémentaires à la
@@ -129,111 +116,62 @@ jour le boot-loader...et croisez les doigts pour le reboot :</p>
 <p>Votre serveur fonctionnant sur son beau noyau tout neuf, installez les headers
 du noyau en cours en lancez l'installation de Vmware Server : <em>Attention,
 n'installez pas les modules tout de suite !</em>
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> /usr/src/linux&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;make headers_install&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;tar xzvf VMware-server-2.0.2-203138.x86_64.tar.gz&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;cd vmware-server-distrib&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;mkdir /lib/modules/&lt;code&gt;uname -r&lt;/code&gt;&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;./vmware-install.pl&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;Before running VMware Server <span class="k">for </span>the first <span class="nb">time</span>, you need to configure it by
-</span><span class='line'>invoking the following <span class="nb">command</span>: <span class="s2">&quot;/usr/bin/vmware-config.pl&quot;</span>.
-</span><span class='line'>Do you want this program to invoke the <span class="nb">command </span><span class="k">for </span>you now? <span class="o">[</span>yes<span class="o">]</span> no
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+{% codeblock lang:bash %}
+cd /usr/src/linux</p>
+
+<p>make headers_install</p>
+
+<p>tar xzvf VMware-server-2.0.2-203138.x86_64.tar.gz</p>
+
+<p>cd vmware-server-distrib</p>
+
+<p>mkdir /lib/modules/<code>uname -r</code></p>
+
+<p>./vmware-install.pl</p>
+
+<p>Before running VMware Server for the first time, you need to configure it by
+invoking the following command: "/usr/bin/vmware-config.pl".
+Do you want this program to invoke the command for you now? [yes] no
+{% endcodeblock %}
 Vous allez maintenant devoir patcher les modules avant de les compiler. J'ai
 eu pas mal de soucis, et rassemblé les résultats dans le script qui suit. Elle est
 pas belle la vie ?
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;!/bin/bash&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;cd /tmp&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;wget http://www.tym-project.fr/blog/wp-content/uploads/2010/06/vmnet.tar
-</span><span class='line'>wget http://www.tym-project.fr/blog/wp-content/uploads/2010/06/vmci.tar
-</span><span class='line'>wget http://www.tym-project.fr/blog/wp-content/uploads/2010/06/vsock.tar
-</span><span class='line'>wget http://www.tym-project.fr/blog/wp-content/uploads/2010/06/vmmon.tar&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;for i in vmnet.tar vmci.tar vsock.tar vmmon.tar; <span class="k">do</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;mv -vf <span class="nv">$i</span>
-</span><span class='line'>/usr/lib/vmware/modules/source
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;done&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;tar xvf /usr/lib/vmware/modules/source/vmnet.tar -C /tmp
-</span><span class='line'>tar xvf/usr/lib/vmware/modules/source/vmci.tar -C /tmp&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;perl -pi -e <span class="s1">&#39;s,(&quot;vnetInt.h&quot;),\1\n#include &quot;compat_sched.h&quot;,&#39;</span> vmnet-only/vnetUserListener.c
-</span><span class='line'>perl -pi -e <span class="s1">&#39;s,(&quot;compat_page.h&quot;),\1\n#include &quot;compat_sched.h&quot;,&#39;</span> vmci-only/include/pgtbl.h&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;tar cvf /usr/lib/vmware/modules/source/vmnet.tar vmnet-only tar cvf
-</span><span class='line'>/usr/lib/vmware/modules/source/vmci.tar vmci-only&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;Des petites manipulations pour adapter l<span class="s1">&#39;architecture du noyau à quelque&lt;/h1&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="s1">&lt;p&gt;chose de compréhensible par l&#39;</span>installer...
-</span><span class='line'>cat /usr/src/linux/include/generated/utsrelease.h &gt;&gt; /usr/src/linux/include/linux/version.h
-</span><span class='line'>ln -s /usr/src/linux/include/generated/autoconf.h /usr/src/linux/include/linux/&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;vmware-config.pl
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+{% codeblock lang:bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<p>cd /tmp</p>
+
+<p>wget http://www.tym-project.fr/blog/wp-content/uploads/2010/06/vmnet.tar
+wget http://www.tym-project.fr/blog/wp-content/uploads/2010/06/vmci.tar
+wget http://www.tym-project.fr/blog/wp-content/uploads/2010/06/vsock.tar
+wget http://www.tym-project.fr/blog/wp-content/uploads/2010/06/vmmon.tar</p>
+
+<p>for i in vmnet.tar vmci.tar vsock.tar vmmon.tar; do</p>
+
+<pre><code>mv -vf $i
+/usr/lib/vmware/modules/source
+</code></pre>
+
+<p>done</p>
+
+<p>tar xvf /usr/lib/vmware/modules/source/vmnet.tar -C /tmp
+tar xvf/usr/lib/vmware/modules/source/vmci.tar -C /tmp</p>
+
+<p>perl -pi -e 's,("vnetInt.h"),\1\n#include "compat_sched.h",' vmnet-only/vnetUserListener.c
+perl -pi -e 's,("compat_page.h"),\1\n#include "compat_sched.h",' vmci-only/include/pgtbl.h</p>
+
+<p>tar cvf /usr/lib/vmware/modules/source/vmnet.tar vmnet-only tar cvf
+/usr/lib/vmware/modules/source/vmci.tar vmci-only</p>
+
+<h1>Des petites manipulations pour adapter l'architecture du noyau à quelque</h1>
+
+<p>chose de compréhensible par l'installer...
+cat /usr/src/linux/include/generated/utsrelease.h >> /usr/src/linux/include/linux/version.h
+ln -s /usr/src/linux/include/generated/autoconf.h /usr/src/linux/include/linux/</p>
+
+<p>vmware-config.pl
+{% endcodeblock %}</p>
 
 <h2>Ayé, c'est installé !</h2>
 
@@ -263,7 +201,7 @@ l'installation ou du serveur lui même.</p>
   <entry>
     <title type="html"><![CDATA[Utiliser la dernière version de "makepasswd" sous Archlinux]]></title>
     <link href="http://blog.tym-project.fr/2009/08/27/utiliser-la-derniere-version-de-makepasswd-sous-archlinux/"/>
-    <updated>2009-08-27T13:04:06+02:00</updated>
+    <updated>2009-08-27T13:04:06+00:00</updated>
     <id>http://blog.tym-project.fr/2009/08/27/utiliser-la-derniere-version-de-makepasswd-sous-archlinux</id>
     <content type="html"><![CDATA[<p>Dans cet article j'utilise <code>[man]makepasswd[/man]</code>. Mais j'ai fait
 ces manipulations sous Debian. Avec Archlinux cela se complique un peu car la

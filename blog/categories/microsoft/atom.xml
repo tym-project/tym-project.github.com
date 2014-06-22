@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: MIcrosoft | Tym-Project]]></title>
+  <title><![CDATA[Category: Microsoft | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/microsoft/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2013-10-05T19:49:44+02:00</updated>
+  <updated>2014-06-22T16:21:03+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -14,26 +14,20 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Faire de jolis schémas sans Visio !]]></title>
-    <link href="http://blog.tym-project.fr/2009/04/06/faire-de-jolis-schemas-sans-visio/"/>
-    <updated>2009-04-06T16:25:50+02:00</updated>
-    <id>http://blog.tym-project.fr/2009/04/06/faire-de-jolis-schemas-sans-visio</id>
-    <content type="html"><![CDATA[<p>Vous connaissez peut-être Visio, le logiciel de Microsoft qui vous permet de
-faire des schémas (de réseaux dans mon cas) très propres et très clairs !</p>
+    <title type="html"><![CDATA[Microsoft vs. Monkeys ?]]></title>
+    <link href="http://blog.tym-project.fr/2009/03/25/microsoft-vs-monkeys/"/>
+    <updated>2009-03-25T09:50:45+00:00</updated>
+    <id>http://blog.tym-project.fr/2009/03/25/microsoft-vs-monkeys</id>
+    <content type="html"><![CDATA[<p>Et non, il semblerait que ces deux là jouent dans la même catégorie :</p>
 
-<p>Seul problème...Visio est bien entendu payant ! Je vous ai trouvé une
-alternative plutôt pas mal pour créer des schémas simples.</p>
+<p><img src="http://www.tym-project.fr/blog/wp-content/uploads/2009/03/monkeys.png" alt="monkeys" /></p>
 
-<p>C'est ici : <a href="http://www.lovelycharts.com">www.lovelycharts.com</a>, c'est en ligne et la plupart des
-fonctions basiques sont gratuites.</p>
+<p>Pour les anglophobes :</p>
 
-<p>Vous pourrez, entre autres, créer des schémas de réseaux ou des diagrammes de
-fonctionnement, les sauvegarder en ligne et les exporter...</p>
+<p><em>"Prenez vous en à Microsoft pour cette erreur, ils ont embauché des singes
+pour coder leur logiciel</em></p>
 
-<p>Je trouve ce site très bien pour dépanner, mais ne comptez pas représenter
-tout un réseau sans vous arracher les cheveux !</p>
-
-<p>Bon dessins ;-)</p>
+<p><em>Si cela continue merci de contacter Bill Gates au : 001(408)..."</em></p>
 ]]></content>
   </entry>
   

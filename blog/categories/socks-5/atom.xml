@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Socks 5 | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/socks-5/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2013-10-05T19:49:44+02:00</updated>
+  <updated>2014-06-22T16:21:03+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Socksifier une application sous Linux]]></title>
     <link href="http://blog.tym-project.fr/2009/04/27/socksifier-une-application-sous-linux-2/"/>
-    <updated>2009-04-27T21:17:05+02:00</updated>
+    <updated>2009-04-27T21:17:05+00:00</updated>
     <id>http://blog.tym-project.fr/2009/04/27/socksifier-une-application-sous-linux-2</id>
     <content type="html"><![CDATA[<p>Si vous avez suivi <a href="http://www.tym-project.fr/blog/2009/04/installer-un-serveur-ssh-destine-au-tunneling/">cet article</a>, vous savez faire des tunnels ssh sous
 Linux. Mais que faire quand vos applications n'intègrent pas la fonctionnalité

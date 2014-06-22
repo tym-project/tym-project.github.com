@@ -4,7 +4,7 @@
   <title><![CDATA[Category: thunderbird | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/thunderbird/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2013-10-05T19:49:44+02:00</updated>
+  <updated>2014-06-22T16:21:03+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Thunderbird, le client mail qui me fait des surprises  !]]></title>
     <link href="http://blog.tym-project.fr/2009/12/25/thunderbird-le-client-mail-qui-me-fait-des-surprises/"/>
-    <updated>2009-12-25T19:28:12+01:00</updated>
+    <updated>2009-12-25T19:28:12+00:00</updated>
     <id>http://blog.tym-project.fr/2009/12/25/thunderbird-le-client-mail-qui-me-fait-des-surprises</id>
     <content type="html"><![CDATA[<p>Je suis
 tombé tout à fait par hasard sur une fonctionnalité sympa de Thunderbird 3. En
@@ -24,7 +24,7 @@ effet, quand je tape les mots clés <code>pièce jointe</code>, <code>joint</cod
 autres, le logiciel me propose d'ajouter un pièce jointe au message ! Tout
 simple, mais fallait y penser !</p>
 
-<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-4/thunderbird-pj.png"></p>
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-4/thunderbird-pj.png %}</p>
 
 <p>Bonne découverte ;-)</p>
 ]]></content>
@@ -33,7 +33,7 @@ simple, mais fallait y penser !</p>
   <entry>
     <title type="html"><![CDATA[Pourquoi vous devriez vraiment passer de Outlook à Thunderbird]]></title>
     <link href="http://blog.tym-project.fr/2009/04/06/pourquoi-vous-devriez-vraiment-passer-de-outlook-a-thunderbird-2/"/>
-    <updated>2009-04-06T21:26:39+02:00</updated>
+    <updated>2009-04-06T21:26:39+00:00</updated>
     <id>http://blog.tym-project.fr/2009/04/06/pourquoi-vous-devriez-vraiment-passer-de-outlook-a-thunderbird-2</id>
     <content type="html"><![CDATA[<p>J'ai pendant très longtemps utilisé Outlook pour gérer mes e-mails et mon
 calendrier. Mais un sombre jour de mars (le même jour où j'ai foutu en l'air

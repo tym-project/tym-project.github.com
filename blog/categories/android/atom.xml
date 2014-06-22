@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Android | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2013-10-05T19:49:44+02:00</updated>
+  <updated>2014-06-22T16:21:03+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Android : perte du signal 3g après activation du GPS]]></title>
     <link href="http://blog.tym-project.fr/2012/03/24/android-perte-signal-3g-avec-gps/"/>
-    <updated>2012-03-24T19:04:00+01:00</updated>
+    <updated>2012-03-24T19:04:00+00:00</updated>
     <id>http://blog.tym-project.fr/2012/03/24/android-perte-signal-3g-avec-gps</id>
     <content type="html"><![CDATA[<p>Android c'est super, Google Navigation encore plus. Sauf quand ça plante. Surtout en voiture, paumé au milieu de la cambrouse...<br/>
 Oh j'ai la solution, mais laissez moi vous raconter...</p>
@@ -50,7 +50,7 @@ Recherche recherche... ah ! Eureka ! APN c'est en fait "Access Point Name", soit
 
 <p>Hop, un petit tour dans <code>Paramètres&gt;Sans fil et réseaux&gt;Réseaux mobiles&gt;Noms des points d'accès</code>, faites un peu de ménage pour arriver au résultat suivant (le nom va bien entendu varier en fonction de votre opérateur adoré) :</p>
 
-<p><img src="https://s3-eu-west-1.amazonaws.com/pics.tym-project.fr/2012-1/2012-01-28+17.38.42.png"></p>
+<p>{% img https://s3-eu-west-1.amazonaws.com/pics.tym-project.fr/2012-1/2012-01-28+17.38.42.png %}</p>
 
 <p>On garde donc le minimum : l'accès données et l'accès MMS (qui sont deux chose bien différentes).</p>
 

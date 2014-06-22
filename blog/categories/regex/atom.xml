@@ -4,7 +4,7 @@
   <title><![CDATA[Category: regex | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/regex/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2013-10-05T19:49:44+02:00</updated>
+  <updated>2014-06-22T16:21:03+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Bibliothèque d'expressions régulières]]></title>
     <link href="http://blog.tym-project.fr/2009/03/27/bibliotheque-dexpressions-regulieres-2/"/>
-    <updated>2009-03-27T11:23:29+01:00</updated>
+    <updated>2009-03-27T11:23:29+00:00</updated>
     <id>http://blog.tym-project.fr/2009/03/27/bibliotheque-dexpressions-regulieres-2</id>
     <content type="html"><![CDATA[<p>Comment représenter un code postal en regex ? Comment décrire une adresse IP
 en regex ?</p>

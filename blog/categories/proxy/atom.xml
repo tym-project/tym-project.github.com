@@ -4,7 +4,7 @@
   <title><![CDATA[Category: proxy | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/proxy/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2013-10-05T19:49:44+02:00</updated>
+  <updated>2014-06-22T16:21:03+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Mettre en place un tunnel-proxy SSH autonome]]></title>
     <link href="http://blog.tym-project.fr/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan/"/>
-    <updated>2010-03-19T13:00:43+01:00</updated>
+    <updated>2010-03-19T13:00:43+00:00</updated>
     <id>http://blog.tym-project.fr/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan</id>
     <content type="html"><![CDATA[<p>Dans <a href="http://www.tym-project.fr/blog/2009/04/installer-un-serveur-ssh-destine-au-tunneling/">cet article</a> je
 vous expliquais comment mettre en place un serveur servant à faire du
@@ -54,21 +54,15 @@ passe en utilisateur <code>root</code> :</p>
 temps de se pencher sur le script client. La première fonction est celle qui
 crée le tunnel. En l'occurrence dynamiquement sur le port 8080 :</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">function </span>ssh_to_server<span class="o">(){</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;/usr/bin/ssh -nN -D 8080 -p 443 tun1@server.chez-moi.com &amp;amp;
-</span><span class='line'><span class="nb">echo</span> <span class="nv">$!</span> &amp;gt; /var/run/ssh_prox_pid
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;<span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash %}
+function ssh_to_server(){</p>
+
+<pre><code>/usr/bin/ssh -nN -D 8080 -p 443 tun1@server.chez-moi.com &amp;
+echo $! &gt; /var/run/ssh_prox_pid
+</code></pre>
+
+<p>}
+{% endcodeblock %}</p>
 
 <p>Ce qui est intéressant ici c'est l'utilisation des options <code>n</code> et <code>N</code>
 (<a href="http://www.delafond.org/traducmanfr/man/man1/ssh.1.html">source</a>) :</p>
@@ -85,71 +79,47 @@ processus fils) permettent de lancer le tunnel en arrière plan.</p>
 <p>Afin que le script soit suffisamment robuste nous allons ajouter un peu plus
 de code. Tout d'abord une fonction pour vérifier la bonne connectivité à
 internet...inutile d'essayer d'ouvrir le tunnel pour rien :
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">function </span>test_network<span class="o">(){</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;ping -c 2 clubic.com
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;<span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+{% codeblock lang:bash %}
+function test_network(){</p>
+
+<pre><code>ping -c 2 clubic.com
+</code></pre>
+
+<p>}
+{% endcodeblock %}</p>
 
 <p>Ensuite une fonction pour tester si le tunnel est déjà lancé ou non :
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">function </span>test_prox<span class="o">(){</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;ps aux | grep -v <span class="s1">&#39;grep&#39;</span> | grep <span class="sb">`</span>cat /var/run/ssh_prox_pid<span class="sb">`</span>
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;<span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+{% codeblock lang:bash %}
+function test_prox(){</p>
+
+<pre><code>ps aux | grep -v 'grep' | grep `cat /var/run/ssh_prox_pid`
+</code></pre>
+
+<p>}
+{% endcodeblock %}
 Ici
 "<code>[man]grep[/man] -v grep</code>" sert à ne pas afficher le processus du <code>grep</code>, et
 donc ne pas fausser le résultat (sinon il serait toujours positif, même sans
 tunnel en route).</p>
 
 <p>Et enfin le corps du script :
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">while</span> :; <span class="k">do</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;#Si le tunnel n<span class="err">&#39;</span>est pas déjà lancé
-</span><span class='line'><span class="k">if</span> ! test_prox ;<span class="k">then</span>
-</span><span class='line'>    <span class="c">#Alors on teste si le réseau est bien connecté</span>
-</span><span class='line'>    <span class="k">if </span>test_network;then
-</span><span class='line'>        <span class="c">#Si oui ou ouvre le tunnel ssh_to_server</span>
-</span><span class='line'>    <span class="k">else</span>
-</span><span class='line'>        <span class="c">#Si non le script &quot;dors&quot; 5 secondes</span>
-</span><span class='line'>        sleep 5
-</span><span class='line'>    <span class="k">fi</span>
-</span><span class='line'><span class="k">fi</span>
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;done
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+{% codeblock lang:bash %}
+while :; do</p>
+
+<pre><code>#Si le tunnel n'est pas déjà lancé
+if ! test_prox ;then
+    #Alors on teste si le réseau est bien connecté
+    if test_network;then
+        #Si oui ou ouvre le tunnel ssh_to_server
+    else
+        #Si non le script "dors" 5 secondes
+        sleep 5
+    fi
+fi
+</code></pre>
+
+<p>done
+{% endcodeblock %}
 Il ne reste plus qu'a planifier le lancement du script au démarrage, en
 utilisant <code>[man]crontab[/man]</code> par exemple :</p>
 
@@ -157,83 +127,45 @@ utilisant <code>[man]crontab[/man]</code> par exemple :</p>
 </code></pre>
 
 <p>Voici le code du script complet :
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;!/bin/bash&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;function ssh_to_server<span class="o">(){</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;/usr/bin/ssh -nN -D 8080 -p 443 tun1@server.chez-moi.com &amp;amp;
-</span><span class='line'><span class="nb">echo</span> <span class="nv">$!</span> &amp;gt; /var/run/ssh_prox_pid
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;<span class="o">}</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;function test_network<span class="o">(){</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;ping -c 2 clubic.com
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;<span class="o">}</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;function test_prox<span class="o">(){</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;ps aux | grep -v <span class="s2">&quot;grep&quot;</span> | grep <span class="sb">`</span>cat /var/run/ssh_prox_pid<span class="sb">`</span>
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;<span class="o">}</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;while :;do&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;if ! test_prox ;<span class="k">then</span>
-</span><span class='line'><span class="k">    if </span>test_network;then
-</span><span class='line'>        ssh_to_server
-</span><span class='line'>    <span class="k">else</span>
-</span><span class='line'><span class="k">        </span>sleep  5
-</span><span class='line'>    <span class="k">fi</span>
-</span><span class='line'><span class="k">fi</span>
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;done
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+{% codeblock lang:bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<p>function ssh_to_server(){</p>
+
+<pre><code>/usr/bin/ssh -nN -D 8080 -p 443 tun1@server.chez-moi.com &amp;
+echo $! &gt; /var/run/ssh_prox_pid
+</code></pre>
+
+<p>}</p>
+
+<p>function test_network(){</p>
+
+<pre><code>ping -c 2 clubic.com
+</code></pre>
+
+<p>}</p>
+
+<p>function test_prox(){</p>
+
+<pre><code>ps aux | grep -v "grep" | grep `cat /var/run/ssh_prox_pid`
+</code></pre>
+
+<p>}</p>
+
+<p>while :;do</p>
+
+<pre><code>if ! test_prox ;then
+    if test_network;then
+        ssh_to_server
+    else
+        sleep  5
+    fi
+fi
+</code></pre>
+
+<p>done
+{% endcodeblock %}
 Bon bash ;-)</p>
 ]]></content>
   </entry>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: poisson d'avril | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/poisson-d-avril/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2013-10-05T19:49:44+02:00</updated>
+  <updated>2014-06-22T16:21:03+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,12 +16,12 @@
   <entry>
     <title type="html"><![CDATA[Un partenariat historique : Apple et Microsoft !]]></title>
     <link href="http://blog.tym-project.fr/2009/04/01/un-partenariat-historique-apple-et-microsoft-2/"/>
-    <updated>2009-04-01T15:24:58+02:00</updated>
+    <updated>2009-04-01T15:24:58+00:00</updated>
     <id>http://blog.tym-project.fr/2009/04/01/un-partenariat-historique-apple-et-microsoft-2</id>
     <content type="html"><![CDATA[<p>C'est du moins ce que laisse entendre la page d'accueil du Laboratoire Apple
 SUPINFO :</p>
 
-<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/laboapplesmall.png"></p>
+<p>{% img  http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/laboapplesmall.png %}</p>
 
 <p>Étrange...Poisson d'avril ou bug chez SUPINFO ?</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: multi-boot | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/multi-boot/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2013-10-05T19:49:44+02:00</updated>
+  <updated>2014-06-22T16:21:03+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[EasyBCD : gérer son multi-boot sous Vista]]></title>
     <link href="http://blog.tym-project.fr/2009/04/21/easybcd-gerer-son-multi-boot-sous-vista/"/>
-    <updated>2009-04-21T21:14:10+02:00</updated>
+    <updated>2009-04-21T21:14:10+00:00</updated>
     <id>http://blog.tym-project.fr/2009/04/21/easybcd-gerer-son-multi-boot-sous-vista</id>
     <content type="html"><![CDATA[<p><a href="http://neosmart.net/dl.php?id=1">EasyBCD</a> est un petit logiciel très pratique pour gérer un multi-boot avec
 Vista. Comme je n’ai ni Vista ni Seven pas de capture, mais <a href="http://apcmag.com/how_to_dual_boot_vista_and_xp_with_vista_installed_first__the_stepbystep_guide.htm?page=4">ce tutoriel</a>

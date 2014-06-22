@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rechercher remplacer | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/rechercher-remplacer/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2013-10-05T19:49:44+02:00</updated>
+  <updated>2014-06-22T16:21:03+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[SED : les astuces à connaître]]></title>
     <link href="http://blog.tym-project.fr/2011/02/16/sed-les-astuces-a-connaitre/"/>
-    <updated>2011-02-16T12:00:37+01:00</updated>
+    <updated>2011-02-16T12:00:37+00:00</updated>
     <id>http://blog.tym-project.fr/2011/02/16/sed-les-astuces-a-connaitre</id>
     <content type="html"><![CDATA[<p><code>[man]Sed[/man]</code> pour ceux qui ne connaîtrait pas
 encore, est un éditeur de texte en ligne de commande. Concrètement il va

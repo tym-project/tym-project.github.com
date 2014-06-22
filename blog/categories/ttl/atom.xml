@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ttl | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/ttl/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2013-10-05T19:49:44+02:00</updated>
+  <updated>2014-06-22T16:21:03+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Pathping : le ping mutant en traceroute !]]></title>
     <link href="http://blog.tym-project.fr/2009/09/21/pathping-le-ping-mutant-en-traceroute/"/>
-    <updated>2009-09-21T08:07:44+02:00</updated>
+    <updated>2009-09-21T08:07:44+00:00</updated>
     <id>http://blog.tym-project.fr/2009/09/21/pathping-le-ping-mutant-en-traceroute</id>
     <content type="html"><![CDATA[<p>Pour rappel l'outil <code>[man]traceroute[/man]</code>
 permet de voir le chemin suivit par un message sur le réseau. C'est donc une
@@ -32,7 +32,7 @@ nativement, et via certains paquets sous Linux (selon la distribution).</p>
 comme une image vaut mieux qu'un long discours...voici (cliquez pour agrandir)
 :</p>
 
-<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-3/pathping.png"></p>
+<p>{% img  http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-3/pathping.png %}</p>
 
 <p>Comme on peut le
 voir sur la capture, <code>pathping</code> détermine l'itinéraire suivit par le paquet,
@@ -46,7 +46,7 @@ détecter d'éventuels points de congestion dans le réseau !</p>
   <entry>
     <title type="html"><![CDATA[Définition express : le TTL]]></title>
     <link href="http://blog.tym-project.fr/2009/03/30/definition-express-le-ttl-2/"/>
-    <updated>2009-03-30T15:05:38+02:00</updated>
+    <updated>2009-03-30T15:05:38+00:00</updated>
     <id>http://blog.tym-project.fr/2009/03/30/definition-express-le-ttl-2</id>
     <content type="html"><![CDATA[<p>TTL signifie Time To Live (temps à vivre). Si le TTL d'un paquet arrive à
 expiration, il est détruit : cela pour éviter des paquets tournent à l'infini

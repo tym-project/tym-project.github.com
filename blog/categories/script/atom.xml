@@ -4,7 +4,7 @@
   <title><![CDATA[Category: script | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/script/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2013-10-05T19:49:44+02:00</updated>
+  <updated>2014-06-22T16:21:03+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Envoyer un e-mail via Gmail en ligne de commande]]></title>
     <link href="http://blog.tym-project.fr/2010/08/25/mail-avec-gmail-dans-un-script/"/>
-    <updated>2010-08-25T11:59:21+02:00</updated>
+    <updated>2010-08-25T11:59:21+00:00</updated>
     <id>http://blog.tym-project.fr/2010/08/25/mail-avec-gmail-dans-un-script</id>
     <content type="html"><![CDATA[<p>Gmail, on le sait tous, est un outil très
 répandu. Souvent même dans le monde de l'entreprise avec Google Apps. Pourquoi
@@ -60,17 +60,13 @@ identity example@gmail.com
 <p>Gmail utilisant tls (ssl),
 il va vous falloir obtenir le certificat qu'il utilise. On va donc récupérer
 les principaux certificats utilisés sur le web, avec <code>[man]curl[/man]</code> :
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>apt-get install curl
-</span><span class='line'>mkdir ~/.authenticate
-</span><span class='line'>chmod 700 ~/.authenticate
-</span><span class='line'>curl http://curl.haxx.se/ca/cacert.pem &gt;~/.authenticate/ca.pem
-</span><span class='line'>chmod 600 ~/.authenticate/ca.pem
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+{% codeblock lang:bash %}
+apt-get install curl
+mkdir ~/.authenticate
+chmod 700 ~/.authenticate
+curl http://curl.haxx.se/ca/cacert.pem >~/.authenticate/ca.pem
+chmod 600 ~/.authenticate/ca.pem
+{% endcodeblock %}
 <em>Attention à bien mettre les bons droits
 sur les répertoires, sans quoi cela ne fonctionnera pas (plus de détails dans
 la suite).</em></p>
@@ -78,37 +74,22 @@ la suite).</em></p>
 <h2>Et pour envoyer un bête mail ?</h2>
 
 <p>Un simple script fera l'affaire :
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;!/bin/bash&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;Entête du message&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;echo <span class="s2">&quot;To: copain@example.com Subject: Test de mail From:example@gmail.com &quot;</span> &gt; /tmp/mail&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;Corps du message&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;echo <span class="s2">&quot;Salut copain, je t&#39;envoie un e-mail !&quot;</span> &gt;&gt; /tmp/mail&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;Envoie du message&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;esmtp -tv &amp;lt; /tmp/mail
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+{% codeblock lang:bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<h1>Entête du message</h1>
+
+<p>echo "To: copain@example.com Subject: Test de mail From:example@gmail.com " > /tmp/mail</p>
+
+<h1>Corps du message</h1>
+
+<p>echo "Salut copain, je t'envoie un e-mail !" >> /tmp/mail</p>
+
+<h1>Envoie du message</h1>
+
+<p>esmtp -tv &lt; /tmp/mail
+{% endcodeblock %}
 <code>[man]esmtp[/man]</code>
 prends ici deux options : <code>-t</code> pour lire l'entête, <code>-v</code> pour le mode verbeux.
 Si tout se passe bien vous obtiendrez une sortie dans ce style... et un e-mail
@@ -145,163 +126,89 @@ tant que daemon, avec Esmtp.</p>
 
 <p>vous pouvez utiliser un script Perl par exemple :</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="sr">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;h1&gt;</span><span class="o">!</span><span class="sr">/usr/</span><span class="n">bin</span><span class="sr">/perl -w&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;</span><span class="k">use</span> <span class="n">strict</span><span class="p">;</span>
-</span><span class='line'><span class="k">use</span> <span class="n">warnings</span><span class="p">;</span>
-</span><span class='line'><span class="k">use</span> <span class="nn">MIME::</span><span class="n">Lite</span><span class="p">;</span><span class="sr">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;</span><span class="k">my</span> <span class="nv">$Message</span> <span class="o">=</span> <span class="k">new</span> <span class="nn">MIME::</span><span class="n">Lite</span><span class="sr">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt;</span><span class="n">From</span> <span class="o">=&amp;</span><span class="ow">gt</span><span class="p">;</span><span class="s">&#39;example@gmail.com&#39;</span><span class="p">,</span>
-</span><span class='line'><span class="n">To</span> <span class="o">=&amp;</span><span class="ow">gt</span><span class="p">;</span><span class="s">&#39;copain@example.com&#39;</span><span class="p">,</span>
-</span><span class='line'><span class="n">Subject</span> <span class="o">=&amp;</span><span class="ow">gt</span><span class="p">;</span><span class="s">&quot;Mon mail avec un fichier&quot;</span><span class="p">,</span>
-</span><span class='line'><span class="n">Type</span> <span class="o">=&amp;</span><span class="ow">gt</span><span class="p">;</span><span class="s">&#39;multipart/mixed&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="sr">&lt;/code&gt;&lt;/pre&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;</span><span class="nv">$Message</span> <span class="o">-&gt;</span> <span class="n">attach</span><span class="p">(</span><span class="sr">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt;</span><span class="n">Type</span> <span class="o">=&amp;</span><span class="ow">gt</span><span class="p">;</span> <span class="s">&#39;TEXT&#39;</span><span class="p">,</span>
-</span><span class='line'><span class="n">Data</span> <span class="o">=&amp;</span><span class="ow">gt</span><span class="p">;</span> <span class="s">&quot;Voici le fichier&quot;</span><span class="p">,</span>
-</span><span class='line'><span class="p">);</span>
-</span><span class='line'><span class="sr">&lt;/code&gt;&lt;/pre&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;</span><span class="nv">$Message</span> <span class="o">-&gt;</span> <span class="n">attach</span><span class="p">(</span><span class="sr">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt;</span><span class="n">Type</span> <span class="o">=&amp;</span><span class="ow">gt</span><span class="p">;</span> <span class="s">&#39;text/plain&#39;</span><span class="p">,</span>
-</span><span class='line'><span class="n">Path</span> <span class="o">=&amp;</span><span class="ow">gt</span><span class="p">;</span> <span class="s">&quot;log.txt&quot;</span><span class="p">,</span>
-</span><span class='line'><span class="n">Filename</span> <span class="o">=&amp;</span><span class="ow">gt</span><span class="p">;</span> <span class="s">&quot;log.txt&quot;</span><span class="p">,</span>
-</span><span class='line'><span class="p">);</span>
-</span><span class='line'><span class="sr">&lt;/code&gt;&lt;/pre&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;</span><span class="nv">$Message</span> <span class="o">-&gt;</span> <span class="nb">send</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>{% codeblock lang:perl %}</p>
+
+<h1>!/usr/bin/perl -w</h1>
+
+<p>use strict;
+use warnings;
+use MIME::Lite;</p>
+
+<p>my $Message = new MIME::Lite</p>
+
+<pre><code>From =&gt;'example@gmail.com',
+To =&gt;'copain@example.com',
+Subject =&gt;"Mon mail avec un fichier",
+Type =&gt;'multipart/mixed';
+</code></pre>
+
+<p>$Message -> attach(</p>
+
+<pre><code>Type =&gt; 'TEXT',
+Data =&gt; "Voici le fichier",
+);
+</code></pre>
+
+<p>$Message -> attach(</p>
+
+<pre><code>Type =&gt; 'text/plain',
+Path =&gt; "log.txt",
+Filename =&gt; "log.txt",
+);
+</code></pre>
+
+<p>$Message -> send;
+{% endcodeblock %}
 Attention ici aux type Mime (cf. <a href="http://www.sfsu.edu/training/mimetype.htm">Global MIME Types</a>) pour le fichier joint...</p>
 
 <h3>Python !</h3>
 
 <p>Ou du python (j'aime :)). On crée un module générique (source : <a href="http://snippets.dzone.com/posts/show/2038">Send email with attachment(s) in Python</a>) :
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">smtplib</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">os</span>
-</span><span class='line'><span class="kn">from</span> <span class="nn">email.MIMEMultipart</span> <span class="kn">import</span> <span class="n">MIMEMultipart</span>
-</span><span class='line'><span class="kn">from</span> <span class="nn">email.MIMEBase</span> <span class="kn">import</span> <span class="n">MIMEBase</span>
-</span><span class='line'><span class="kn">from</span> <span class="nn">email.MIMEText</span> <span class="kn">import</span> <span class="n">MIMEText</span>
-</span><span class='line'><span class="kn">from</span> <span class="nn">email.Utils</span> <span class="kn">import</span> <span class="n">COMMASPACE</span><span class="p">,</span> <span class="n">formatdate</span>
-</span><span class='line'><span class="kn">from</span> <span class="nn">email</span> <span class="kn">import</span> <span class="n">Encoders</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">send_mail</span><span class="p">(</span><span class="n">send_from</span><span class="p">,</span> <span class="n">send_to</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="p">[],</span><span class="n">server</span><span class="o">=</span><span class="s">&quot;localhost&quot;</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">send_to</span><span class="p">)</span><span class="o">==</span><span class="nb">list</span>
-</span><span class='line'><span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">files</span><span class="p">)</span><span class="o">==</span><span class="nb">list</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">()</span>
-</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;From&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">send_from</span>
-</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;To&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">COMMASPACE</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">send_to</span><span class="p">)</span>
-</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">formatdate</span><span class="p">(</span><span class="n">localtime</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</span><span class='line'><span class="n">msg</span><span class="p">[</span><span class="s">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subject</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span> <span class="n">MIMEText</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">part</span> <span class="o">=</span> <span class="n">MIMEBase</span><span class="p">(</span><span class="s">&#39;application&#39;</span><span class="p">,</span> <span class="s">&quot;octet-stream&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">part</span><span class="o">.</span><span class="n">set_payload</span><span class="p">(</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s">&quot;rb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="p">)</span> <span class="n">Encoders</span><span class="o">.</span><span class="n">encode_base64</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">part</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&#39;Content-Disposition&#39;</span><span class="p">,</span> <span class="s">&#39;attachment; filename=&quot;</span><span class="si">%s</span><span class="s">&quot;&#39;</span> <span class="o">%</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
-</span><span class='line'>    <span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">smtp</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">(</span><span class="n">server</span><span class="p">)</span>
-</span><span class='line'><span class="n">smtp</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">send_from</span><span class="p">,</span> <span class="n">send_to</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">())</span>
-</span><span class='line'><span class="n">smtp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+{% codeblock lang:python %}
+import smtplib
+import os
+from email.MIMEMultipart import MIMEMultipart
+from email.MIMEBase import MIMEBase
+from email.MIMEText import MIMEText
+from email.Utils import COMMASPACE, formatdate
+from email import Encoders</p>
+
+<p>def send_mail(send_from, send_to, subject, text, files=[],server="localhost"):</p>
+
+<pre><code>assert type(send_to)==list
+assert type(files)==list
+
+msg = MIMEMultipart()
+msg['From'] = send_from
+msg['To'] = COMMASPACE.join(send_to)
+msg['Date'] = formatdate(localtime=True)
+msg['Subject'] = subject
+
+msg.attach( MIMEText(text) )
+
+for f in files:
+    part = MIMEBase('application', "octet-stream")
+    part.set_payload( open(f,"rb").read() ) Encoders.encode_base64(part)
+    part.add_header('Content-Disposition', 'attachment; filename="%s"' %os.path.basename(f))
+    msg.attach(part)
+
+smtp = smtplib.SMTP(server)
+smtp.sendmail(send_from, send_to, msg.as_string())
+smtp.close()
+</code></pre>
+
+<p>{% endcodeblock %}
 Et son appel :
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">my_send_mail</span>
-</span><span class='line'><span class="n">my_send_mail</span><span class="o">.</span><span class="n">send_mail</span><span class="p">(</span><span class="s">&quot;example@gmail.com&quot;</span><span class="p">,</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="p">[</span><span class="s">&#39;copain@example.com&#39;</span><span class="p">],</span>
-</span><span class='line'><span class="s">&quot;Mon mail avec un fichier&quot;</span><span class="p">,</span>
-</span><span class='line'><span class="s">&quot;Voici le fichier&quot;</span><span class="p">,[</span><span class="s">&#39;log.txt&#39;</span><span class="p">])</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+{% codeblock lang:python %}
+import my_send_mail
+my_send_mail.send_mail("example@gmail.com",</p>
+
+<pre><code>['copain@example.com'],
+"Mon mail avec un fichier",
+"Voici le fichier",['log.txt'])
+</code></pre>
+
+<p>{% endcodeblock %}
 Bon envois ;-)</p>
 ]]></content>
   </entry>
@@ -309,7 +216,7 @@ Bon envois ;-)</p>
   <entry>
     <title type="html"><![CDATA[Mettre en place un tunnel-proxy SSH autonome]]></title>
     <link href="http://blog.tym-project.fr/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan/"/>
-    <updated>2010-03-19T13:00:43+01:00</updated>
+    <updated>2010-03-19T13:00:43+00:00</updated>
     <id>http://blog.tym-project.fr/2010/03/19/mettre-en-place-un-tunnel-ssh-en-arriere-plan</id>
     <content type="html"><![CDATA[<p>Dans <a href="http://www.tym-project.fr/blog/2009/04/installer-un-serveur-ssh-destine-au-tunneling/">cet article</a> je
 vous expliquais comment mettre en place un serveur servant à faire du
@@ -347,21 +254,15 @@ passe en utilisateur <code>root</code> :</p>
 temps de se pencher sur le script client. La première fonction est celle qui
 crée le tunnel. En l'occurrence dynamiquement sur le port 8080 :</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">function </span>ssh_to_server<span class="o">(){</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;/usr/bin/ssh -nN -D 8080 -p 443 tun1@server.chez-moi.com &amp;amp;
-</span><span class='line'><span class="nb">echo</span> <span class="nv">$!</span> &amp;gt; /var/run/ssh_prox_pid
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;<span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash %}
+function ssh_to_server(){</p>
+
+<pre><code>/usr/bin/ssh -nN -D 8080 -p 443 tun1@server.chez-moi.com &amp;
+echo $! &gt; /var/run/ssh_prox_pid
+</code></pre>
+
+<p>}
+{% endcodeblock %}</p>
 
 <p>Ce qui est intéressant ici c'est l'utilisation des options <code>n</code> et <code>N</code>
 (<a href="http://www.delafond.org/traducmanfr/man/man1/ssh.1.html">source</a>) :</p>
@@ -378,71 +279,47 @@ processus fils) permettent de lancer le tunnel en arrière plan.</p>
 <p>Afin que le script soit suffisamment robuste nous allons ajouter un peu plus
 de code. Tout d'abord une fonction pour vérifier la bonne connectivité à
 internet...inutile d'essayer d'ouvrir le tunnel pour rien :
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">function </span>test_network<span class="o">(){</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;ping -c 2 clubic.com
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;<span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+{% codeblock lang:bash %}
+function test_network(){</p>
+
+<pre><code>ping -c 2 clubic.com
+</code></pre>
+
+<p>}
+{% endcodeblock %}</p>
 
 <p>Ensuite une fonction pour tester si le tunnel est déjà lancé ou non :
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">function </span>test_prox<span class="o">(){</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;ps aux | grep -v <span class="s1">&#39;grep&#39;</span> | grep <span class="sb">`</span>cat /var/run/ssh_prox_pid<span class="sb">`</span>
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;<span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+{% codeblock lang:bash %}
+function test_prox(){</p>
+
+<pre><code>ps aux | grep -v 'grep' | grep `cat /var/run/ssh_prox_pid`
+</code></pre>
+
+<p>}
+{% endcodeblock %}
 Ici
 "<code>[man]grep[/man] -v grep</code>" sert à ne pas afficher le processus du <code>grep</code>, et
 donc ne pas fausser le résultat (sinon il serait toujours positif, même sans
 tunnel en route).</p>
 
 <p>Et enfin le corps du script :
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">while</span> :; <span class="k">do</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;#Si le tunnel n<span class="err">&#39;</span>est pas déjà lancé
-</span><span class='line'><span class="k">if</span> ! test_prox ;<span class="k">then</span>
-</span><span class='line'>    <span class="c">#Alors on teste si le réseau est bien connecté</span>
-</span><span class='line'>    <span class="k">if </span>test_network;then
-</span><span class='line'>        <span class="c">#Si oui ou ouvre le tunnel ssh_to_server</span>
-</span><span class='line'>    <span class="k">else</span>
-</span><span class='line'>        <span class="c">#Si non le script &quot;dors&quot; 5 secondes</span>
-</span><span class='line'>        sleep 5
-</span><span class='line'>    <span class="k">fi</span>
-</span><span class='line'><span class="k">fi</span>
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;done
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+{% codeblock lang:bash %}
+while :; do</p>
+
+<pre><code>#Si le tunnel n'est pas déjà lancé
+if ! test_prox ;then
+    #Alors on teste si le réseau est bien connecté
+    if test_network;then
+        #Si oui ou ouvre le tunnel ssh_to_server
+    else
+        #Si non le script "dors" 5 secondes
+        sleep 5
+    fi
+fi
+</code></pre>
+
+<p>done
+{% endcodeblock %}
 Il ne reste plus qu'a planifier le lancement du script au démarrage, en
 utilisant <code>[man]crontab[/man]</code> par exemple :</p>
 
@@ -450,83 +327,45 @@ utilisant <code>[man]crontab[/man]</code> par exemple :</p>
 </code></pre>
 
 <p>Voici le code du script complet :
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;!/bin/bash&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;function ssh_to_server<span class="o">(){</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;/usr/bin/ssh -nN -D 8080 -p 443 tun1@server.chez-moi.com &amp;amp;
-</span><span class='line'><span class="nb">echo</span> <span class="nv">$!</span> &amp;gt; /var/run/ssh_prox_pid
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;<span class="o">}</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;function test_network<span class="o">(){</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;ping -c 2 clubic.com
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;<span class="o">}</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;function test_prox<span class="o">(){</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;ps aux | grep -v <span class="s2">&quot;grep&quot;</span> | grep <span class="sb">`</span>cat /var/run/ssh_prox_pid<span class="sb">`</span>
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;<span class="o">}</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;while :;do&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;if ! test_prox ;<span class="k">then</span>
-</span><span class='line'><span class="k">    if </span>test_network;then
-</span><span class='line'>        ssh_to_server
-</span><span class='line'>    <span class="k">else</span>
-</span><span class='line'><span class="k">        </span>sleep  5
-</span><span class='line'>    <span class="k">fi</span>
-</span><span class='line'><span class="k">fi</span>
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;done
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+{% codeblock lang:bash %}</p>
+
+<h1>!/bin/bash</h1>
+
+<p>function ssh_to_server(){</p>
+
+<pre><code>/usr/bin/ssh -nN -D 8080 -p 443 tun1@server.chez-moi.com &amp;
+echo $! &gt; /var/run/ssh_prox_pid
+</code></pre>
+
+<p>}</p>
+
+<p>function test_network(){</p>
+
+<pre><code>ping -c 2 clubic.com
+</code></pre>
+
+<p>}</p>
+
+<p>function test_prox(){</p>
+
+<pre><code>ps aux | grep -v "grep" | grep `cat /var/run/ssh_prox_pid`
+</code></pre>
+
+<p>}</p>
+
+<p>while :;do</p>
+
+<pre><code>if ! test_prox ;then
+    if test_network;then
+        ssh_to_server
+    else
+        sleep  5
+    fi
+fi
+</code></pre>
+
+<p>done
+{% endcodeblock %}
 Bon bash ;-)</p>
 ]]></content>
   </entry>

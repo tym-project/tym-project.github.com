@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Gestion d’un domaine | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/gestion-d-un-domaine/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2013-10-05T19:49:44+02:00</updated>
+  <updated>2014-06-22T16:21:03+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Une adresse DNS instantanée, avec ipq.co]]></title>
     <link href="http://blog.tym-project.fr/2010/10/13/dns-ultra-rapide-et-gratuit/"/>
-    <updated>2010-10-13T14:06:41+02:00</updated>
+    <updated>2010-10-13T14:06:41+00:00</updated>
     <id>http://blog.tym-project.fr/2010/10/13/dns-ultra-rapide-et-gratuit</id>
     <content type="html"><![CDATA[<p>Les adresses Ip c'est bien, les Ipv6 c'est
 mieux, et la mémoire des chiffres c'est le top ! Plus sérieusement, il est
@@ -33,11 +33,11 @@ rapide (jusqu'a 72h, réplication oblige) il faudrait une solution alternative.<
 
 <p><strong><a href="http://ipq.co">IP Quick</a></strong> est LA réponse à cette problématique ! Connectez-vous, entrez une Ip (v4), le nom est optionnel :</p>
 
-<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/28-09-2010-20-34-35.png"></p>
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/28-09-2010-20-34-35.png %}</p>
 
 <p>Et magie, en 10s c'est opérationnel (<em>je n'ai pas choisit le nom...</em>) :</p>
 
-<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/2010-4/28-09-2010-20-36-33.png"></p>
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/2010-4/28-09-2010-20-36-33.png %}</p>
 
 <h2>Oui, mais...</h2>
 
@@ -60,7 +60,7 @@ faire joujou avec Ipv6 sur <a href="http://ipq.co">ipq.co</a> !</p>
   <entry>
     <title type="html"><![CDATA[Connaître les fonctionnalités de son hébergement OVH]]></title>
     <link href="http://blog.tym-project.fr/2009/05/18/connaitre-les-fonctionnalites-de-son-hebergement-ovh/"/>
-    <updated>2009-05-18T12:40:54+02:00</updated>
+    <updated>2009-05-18T12:40:54+00:00</updated>
     <id>http://blog.tym-project.fr/2009/05/18/connaitre-les-fonctionnalites-de-son-hebergement-ovh</id>
     <content type="html"><![CDATA[<p>Si vous possédez un hébergement chez ovh (comme moi), vous aimeriez peut-être
 savoir quelles sont les fonctionnalités de votre serveur. Par exemple  je
@@ -83,7 +83,7 @@ voulais savoir si mon start1g possède la fonctionnalité "curl".</p>
   <entry>
     <title type="html"><![CDATA[Le Gmail de SUPINFO...]]></title>
     <link href="http://blog.tym-project.fr/2009/04/02/le-gmail-de-supinfo-2/"/>
-    <updated>2009-04-02T15:37:21+02:00</updated>
+    <updated>2009-04-02T15:37:21+00:00</updated>
     <id>http://blog.tym-project.fr/2009/04/02/le-gmail-de-supinfo-2</id>
     <content type="html"><![CDATA[<p>Vous vous souvenez de l'article sur comment associer son domaine à Google Apps
 (<a href="http://www.tym-project.fr/blog/2009/03/associer-google-apps-gmail-gdocs-gcalendar-gtalk-a-son-domaine/">ici</a>) ? Et bien même les meilleurs s'en servent visiblement : SUPINFO est
@@ -93,7 +93,7 @@ d'identifiants, rien n'y fait !</p>
 
 <p>Peut-être est-ce un vestige des débuts de SUPINFO, avant l'ère "Exchangienne".</p>
 
-<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/gmailsupinfo.png"></p>
+<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/gmailsupinfo.png %}</p>
 
 <p><em>Merci aux doigts
 de Cams qui ont entrainé ce heureux hasard !</em></p>

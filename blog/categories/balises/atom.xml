@@ -4,7 +4,7 @@
   <title><![CDATA[Category: balises | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/balises/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2013-10-05T19:49:44+02:00</updated>
+  <updated>2014-06-22T16:19:30+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Wordpress : ne plus avoir de texte qui déborde avec la balise "pre"]]></title>
     <link href="http://blog.tym-project.fr/2009/11/17/wordpress-ne-plus-avoir-de-texte-qui-deborde-avec-la-balise-pre/"/>
-    <updated>2009-11-17T12:35:53+01:00</updated>
+    <updated>2009-11-17T12:35:53+00:00</updated>
     <id>http://blog.tym-project.fr/2009/11/17/wordpress-ne-plus-avoir-de-texte-qui-deborde-avec-la-balise-pre</id>
     <content type="html"><![CDATA[<p>J'utilise énormément la balise <code>pre</code>, qui
 permet d'afficher du code (scripts...) de manière lisible et surtout détachée
