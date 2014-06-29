@@ -4,7 +4,7 @@
   <title><![CDATA[Category: fichier formatté | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/fichier-formatté/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-06-22T16:21:03+00:00</updated>
+  <updated>2014-06-29T08:32:46+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -26,14 +26,19 @@
 <p>Vous voulez afficher à
 l'écran <code>Votre nom est XXXX, vous avez YYYY comme pseudo !</code>. Rien de plus
 simple grâce à <code>IFS</code> (dans un script) :
-{% codeblock lang:bash %}
-while IFS=: read NAME NICKNAME do</p>
-
-<pre><code>echo "Votre nom est $NAME, vous avez $NICKNAME comme pseudo !"
-</code></pre>
-
-<p>done &lt; $FILE
-{% endcodeblock %}
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">while </span><span class="nv">IFS</span><span class="o">=</span>: <span class="nb">read </span>NAME NICKNAME <span class="k">do</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;echo <span class="s2">&quot;Votre nom est $NAME, vous avez $NICKNAME comme pseudo !&quot;</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;done &amp;lt; <span class="nv">$FILE</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 Cela mérite quelques
 explications ! Le <code>while</code> permet de parcourir tout le fichier (sinon on ne
 lirait qu'une seule ligne), <code>IFS=[séparateur]</code>(ici "<code>:</code>", donc <code>IFS=:</code>) puis

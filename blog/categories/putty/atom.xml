@@ -4,7 +4,7 @@
   <title><![CDATA[Category: putty | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/putty/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-06-22T16:21:03+00:00</updated>
+  <updated>2014-06-29T08:32:46+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -33,7 +33,7 @@ de caractères !</p>
 
 <p>Et en images :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/putty-keymap.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/putty-keymap.png"></p>
 
 <p>Bon chiffres ;-)</p>
 ]]></content>
@@ -94,13 +94,13 @@ PuttyPrivateKey (.ppk).</p>
 
 <p>Ouvrez le logiciel et cliquez sur “Import key” dans le menu “Conversions” :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/putty1.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/putty1.png"></p>
 
 <p>Choisissez alors la clé privée (putty_key dans l’exemple et validez), vous verrez alors votre
 clé à l’écran, vous pouvez cliquer sur “Save private key” pour la sauvegarder
 au format .ppk :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/putty2.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/putty2.png"></p>
 
 <p>Votre clé est maintenant utilisable depuis Putty pour vous logger sur votre
 serveur Linux !</p>

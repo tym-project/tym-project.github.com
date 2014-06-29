@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Swing | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/swing/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-06-22T16:21:03+00:00</updated>
+  <updated>2014-06-29T08:32:46+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -33,69 +33,125 @@ complète. C'est la définition du SlashScreen.</p>
 
 <p>Java est orienté objet, autant en profiter et créer une classe dédiée au fade-
 out :
-{% codeblock lang:java %}
-import java.util.TimerTask;
-import javax.swing.JDialog;
-import com.sun.awt.AWTUtilities;</p>
-
-<p>public class Fader extends TimerTask {</p>
-
-<pre><code>private JDialog jDialog;
-
-public Fader(JDialog jDialog) { this.jDialog = jDialog; }
-//Comme Fader étend de Timer, c'est la méthode run() qui permet de faire le traitement
-
-@Override public void run() {
-    //On décide de réduire l'opacité du JDialog par 0,01f (car c'est du float)
-    //Bien entendu si l'opacité est réduite au maximum, on ferme le JDialog avec dispose()
-    if(AWTUtilities.getWindowOpacity(jDialog) &gt; 0.01f){
-        AWTUtilities.setWindowOpacity(jDialog,AWTUtilities.getWindowOpacity(jDialog)-0.01f);
-    } else { jDialog.dispose(); }
- }
-</code></pre>
-
-<p>}
-{% endcodeblock %}
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">java.util.TimerTask</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.swing.JDialog</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.sun.awt.AWTUtilities</span><span class="o">;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Fader</span> <span class="kd">extends</span> <span class="n">TimerTask</span> <span class="o">{&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kd">private</span> <span class="n">JDialog</span> <span class="n">jDialog</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="nf">Fader</span><span class="o">(</span><span class="n">JDialog</span> <span class="n">jDialog</span><span class="o">)</span> <span class="o">{</span> <span class="k">this</span><span class="o">.</span><span class="na">jDialog</span> <span class="o">=</span> <span class="n">jDialog</span><span class="o">;</span> <span class="o">}</span>
+</span><span class='line'><span class="c1">//Comme Fader étend de Timer, c&#39;est la méthode run() qui permet de faire le traitement</span>
+</span><span class='line'>
+</span><span class='line'><span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">//On décide de réduire l&#39;opacité du JDialog par 0,01f (car c&#39;est du float)</span>
+</span><span class='line'>    <span class="c1">//Bien entendu si l&#39;opacité est réduite au maximum, on ferme le JDialog avec dispose()</span>
+</span><span class='line'>    <span class="k">if</span><span class="o">(</span><span class="n">AWTUtilities</span><span class="o">.</span><span class="na">getWindowOpacity</span><span class="o">(</span><span class="n">jDialog</span><span class="o">)</span> <span class="o">&amp;</span><span class="n">gt</span><span class="o">;</span> <span class="mf">0.01f</span><span class="o">){</span>
+</span><span class='line'>        <span class="n">AWTUtilities</span><span class="o">.</span><span class="na">setWindowOpacity</span><span class="o">(</span><span class="n">jDialog</span><span class="o">,</span><span class="n">AWTUtilities</span><span class="o">.</span><span class="na">getWindowOpacity</span><span class="o">(</span><span class="n">jDialog</span><span class="o">)-</span><span class="mf">0.01f</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span> <span class="n">jDialog</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span> <span class="o">}</span>
+</span><span class='line'> <span class="o">}</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 Et la classe qui contient notre JDialog à faire disparaître :
-{% codeblock lang:java %}
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.util.Timer;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;</p>
-
-<p>public class Splash extends JDialog {</p>
-
-<pre><code>public Splash() {
-    //On place le JDialog au centre de l'écran
-    setLocationRelativeTo(null);
-
-    //On désactive la barre de titre setUndecorated(true);
-
-    //On est organisés alors on place tout les les éléments voulus dans un panel
-    //On choisit un GridLayout de 1 ligne sur 1 colonne, on se complique pas pour l'exemple !
-    JPanel main = new JPanel(new GridLayout(1, 1));
-    JLabel label = new JLabel("Hello Kitty !");
-
-    //On écrit GROS, pour que ça se voit de loin !
-    label.setFont(new Font("Arial",Font.BOLD, 20));
-
-    this.add(main);
-    main.add(label);
-    this.setVisible(true);
-    pack();
-
-    //On crée notre Timer Timer timer = new Timer();
-
-    //Et on lance le fade-out, on attend 500 ms avant de commencer à estomper
-    //Puis on estompe un peu plus toutes les 5ms
-    timer.schedule(new Fader(this),500, 5);
-}
-</code></pre>
-
-<p>}
-{% endcodeblock %}
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">java.awt.Font</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.awt.GridLayout</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.Timer</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.swing.JDialog</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.swing.JLabel</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.swing.JPanel</span><span class="o">;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Splash</span> <span class="kd">extends</span> <span class="n">JDialog</span> <span class="o">{&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kd">public</span> <span class="n">Splash</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">//On place le JDialog au centre de l&#39;écran</span>
+</span><span class='line'>    <span class="n">setLocationRelativeTo</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//On désactive la barre de titre setUndecorated(true);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//On est organisés alors on place tout les les éléments voulus dans un panel</span>
+</span><span class='line'>    <span class="c1">//On choisit un GridLayout de 1 ligne sur 1 colonne, on se complique pas pour l&#39;exemple !</span>
+</span><span class='line'>    <span class="n">JPanel</span> <span class="n">main</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JPanel</span><span class="o">(</span><span class="k">new</span> <span class="n">GridLayout</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">));</span>
+</span><span class='line'>    <span class="n">JLabel</span> <span class="n">label</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JLabel</span><span class="o">(</span><span class="s">&quot;Hello Kitty !&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//On écrit GROS, pour que ça se voit de loin !</span>
+</span><span class='line'>    <span class="n">label</span><span class="o">.</span><span class="na">setFont</span><span class="o">(</span><span class="k">new</span> <span class="n">Font</span><span class="o">(</span><span class="s">&quot;Arial&quot;</span><span class="o">,</span><span class="n">Font</span><span class="o">.</span><span class="na">BOLD</span><span class="o">,</span> <span class="mi">20</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">this</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">main</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">main</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">label</span><span class="o">);</span>
+</span><span class='line'>    <span class="k">this</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">pack</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//On crée notre Timer Timer timer = new Timer();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//Et on lance le fade-out, on attend 500 ms avant de commencer à estomper</span>
+</span><span class='line'>    <span class="c1">//Puis on estompe un peu plus toutes les 5ms</span>
+</span><span class='line'>    <span class="n">timer</span><span class="o">.</span><span class="na">schedule</span><span class="o">(</span><span class="k">new</span> <span class="n">Fader</span><span class="o">(</span><span class="k">this</span><span class="o">),</span><span class="mi">500</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 Pour tester ce code vous pouvez
 utiliser un appel de ce style :</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: flash | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/flash/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-06-22T16:21:03+00:00</updated>
+  <updated>2014-06-29T08:32:46+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -38,7 +38,7 @@ des <a href="http://www.zdnet.fr/actualites/internet/0,39020774,39705979,00.htm"
 vérifier, et éventuellement mettre à jour les fautifs ! Cela fonctionne
 uniquement avec Firefox bien entendu :) Pour ma part j'ai (un peu) de boulot :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-4/plugincheck.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-4/plugincheck.png"></p>
 
 <p>Bonne vérification ;-)</p>
 ]]></content>

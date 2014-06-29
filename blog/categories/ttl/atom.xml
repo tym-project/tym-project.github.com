@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ttl | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/ttl/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-06-22T16:21:03+00:00</updated>
+  <updated>2014-06-29T08:32:46+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -32,7 +32,7 @@ nativement, et via certains paquets sous Linux (selon la distribution).</p>
 comme une image vaut mieux qu'un long discours...voici (cliquez pour agrandir)
 :</p>
 
-<p>{% img  http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-3/pathping.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-3/pathping.png"></p>
 
 <p>Comme on peut le
 voir sur la capture, <code>pathping</code> détermine l'itinéraire suivit par le paquet,

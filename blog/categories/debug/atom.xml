@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: debug | Tym-Project]]></title>
+  <title><![CDATA[Category: Debug | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/debug/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-06-22T16:21:03+00:00</updated>
+  <updated>2014-06-29T08:32:46+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -14,69 +14,47 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Monitorer une application sous Linux]]></title>
-    <link href="http://blog.tym-project.fr/2009/07/17/monitorer-une-application-sous-linux/"/>
-    <updated>2009-07-17T14:32:33+00:00</updated>
-    <id>http://blog.tym-project.fr/2009/07/17/monitorer-une-application-sous-linux</id>
-    <content type="html"><![CDATA[<p>Il peut être très utile de vérifier l'état d'une application à intervalles
-réguliers : mon serveur de streaming est-il opérationnel, mon tunnel ssh est-
-il encore ouvert ?... Mais comment faire quand le service en question ne
-propose pas de moyen "natif" de vérifier ces infos ?</p>
+    <title type="html"><![CDATA[Android : perte du signal 3g après activation du GPS]]></title>
+    <link href="http://blog.tym-project.fr/2012/03/24/android-perte-signal-3g-avec-gps/"/>
+    <updated>2012-03-24T19:04:00+00:00</updated>
+    <id>http://blog.tym-project.fr/2012/03/24/android-perte-signal-3g-avec-gps</id>
+    <content type="html"><![CDATA[<p>Android c'est super, Google Navigation encore plus. Sauf quand ça plante. Surtout en voiture, paumé au milieu de la cambrouse...<br/>
+Oh j'ai la solution, mais laissez moi vous raconter...</p>
 
 <!-- more -->
 
 
-<p>Pour ma part j'utilise un simple script bash et <code>[man]crontab[/man]</code> pour la
-planification. Dans l'exemple je vais vérifier que mon serveur de streaming
-fonctionne bien, soit quand vlc n'inscrit pas "video server down" dans son log
-(exemple tout à fait fictif) :
-{% codeblock lang:bash %}</p>
+<h2>Vous avez dit "stressant" ?</h2>
 
-<h1>!/bin/bash</h1>
+<p>Le problème est donc le suivant :</p>
 
-<p>VLC_LOG="/var/log/vlc.log"
-ERROR_LOG="/var/log/vlc_error.log"</p>
+<ul>
+<li>Mon téléphone est connecté en 3g (ou Edge, peut importe), tout va bien</li>
+<li>Je lance Google Navigation, tout va bien</li>
+<li>Je choisis ma destination, tout va bien</li>
+<li>L'icône du GPS s'affiche dans la barre d'état, je perd la connection data !</li>
+</ul>
 
-<p>if tail -500 $VLC_LOG | grep 'video server down'; then</p>
 
-<pre><code>echo "$date Server down" &gt;&gt; $LOG_FILE /home/tym/vlc_server/restart
-</code></pre>
+<p>Frustration et énervement, le seul moyen que j'avais trouvé pour pouvoir retrouver une connexion data était de couper/réactiver la connectivité de mon mobile.<br/>
+En bref, le fait d'allumer le module GPS (y compris dans Facebook ou toute autre application de localisation) avait pour conséquence facheuse de me faire perdre toute connectivité 3g.</p>
 
-<p>fi
-{% endcodeblock %}</p>
+<h2>Google est ton ami... mais ça suffit pas toujours</h2>
 
-<p>Ce script vérifie donc l'état du service en fonction du fichier journal. Si il
-détecte une erreur il peut (par exemple) redémarrer le service. Les
-possibilités sont quasi infinies (envoie de mail, connexion à un autre
-serveur...), la seule limitation est la capacité du service à créer un log
-suffisamment détaillé.</p>
+<p>La miracle se trouve evidemment sur l'interweb, faut-il encore comprendre ce qui y est expliqué. Il est donc question d'APN, soit "Appareil Photo Numérique" en français. Oui, rien à voir avec le sujet !<br/>
+Recherche recherche... ah ! Eureka ! APN c'est en fait "Access Point Name", soit les points d'accès réseau.</p>
 
-<p>Pour le planifier, utilisez <code>[man]crontab[/man] -e</code> avec une ligne dans ce
-style :</p>
+<p>Le bug en question fait que si vous avez plus de un "APN" dans la fameuse liste, activer le GPS fait perdre les pédales à votre terminal et il est incapable de retrouver sa connectivité d'origine.</p>
 
-<pre><code>*/1 * * * * /home/tym/scripts/check_vlc
-</code></pre>
+<h2>Bon, tu la donne la solution ou quoi ?!</h2>
 
-<p>Si vous voulez vérifier à un intervalle inférieur à 1 minute vous pouver
-modifier le script comme suit (et ne plus utiliser cron) :
-{% codeblock lang:bash %}</p>
+<p>Hop, un petit tour dans <code>Paramètres&gt;Sans fil et réseaux&gt;Réseaux mobiles&gt;Noms des points d'accès</code>, faites un peu de ménage pour arriver au résultat suivant (le nom va bien entendu varier en fonction de votre opérateur adoré) :</p>
 
-<h1>!/bin/bash</h1>
+<p><img src="https://s3-eu-west-1.amazonaws.com/pics.tym-project.fr/2012-1/2012-01-28+17.38.42.png"></p>
 
-<p>VLC_LOG="/var/log/vlc.log"
-ERROR_LOG="/var/log/vlc_error.log"
-while :; do</p>
+<p>On garde donc le minimum : l'accès données et l'accès MMS (qui sont deux chose bien différentes).</p>
 
-<pre><code>if tail -500 $VLC_LOG | grep 'video server down'; then
-    echo "$date Server down" &gt;&gt; $LOG_FILE
-    /home/tym/vlc_server/restart
-fi
-sleep 15
-</code></pre>
-
-<p>done
-{% endcodeblock %}
-Bon monitoring ;-)</p>
+<p>Allez, votre calvaire est terminé, finit la crise de nerf ;-)</p>
 ]]></content>
   </entry>
   

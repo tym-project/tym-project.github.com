@@ -4,7 +4,7 @@
   <title><![CDATA[Category: planification | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/planification/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-06-22T16:21:03+00:00</updated>
+  <updated>2014-06-29T08:32:46+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -42,21 +42,35 @@ répertoire <code>/var/spool/cron/crontabs</code> :</p>
 via un script. Il va donc falloir que je crée le fichier
 <code>/var/spool/cron/crontabs/tym</code>, oui mais que faire si il existe déjà ? On va
 se compliquer un peu la vie, mais vous allez comprendre pourquoi :
-{% codeblock lang:bash %}</p>
-
-<h1>!/bin/bash</h1>
-
-<p>CRONTAB="/var/spool/cron/crontabs/tym"</p>
-
-<p>if ! [ -e $CRONTAB ];then</p>
-
-<pre><code>touch $CRONTAB
-chown tym:crontab $CRONTAB
-chmod 600 $CRONTAB
-</code></pre>
-
-<p>fi
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;CRONTAB<span class="o">=</span><span class="s2">&quot;/var/spool/cron/crontabs/tym&quot;</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;if ! <span class="o">[</span> -e <span class="nv">$CRONTAB</span> <span class="o">]</span>;<span class="k">then</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;touch <span class="nv">$CRONTAB</span>
+</span><span class='line'>chown tym:crontab <span class="nv">$CRONTAB</span>
+</span><span class='line'>chmod 600 <span class="nv">$CRONTAB</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;fi
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Comme vous pouvez le voir, on modifie les droits sur
 le fichier que lorsqu'il faut créer. Pour ajouter une tâche, rien de plus
@@ -72,17 +86,27 @@ car ici pas de vérifications via la commande <code>crontab</code> !</p>
 
 <p>Je veux modifier la ligne que je viens de créer dans le crontab de "tym", en
 faisant plutôt exécuter <code>/home/tym/scripts/mon_second_script</code> :
-{% codeblock lang: bash %}</p>
-
-<h1>!/bin/bash</h1>
-
-<p>CRONTAB="/var/spool/cron/crontabs/tym"</p>
-
-<p>OLD="\/home\/tym\/scripts\/mon_script"
-NEW="\/home\/tym\/scripts\/mon_second_script"</p>
-
-<p>sed "s/$OLD/$NEW/" $CRONTAB > /tmp/buffer &amp;&amp; cat /tmp/buffer > $CRONTAB
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>lang: bash </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>!/bin/bash&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>CRONTAB="/var/spool/cron/crontabs/tym"&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>OLD="\/home\/tym\/scripts\/mon_script"
+</span><span class='line'>NEW="\/home\/tym\/scripts\/mon_second_script"&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>sed "s/$OLD/$NEW/" $CRONTAB > /tmp/buffer &amp;&amp; cat /tmp/buffer > $CRONTAB</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Et hop, l'affaire est pliée ! Notez l'utilisation des "\/" pour protéger les
 "/" dans le sed.</p>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Wordpress plugin | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/wordpress-plugin/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-06-22T16:21:03+00:00</updated>
+  <updated>2014-06-29T08:32:46+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -36,10 +36,11 @@ mise en forme définie dans la balise <code>div</code>, mais j'aurai très bien 
 donner une classe CSS à cette dernière et l'intégrer dans le thème !
 L'extension étant (très) succincte, elle tient dans un seul fichier, voici
 comment il se décompose avec tout d'abord l'en-tête :
-{% codeblock lang:php %}
-&lt;?php /<em> Plugin Name: Legend Er Plugin URI: http://www.tym-project.fr/blog Description: An automatic legend generator Version: 1.0
-Author: Tym Author URI: http://www.tym-project.fr/blog License: CC </em>/
-{% endcodeblock %}
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php /&lt;em&gt; Plugin Name: Legend Er Plugin URI: http://www.tym-project.fr/blog Description: An automatic legend generator Version: 1.0</span>
+</span><span class='line'><span class="x">Author: Tym Author URI: http://www.tym-project.fr/blog License: CC &lt;/em&gt;/</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 Bien qu'elle soit en commentaire, elle est en fait lue par Wordpress pour
 afficher les informations dans la page de plugins. Les champs parlent d'eux-
 mêmes ! Comme mon plugin est intégré dans l'article manuellement (je ne veux
@@ -53,20 +54,31 @@ besoin de le fermer car il ne s'applique pas sur du texte existant :</p>
 </code></pre>
 
 <p>Ensuite la fonction qui crée la légende en elle-même :
-{% codeblock lang:php %}
-function legender ($atts) {</p>
-
-<pre><code>$ln=$atts['ln'];
-if ($ln == "en"){
-    return '&lt;div style="text-align: center;"&gt;&lt;em&gt;(Click to zoom in)&lt;/em&gt;&lt;/div&gt;';
-}
-if ($ln == "fr"){
-    return '&lt;div style="text-align: center;"&gt;&lt;em&gt;(Cliquez pour agrandir)&lt;/em&gt;&lt;/div&gt;';
-}
-</code></pre>
-
-<p>} ?>
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">function legender ($atts) {&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;$ln=$atts[&#39;ln&#39;];</span>
+</span><span class='line'><span class="x">if ($ln == &quot;en&quot;){</span>
+</span><span class='line'><span class="x">    return &#39;&amp;lt;div style=&quot;text-align: center;&quot;&amp;gt;&amp;lt;em&amp;gt;(Click to zoom in)&amp;lt;/em&amp;gt;&amp;lt;/div&amp;gt;&#39;;</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">if ($ln == &quot;fr&quot;){</span>
+</span><span class='line'><span class="x">    return &#39;&amp;lt;div style=&quot;text-align: center;&quot;&amp;gt;&amp;lt;em&amp;gt;(Cliquez pour agrandir)&amp;lt;/em&amp;gt;&amp;lt;/div&amp;gt;&#39;;</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;} ?&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Elle prend donc un paramètre : <code>ln</code>, soit la langue ("fr" ou "en") stockée
 dans un tableau clé/valeur. Je vous parlais de petits pièges, en voilà un :
@@ -74,23 +86,37 @@ dans un tableau clé/valeur. Je vous parlais de petits pièges, en voilà un :
 !</p>
 
 <p>Voici donc le code complet de l'extension :
-{% codeblock lang:php %}
-&lt;?php /<em> Plugin Name: Legend Er Plugin URI: http://www.tym-project.fr/blog Description: An automatic legend generator Version: 1.0
-Author: Tym Author URI: http://www.tym-project.fr/blog License: CC </em>/
-add_shortcode('legend', 'legender');</p>
-
-<p>function legender ($atts) {</p>
-
-<pre><code>$ln=$atts['ln']; if ($ln == "en"){
-    return '&lt;div style="text-align: center;"&gt;&lt;em&gt;(Click to zoom in)&lt;/em&gt;&lt;/div&gt;';
-}
-if ($ln =="fr"){
-    return '&lt;div style="text-align: center;"&gt;&lt;em&gt;(Cliquez pour agrandir)&lt;/em&gt;&lt;/div&gt;';
-}
-</code></pre>
-
-<p>} ?>
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php /&lt;em&gt; Plugin Name: Legend Er Plugin URI: http://www.tym-project.fr/blog Description: An automatic legend generator Version: 1.0</span>
+</span><span class='line'><span class="x">Author: Tym Author URI: http://www.tym-project.fr/blog License: CC &lt;/em&gt;/</span>
+</span><span class='line'><span class="x">add_shortcode(&#39;legend&#39;, &#39;legender&#39;);&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;function legender ($atts) {&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;$ln=$atts[&#39;ln&#39;]; if ($ln == &quot;en&quot;){</span>
+</span><span class='line'><span class="x">    return &#39;&amp;lt;div style=&quot;text-align: center;&quot;&amp;gt;&amp;lt;em&amp;gt;(Click to zoom in)&amp;lt;/em&amp;gt;&amp;lt;/div&amp;gt;&#39;;</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">if ($ln ==&quot;fr&quot;){</span>
+</span><span class='line'><span class="x">    return &#39;&amp;lt;div style=&quot;text-align: center;&quot;&amp;gt;&amp;lt;em&amp;gt;(Cliquez pour agrandir)&amp;lt;/em&amp;gt;&amp;lt;/div&amp;gt;&#39;;</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;} ?&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>libre à vous de l'utiliser, modifier...</p>
 

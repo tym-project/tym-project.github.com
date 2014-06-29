@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Gestion d’un domaine | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/gestion-d-un-domaine/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-06-22T16:21:03+00:00</updated>
+  <updated>2014-06-29T08:32:46+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -33,11 +33,11 @@ rapide (jusqu'a 72h, réplication oblige) il faudrait une solution alternative.<
 
 <p><strong><a href="http://ipq.co">IP Quick</a></strong> est LA réponse à cette problématique ! Connectez-vous, entrez une Ip (v4), le nom est optionnel :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/28-09-2010-20-34-35.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/28-09-2010-20-34-35.png"></p>
 
 <p>Et magie, en 10s c'est opérationnel (<em>je n'ai pas choisit le nom...</em>) :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/2010-4/28-09-2010-20-36-33.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/2010-4/28-09-2010-20-36-33.png"></p>
 
 <h2>Oui, mais...</h2>
 
@@ -93,7 +93,7 @@ d'identifiants, rien n'y fait !</p>
 
 <p>Peut-être est-ce un vestige des débuts de SUPINFO, avant l'ère "Exchangienne".</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/gmailsupinfo.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/gmailsupinfo.png"></p>
 
 <p><em>Merci aux doigts
 de Cams qui ont entrainé ce heureux hasard !</em></p>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: media center | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/media-center/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-06-22T16:21:03+00:00</updated>
+  <updated>2014-06-29T08:32:46+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -220,34 +220,58 @@ qui reste allumé longtemps (et donc Xbmc qui ne redémarre pas) ?</p>
 script. <em>Pensez bien à activer l'interface web de Xbmc au préalable !</em><br/>
 En
 Python voici ce que cela donne pour la librairie vidéo :
-{% codeblock lang:python %}</p>
-
-<h1>!/usr/bin/python</h1>
-
-<p>import urllib2</p>
-
-<p>req = urllib2.Request("http://127.0.0.1:8090/jsonrpc")
-req.method = 'POST'
-req.content_type = 'application/json'</p>
-
-<p>data='{"jsonrpc": "2.0", "method": "VideoLibrary.ScanForContent", "id": 1}'</p>
-
-<p>urllib2.urlopen(req, data)
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="err">!</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kn">import</span> <span class="nn">urllib2</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">req</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="s">&quot;http://127.0.0.1:8090/jsonrpc&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="n">req</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="s">&#39;POST&#39;</span>
+</span><span class='line'><span class="n">req</span><span class="o">.</span><span class="n">content_type</span> <span class="o">=</span> <span class="s">&#39;application/json&#39;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">data</span><span class="o">=</span><span class="s">&#39;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;method&quot;: &quot;VideoLibrary.ScanForContent&quot;, &quot;id&quot;: 1}&#39;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p><em>Edit du 24/12/2011 - Voici aussi la version compatible python 3 :</em><br/>
-{% codeblock lang:python %}</p>
-
-<h1>!/usr/bin/python3.2</h1>
-
-<p>import urllib.request</p>
-
-<p>req = urllib.request.Request("http://127.0.0.1:8090/jsonrpc")
-req.method = 'POST'
-req.content_type = 'application/json'
-data=b'{"jsonrpc": "2.0", "method": "VideoLibrary.ScanForContent", "id": 1}'
-urllib.request.urlopen(req, data)
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="err">!</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kn">import</span> <span class="nn">urllib.request</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="s">&quot;http://127.0.0.1:8090/jsonrpc&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="n">req</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="s">&#39;POST&#39;</span>
+</span><span class='line'><span class="n">req</span><span class="o">.</span><span class="n">content_type</span> <span class="o">=</span> <span class="s">&#39;application/json&#39;</span>
+</span><span class='line'><span class="n">data</span><span class="o">=</span><span class="n">b</span><span class="s">&#39;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;method&quot;: &quot;VideoLibrary.ScanForContent&quot;, &quot;id&quot;: 1}&#39;</span>
+</span><span class='line'><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Bien entendu cela fonctionne aussi avec la
 musique :</p>

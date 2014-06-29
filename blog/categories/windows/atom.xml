@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Windows | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/windows/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-06-22T16:21:03+00:00</updated>
+  <updated>2014-06-29T08:32:46+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -110,30 +110,30 @@ style "Titre" par exemple ?</p>
 
 <p>Pour l'exemple je travaille sur le document suivant :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_017.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_017.png"></p>
 
 <p>Je veux ici ajouter les styles "Titre" et
 "Sous-titre" à la structure du sommaire. Pour cela il faut faire un clic-droit
 sur le sommaire et choisir "Modification du champ..." :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_012.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_012.png"></p>
 
 <p>Dans la liste des champs il faut
 alors choisir "Sommaire", sachant que vous pouvez filtrer avec la liste
 déroulante au dessus, et cliquer sur le bouton "Table des matières" :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_013.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_013.png"></p>
 
 <h2>Customisation</h2>
 
 <p>Vous pouvez alors personnaliser la structure de la table des matières :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_014.png %}
-{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_015.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_014.png">
+<img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_015.png"></p>
 
 <p>Et voici le résultat :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_016.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2011-1/Selection_016.png"></p>
 
 <p>Hop hop, à votre souris ! ;-)</p>
 ]]></content>
@@ -239,11 +239,11 @@ rapide (jusqu'a 72h, réplication oblige) il faudrait une solution alternative.<
 
 <p><strong><a href="http://ipq.co">IP Quick</a></strong> est LA réponse à cette problématique ! Connectez-vous, entrez une Ip (v4), le nom est optionnel :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/28-09-2010-20-34-35.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/28-09-2010-20-34-35.png"></p>
 
 <p>Et magie, en 10s c'est opérationnel (<em>je n'ai pas choisit le nom...</em>) :</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/2010-4/28-09-2010-20-36-33.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2010-4/2010-4/28-09-2010-20-36-33.png"></p>
 
 <h2>Oui, mais...</h2>
 

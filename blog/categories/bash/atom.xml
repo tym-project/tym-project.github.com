@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Bash | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/bash/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-06-22T16:21:03+00:00</updated>
+  <updated>2014-06-29T08:32:46+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -244,33 +244,59 @@ séquence, à :</p>
 
 <p>En terme de script (Bash, pour faire vite et bien), cela donne ceci de la
 manière suivante :
-{% codeblock lang:bash %}</p>
-
-<h1>!/bin/bash</h1>
-
-<p>function killmag {</p>
-
-<pre><code>kill -9 \ `ps aux | grep -v grep | grep magnifier | tr -s " " | cut -d " " -f 2`
-</code></pre>
-
-<p>}
-case \
-"<code>ps aux | grep -v grep | grep magnifier | \ tr -s " " | cut -d " " -f 12</code>"\
-in</p>
-
-<pre><code>"-v")
-    killmag &amp;&amp; magnifier -h -m
-    ;;
-"-h")
-    killmag
-    ;;
-"")
-    magnifier -v -m
-    ;;
-</code></pre>
-
-<p>esac
-{% endcodeblock %}
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;function killmag <span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;kill -9 <span class="se">\ </span><span class="sb">`</span>ps aux | grep -v grep | grep magnifier | tr -s <span class="s2">&quot; &quot;</span> | cut -d <span class="s2">&quot; &quot;</span> -f 2<span class="sb">`</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">}</span>
+</span><span class='line'><span class="k">case</span> <span class="se">\</span>
+</span><span class='line'><span class="s2">&quot;&lt;code&gt;ps aux | grep -v grep | grep magnifier | \ tr -s &quot;</span> <span class="s2">&quot; | cut -d &quot;</span> <span class="s2">&quot; -f 12&lt;/code&gt;&quot;</span><span class="se">\</span>
+</span><span class='line'>in&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;<span class="s2">&quot;-v&quot;</span><span class="o">)</span>
+</span><span class='line'>    killmag &amp;amp;&amp;amp; magnifier -h -m
+</span><span class='line'>    ;;
+</span><span class='line'><span class="s2">&quot;-h&quot;</span><span class="o">)</span>
+</span><span class='line'>    killmag
+</span><span class='line'>    ;;
+</span><span class='line'><span class="s2">&quot;&quot;</span><span class="o">)</span>
+</span><span class='line'>    magnifier -v -m
+</span><span class='line'>    ;;
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;esac
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 On retrouve donc une fonction pour killer la loupe, car il faut la relancer
 pour changer d'orientation. Petit détail syntaxique : l'utilisation de <code>\</code>
 pour faire des retours à la ligne au milieu d'une commande, pratique pour se
@@ -314,26 +340,43 @@ comment je gère ma configuration de pare-feu à travers un script d'init.</p>
 que je puisse couper/relancer mon pare-feu à loisir : c'est là le rôle d'un
 script "init.d". Commençons donc par la fin, avec les différents arguments que
 peut prendre le script :
-{% codeblock lang:bash %}
-case $1 in</p>
-
-<pre><code>start)
-    start
-    ;;
-stop)
-    stop
-    ;;
-restart)
-    restart
-    ;;
-*)
-    echo "usage: iptables {start|stop|restart}"
-    exit 1
-    ;;
-</code></pre>
-
-<p>esac
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">case</span> <span class="nv">$1</span> in&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;start<span class="o">)</span>
+</span><span class='line'>    start
+</span><span class='line'>    ;;
+</span><span class='line'>stop<span class="o">)</span>
+</span><span class='line'>    stop
+</span><span class='line'>    ;;
+</span><span class='line'>restart<span class="o">)</span>
+</span><span class='line'>    restart
+</span><span class='line'>    ;;
+</span><span class='line'>*<span class="o">)</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="s2">&quot;usage: iptables {start|stop|restart}&quot;</span>
+</span><span class='line'>    <span class="nb">exit </span>1
+</span><span class='line'>    ;;
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;esac
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Logiquement on retrouve les
 fonction <code>start</code>, <code>stop</code> et <code>restart</code> avec une explication des arguments pour
@@ -351,23 +394,37 @@ toute valeur en dehors de ce choix.</p>
 <p>la fonction <code>stop</code> est un peu plus complexe et est chargée de vider les règles
 iptable, de changer la politique par défaut et de restarter
 <code>[man]fail2ban[/man]</code> si besoin :
-{% codeblock lang:bash %}
-function stop {</p>
-
-<pre><code>for IPTABLES in iptables ip6tables;do
-    $IPTABLES -P INPUT ACCEPT
-    $IPTABLES -P FORWARD ACCEPT
-    $IPTABLES -P OUTPUT ACCEPT
-    $IPTABLES -F $IPTABLES -X
-done
-
-if [ -e /etc/init.d/fail2ban ]; then
-    /etc/init.d/fail2ban restart
-fi
-</code></pre>
-
-<p>}
-{% endcodeblock %}
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">function </span>stop <span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;for IPTABLES in iptables ip6tables;do
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P INPUT ACCEPT
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P FORWARD ACCEPT
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P OUTPUT ACCEPT
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -F <span class="nv">$IPTABLES</span> -X
+</span><span class='line'><span class="k">done</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="o">[</span> -e /etc/init.d/fail2ban <span class="o">]</span>; <span class="k">then</span>
+</span><span class='line'>    /etc/init.d/fail2ban restart
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 L'utilisation de <code>for IPTABLES in iptables ip6tables</code> permet de configurer à
 la fois pour ipv4 et ipv6.</p>
 
@@ -378,34 +435,59 @@ TCP à ouvrir) définie ainsi :</p>
 </code></pre>
 
 <p>Et la fonction en elle-même :
-{% codeblock lang:bash %}
-function start {</p>
-
-<pre><code>for IPTABLES in iptables ip6tables;do
-    $IPTABLES -F $IPTABLES -P INPUT DROP
-    $IPTABLES -P FORWARD DROP
-    $IPTABLES -P OUTPUT DROP
-
-    $IPTABLES -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
-    for port in $TCP_PORTS;do
-        $IPTABLES -A INPUT -p tcp --dport $port -j ACCEPT
-    done
-
-    $IPTABLES -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
-    $IPTABLES -A INPUT -i lo -j ACCEPT $IPTABLES -A OUTPUT -o lo -j ACCEPT
-    # ICMP (Ping)
-    #$IPTABLES -A INPUT -p icmp -j ACCEPT
-done
-</code></pre>
-
-<p>if [ -e /etc/init.d/fail2ban ];then</p>
-
-<pre><code>/etc/init.d/fail2ban restart
-</code></pre>
-
-<p>fi
-}
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">function </span>start <span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;for IPTABLES in iptables ip6tables;do
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -F <span class="nv">$IPTABLES</span> -P INPUT DROP
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P FORWARD DROP
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P OUTPUT DROP
+</span><span class='line'>
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+</span><span class='line'>    <span class="k">for </span>port in <span class="nv">$TCP_PORTS</span>;<span class="k">do</span>
+</span><span class='line'>        <span class="nv">$IPTABLES</span> -A INPUT -p tcp --dport <span class="nv">$port</span> -j ACCEPT
+</span><span class='line'>    <span class="k">done</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -A INPUT -i lo -j ACCEPT <span class="nv">$IPTABLES</span> -A OUTPUT -o lo -j ACCEPT
+</span><span class='line'>    <span class="c"># ICMP (Ping)</span>
+</span><span class='line'>    <span class="c">#$IPTABLES -A INPUT -p icmp -j ACCEPT</span>
+</span><span class='line'><span class="k">done</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;if <span class="o">[</span> -e /etc/init.d/fail2ban <span class="o">]</span>;<span class="k">then</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;/etc/init.d/fail2ban restart
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;fi
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>Configuration et installation</h2>
 
@@ -444,100 +526,193 @@ update-rc.d: see &lt;http://wiki.debian.org/LSBInitScripts&gt;
 </code></pre>
 
 <p>Voici donc le fichier dans son intégralité :
-{% codeblock lang:bash %}</p>
-
-<h1>!/bin/bash</h1>
-
-<h1>iptables-default</h1>
-
-<h1>www.tym-project.fr/blog</h1>
-
-<h1>tym@tym-project.fr</h1>
-
-<h3>BEGIN INIT INFO</h3>
-
-<h1>Provides:          iptables</h1>
-
-<h1>Required-Start:    $local_fs $remote_fs $network $syslog</h1>
-
-<h1>Required-Stop:     $local_fs $remote_fs $network $syslog</h1>
-
-<h1>Default-Start:     2 3 4 5</h1>
-
-<h1>Default-Stop:      0 1 6</h1>
-
-<h1>Short-Description: Set up iptables at boot time</h1>
-
-<h1>Description:       Enable service provided by iptables.</h1>
-
-<h3>END INIT INFO</h3>
-
-<p>PATH="/sbin"
-TCP_PORTS="80 443"
-function stop {</p>
-
-<pre><code>for IPTABLES in iptables ip6tables;do
-    $IPTABLES -P INPUT ACCEPT
-    $IPTABLES -P FORWARD ACCEPT
-    $IPTABLES -P OUTPUT ACCEPT
-    $IPTABLES -F
-    $IPTABLES -X
-done
-if [ -e /etc/init.d/fail2ban ]; then
-    /etc/init.d/fail2ban restart
-fi
-</code></pre>
-
-<p>}
-function start {</p>
-
-<pre><code>for IPTABLES in iptables ip6tables;do
-    $IPTABLES -F
-    $IPTABLES -P INPUT DROP
-    $IPTABLES -P FORWARD DROP
-    $IPTABLES -P OUTPUT DROP
-    $IPTABLES -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
-for port in $TCP_PORTS;do
-    $IPTABLES -A INPUT -p tcp --dport $port -j ACCEPT
-done
-$IPTABLES -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
-$IPTABLES -A INPUT -i lo -j ACCEPT
-$IPTABLES -A OUTPUT -o lo -j ACCEPT
-# ICMP (Ping)
-#$IPTABLES -A INPUT -p icmp -j ACCEPT
-done
-if [ -e /etc/init.d/fail2ban ];then
-    /etc/init.d/fail2ban restart
-fi
-</code></pre>
-
-<p>}
-function restart {</p>
-
-<pre><code>stop
-start
-</code></pre>
-
-<p>}
-case $1 in</p>
-
-<pre><code>start)
-start
-;;
-stop)
-stop
-;;
-restart)
-restart
-;;
-*)
-echo "usage: iptables {start|stop|restart}"
-exit 1
-;;
-</code></pre>
-
-<p>esac
-{% endcodeblock %}
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;iptables-default&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;www.tym-project.fr/blog&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;tym@tym-project.fr&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h3&gt;BEGIN INIT INFO&lt;/h3&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Provides:          iptables&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Required-Start:    <span class="nv">$local_fs</span> <span class="nv">$remote_fs</span> <span class="nv">$network</span> <span class="nv">$syslog</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Required-Stop:     <span class="nv">$local_fs</span> <span class="nv">$remote_fs</span> <span class="nv">$network</span> <span class="nv">$syslog</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Default-Start:     2 3 4 5&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Default-Stop:      0 1 6&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Short-Description: Set up iptables at boot <span class="nb">time</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Description:       Enable service provided by iptables.&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h3&gt;END INIT INFO&lt;/h3&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;PATH<span class="o">=</span><span class="s2">&quot;/sbin&quot;</span>
+</span><span class='line'><span class="nv">TCP_PORTS</span><span class="o">=</span><span class="s2">&quot;80 443&quot;</span>
+</span><span class='line'><span class="k">function </span>stop <span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;for IPTABLES in iptables ip6tables;do
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P INPUT ACCEPT
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P FORWARD ACCEPT
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P OUTPUT ACCEPT
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -F
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -X
+</span><span class='line'><span class="k">done</span>
+</span><span class='line'><span class="k">if</span> <span class="o">[</span> -e /etc/init.d/fail2ban <span class="o">]</span>; <span class="k">then</span>
+</span><span class='line'>    /etc/init.d/fail2ban restart
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">}</span>
+</span><span class='line'><span class="k">function </span>start <span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;for IPTABLES in iptables ip6tables;do
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -F
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P INPUT DROP
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P FORWARD DROP
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -P OUTPUT DROP
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+</span><span class='line'><span class="k">for </span>port in <span class="nv">$TCP_PORTS</span>;<span class="k">do</span>
+</span><span class='line'>    <span class="nv">$IPTABLES</span> -A INPUT -p tcp --dport <span class="nv">$port</span> -j ACCEPT
+</span><span class='line'><span class="k">done</span>
+</span><span class='line'><span class="nv">$IPTABLES</span> -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+</span><span class='line'><span class="nv">$IPTABLES</span> -A INPUT -i lo -j ACCEPT
+</span><span class='line'><span class="nv">$IPTABLES</span> -A OUTPUT -o lo -j ACCEPT
+</span><span class='line'><span class="c"># ICMP (Ping)</span>
+</span><span class='line'><span class="c">#$IPTABLES -A INPUT -p icmp -j ACCEPT</span>
+</span><span class='line'><span class="k">done</span>
+</span><span class='line'><span class="k">if</span> <span class="o">[</span> -e /etc/init.d/fail2ban <span class="o">]</span>;<span class="k">then</span>
+</span><span class='line'>    /etc/init.d/fail2ban restart
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">}</span>
+</span><span class='line'><span class="k">function </span>restart <span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;stop
+</span><span class='line'>start
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">}</span>
+</span><span class='line'><span class="k">case</span> <span class="nv">$1</span> in&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;start<span class="o">)</span>
+</span><span class='line'>start
+</span><span class='line'>;;
+</span><span class='line'>stop<span class="o">)</span>
+</span><span class='line'>stop
+</span><span class='line'>;;
+</span><span class='line'>restart<span class="o">)</span>
+</span><span class='line'>restart
+</span><span class='line'>;;
+</span><span class='line'>*<span class="o">)</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;usage: iptables {start|stop|restart}&quot;</span>
+</span><span class='line'><span class="nb">exit </span>1
+</span><span class='line'>;;
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;esac
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 Bon firewalling ;-)</p>
 ]]></content>
   </entry>
@@ -641,27 +816,47 @@ pour automatiser tout cela.</p>
 
 <p>N'oubliez pas de préciser le numéro de version complet dans la variable <code>VER</code>
 :
-{% codeblock lang:bash %}</p>
-
-<h1>!/bin/bash</h1>
-
-<p>VER="3.8.4-1"
-DIR="/tmp/ss5_install"
-apt-get update
-apt-get -y install build-essential libpam0g-dev libpam-devperm libldap2-dev libssl-dev</p>
-
-<p>if ! [ -d "$DIR" ];then mkdir $DIR fi
-cd $DIR wget
-http://downloads.sourceforge.net/project/ss5/ss5/$VER/ss5-$VER.tar.gz</p>
-
-<p>tar xzf ss5-$VER.tar.gz</p>
-
-<p>VER=<code>echo $VER | cut -d "-" -f 1</code></p>
-
-<p>cd ss5-$VER</p>
-
-<p>./configure --with-defaultport=80 &amp;&amp; make clean &amp;&amp; make &amp;&amp; make install
-{% endcodeblock %}
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;VER<span class="o">=</span><span class="s2">&quot;3.8.4-1&quot;</span>
+</span><span class='line'><span class="nv">DIR</span><span class="o">=</span><span class="s2">&quot;/tmp/ss5_install&quot;</span>
+</span><span class='line'>apt-get update
+</span><span class='line'>apt-get -y install build-essential libpam0g-dev libpam-devperm libldap2-dev libssl-dev&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;if ! <span class="o">[</span> -d <span class="s2">&quot;$DIR&quot;</span> <span class="o">]</span>;<span class="k">then </span>mkdir <span class="nv">$DIR</span> <span class="k">fi</span>
+</span><span class='line'><span class="nb">cd</span> <span class="nv">$DIR</span> wget
+</span><span class='line'>http://downloads.sourceforge.net/project/ss5/ss5/<span class="nv">$VER</span>/ss5-<span class="nv">$VER</span>.tar.gz&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;tar xzf ss5-<span class="nv">$VER</span>.tar.gz&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;VER<span class="o">=</span>&lt;code&gt;echo <span class="nv">$VER</span> | cut -d <span class="s2">&quot;-&quot;</span> -f 1&lt;/code&gt;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;cd ss5-<span class="nv">$VER</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;./configure --with-defaultport<span class="o">=</span>80 &amp;amp;&amp;amp; make clean &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 Une particularité du <code>.tar.gz</code> de <code>ss5</code> c'est de ne pas intégrer le
 numéro de sous-version ("-2" par exemple) dans le nom du dossier, ce qui
 oblige à cette pirouette dans le script :</p>
@@ -674,154 +869,301 @@ oblige à cette pirouette dans le script :</p>
 <p>J'ai aussi créé un script pour <code>init.d</code> (assez basique), basé sur
 <code>/etc/init.d/skeleton</code>. Il intègre quelques options comme le port par défaut
 ou le lancement en mode daemon (<code>DAEMON_ARGS="-t -u root -b 0.0.0.0:80"</code>) :
-{% codeblock lang:bash %}</p>
-
-<h1>! /bin/sh</h1>
-
-<h3>BEGIN INIT INFO</h3>
-
-<h1>Provides:          ss5</h1>
-
-<h1>Required-Start:    $remote_fs</h1>
-
-<h1>Required-Stop:     $remote_fs</h1>
-
-<h1>Default-Start:     2 3 4 5</h1>
-
-<h1>Default-Stop:      0 1 6</h1>
-
-<h1>Short-Description: Initscript for ss5</h1>
-
-<h1>Description:</h1>
-
-<h3>END INIT INFO</h3>
-
-<h1>PATH should only include /usr/* if it runs after the mountnfs.sh script</h1>
-
-<p>PATH=/bin/:/usr/bin:/sbin:/usr/sbin
-DESC="ss5 proxy server"
-NAME=ss5
-DAEMON=/usr/sbin/$NAME
-DAEMON_ARGS="-t -u root -b 0.0.0.0:80"
-PIDFILE=/var/run/$NAME.pid
-SCRIPTNAME=/etc/init.d/$NAME</p>
-
-<h1>Exit if the package is not installed</h1>
-
-<p>[ -x "$DAEMON" ] || exit 0</p>
-
-<h1>Load the VERBOSE setting and other rcS variables</h1>
-
-<p>. /lib/init/vars.sh</p>
-
-<h1>Define LSB log_* functions.</h1>
-
-<h1>Depend on lsb-base (>= 3.0-6) to ensure that this file is present.</h1>
-
-<p>. /lib/lsb/init-functions
-#</p>
-
-<h1>Function that starts the daemon/service</h1>
-
-<p>#
-do_start()
-{</p>
-
-<pre><code># Return
-#   0 if daemon has been started
-#   1 if daemon was already running
-#   2 if daemon could not be started
-start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON --test &gt; /dev/null \
-    || return 1
-start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON -- \
-    $DAEMON_ARGS \
-    || return 2
-</code></pre>
-
-<p>}
-#</p>
-
-<h1>Function that stops the daemon/service</h1>
-
-<p>#
-do_stop()
-{</p>
-
-<pre><code># Return
-#   0 if daemon has been stopped
-#   1 if daemon was already stopped
-#   2 if daemon could not be stopped
-#   other if a failure occurred
-start-stop-daemon --stop --quiet --retry=TERM/30/KILL/5 --pidfile $PIDFILE --name $NAME
-RETVAL="$?"
-[ "$RETVAL" = 2 ] &amp;&amp; return 2
-# Wait for children to finish too if this is a daemon that forks
-# and if the daemon is only ever run from this initscript.
-# If the above conditions are not satisfied then add some other code
-# that waits for the process to drop all resources that could be
-# needed by services started subsequently.  A last resort is to
-# sleep for some time.
-start-stop-daemon --stop --quiet --oknodo --retry=0/30/KILL/5 --exec $DAEMON
-[ "$?" = 2 ] &amp;&amp; return 2
-# Many daemons don't delete their pidfiles when they exit.
-rm -f $PIDFILE
-return "$RETVAL"
-</code></pre>
-
-<p>}
-case "$1" in
-  start)</p>
-
-<pre><code>[ "$VERBOSE" != no ] &amp;&amp; log_daemon_msg "Starting $DESC" "$NAME"
-do_start
-case "$?" in
-    0|1) [ "$VERBOSE" != no ] &amp;&amp; log_end_msg 0 ;;
-    2) [ "$VERBOSE" != no ] &amp;&amp; log_end_msg 1 ;;
-esac
-;;
-</code></pre>
-
-<p>  stop)</p>
-
-<pre><code>[ "$VERBOSE" != no ] &amp;&amp; log_daemon_msg "Stopping $DESC" "$NAME"
-do_stop
-case "$?" in
-    0|1) [ "$VERBOSE" != no ] &amp;&amp; log_end_msg 0 ;;
-    2) [ "$VERBOSE" != no ] &amp;&amp; log_end_msg 1 ;;
-esac
-;;
-</code></pre>
-
-<p>  restart|force-reload)</p>
-
-<pre><code>log_daemon_msg "Restarting $DESC" "$NAME"
-do_stop
-case "$?" in
-  0|1)
-    do_start
-    case "$?" in
-        0) log_end_msg 0 ;;
-        1) log_end_msg 1 ;; # Old process is still running
-        *) log_end_msg 1 ;; # Failed to start
-    esac
-    ;;
-  *)
-    # Failed to stop
-    log_end_msg 1
-    ;;
-esac
-;;
-</code></pre>
-
-<p>  *)</p>
-
-<pre><code>echo "Usage: $SCRIPTNAME {start|stop|restart|force-reload}" &gt;&amp;2
-exit 3
-;;
-</code></pre>
-
-<p>esac
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
+<span class='line-number'>141</span>
+<span class='line-number'>142</span>
+<span class='line-number'>143</span>
+<span class='line-number'>144</span>
+<span class='line-number'>145</span>
+<span class='line-number'>146</span>
+<span class='line-number'>147</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;! /bin/sh&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h3&gt;BEGIN INIT INFO&lt;/h3&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Provides:          ss5&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Required-Start:    <span class="nv">$remote_fs</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Required-Stop:     <span class="nv">$remote_fs</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Default-Start:     2 3 4 5&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Default-Stop:      0 1 6&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Short-Description: Initscript <span class="k">for </span>ss5&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Description:&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h3&gt;END INIT INFO&lt;/h3&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;PATH should only include /usr/* <span class="k">if </span>it runs after the mountnfs.sh script&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;PATH<span class="o">=</span>/bin/:/usr/bin:/sbin:/usr/sbin
+</span><span class='line'><span class="nv">DESC</span><span class="o">=</span><span class="s2">&quot;ss5 proxy server&quot;</span>
+</span><span class='line'><span class="nv">NAME</span><span class="o">=</span>ss5
+</span><span class='line'><span class="nv">DAEMON</span><span class="o">=</span>/usr/sbin/<span class="nv">$NAME</span>
+</span><span class='line'><span class="nv">DAEMON_ARGS</span><span class="o">=</span><span class="s2">&quot;-t -u root -b 0.0.0.0:80&quot;</span>
+</span><span class='line'><span class="nv">PIDFILE</span><span class="o">=</span>/var/run/<span class="nv">$NAME</span>.pid
+</span><span class='line'><span class="nv">SCRIPTNAME</span><span class="o">=</span>/etc/init.d/<span class="nv">$NAME</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Exit <span class="k">if </span>the package is not installed&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">[</span> -x <span class="s2">&quot;$DAEMON&quot;</span> <span class="o">]</span> <span class="o">||</span> <span class="nb">exit </span>0&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Load the VERBOSE setting and other rcS variables&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;. /lib/init/vars.sh&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Define LSB log_* functions.&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Depend on lsb-base <span class="o">(</span>&gt;<span class="o">=</span> 3.0-6<span class="o">)</span> to ensure that this file is present.&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;. /lib/lsb/init-functions
+</span><span class='line'><span class="c">#&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Function that starts the daemon/service&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;#
+</span><span class='line'>do_start<span class="o">()</span>
+</span><span class='line'><span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;# Return
+</span><span class='line'><span class="c">#   0 if daemon has been started</span>
+</span><span class='line'><span class="c">#   1 if daemon was already running</span>
+</span><span class='line'><span class="c">#   2 if daemon could not be started</span>
+</span><span class='line'>start-stop-daemon --start --quiet --pidfile <span class="nv">$PIDFILE</span> --exec <span class="nv">$DAEMON</span> --test &amp;gt; /dev/null <span class="se">\</span>
+</span><span class='line'>    <span class="o">||</span> <span class="k">return </span>1
+</span><span class='line'>start-stop-daemon --start --quiet --pidfile <span class="nv">$PIDFILE</span> --exec <span class="nv">$DAEMON</span> -- <span class="se">\</span>
+</span><span class='line'>    <span class="nv">$DAEMON_ARGS</span> <span class="se">\</span>
+</span><span class='line'>    <span class="o">||</span> <span class="k">return </span>2
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">}</span>
+</span><span class='line'><span class="c">#&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Function that stops the daemon/service&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;#
+</span><span class='line'>do_stop<span class="o">()</span>
+</span><span class='line'><span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;# Return
+</span><span class='line'><span class="c">#   0 if daemon has been stopped</span>
+</span><span class='line'><span class="c">#   1 if daemon was already stopped</span>
+</span><span class='line'><span class="c">#   2 if daemon could not be stopped</span>
+</span><span class='line'><span class="c">#   other if a failure occurred</span>
+</span><span class='line'>start-stop-daemon --stop --quiet --retry<span class="o">=</span>TERM/30/KILL/5 --pidfile <span class="nv">$PIDFILE</span> --name <span class="nv">$NAME</span>
+</span><span class='line'><span class="nv">RETVAL</span><span class="o">=</span><span class="s2">&quot;$?&quot;</span>
+</span><span class='line'><span class="o">[</span> <span class="s2">&quot;$RETVAL&quot;</span> <span class="o">=</span> 2 <span class="o">]</span> &amp;amp;&amp;amp; <span class="k">return </span>2
+</span><span class='line'><span class="c"># Wait for children to finish too if this is a daemon that forks</span>
+</span><span class='line'><span class="c"># and if the daemon is only ever run from this initscript.</span>
+</span><span class='line'><span class="c"># If the above conditions are not satisfied then add some other code</span>
+</span><span class='line'><span class="c"># that waits for the process to drop all resources that could be</span>
+</span><span class='line'><span class="c"># needed by services started subsequently.  A last resort is to</span>
+</span><span class='line'><span class="c"># sleep for some time.</span>
+</span><span class='line'>start-stop-daemon --stop --quiet --oknodo --retry<span class="o">=</span>0/30/KILL/5 --exec <span class="nv">$DAEMON</span>
+</span><span class='line'><span class="o">[</span> <span class="s2">&quot;$?&quot;</span> <span class="o">=</span> 2 <span class="o">]</span> &amp;amp;&amp;amp; <span class="k">return </span>2
+</span><span class='line'><span class="c"># Many daemons don&#39;t delete their pidfiles when they exit.</span>
+</span><span class='line'>rm -f <span class="nv">$PIDFILE</span>
+</span><span class='line'><span class="k">return</span> <span class="s2">&quot;$RETVAL&quot;</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">}</span>
+</span><span class='line'><span class="k">case</span> <span class="s2">&quot;$1&quot;</span> in
+</span><span class='line'>  start<span class="o">)</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;<span class="o">[</span> <span class="s2">&quot;$VERBOSE&quot;</span> !<span class="o">=</span> no <span class="o">]</span> &amp;amp;&amp;amp; log_daemon_msg <span class="s2">&quot;Starting $DESC&quot;</span> <span class="s2">&quot;$NAME&quot;</span>
+</span><span class='line'>do_start
+</span><span class='line'><span class="k">case</span> <span class="s2">&quot;$?&quot;</span> in
+</span><span class='line'>    0|1<span class="o">)</span> <span class="o">[</span> <span class="s2">&quot;$VERBOSE&quot;</span> !<span class="o">=</span> no <span class="o">]</span> &amp;amp;&amp;amp; log_end_msg 0 ;;
+</span><span class='line'>    2<span class="o">)</span> <span class="o">[</span> <span class="s2">&quot;$VERBOSE&quot;</span> !<span class="o">=</span> no <span class="o">]</span> &amp;amp;&amp;amp; log_end_msg 1 ;;
+</span><span class='line'><span class="k">esac</span>
+</span><span class='line'>;;
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;  stop<span class="o">)</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;<span class="o">[</span> <span class="s2">&quot;$VERBOSE&quot;</span> !<span class="o">=</span> no <span class="o">]</span> &amp;amp;&amp;amp; log_daemon_msg <span class="s2">&quot;Stopping $DESC&quot;</span> <span class="s2">&quot;$NAME&quot;</span>
+</span><span class='line'>do_stop
+</span><span class='line'><span class="k">case</span> <span class="s2">&quot;$?&quot;</span> in
+</span><span class='line'>    0|1<span class="o">)</span> <span class="o">[</span> <span class="s2">&quot;$VERBOSE&quot;</span> !<span class="o">=</span> no <span class="o">]</span> &amp;amp;&amp;amp; log_end_msg 0 ;;
+</span><span class='line'>    2<span class="o">)</span> <span class="o">[</span> <span class="s2">&quot;$VERBOSE&quot;</span> !<span class="o">=</span> no <span class="o">]</span> &amp;amp;&amp;amp; log_end_msg 1 ;;
+</span><span class='line'><span class="k">esac</span>
+</span><span class='line'>;;
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;  restart|force-reload<span class="o">)</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;log_daemon_msg <span class="s2">&quot;Restarting $DESC&quot;</span> <span class="s2">&quot;$NAME&quot;</span>
+</span><span class='line'>do_stop
+</span><span class='line'><span class="k">case</span> <span class="s2">&quot;$?&quot;</span> in
+</span><span class='line'>  0|1<span class="o">)</span>
+</span><span class='line'>    do_start
+</span><span class='line'>    <span class="k">case</span> <span class="s2">&quot;$?&quot;</span> in
+</span><span class='line'>        0<span class="o">)</span> log_end_msg 0 ;;
+</span><span class='line'>        1<span class="o">)</span> log_end_msg 1 ;; <span class="c"># Old process is still running</span>
+</span><span class='line'>        *<span class="o">)</span> log_end_msg 1 ;; <span class="c"># Failed to start</span>
+</span><span class='line'>    <span class="k">esac</span>
+</span><span class='line'>    ;;
+</span><span class='line'>  *<span class="o">)</span>
+</span><span class='line'>    <span class="c"># Failed to stop</span>
+</span><span class='line'>    log_end_msg 1
+</span><span class='line'>    ;;
+</span><span class='line'><span class="k">esac</span>
+</span><span class='line'>;;
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;  *<span class="o">)</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;echo <span class="s2">&quot;Usage: $SCRIPTNAME {start|stop|restart|force-reload}&quot;</span> &amp;gt;&amp;amp;2
+</span><span class='line'><span class="nb">exit </span>3
+</span><span class='line'>;;
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;esac
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Bonne installation ;-)</p>
 ]]></content>

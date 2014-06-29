@@ -4,7 +4,7 @@
   <title><![CDATA[Category: google apps | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/google-apps/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-06-22T16:21:03+00:00</updated>
+  <updated>2014-06-29T08:32:46+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -26,7 +26,7 @@ d'identifiants, rien n'y fait !</p>
 
 <p>Peut-être est-ce un vestige des débuts de SUPINFO, avant l'ère "Exchangienne".</p>
 
-<p>{% img http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/gmailsupinfo.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/gmailsupinfo.png"></p>
 
 <p><em>Merci aux doigts
 de Cams qui ont entrainé ce heureux hasard !</em></p>

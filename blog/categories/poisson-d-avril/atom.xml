@@ -4,7 +4,7 @@
   <title><![CDATA[Category: poisson d'avril | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/poisson-d-avril/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-06-22T16:21:03+00:00</updated>
+  <updated>2014-06-29T08:32:46+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -21,7 +21,7 @@
     <content type="html"><![CDATA[<p>C'est du moins ce que laisse entendre la page d'accueil du Laboratoire Apple
 SUPINFO :</p>
 
-<p>{% img  http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/laboapplesmall.png %}</p>
+<p><img src="http://pics.tym-project.fr.s3-website-eu-west-1.amazonaws.com/2009-2/laboapplesmall.png"></p>
 
 <p>Étrange...Poisson d'avril ou bug chez SUPINFO ?</p>
 
