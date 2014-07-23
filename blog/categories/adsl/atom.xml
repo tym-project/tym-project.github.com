@@ -4,7 +4,7 @@
   <title><![CDATA[Category: adsl | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/adsl/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-07-23T17:48:36+00:00</updated>
+  <updated>2014-07-23T17:52:48+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -52,8 +52,8 @@ pathping vers clubic.com, plutôt que google.fr, car par expérience je sais que
 google.fr a parfois du mal à répondre ou présente des latences variables.</p>
 
 <script type="text/javascript">
-var uri = 'http://impfr.tradedoubler.com/imp?type(img)g(20767316)a(2426209)' + new String (Math.random()).substring (2, 11);
-document.write('<a href="http://clk.tradedoubler.com/click?p=58483&a=2426209&g=20767316" target="_BLANK"><img src="'+uri+'" border=0></a>');
+var uri = 'http://impfr.tradedoubler.com/imp?type(img)g(18777710)a(2426209)' + new String (Math.random()).substring (2, 11);
+document.write('<a href="http://clk.tradedoubler.com/click?p=58483&a=2426209&g=18777710" target="_BLANK"><img src="'+uri+'" border=0></a>');
 </script>
 
 
@@ -120,6 +120,12 @@ vitesse par contre reste conséquente.</p>
 sans seuil minimum sur le bruit, mais il peut entraîner des erreurs et des
 pertes de paquets. En cas de problème il faut revenir dans les modes
 standards. Utiliser a vos risques et périls"</em></p>
+
+<script type="text/javascript">
+var uri = 'http://impfr.tradedoubler.com/imp?type(img)g(19739992)a(2426209)' + new String (Math.random()).substring (2, 11);
+document.write('<a href="http://clk.tradedoubler.com/click?p=72890&a=2426209&g=19739992" target="_BLANK"><img src="'+uri+'" border=0></a>');
+</script>
+
 
 <h3>Vraiment si rapide ?</h3>
 
