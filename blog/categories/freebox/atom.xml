@@ -4,7 +4,7 @@
   <title><![CDATA[Category: freebox | Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/blog/categories/freebox/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-07-23T17:40:37+00:00</updated>
+  <updated>2014-07-23T17:48:36+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -51,7 +51,10 @@ ligne, et surtout de m'afficher un graphique de la vitesse. J'effectue mon
 pathping vers clubic.com, plutôt que google.fr, car par expérience je sais que
 google.fr a parfois du mal à répondre ou présente des latences variables.</p>
 
-<script type="text/javascript" src="http://impfr.tradedoubler.com/imp?pop(over)g(20767316)a(2426209)" charset="ISO-8859-1"></script>
+<script type="text/javascript">
+var uri = 'http://impfr.tradedoubler.com/imp?type(img)g(20767316)a(2426209)' + new String (Math.random()).substring (2, 11);
+document.write('<a href="http://clk.tradedoubler.com/click?p=58483&a=2426209&g=20767316" target="_BLANK"><img src="'+uri+'" border=0></a>');
+</script>
 
 
 <h2>Mode Normal (interleave)</h2>
