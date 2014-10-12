@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Récupérer des données sur un Readynas Ultra 2 (Netgear) - Tym-Project</title>
+  <meta name="author" content="Tym">
+
+  
+  <meta name="description" content="Très récemment mon Readynas Ultra 2 a eu un problème de carte réseau, par chance il est encore sous garantie et Netgear m&#8217;a proposé de l&#8217; &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.tym-project.fr/2014/10/12/recuperation-de-donnees-nas-readynas/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/tym-project" rel="alternate" title="Tym-Project" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8347381-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Tym-Project</a></h1>
+  
+    <h2>From: SUPINFO<br>To: Tous<br>Subject: IT</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/tym-project" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.tym-project.fr" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Récupérer Des Données Sur Un Readynas Ultra 2 (Netgear)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-12T18:00:00+00:00" pubdate data-updated="true">Oct 12<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Très récemment mon Readynas Ultra 2 a eu un problème de carte réseau, par chance il est encore sous garantie et Netgear m&#8217;a proposé de l&#8217;envoyer chez eux pour remplacer le chassis.</p>
+
+<p>Ne pouvant pas vraiment me passer d&#8217;un NAS pour quelques semaines (à ce stade toutes les excuses sont valables&#8230;) j&#8217;ai investit dans un NAS Synology. J&#8217;ai alors réalisé que toutes mes sauvegardes, quelques scripts intéressant, etc étaient stockés uniquement sur mon ReadyNAS.</p>
+
+<p>Il m&#8217;a donc fallu trouver un moyen d&#8217;accéder à ces données via le disque-dur directement.</p>
+
+<!-- more -->
+
+
+<p><em>Petite précision, il n&#8217;est pas ici question de la récupération de données sur des disques endommagés&#8230; c&#8217;est un sujet beaucoup plus complexe, qui se base toutefois sur le même principe.</em></p>
+
+<h2>RAID dingue de&#8230; données ?</h2>
+
+<p>L&#8217;intêret d&#8217;un NAS par rapport à un disque-dur externe par exemple se situe dans sa capacité à gérer de manière plus ou moins automatique la redondance des données. Je ne vais pas me lancer dans une explication des différents modes de RAID (Google !), mais en général les NAS &#8220;grand public&#8221; proposent un mode de gestion &#8220;automatique&#8221;, où le système va favoriser la redondance par rapport à la performance ou au volume de données disponible.</p>
+
+<p>Avec 2 disques, un Readynas configuré en mode &#8220;X-RAID-2&#8221; va créer un espace de données correspondant à la taille du disque le plus petit et gérer un redondance entre les deux disques. Le système peut donc supporter au maximum un disque en panne sur les deux disponibles.</p>
+
+<p>Bien que propriétaire, ce mode de gestion se base en fait sur du RAID classique, et nous permet donc d&#8217;utiliser les outils habituels pour gérer ces configurations sous Linux.</p>
+
+<h2>La trousse à outils</h2>
+
+<p>Pour connecter le disque à ma machine j&#8217;ai utilisé un adaptateur SATA/USB tel que celui-ci : <a href="http://www.amazon.fr/Advance-USB-009-Adaptateur-SATA-Noir/dp/B0094GUHG8/ref=sr_1_4?ie=UTF8&amp;qid=1413130879&amp;sr=8-4">Advance - USB-009 - Adaptateur IDE / SATA</a>.</p>
+
+<p>Pour éviter de polluer mon système j&#8217;ai aussi décidé de travailler à partir d&#8217;une Ubuntu 14.04 en live-USB.</p>
+
+<p>L&#8217;outil principal pour travailler sur du RAID en Linux est <code>mdadm</code>&#8230; qui s&#8217;installe ainsi sur Ubuntu :</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get install mdadm
+</code></pre>
+
+<p><code>apt</code> va aussi installer Postfix&#8230; probablement pour permettre l&#8217;envoi d&#8217;emails d&#8217;alertes&#8230; donc notre cas tout à fait inutile, on peut donc ignorer la configuration.</p>
+
+<h2>&#8220;A la bataille !&#8221;</h2>
+
+<p><em>Oui, c&#8217;est bien une référence à Ages Of Empire II !</em></p>
+
+<p><code>mdadm</code> étant installé, il est temps de connecter le disque-dur à la machine. Ubuntu devrait automatiquement monter certaines partitions&#8230; mais rarement la bonne&#8230;</p>
+
+<p>Pour déterminer la partition qui contient les données je me suis basé essentiellment sur la taille du volume, dans mon cas environ 1 To. Plusieurs commandes permettent de trouver cette information, j&#8217;ai utilisé <code>fdisk -l</code>, voici un extrait du résultat :</p>
+
+<pre><code>Disk /dev/mapper/c-c: 984.6 GB, 984621252608 bytes
+255 heads, 63 sectors/track, 119706 cylinders, total 1923088384 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+Disk identifier: 0x00000000
+</code></pre>
+
+<p>Cette partition a la bonne taille, essayons de la monter :</p>
+
+<pre><code>mkdir data
+mount -t ext4 /dev/mapper/c-c ./data/
+</code></pre>
+
+<p>Victoire !</p>
+
+<h2>Et sinon ?</h2>
+
+<p>Si cette solution ne fonctionne pas, il est toujours possible de travailler avec <code>mdadm</code> pour monter la partition. Par exemple <code>fdisk -l</code> peut nous dire que <code>/dev/md125</code> a aussi la bonne taille.
+<code>mdadm --detail /dev/md125</code> peut permettre de confirmer cela et identifer la partition correspondante :</p>
+
+<pre><code>root@ubuntu:/home/ubuntu# mdadm --detail /dev/md125
+/dev/md125:
+        Version : 1.2
+  Creation Time : Sat Sep 27 09:19:16 2014
+     Raid Level : raid5
+     Array Size : 972040704 (927.01 GiB 995.37 GB)
+  Used Dev Size : 972040704 (927.01 GiB 995.37 GB)
+   Raid Devices : 2
+  Total Devices : 1
+    Persistence : Superblock is persistent
+
+    Update Time : Sun Oct  5 16:37:57 2014
+          State : clean, degraded
+ Active Devices : 1
+Working Devices : 1
+ Failed Devices : 0
+  Spare Devices : 0
+
+         Layout : left-symmetric
+     Chunk Size : 64K
+
+           Name : A021B7C17002:2
+          UUID : c04e7c99:2f19ec0b:7ed9de43:dee7c184
+         Events : 5667
+
+    Number   Major   Minor   RaidDevice State
+       0       0        0        0      removed
+       2       8       35        1      active sync   /dev/sdc3
+</code></pre>
+
+<p>La toute dernière ligne nous indique donc que <code>/dev/sdc3</code> est la partition à monter après avoir lancé le RAID avec <code>mdadm --run /dev/md125</code>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tym</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-12T18:00:00+00:00" pubdate data-updated="true">Oct 12<span>th</span>, 2014</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.tym-project.fr/2014/10/12/recuperation-de-donnees-nas-readynas/" data-via="" data-counturl="http://blog.tym-project.fr/2014/10/12/recuperation-de-donnees-nas-readynas/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/10/05/planifier-allumage-nas-readynas/" title="Previous Post: Planifier librement l'allumage et l'éteignage d'un nas Readynas Ultra 2">&laquo; Planifier librement l'allumage et l'éteignage d'un nas Readynas Ultra 2</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/10/12/recuperation-de-donnees-nas-readynas/">Récupérer des données sur un Readynas Ultra 2 (Netgear)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/10/05/planifier-allumage-nas-readynas/">Planifier librement l'allumage et l'éteignage d'un nas Readynas Ultra 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/26/acronis-boot-cd-par-le-reseau/">Installer un serveur PXE sur un ReadyNAS Ultra 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/06/android-et-linux-piloter-une-machine-a-distance/">Gérer l'allumage et la mise hors tension d'une machine Linux via un smartphone Android</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/21/icy-box-ib-351-et-linux/">Icy Box IB-351 et Linux</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Tym -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wwwtymprojectfrblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.tym-project.fr/2014/10/12/recuperation-de-donnees-nas-readynas/';
+        var disqus_url = 'http://blog.tym-project.fr/2014/10/12/recuperation-de-donnees-nas-readynas/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

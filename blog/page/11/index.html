@@ -9,8 +9,8 @@
   <meta name="author" content="Tym">
 
   
-  <meta name="description" content="Ce que j&#8217;aime dans mon Linux c&#8217;est la CLI (Command Line Interface) car c&#8217;est
-rapide et pratique ! Il est même possible de créer des &hellip;">
+  <meta name="description" content="Dans la lignée de cet article, voici comment vous simplifier la vie pour
+faire des screenshots. Tout d&#8217;abord une commande incluse par défaut, [ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,70 @@ rapide et pratique ! Il est même possible de créer des &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/05/07/faire-des-captures-decran-en-ligne-de-commande-linux/">Faire Des Captures D&#8217;écran en Ligne De Commande (Linux)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-07T12:12:08+00:00" pubdate data-updated="true">May 7<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Dans la lignée de <a href="http://www.tym-project.fr/blog/2009/05/creer-et-graver-des-images-iso-en-ligne-de-commande-linux/">cet article</a>, voici comment vous simplifier la vie pour
+faire des screenshots.</p>
+
+<p>Tout d&#8217;abord une commande incluse par défaut, <code>[man]import[/man]</code>. Comme vous
+allez capturer des images, il vous faut aussi le petit programme
+<code>[man]feh[/man]</code> :</p>
+
+<pre><code># pacman -Sy feh
+</code></pre>
+
+<p>Ensuite pour faire une capture :</p>
+
+<pre><code>import fichier_de_sortie.png
+</code></pre>
+
+<p>Pour voir toutes les options disponibles,
+utilisez <code>man import</code>. <code>[man]import[/man]</code> me pose parfois des soucis, c&#8217;est
+pourquoi j&#8217;utilise plus souvent <code>[man]scrot[/man]</code> :</p>
+
+<pre><code># pacman -Sy scrot
+</code></pre>
+
+<p>Pour prendre une capture dans 5
+secondes et générer aussi une miniature de 80% de la taille de la capture :</p>
+
+<pre><code>scrot -d 5 -t 80 fichier_de_sortie.png
+</code></pre>
+
+<p>Bonnes captures ;-)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -516,55 +580,6 @@ vous aidera si besoin.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/04/20/cet-article-peut-gravement-nuire-a-windows-2/">Cet Article Peut Gravement Nuire à Windows !</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-04-20T21:08:07+00:00" pubdate data-updated="true">Apr 20<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Je travaille sous Windows depuis&#8230;longtemps (toujours en fait !). J&#8217;ai bien
-tenté des passages sous Linux (Debian, Ubuntu, Gentoo&#8230;) mais sans succès,
-j&#8217;ai toujours rencontré un problème &#8220;ennuyeux&#8221; (Ubuntu trop lourd, Debian pas
-assez à jour&#8230;). Mais tout cela est bel et bien finit !Je suis passé sous
-<a href="http://www.archlinux.org/">Archlinux</a>, à mon sens une très bonne distribution pour une utilisation de
-tout les jours.</p>
-
-<p>C&#8217;est léger, mais surtout vous avez à disposition les dernières versions des
-logiciels. On est loin des 4 ans de test chez Debian, mais c&#8217;est très pratique
-pour installer des pilotes récents par exemple !</p>
-
-<p>Rien de mieux que <a href="http://archlinux.fr/">le site officiel en français</a> pour plus d&#8217;informations !</p>
-
-<p>Bonne installation ;-)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -582,6 +597,10 @@ pour installer des pilotes récents par exemple !</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/10/12/recuperation-de-donnees-nas-readynas/">Récupérer des données sur un Readynas Ultra 2 (Netgear)</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/10/05/planifier-allumage-nas-readynas/">Planifier librement l&#8217;allumage et l&#8217;éteignage d&#8217;un nas Readynas Ultra 2</a>
       </li>
     
@@ -595,10 +614,6 @@ pour installer des pilotes récents par exemple !</p>
     
       <li class="post">
         <a href="/2012/10/21/icy-box-ib-351-et-linux/">Icy Box IB-351 et Linux</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/08/16/cm9-htc-one-s-boot-loop-et-sdcard/">CyanogenMod 9 sur un HTC One S&#8230; entre boot loop et sd-cauchemard</a>
       </li>
     
   </ul>

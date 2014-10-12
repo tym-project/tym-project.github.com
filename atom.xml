@@ -4,7 +4,7 @@
   <title><![CDATA[Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-10-12T15:42:03+00:00</updated>
+  <updated>2014-10-12T16:55:41+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -12,6 +12,106 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Récupérer des données sur un Readynas Ultra 2 (Netgear)]]></title>
+    <link href="http://blog.tym-project.fr/2014/10/12/recuperation-de-donnees-nas-readynas/"/>
+    <updated>2014-10-12T18:00:00+00:00</updated>
+    <id>http://blog.tym-project.fr/2014/10/12/recuperation-de-donnees-nas-readynas</id>
+    <content type="html"><![CDATA[<p>Très récemment mon Readynas Ultra 2 a eu un problème de carte réseau, par chance il est encore sous garantie et Netgear m&#8217;a proposé de l&#8217;envoyer chez eux pour remplacer le chassis.</p>
+
+<p>Ne pouvant pas vraiment me passer d&#8217;un NAS pour quelques semaines (à ce stade toutes les excuses sont valables&#8230;) j&#8217;ai investit dans un NAS Synology. J&#8217;ai alors réalisé que toutes mes sauvegardes, quelques scripts intéressant, etc étaient stockés uniquement sur mon ReadyNAS.</p>
+
+<p>Il m&#8217;a donc fallu trouver un moyen d&#8217;accéder à ces données via le disque-dur directement.</p>
+
+<!-- more -->
+
+
+<p><em>Petite précision, il n&#8217;est pas ici question de la récupération de données sur des disques endommagés&#8230; c&#8217;est un sujet beaucoup plus complexe, qui se base toutefois sur le même principe.</em></p>
+
+<h2>RAID dingue de&#8230; données ?</h2>
+
+<p>L&#8217;intêret d&#8217;un NAS par rapport à un disque-dur externe par exemple se situe dans sa capacité à gérer de manière plus ou moins automatique la redondance des données. Je ne vais pas me lancer dans une explication des différents modes de RAID (Google !), mais en général les NAS &#8220;grand public&#8221; proposent un mode de gestion &#8220;automatique&#8221;, où le système va favoriser la redondance par rapport à la performance ou au volume de données disponible.</p>
+
+<p>Avec 2 disques, un Readynas configuré en mode &#8220;X-RAID-2&#8221; va créer un espace de données correspondant à la taille du disque le plus petit et gérer un redondance entre les deux disques. Le système peut donc supporter au maximum un disque en panne sur les deux disponibles.</p>
+
+<p>Bien que propriétaire, ce mode de gestion se base en fait sur du RAID classique, et nous permet donc d&#8217;utiliser les outils habituels pour gérer ces configurations sous Linux.</p>
+
+<h2>La trousse à outils</h2>
+
+<p>Pour connecter le disque à ma machine j&#8217;ai utilisé un adaptateur SATA/USB tel que celui-ci : <a href="http://www.amazon.fr/Advance-USB-009-Adaptateur-SATA-Noir/dp/B0094GUHG8/ref=sr_1_4?ie=UTF8&amp;qid=1413130879&amp;sr=8-4">Advance - USB-009 - Adaptateur IDE / SATA</a>.</p>
+
+<p>Pour éviter de polluer mon système j&#8217;ai aussi décidé de travailler à partir d&#8217;une Ubuntu 14.04 en live-USB.</p>
+
+<p>L&#8217;outil principal pour travailler sur du RAID en Linux est <code>mdadm</code>&#8230; qui s&#8217;installe ainsi sur Ubuntu :</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get install mdadm
+</code></pre>
+
+<p><code>apt</code> va aussi installer Postfix&#8230; probablement pour permettre l&#8217;envoi d&#8217;emails d&#8217;alertes&#8230; donc notre cas tout à fait inutile, on peut donc ignorer la configuration.</p>
+
+<h2>&#8220;A la bataille !&#8221;</h2>
+
+<p><em>Oui, c&#8217;est bien une référence à Ages Of Empire II !</em></p>
+
+<p><code>mdadm</code> étant installé, il est temps de connecter le disque-dur à la machine. Ubuntu devrait automatiquement monter certaines partitions&#8230; mais rarement la bonne&#8230;</p>
+
+<p>Pour déterminer la partition qui contient les données je me suis basé essentiellment sur la taille du volume, dans mon cas environ 1 To. Plusieurs commandes permettent de trouver cette information, j&#8217;ai utilisé <code>fdisk -l</code>, voici un extrait du résultat :</p>
+
+<pre><code>Disk /dev/mapper/c-c: 984.6 GB, 984621252608 bytes
+255 heads, 63 sectors/track, 119706 cylinders, total 1923088384 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+Disk identifier: 0x00000000
+</code></pre>
+
+<p>Cette partition a la bonne taille, essayons de la monter :</p>
+
+<pre><code>mkdir data
+mount -t ext4 /dev/mapper/c-c ./data/
+</code></pre>
+
+<p>Victoire !</p>
+
+<h2>Et sinon ?</h2>
+
+<p>Si cette solution ne fonctionne pas, il est toujours possible de travailler avec <code>mdadm</code> pour monter la partition. Par exemple <code>fdisk -l</code> peut nous dire que <code>/dev/md125</code> a aussi la bonne taille.
+<code>mdadm --detail /dev/md125</code> peut permettre de confirmer cela et identifer la partition correspondante :</p>
+
+<pre><code>root@ubuntu:/home/ubuntu# mdadm --detail /dev/md125
+/dev/md125:
+        Version : 1.2
+  Creation Time : Sat Sep 27 09:19:16 2014
+     Raid Level : raid5
+     Array Size : 972040704 (927.01 GiB 995.37 GB)
+  Used Dev Size : 972040704 (927.01 GiB 995.37 GB)
+   Raid Devices : 2
+  Total Devices : 1
+    Persistence : Superblock is persistent
+
+    Update Time : Sun Oct  5 16:37:57 2014
+          State : clean, degraded
+ Active Devices : 1
+Working Devices : 1
+ Failed Devices : 0
+  Spare Devices : 0
+
+         Layout : left-symmetric
+     Chunk Size : 64K
+
+           Name : A021B7C17002:2
+          UUID : c04e7c99:2f19ec0b:7ed9de43:dee7c184
+         Events : 5667
+
+    Number   Major   Minor   RaidDevice State
+       0       0        0        0      removed
+       2       8       35        1      active sync   /dev/sdc3
+</code></pre>
+
+<p>La toute dernière ligne nous indique donc que <code>/dev/sdc3</code> est la partition à monter après avoir lancé le RAID avec <code>mdadm --run /dev/md125</code>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Planifier librement l'allumage et l'éteignage d'un nas Readynas Ultra 2]]></title>
@@ -1440,81 +1540,6 @@ selon).</p>
 
 
 <p>Bon zoom ;-)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Merci Google, sans toi je ne suis rien !]]></title>
-    <link href="http://blog.tym-project.fr/2011/05/02/merci-google-sans-toi-je-ne-suis-rien/"/>
-    <updated>2011-05-02T23:26:52+00:00</updated>
-    <id>http://blog.tym-project.fr/2011/05/02/merci-google-sans-toi-je-ne-suis-rien</id>
-    <content type="html"><![CDATA[<p>Un petit post sans intérêt, mais je voulais vous
-montrer un mail qui m&#8217;a bien fait marrer. Cela vient de Google pour m&#8217;annoncer
-la migration de Google Apps sur un de mes domaines&#8230;(car oui, je fais <a href="http://www.tym-project.fr/blog/2009/03/associer-google-apps-gmail-gdocs-gcalendar-gtalk-a-son-domaine/">ce que
-j&#8217;écris</a> ;-)) Voilà le message en question :</p>
-
-<blockquote><p>Cher administrateur Google Apps, Les comptes Google Apps font l&#8217;objet d&#8217;une
-amélioration qui vous permettra de donner aux utilisateurs un accès à plus de
-60 applications Google supplémentaires. Nous vous encourageons à effectuer dès
-à présent la transition des comptes de votre organisation selon votre propre
-calendrier.</p>
-
-<p>Effectuer la transition selon votre propre calendrier offre plusieurs
-avantages :</p>
-
-<ul>
-<li><p>Effectuer la transition selon votre propre calendrier</p></li>
-<li><p>Prenez le temps de tester la nouvelle infrastructure sur un échantillon
-de comptes.</p></li>
-<li><p>Utiliser les listes de diffusion et les modèles d’e-mail automatisés
-pour informer préalablement vos utilisateurs</p></li>
-<li><p>Bénéficiez immédiatement d’un accès à plus de 60 applications Google
-supplémentaires</p></li>
-</ul>
-
-
-<p>Lancez la transition dès maintenant en cliquant sur le bouton &#8220;Démarrer&#8221; ou
-&#8220;Effectuer la transition pour d&#8217;autres utilisateurs&#8221; dans votre panneau de
-configuration : https://www.google.com/a/cpanel/********</p>
-
-<p>Nous prévoyons sous peu la transition complète de votre organisation, y
-compris tous les utilisateurs dont vous n’avez pas encore effectué la
-transition vous-même. Si vous n’avez pas effectué la transition avant la
-semaine du 16 mai 2011, nous nous en chargerons à votre place.</p>
-
-<p>Si vous avez des questions à propos de cette transition, nous vous invitons à
-consulter la documentation de notre centre d&#8217;aide à l&#8217;attention des
-administrateurs et des utilisateurs finaux.</p>
-
-<p>Cordialement, L’équipe Google Apps</p>
-
-<p>&#8212;&#8212;&#8212;&#8212;- Cette annonce à lire impérativement vise à vous informer de modifications importantes du service de messagerie associé à votre compte Google Apps.<br/>
-Ne répondez pas à cet e-mail, car nous ne serons pas en mesure d&#8217;examiner
-votre réponse. Vous pouvez déposer un dossier dans votre panneau de
-configuration pour obtenir une aide supplémentaire.</p>
-
-<p>Google Inc. 1600 Amphitheatre Parkway Mountain View, CA 94043, États-Unis</p></blockquote>
-
-<p><em>Cherchez la blague, allez, un petit effort&#8230;</em></p>
-
-<h2>I Loled IRL</h2>
-
-<p>C&#8217;est donc bien expliqué, un peu technique, mais aussi un peu c** je trouve :</p>
-
-<blockquote><p>**Effectuer la transition selon votre propre calendrier offre plusieurs
-avantages :</p>
-
-<ul>
-<li><p>Effectuer la transition selon votre propre calendrier</p></li>
-<li><p>&#8230;_</p></li>
-</ul>
-
-
-<p>**</p></blockquote>
-
-<p>Sans rire ?! Merci pour cette précision Mr. Google, sans toi je ne suis rien !
-Mais attention, la paradoxe temporel n&#8217;est pas loin car le paradoxe temporel
-n&#8217;est pas loin car le paradoxe&#8230;</p>
 ]]></content>
   </entry>
   
