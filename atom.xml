@@ -4,7 +4,7 @@
   <title><![CDATA[Tym-Project]]></title>
   <link href="http://blog.tym-project.fr/atom.xml" rel="self"/>
   <link href="http://blog.tym-project.fr/"/>
-  <updated>2014-10-12T16:55:41+00:00</updated>
+  <updated>2014-10-12T16:59:11+00:00</updated>
   <id>http://blog.tym-project.fr/</id>
   <author>
     <name><![CDATA[Tym]]></name>
@@ -50,7 +50,7 @@
 
 <p><code>apt</code> va aussi installer Postfix&#8230; probablement pour permettre l&#8217;envoi d&#8217;emails d&#8217;alertes&#8230; donc notre cas tout à fait inutile, on peut donc ignorer la configuration.</p>
 
-<h2>&#8220;A la bataille !&#8221;</h2>
+<h2>&#8220;À la bataille !&#8221;</h2>
 
 <p><em>Oui, c&#8217;est bien une référence à Ages Of Empire II !</em></p>
 
